@@ -1,2 +1,11 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_tag sessions_path do %>
+  <div class="field">
+    <%= label_tag :email %>:
+    <%= email_field_tag :email, params[:email], placeholder: "ex. name@domain.com" %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>:
+    <%= password_field_tag :password %>
+  </div>
+  <%= submit_tag "Log In" %>
+<% end %>
