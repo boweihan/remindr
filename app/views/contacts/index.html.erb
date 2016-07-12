@@ -1,4 +1,9 @@
 <h1>THIS IS A PAGE OF ALL THE CONTACTS</h1>
 <%= link_to "Feed", newsfeed_path %><br>
-<%= link_to "Contact Profile", '/contacts/1' %><br>
 <%= link_to "Contact's Messages", contact_messages_path(1) %>
+
+<ul>
+  <% @contacts.each do |contact| %>
+    <br><li><%= link_to contact.name, contact_path(contact.id) %></li>
+  <% end %>
+</ul>

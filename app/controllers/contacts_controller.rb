@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-
+    @contact.user_id = current_user.id
     if @contact.save
       redirect_to contacts_url
     else

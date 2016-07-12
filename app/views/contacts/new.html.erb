@@ -1,2 +1,18 @@
 <h1>THIS IS THE ADD CONTACT PAGE</h1>
 <%= link_to "BACK TO FEED", newsfeed_path %>
+
+<%= form_for @contact do |f| %>
+  <div class='field'>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field'>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class='submit_button'><%= f.submit %></div>
+<% end %>

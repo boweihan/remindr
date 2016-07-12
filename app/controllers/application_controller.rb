@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def ensure_logged_in
     unless current_user
       flash[:alert] = "You are not logged in, please log in to make a reservation"
-      redirect_to sessions_new_url
+      redirect_to new_session_url
     end
   end
 end

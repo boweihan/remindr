@@ -1,2 +1,9 @@
 <h1>THIS IS A CONTACT'S PROFILE PAGE</h1>
 <%= link_to "BACK TO FEED", newsfeed_path %>
+
+<h2><%= @contact.name %></h2>
+<ul>
+  <% @messages.each do |message| %>
+    <li><%= message.created_at %></li>
+  <% end %>
+</ul>
