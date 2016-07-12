@@ -1,8 +1,6 @@
 class ContactsController < ApplicationController
 
-  def view
-    #write the loop to grab all the messages of all the contacts
-  end
+  before_action :ensure_logged_in
 
   def index
     @contacts = Contact.all

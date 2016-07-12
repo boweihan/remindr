@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :ensure_logged_in
+
   def index
     @users = User.all
   end
@@ -24,7 +26,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_url
+      #log the user in
+      redirect_to newsfeed_path
     else
       render :new
     end

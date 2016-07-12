@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/newsfeed'
+
   get 'sessions/new'
 
   get 'sessions/create'
@@ -9,8 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'users#index'
 
-  get 'feed' => 'contacts#view'
-
+  get 'newsfeed' => 'pages#newsfeed'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do

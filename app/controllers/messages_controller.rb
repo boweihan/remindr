@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :ensure_logged_in
   def index
     @messages = Message.all
   end

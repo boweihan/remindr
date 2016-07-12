@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       redirect_to contacts_url, notice: "Thanks for logging in!"
     else
       render :new
+    end
   end
 
   def destroy
