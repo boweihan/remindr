@@ -13,7 +13,7 @@ class PagesController < ApplicationController
       )
   end
 
-  def index
+  def googleauth
       auth_uri = @auth_client.authorization_uri.to_s
       redirect_to auth_uri
   end
@@ -30,6 +30,7 @@ class PagesController < ApplicationController
       #exchange auth for token
       @auth_client.fetch_access_token!
       token = @auth_client.access_token
+      refresh_token = @auth_client.refresh_token
 
       #get id
       url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{token}"
@@ -37,30 +38,42 @@ class PagesController < ApplicationController
       obj = RestClient.get(url)
       id = JSON.parse(obj)['id']
 
-      q= "from:contact@codecademy.com"
-      #get messages list
-      api_url = "https://www.googleapis.com/gmail/v1/users/#{id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
-      puts api_url
-      email_id = JSON.parse(RestClient.get(api_url))['messages'][0]['id']
+      current_user.access_token = token
+      current_user.refresh_token = refresh_token
+      current_user.google_id = id
 
-      #get 1 mesage
-      email_api_url = "https://www.googleapis.com/gmail/v1/users/#{id}/messages/#{email_id}?access_token=#{token}"
-      puts email_api_url
-      email_obj = RestClient.get(email_api_url)
-      email_hash = JSON.parse(email_obj)
+      Contact.where(user_id: current_user.id).each do |contact|
+        q= "from:#{contact.email}+OR+to:#{contact.email}"
+        #get messages list
+        api_url = "https://www.googleapis.com/gmail/v1/users/#{id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
+        # puts api_url
 
-      # 0 text, 1 html
-      email_body = email_hash['payload']['parts'][0]['body']['data']
-      #decode
-      email_body = Base64.decode64(email_body.gsub("-", '+').gsub("_","/"))
-      puts email_body
+        if JSON.parse(RestClient.get(api_url))['messages'] && contact.email
+
+          email_id = JSON.parse(RestClient.get(api_url))['messages'][0]['id']
+
+          #get 1 mesage
+          email_api_url = "https://www.googleapis.com/gmail/v1/users/#{id}/messages/#{email_id}?access_token=#{token}"
+          # puts email_api_url
+          email_obj = RestClient.get(email_api_url)
+          email_hash = JSON.parse(email_obj)
+
+          # 0 text, 1 html
+
+          # write loop to check if the part is actually plain/text (not an image or other)
+          email_body = email_hash['payload']['parts'][0]['body']['data']
+          #decode
+          email_body = Base64.decode64(email_body.gsub("-", '+').gsub("_","/"))
+          email_body = email_body.force_encoding("utf-8")
+          # puts email_body
+          Message.create(contact_id: contact.id, user_id: current_user.id, body: email_body)
+        else
+          puts "that user doesn't exist and therefore doesn't have friends"
+        end
+      end
     end
 
-    redirect_to '/garbage'
-  end
-
-  def garbage
-    render :nothing => true, :status => 200, :content_type => 'text/html'
+    redirect_to '/newsfeed'
   end
 
   def newsfeed

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       Message.api
-      redirect_to contacts_url, notice: "Thanks for logging in!"
+      redirect_to '/googleauth', notice: "Thanks for logging in!"
     else
       render :new
     end
