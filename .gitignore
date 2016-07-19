@@ -15,3 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
+
+client_secrets.json
