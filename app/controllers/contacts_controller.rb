@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.all.where(user_id:current_user.id)
   end
 
   def show
