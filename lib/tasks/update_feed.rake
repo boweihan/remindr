@@ -1,5 +1,5 @@
 desc "desc goes here"
-task :update_messages => :environment do
+task :refresh => :environment do
   Rails.logger.info "***************start"
   Worker.new.perform
   Rails.logger.info "hey"
