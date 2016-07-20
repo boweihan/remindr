@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 #Bowei's seeds
 # Contact.create(name: 'Ella', phone: '9999999999', email: 'ella@bitmaker.co', user_id:1)
 # Contact.create(name: 'Erik', phone: '9999999999', email: 'erik@bitmakerlabs.com' ,user_id:1)
