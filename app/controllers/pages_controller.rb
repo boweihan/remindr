@@ -38,9 +38,10 @@ class PagesController < ApplicationController
       obj = RestClient.get(url)
       id = JSON.parse(obj)['id']
 
-      current_user.access_token = token
-      current_user.refresh_token = refresh_token
-      current_user.google_id = id
+      User.where(id:current_user.id).first.update(access_token:token)
+      User.where(id:current_user.id).first.update(refresh_token:refresh_token)
+      User.where(id:current_user.id).first.update(google_id:id)
+
 
       Contact.where(user_id: current_user.id).each do |contact|
         q= "from:#{contact.email}+OR+to:#{contact.email}"
@@ -95,6 +96,15 @@ class PagesController < ApplicationController
       @contacts << Contact.find(message.contact_id)
       @messages << message
     end
+
+
+    #give the newsfeed the ability to send gmail messages
+    # gmail_send_url = "https://www.googleapis.com/upload/gmail/v1/users/#{current_user.google_id}/messages/send?uploadType=media&access_token=#{current_user.access_token}"
+    #
+    # obj = RestClient.post(gmail_send_url,
+    #                       {Host: 'www.googleapis.com', contentType: 'message/rfc822'},
+    #                       raw: "Q29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PSJ1cy1hc2NpaSINCk1JTUUtVmVyc2lvbjogMS4wDQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiA3Yml0DQp0bzogYnJ5Y2VAdGhvcm1lZGlhLmNvbQ0KZnJvbTogYnJ5Y2VAdGhvcm1lZGlhLmNvbQ0Kc3ViamVjdDogVGVzdA0KDQpIZWxsbyE=")
+    # @sent_message = JSON.parse(obj)
 
   end
 
