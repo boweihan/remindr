@@ -65,7 +65,9 @@ class PagesController < ApplicationController
           #decode
           email_body = Base64.decode64(email_body.gsub("-", '+').gsub("_","/"))
           email_body = email_body.force_encoding("utf-8").to_s
-          puts email_body
+          # puts email_body
+          #store the snippet to be used in the feed
+          puts email_hash['snippet']
 
           if Message.where(contact_id: contact.id) != []
             Message.where(contact_id: contact.id).first.update(body: email_body)
