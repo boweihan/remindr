@@ -67,12 +67,11 @@ class PagesController < ApplicationController
           email_body = email_body.force_encoding("utf-8").to_s
           puts email_body
 
-          if Message.where(contact_id: contact.id)
+          if Message.where(contact_id: contact.id) != []
             Message.where(contact_id: contact.id).first.update(body: email_body)
           else
             Message.create(contact_id: contact.id, user_id: current_user.id, body: email_body)
           end
-          binding.pry
         else
           puts "that user doesn't exist and therefore doesn't have friends"
         end
