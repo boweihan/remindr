@@ -27,11 +27,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.10'
 
-gem 'bourbon'
+gem 'bourbon', '5.0.0.beta.6'
 
 gem 'neat'
 
-gem 'autoprefixer-rails'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -38,14 +38,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
-    autoprefixer-rails (6.3.7)
-      execjs
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bourbon (4.2.7)
-      sass (~> 3.4)
-      thor (~> 0.19)
+    bourbon (5.0.0.beta.6)
+      sass (~> 3.4.22)
+      thor (~> 0.19.1)
     builder (3.2.2)
     byebug (9.0.5)
     coderay (1.1.1)
@@ -216,9 +214,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails
   bcrypt (~> 3.1.10)
-  bourbon
+  bourbon (= 5.0.0.beta.6)
   byebug
   coffee-rails (~> 4.1.0)
   google-api-client
