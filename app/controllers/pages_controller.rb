@@ -44,10 +44,10 @@ class PagesController < ApplicationController
 
       Contact.where(user_id: current_user.id).each do |contact|
         q= "from:#{contact.email}+OR+to:#{contact.email}"
+        # q= "to:#{contact.email}"
         #get messages list
         api_url = "https://www.googleapis.com/gmail/v1/users/#{id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
         # puts api_url
-
         if JSON.parse(RestClient.get(api_url))['messages'] && contact.email
 
           email_id = JSON.parse(RestClient.get(api_url))['messages'][0]['id']
@@ -61,12 +61,18 @@ class PagesController < ApplicationController
           # 0 text, 1 html
 
           # write loop to check if the part is actually plain/text (not an image or other)
-          email_body = email_hash['payload']['parts'][0]['body']['data']
+          email_body = email_hash['payload']['parts'][1]['body']['data']
           #decode
           email_body = Base64.decode64(email_body.gsub("-", '+').gsub("_","/"))
-          email_body = email_body.force_encoding("utf-8")
-          # puts email_body
-          Message.create(contact_id: contact.id, user_id: current_user.id, body: email_body)
+          email_body = email_body.force_encoding("utf-8").to_s
+          puts email_body
+
+          if Message.where(contact_id: contact.id)
+            Message.where(contact_id: contact.id).first.update(body: email_body)
+          else
+            Message.create(contact_id: contact.id, user_id: current_user.id, body: email_body)
+          end
+          binding.pry
         else
           puts "that user doesn't exist and therefore doesn't have friends"
         end
@@ -91,5 +97,7 @@ class PagesController < ApplicationController
 
   end
 
+  def landing
+  end
 
 end

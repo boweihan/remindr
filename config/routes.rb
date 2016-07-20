@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root 'users#index'
+  root 'pages#landing'
   get '/googleauth' => 'pages#googleauth'
   get '/callback'=> 'pages#callback'
   get 'newsfeed' => 'pages#newsfeed'
