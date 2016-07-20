@@ -16,10 +16,9 @@
 
 
 #Jon's seeds
+User.create(name: 'test', phone: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test')
 Contact.create(name: 'Codecademy', phone: '9999999999', email: 'contact@codecademy.com', user_id:1)
 Contact.create(name: 'Google', phone: '9999999999', email: 'no-reply@accounts.google.com>' ,user_id:1)
 Contact.create(name: 'Random', phone: '9999999999', email: 'random@random.com',user_id:1)
 Contact.create(name: 'Person With no Email', phone: '9999999999',user_id:1)
 Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1)
-
-User.create(name: 'test', phone: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test')
