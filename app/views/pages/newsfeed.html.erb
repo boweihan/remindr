@@ -5,10 +5,19 @@
 <%= link_to "Add a Contact", new_contact_url %><br>
 
 <ul>
-  <% for i in 0...@messages.length %>
+  <!-- <% for i in 0...@messages.length %>
     <div class='feedElement'>
       <li><%= link_to @contacts[i].name, contact_path(@contacts[i].id) %><br>
         <%= @messages[i].created_at %></li>
     </div>
+  <% end %> -->
+
+  <%= @messages.each do |message| %>
+    <div class='feedElement'>
+      <li><%= message.body.html_safe %></li>
+    </div>
   <% end %>
 </ul>
+
+
+<%= @sent_message %>

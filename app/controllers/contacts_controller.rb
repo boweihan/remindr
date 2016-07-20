@@ -4,6 +4,10 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all.where(user_id:current_user.id)
+    # @messages = []
+    # @contacts.each do |contact|
+    #   @messages << contact.messages
+    # end
   end
 
   def show
