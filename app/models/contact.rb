@@ -2,6 +2,7 @@ class Contact < ActiveRecord::Base
   has_many :messages
   belongs_to :user
 
+  #handle photos
   def self.update
     all_contacts = Contact.all
     all_contacts.each do |contact|
