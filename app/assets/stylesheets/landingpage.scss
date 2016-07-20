@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  float: left;
+  margin: 10px;
+  font-size: 25px;
+
+}
+
+.nav-bar {
+  width: 100%;
+  display: inline-block;
+  background-color: hsl(240, 20%, 93%);
+  text-align: right;
+  color: #07DEFF;
+}
+
+.navButton {
+  display: inline-block;
+  margin: 10px;
+  padding: 4px;
+  text-decoration: none;
+  color: #07DEFF;
+
+}
+
+.photo-background img {
+  width: 100%;
+  height: 80vh;
+  position: absolute;
+  z-index: 0;
+
+}
+
+#welcome-text {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 120px;
+  z-index: 2;
+  font-size: 55px;
+  font-weight: lighter;
+  color: #07DEFF;
+
+}
+
+.signupButton {
+  background-color: #07DEFF;
+  border: 1px solid #07DEFF;
+  border-radius: 5%;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+  position: absolute;
+  margin-right: 43%;
+  margin-left: 43%;
+  top: 300px;
+  z-index: 4;
+
+}
+
+#sellingPoint1 {
+  color: #4A4A4A;
+  font-size: 16px;
+}
+
+#sellingPointHeader {
+  size: 20px;
+}

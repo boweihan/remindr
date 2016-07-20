@@ -1,5 +1,33 @@
-<h1>THIS IS THE LANDING PAGE</h1>
-<%= link_to "Feed", newsfeed_path %><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Remindr</title>
+</head>
+<body>
+  <div class="nav-bar">
+    <h1 class="logo">Remindr</h1>
+      <%= link_to "Feed", newsfeed_path, class:"navButton" %>
+      <%= link_to "Sign Up", new_user_path, class:"navButton" %>
+      <%= link_to "Log In", new_session_path, class:"navButton" %>
+  </div>
 
-<%= link_to "Sign Up", new_user_path %><br>
-<%= link_to "Log In", new_session_path %><br>
+  <div class="photo-background">
+    <%= image_tag "SFbridge.jpg" %>
+  </div>
+
+  <div id="welcome-text">
+    <p>Keep in touch no matter</p>
+    <p>where life takes you!</p>
+  </div>
+
+  <button class="signupButton">Get Started!</button>
+
+  <div id="sellingPoint1">
+    <%= image_tag "calendar(3).png" %>
+      <h3>Selling Point 1</h3>
+        <p>Explanation blah blah blah blah blah blah blah blah</p>
+  </div>
+  
+</body>
+</html>
