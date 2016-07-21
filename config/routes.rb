@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/googleauth' => 'pages#googleauth'
   get '/callback'=> 'pages#callback'
   get 'newsfeed' => 'pages#newsfeed'
+  get '/dashboard' => 'pages#dashboard'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
