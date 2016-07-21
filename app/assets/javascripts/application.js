@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+  $('#send_email').submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: '/send',
+      data: {receiver: document.getElementById('email_field').value, subj: document.getElementById('subject_field').value, bod: document.getElementById('body_field').value}
+    });
+  });
+});

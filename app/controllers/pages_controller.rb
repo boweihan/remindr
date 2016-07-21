@@ -86,9 +86,6 @@ class PagesController < ApplicationController
 
   def newsfeed
     #write the loop to grab all the messages of all the contacts with current user
-    # puts current_user.id
-    # puts Contact.all
-    # puts Message.all
 
     @messages = Array.new
     @contacts = Array.new
@@ -96,41 +93,6 @@ class PagesController < ApplicationController
       @contacts << Contact.find(message.contact_id)
       @messages << message
     end
-
-
-    #give the newsfeed the ability to send gmail messages (WITH MY CODE GRAVEYARD)
-    # gmail_send_url = "https://www.googleapis.com/upload/gmail/v1/users/#{current_user.email}/messages/send?uploadType=media&access_token=#{current_user.access_token}"
-
-    # obj = RestClient::Request.execute(method: :post,
-    #                       url: gmail_send_url,
-    #                       payload: "{'access_token' : '#{current_user.access_token}' }",
-    #                       headers: {uploadType: 'media', Host: 'www.googleapis.com', 'Content-Type': 'message/rfc822', 'Content-Length':0, Authorization: current_user.access_token},
-    #                       )
-    # user_input = 'From: bowei.han100@gmail.com\r\n
-    #               To: CarolYaoo@gmail.com\r\n
-    #               Subject: Hello\r\n
-    #               Content-Type: text/plain\r\n
-    #
-    #               Hello, this is a test'
-    user_input = Mail.new do
-      from 'Bowei Han <bowei.han100@gmail.com>'
-      to 'Carol Yao <carolyaoo@gmail.com>'
-      subject 'this is a test'
-      body 'hello, hello, is it possible? Could this actually work?'
-    end
-    # enc = Base64.encode64(user_input)
-    # enc = enc.gsub("+", "-").gsub("/","_")
-    message = Google::Apis::GmailV1::Message.new
-    message.raw = user_input.to_s
-    service = Google::Apis::GmailV1::GmailService.new
-    service.request_options.authorization = current_user.access_token
-    obj = service.send_user_message(current_user.google_id, message_object = message)
-
-    #troubleshoot
-    email_api_url = "https://www.googleapis.com/gmail/v1/users/#{current_user.google_id}/messages/#{obj.id}?access_token=#{current_user.access_token}"
-    puts email_api_url
-        binding.pry
-
   end
 
   def landing

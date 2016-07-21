@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root 'pages#landing'
   get '/googleauth' => 'pages#googleauth'
   get '/callback'=> 'pages#callback'
-  get 'newsfeed' => 'pages#newsfeed'
+  get '/newsfeed' => 'pages#newsfeed'
+  get '/send' => 'messages#send_mail'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
