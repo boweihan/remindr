@@ -40,6 +40,13 @@
   height:702px;
   width: 20%;
   background-color: #ababab;
+  overflow: scroll;
+}
+
+.contact-message {
+  border: 1px solid gray;
+  padding: 24px 16px;
+
 }
 
 .messages {

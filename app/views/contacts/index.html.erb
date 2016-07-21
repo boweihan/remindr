@@ -6,12 +6,11 @@
 <div class="container">
 
   <div class="contacts-messages">
-    <ul>
       <% @contacts.each do |contact| %>
-        <br><li><%= link_to contact.name, contact_path(contact.id) %></li>
+      <div class="contact-message">
+        <%= link_to contact.name, contact_path(contact.id) %>
+      </div>
       <% end %>
-    </ul>
-
   </div>
 
   <div class="messages">
