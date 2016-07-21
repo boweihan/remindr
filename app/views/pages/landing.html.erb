@@ -5,6 +5,7 @@
   <title>Remindr</title>
 </head>
 <body>
+
   <div class="nav-bar">
     <h1 class="logo">Remindr</h1>
       <%= link_to "Feed", newsfeed_path, class:"navButton" %>
@@ -21,13 +22,44 @@
     <p>where life takes you!</p>
   </div>
 
-  <button class="signupButton">Get Started!</button>
+  <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
 
-  <div id="sellingPoint1">
-    <%= image_tag "calendar(3).png" %>
-      <h3>Selling Point 1</h3>
-        <p>Explanation blah blah blah blah blah blah blah blah</p>
+
+  <div id="sellingPoints">
+
+    <div id="sellingPoint1">
+      <%= image_tag "calendar(3).png", id:"icon" %>
+        <h3 id="sellingPointHeader">Selling Point 1</h3>
+        <p>Explanation blah blah blah blah blah blah</p>
+    </div>
+
+    <div id="sellingPoint2">
+      <%= image_tag "contacts.png", id:"icon" %>
+        <h3 id="sellingPointHeader">Selling Point 2</h3>
+          <p>Explanation blah blah blah blah blah blah</p>
+    </div>
+
+    <div id="sellingPoint3">
+      <%= image_tag "bell(1).png", id:"icon" %>
+        <h3 id="sellingPointHeader">Selling Point 3</h3>
+        <p>Explanation blah blah blah blah blah blah</p>
+    </div>
+
   </div>
-  
+
+  <div id="stepbystep">
+    <h1 id="stepbystepHeading">Remindr makes it easy to keep in touch with old friends!</h1>
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+  </div>
+
+  <div id="landingBottom">
+    <h1 id="textHeading">Ready to join?</h1>
+      <%= link_to "Get Started!", new_user_path, class:"signupButton2" %>
+  </div>
+
+
 </body>
 </html>

@@ -4,25 +4,27 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.logo {
-  float: left;
-  margin: 10px;
-  font-size: 25px;
-
-}
 
 .nav-bar {
   width: 100%;
-  display: inline-block;
   background-color: hsl(240, 20%, 93%);
   text-align: right;
   color: #07DEFF;
 }
 
+.logo {
+  float: left;
+  margin-left: 2rem;
+  margin-top: .8rem;
+  font-size: 25px;
+
+}
+
 .navButton {
   display: inline-block;
-  margin: 10px;
-  padding: 4px;
+  margin: 1rem;
+  margin-top: 1.3rem;
+  margin-right: 2rem;
   text-decoration: none;
   color: #07DEFF;
 
@@ -30,9 +32,10 @@
 
 .photo-background img {
   width: 100%;
-  height: 80vh;
-  position: absolute;
+  height: 90vh;
+  position: relative;
   z-index: 0;
+  border-bottom: 1px solid grey;
 
 }
 
@@ -65,11 +68,92 @@
 
 }
 
+#sellingPoints {
+  position: relative;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  background-color: white;
+}
+
+#icon {
+  width: 150px;
+  height: 150px;
+}
 #sellingPoint1 {
+  display: inline-block;
+  width: 28%;
+  margin: 2%;
+  padding: 3rem;
   color: #4A4A4A;
   font-size: 16px;
 }
 
 #sellingPointHeader {
+  width: 150px;
+  margin-left: .8rem;
   size: 20px;
+
+}
+
+#sellingPoint2 {
+  display: inline-block;
+  width: 28%;
+  margin: 2% 3%;
+  padding: 3rem;
+  color: #4A4A4A;
+  font-size: 16px;
+}
+
+#sellingPoint3 {
+  display: inline-block;
+  width: 28%;
+  margin: 2%;
+  padding: 3rem;
+  color: #4A4A4A;
+  font-size: 16px;
+}
+
+#stepbystep {
+  width: 100%;
+  background-color: hsl(240, 20%, 93%);
+
+}
+
+#stepbystepHeading {
+  width: 100%;
+  text-align: center;
+  color: grey;
+  font-size: 40px;
+}
+
+#landingBottom {
+  width: 100%;
+  background-color: white;
+  // color: grey;
+  // text-align: center;
+}
+
+#textHeading {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  color: grey;
+  font-size: 35px;
+}
+
+.signupButton2 {
+  margin: 2rem;
+  margin-right: 43%;
+  margin-left: 43%;
+  margin-bottom: 4rem;
+  background-color: #07DEFF;
+  border: 1px solid #07DEFF;
+  border-radius: 5%;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+  position: absolute;
+  z-index: 5;
 }
