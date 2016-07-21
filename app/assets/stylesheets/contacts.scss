@@ -1,3 +1,44 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.nav {
+  color: green;
+  background-color: #fafafa;
+  margin: 0;
+  width: 100%;
+  padding: 20px 0 20px 16px;
+  top: 0;
+  left: 0;
+}
+
+.container {
+  overflow: hidden;
+}
+.contacts-messages {
+  float: left;
+  height:702px;
+  width: 25%;
+  background-color: #ababab;
+}
+
+.messages {
+  float: left;
+  width: 50%;
+  height: 702px;
+  background-color: #bcbcbc;
+}
+
+.profiles {
+  float: left;
+  width: 25%;
+  height: 702px;
+  background-color: yellow;
+}
