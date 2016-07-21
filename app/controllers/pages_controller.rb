@@ -68,7 +68,7 @@ class PagesController < ApplicationController
           email_body = email_body.force_encoding("utf-8").to_s
           # puts email_body
           #store the snippet to be used in the feed
-          puts email_hash['snippet']
+          # puts email_hash['snippet']
 
           if Message.where(contact_id: contact.id) != []
             Message.where(contact_id: contact.id).first.update(body: email_body)
@@ -86,9 +86,9 @@ class PagesController < ApplicationController
 
   def newsfeed
     #write the loop to grab all the messages of all the contacts with current user
-    puts current_user.id
-    puts Contact.all
-    puts Message.all
+    # puts current_user.id
+    # puts Contact.all
+    # puts Message.all
 
     @messages = Array.new
     @contacts = Array.new
@@ -98,13 +98,38 @@ class PagesController < ApplicationController
     end
 
 
-    #give the newsfeed the ability to send gmail messages
-    # gmail_send_url = "https://www.googleapis.com/upload/gmail/v1/users/#{current_user.google_id}/messages/send?uploadType=media&access_token=#{current_user.access_token}"
+    #give the newsfeed the ability to send gmail messages (WITH MY CODE GRAVEYARD)
+    # gmail_send_url = "https://www.googleapis.com/upload/gmail/v1/users/#{current_user.email}/messages/send?uploadType=media&access_token=#{current_user.access_token}"
+
+    # obj = RestClient::Request.execute(method: :post,
+    #                       url: gmail_send_url,
+    #                       payload: "{'access_token' : '#{current_user.access_token}' }",
+    #                       headers: {uploadType: 'media', Host: 'www.googleapis.com', 'Content-Type': 'message/rfc822', 'Content-Length':0, Authorization: current_user.access_token},
+    #                       )
+    # user_input = 'From: bowei.han100@gmail.com\r\n
+    #               To: CarolYaoo@gmail.com\r\n
+    #               Subject: Hello\r\n
+    #               Content-Type: text/plain\r\n
     #
-    # obj = RestClient.post(gmail_send_url,
-    #                       {Host: 'www.googleapis.com', contentType: 'message/rfc822'},
-    #                       raw: "Q29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PSJ1cy1hc2NpaSINCk1JTUUtVmVyc2lvbjogMS4wDQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiA3Yml0DQp0bzogYnJ5Y2VAdGhvcm1lZGlhLmNvbQ0KZnJvbTogYnJ5Y2VAdGhvcm1lZGlhLmNvbQ0Kc3ViamVjdDogVGVzdA0KDQpIZWxsbyE=")
-    # @sent_message = JSON.parse(obj)
+    #               Hello, this is a test'
+    user_input = Mail.new do
+      from 'Bowei Han <bowei.han100@gmail.com>'
+      to 'Carol Yao <carolyaoo@gmail.com>'
+      subject 'this is a test'
+      body 'hello, hello, is it possible? Could this actually work?'
+    end
+    # enc = Base64.encode64(user_input)
+    # enc = enc.gsub("+", "-").gsub("/","_")
+    message = Google::Apis::GmailV1::Message.new
+    message.raw = user_input.to_s
+    service = Google::Apis::GmailV1::GmailService.new
+    service.request_options.authorization = current_user.access_token
+    obj = service.send_user_message(current_user.google_id, message_object = message)
+
+    #troubleshoot
+    email_api_url = "https://www.googleapis.com/gmail/v1/users/#{current_user.google_id}/messages/#{obj.id}?access_token=#{current_user.access_token}"
+    puts email_api_url
+        binding.pry
 
   end
 
