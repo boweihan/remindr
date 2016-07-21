@@ -6,12 +6,7 @@
 </head>
 <body>
 
-  <div class="nav-bar">
-    <h1 class="logo">Remindr</h1>
-      <%= link_to "Feed", newsfeed_path, class:"navButton" %>
-      <%= link_to "Sign Up", new_user_path, class:"navButton" %>
-      <%= link_to "Log In", new_session_path, class:"navButton" %>
-  </div>
+<!-- Section 1: Navigation Bar (See: application.html.erb) *CSS located in 'landingpage.scss'* -->
 
 
 <!-- Section 2: The following is the photo background w text & sign up button -->
@@ -78,7 +73,7 @@
             <p class="stepcontent">Tell us how often you'd like to be reminded to get in touch</p>
           </div>
             <div id="step2and4icon">
-              <% image_tag "alarm-clock.png" %>
+              <%= image_tag "alarm-clock.png", id:"step2and4icon" %>
             </div>
       </div>
 
@@ -91,7 +86,7 @@
             <p class="stepcontent">Save important dates like anniversaries and birthdays</p>
           </div>
             <div id="step1and3icon">
-              <% image_tag "calendar(3).png" %>
+              <%= image_tag "calendar(3).png", id:"step1and3icon" %>
             </div>
       </div>
 
@@ -104,7 +99,7 @@
             <p class="stepcontent">Get notified when it's time to reach out!</p>
           </div>
             <div id="step2and4icon">
-              <% image_tag "bluenotification.png" %>
+              <%= image_tag "bluenotification.png", id:"step2and4icon" %>
             </div>
       </div>
 
