@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   before_action :load_client
 
+  def dashboard
+  end
   def load_client
     client_secrets = Google::APIClient::ClientSecrets.load
     @auth_client = client_secrets.to_authorization
