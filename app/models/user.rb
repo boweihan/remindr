@@ -14,4 +14,20 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def self.check
+    all_users = User.all
+    all_users.each do |user|
+      user.remind
+      puts "in user check loop"
+    end
+  end
+
+  def remind
+    self.contacts.each do |contact|
+      if contact.neglected?
+        puts "#{contact.name} is overdue"
+      end
+    end
+  end
+
 end

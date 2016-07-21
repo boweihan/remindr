@@ -1,5 +1,9 @@
 class Worker
-  def perform
+  def newsfeed
     Contact.update
+  end
+
+  def overdue
+    User.check
   end
 end

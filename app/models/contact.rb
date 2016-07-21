@@ -7,7 +7,7 @@ class Contact < ActiveRecord::Base
     all_contacts = Contact.all
     all_contacts.each do |contact|
       contact.get_most_recent_message
-      puts "done"
+      puts "in update loop"
     end
   end
 
@@ -22,24 +22,22 @@ class Contact < ActiveRecord::Base
   def get_email
     token = self.user.access_token
     user_google_id = self.user.google_id
-    binding.pry
     email_id = self.search_email(user_google_id, token)
     if email_id
       email = self.fetch_email(user_google_id, token, email_id)
       status = first_interaction?(self)
       if status && email
-        Message.create(contact_id: self.id, user_id: self.user.id, body: email)
+        Message.create(contact_id: self.id, user_id: self.user.id, body: email['body'], time_stamp:email['time_stamp'])
       elsif email
-        Message.where(contact_id: self.id).first.update(body: email)
+        Message.where(contact_id: self.id).first.update(body: email['body'], time_stamp:email['time_stamp'])
       end
     else
       puts "error can't find emails with that user"
     end
-
-
   end
 
   def search_email(user_google_id, token)
+    #change to to
     q= "from:#{self.email}"
     query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
@@ -52,16 +50,19 @@ class Contact < ActiveRecord::Base
 
   def fetch_email(user_google_id, token, email_id)
     api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages/#{email_id}?access_token=#{token}"
+    puts api_url
     email = JSON.parse(RestClient.get(api_url))
-    #0 plain text, 1 html
-    email_body = email['payload']['parts'][1]['body']['data']
+    message = {}
+    message['time_stamp'] = email['internalDate'].slice(0,10).to_i
     #decode mime base64
-    if email_body.class == String
-      email_readable_body = Base64.decode64(email_body.gsub("-", '+').gsub("_","/"))
-      return email_readable_body.force_encoding("utf-8").to_s
+    if email['payload']['parts'][1]['body']['data'].class == String
+      message['body'] = email['payload']['parts'][1]['body']['data']
+      message['body'] = Base64.decode64(message['body'].gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+      return message
     else
       puts "image"
-      return nil
+      message['body'] = "IMAGE*****"
+      return message
     end
   end
 
@@ -69,6 +70,20 @@ class Contact < ActiveRecord::Base
     if Message.where(contact_id: contact.id) != []
       return false
     else
+      return true
+    end
+  end
+
+  def neglected?
+    message = self.messages.first
+    unless message == true
+      #hack pelase fix
+      Message.create(time_stamp:Time.now.to_i - 100000, contact_id: self.id, user_id: self.user.id)
+      return false
+    end
+    # binding.pry
+    days_since = ((message.time_stamp - Time.now.to_i)/86400.0).floor
+    if days_since == 30
       return true
     end
   end
