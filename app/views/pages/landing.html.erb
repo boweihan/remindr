@@ -13,6 +13,9 @@
       <%= link_to "Log In", new_session_path, class:"navButton" %>
   </div>
 
+
+<!-- Section 2: The following is the photo background w text & sign up button -->
+
   <div class="photo-background">
     <%= image_tag "SFbridge.jpg" %>
   </div>
@@ -24,6 +27,7 @@
 
   <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
 
+<!-- Section 3: The following are the 3 main selling points of the app -->
 
   <div id="sellingPoints">
 
@@ -47,13 +51,67 @@
 
   </div>
 
+
+<!-- Section 4: Step by step explanation of the app; everything falls under the 'stepbystep'div -->
   <div id="stepbystep">
+
     <h1 id="stepbystepHeading">Remindr makes it easy to keep in touch with old friends!</h1>
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-      <p>4</p>
+
+      <div id="step1">
+        <div id="circles1and3">
+          <p class="center">1</p>
+        </div>
+          <div id="step1content">
+            <p class="stepcontent">Add contacts that you want to keep in touch with</p>
+          </div>
+            <div id="step1and3icon">
+              <%= image_tag "addcontact.png", id:"step1and3icon" %>
+            </div>
+      </div>
+
+
+      <div id="step2">
+        <div id="circles2and4">
+          <p class="center">2</p>
+        </div>
+          <div id="step2content">
+            <p class="stepcontent">Tell us how often you'd like to be reminded to get in touch</p>
+          </div>
+            <div id="step2and4icon">
+              <% image_tag "alarm-clock.png" %>
+            </div>
+      </div>
+
+
+      <div id="step3">
+        <div id="circles1and3">
+          <p class="center">3</p>
+        </div>
+          <div id="step3content">
+            <p class="stepcontent">Save important dates like anniversaries and birthdays</p>
+          </div>
+            <div id="step1and3icon">
+              <% image_tag "calendar(3).png" %>
+            </div>
+      </div>
+
+
+      <div id="step4">
+        <div id="circles2and4">
+          <p class="center">4</p>
+        </div>
+          <div id="step4content">
+            <p class="stepcontent">Get notified when it's time to reach out!</p>
+          </div>
+            <div id="step2and4icon">
+              <% image_tag "bluenotification.png" %>
+            </div>
+      </div>
+
   </div>
+
+
+<!-- Section 4: The following is the final div of the landing page -->
 
   <div id="landingBottom">
     <h1 id="textHeading">Ready to join?</h1>

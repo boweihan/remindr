@@ -4,12 +4,16 @@
   font-family: 'Roboto', sans-serif;
 }
 
+$color: #07DEFF;
+
+
+// Section 1: the navigation bar
 
 .nav-bar {
   width: 100%;
   background-color: hsl(240, 20%, 93%);
   text-align: right;
-  color: #07DEFF;
+  color: $color;
 }
 
 .logo {
@@ -26,9 +30,12 @@
   margin-top: 1.3rem;
   margin-right: 2rem;
   text-decoration: none;
-  color: #07DEFF;
+  color: $color;
 
 }
+
+
+// Block 2: the photo background with text & sign up button
 
 .photo-background img {
   width: 100%;
@@ -47,13 +54,13 @@
   z-index: 2;
   font-size: 55px;
   font-weight: lighter;
-  color: #07DEFF;
+  color: $color;
 
 }
 
 .signupButton {
-  background-color: #07DEFF;
-  border: 1px solid #07DEFF;
+  background-color: $color;
+  border: 1px solid $color;
   border-radius: 5%;
   display: inline-block;
   color: white;
@@ -67,6 +74,8 @@
   z-index: 4;
 
 }
+
+// Section 3: the 3 main selling points of the app
 
 #sellingPoints {
   position: relative;
@@ -113,10 +122,15 @@
   font-size: 16px;
 }
 
+
+
+// Section 4: the entire step by step process of how to use the app
+
+// #stepbystep is the div which contains all of section 4
 #stepbystep {
   width: 100%;
+  padding-bottom: 3rem;
   background-color: hsl(240, 20%, 93%);
-
 }
 
 #stepbystepHeading {
@@ -124,13 +138,119 @@
   text-align: center;
   color: grey;
   font-size: 40px;
+  padding-top: 3rem;
 }
+
+#step1 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+
+}
+
+#step1content {
+  display: inline-block;
+  height: 70px;
+}
+
+p.stepcontent {
+  font-size: 25px;
+  color: grey;
+  margin-left: 3rem;
+
+}
+
+#circles1and3 {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  display: inline-block;
+  background-color: white;
+  text-align: center;
+  color: grey;
+  font-size: 20px;
+  margin-left: 5rem;
+}
+
+p.center {
+  line-height: 70px;
+}
+
+#step1and3icon {
+  float: right;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+}
+
+#step2 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+#step2content {
+  display: inline-block;
+  height: 70px;
+}
+
+#circles2and4 {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  display: inline-block;
+  float: right;
+  background-color: white;
+  text-align: center;
+  color: grey;
+  font-size: 20px;
+  margin-right: 5rem;
+
+}
+
+#step2and4icon {
+  float: left;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-left: 3rem;
+}
+
+#step3 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+#step3content {
+  display: inline-block;
+  height: 70px;
+}
+
+
+#step4 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+#step4content {
+  display: inline-block;
+  height: 70px;
+
+}
+
+
+
+// Section 5: the bottom of the landing page with a final sign up button
 
 #landingBottom {
   width: 100%;
   background-color: white;
-  // color: grey;
-  // text-align: center;
 }
 
 #textHeading {
@@ -146,8 +266,8 @@
   margin-right: 43%;
   margin-left: 43%;
   margin-bottom: 4rem;
-  background-color: #07DEFF;
-  border: 1px solid #07DEFF;
+  background-color: $color;
+  border: 1px solid $color;
   border-radius: 5%;
   display: inline-block;
   color: white;
