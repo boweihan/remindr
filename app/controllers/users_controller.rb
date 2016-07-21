@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       #log the user in
       session[:user_id] = @user.id
-      redirect_to newsfeed_path
+      redirect_to googleauth_path
     else
       render :new
     end

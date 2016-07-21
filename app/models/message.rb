@@ -2,10 +2,6 @@ class Message < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
 
-  def self.api
-    #this method needs to assign user_id, contact_id, and parameters to a new message object and save it
-  end
-
   def self.send_email(sender, receiver, subj, bod, current_user)
     user_input = Mail.new do
       # from 'Bowei Han <bowei.han100@gmail.com>'
@@ -26,5 +22,4 @@ class Message < ActiveRecord::Base
     service.request_options.authorization = current_user.access_token
     service.send_user_message(current_user.google_id, message_object = message)
   end
-
 end
