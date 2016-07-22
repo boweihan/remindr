@@ -2,8 +2,10 @@ class Message < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
 
-  def self.send_email(sender, receiver, subj, bod, current_user)
-    # create RFC2822 message body
+
+  #rename bug
+  def self.send_mail(sender, receiver, subj, bod, current_user)
+
     user_input = Mail.new do
       from sender
       to receiver
@@ -31,6 +33,11 @@ class Message < ActiveRecord::Base
     end
   end
 
+  def summary
+    message = self.body_plain_text
+    return message.slice(0,250)+"...."
+  end
+
   def self.refresh_token(current_user)
     response = RestClient.post 'https://accounts.google.com/o/oauth2/token', :grant_type => 'refresh_token', :refresh_token => current_user.refresh_token, :client_id => ENV['CLIENT'], :client_secret => ENV['CLIENT_SECRET']
 
@@ -39,6 +46,7 @@ class Message < ActiveRecord::Base
     puts "NEW TOKEN SAVED"
   end
 
+  # check if the token is expired
   def self.token_expired?(current_user)
     issued_at_time = current_user.issued_at.strftime('%s')
     issued_at_time = issued_at_time.to_i+3600
@@ -50,5 +58,6 @@ class Message < ActiveRecord::Base
     puts "THE TOKEN IS STILL GOOD"
     return false
   end
+
 
 end
