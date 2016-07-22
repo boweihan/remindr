@@ -37,6 +37,69 @@
   overflow: hidden;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30,30,30,0.8);
+}
+
+.add-contact{
+    display: block;
+    width: 400px;
+    height: 18em;
+    padding: 2em;
+    background-color: #b9c2cc;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.field {
+    display: block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 100%;
+    margin: 1em 0;
+    color: #555;
+}
+
+.close {
+    display: block;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    width: 1em;
+    height: 1em;
+    color: gray;
+    border-radius: 0.5em;
+    line-height: 0;
+
+    position: absolute;
+    top: 0.25em;
+    right: 0.25em;
+}
+
+button.submit {
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0.5em;
+    margin: 1em 0;
+    background-color: #bab500;
+    color: #fcf6ce;
+}
+
+
+// search bar
 .search-contacts-bar {
   height: 56px;
   background-color: #fbfbfb;
@@ -48,6 +111,8 @@
   margin: 12px 36px;
   padding: 6px 56px;
 }
+
+// all-contacts heading
 .all-contacts-header {
   height: 56px;
   background-color: #fbfbfb;

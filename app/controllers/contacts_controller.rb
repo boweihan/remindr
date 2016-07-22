@@ -3,7 +3,8 @@ class ContactsController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-
+    # create a new contact to render form
+    @contact = Contact.new
     # @messages = []
     # @contacts.each do |contact|
     #   @messages << contact.messages
