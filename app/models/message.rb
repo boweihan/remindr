@@ -5,13 +5,13 @@ class Message < ActiveRecord::Base
 
   #rename bug
   def self.send_mail(sender, receiver, subj, bod, current_user)
-
     user_input = Mail.new do
       from sender
       to receiver
       subject subj
       body bod
     end
+    binding.pry
     # enc = Base64.encode64(user_input)
     # enc = enc.gsub("+", "-").gsub("/","_")
 
@@ -23,7 +23,6 @@ class Message < ActiveRecord::Base
     service = Google::Apis::GmailV1::GmailService.new
 
     # check token expiry and refresh if needed
-    binding.pry
     if token_expired?(current_user)
       refresh_token(current_user)
       current_user.issued_at = DateTime.now
