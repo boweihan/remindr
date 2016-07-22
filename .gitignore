@@ -17,3 +17,6 @@
 /tmp
 
 client_secrets.json
+
+# Ignore application configuration
+/config/application.yml

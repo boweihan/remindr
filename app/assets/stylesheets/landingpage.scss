@@ -1,0 +1,284 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+$color: #07DEFF;
+
+
+// Section 1: the navigation bar
+
+.nav-bar {
+  width: 100%;
+  height: 50px;
+  background-color: hsl(240, 20%, 93%);
+  text-align: right;
+  color: $color;
+}
+
+.logo {
+  float: left;
+  margin-left: 2rem;
+  font-size: 25px;
+  line-height: 50px;
+  font-style: 'Always In My Heart', cursive;
+
+}
+
+.nav-button {
+  display: inline-block;
+  margin-right: 2rem;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 17px;
+  color: $color;
+
+}
+
+
+// Block 2: the photo background with text & sign up button
+
+.photo-background img {
+  width: 100%;
+  height: 90vh;
+  border-bottom: 1px solid grey;
+
+}
+
+#welcome-text {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 120px;
+  font-size: 55px;
+  font-weight: lighter;
+  color: $color;
+
+}
+
+.signupButton {
+  background-color: $color;
+  border: 1px solid $color;
+  border-radius: 5%;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+  position: absolute;
+  margin-right: 43%;
+  margin-left: 43%;
+  top: 300px;
+
+}
+
+// Section 3: the 3 main selling points of the app
+
+#sellingPoints {
+  position: relative;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  background-color: white;
+}
+
+#icon {
+  width: 150px;
+  height: 150px;
+}
+#sellingPoint1 {
+  display: inline-block;
+  width: 28%;
+  margin: 2%;
+  padding: 3rem;
+  color: #4A4A4A;
+  font-size: 16px;
+}
+
+#sellingPointHeader {
+  width: 150px;
+  margin-left: .8rem;
+  size: 20px;
+
+}
+
+#sellingPoint2 {
+  display: inline-block;
+  width: 28%;
+  margin: 2% 3%;
+  padding: 3rem;
+  color: #4A4A4A;
+  font-size: 16px;
+}
+
+#sellingPoint3 {
+  display: inline-block;
+  width: 28%;
+  margin: 2%;
+  padding: 3rem;
+  color: #4A4A4A;
+  font-size: 16px;
+}
+
+
+
+// Section 4: the entire step by step process of how to use the app
+
+// #stepbystep is the div which contains all of section 4
+#stepbystep {
+  width: 100%;
+  padding-bottom: 3rem;
+  background-color: hsl(240, 20%, 93%);
+}
+
+#stepbystepHeading {
+  width: 100%;
+  text-align: center;
+  color: grey;
+  font-size: 40px;
+  padding-top: 3rem;
+}
+
+#step1 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+
+}
+
+#step1content {
+  display: inline-block;
+  height: 70px;
+}
+
+p.stepcontent {
+  font-size: 25px;
+  line-height: 70px;
+  color: grey;
+  margin-left: 10rem;
+  // position: relative;
+
+
+
+}
+
+#circles1and3 {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  display: inline-block;
+  background-color: white;
+  text-align: center;
+  color: $color;
+  font-size: 20px;
+  margin-left: 3rem;
+}
+
+p.center {
+  line-height: 70px;
+}
+
+#step1and3icon {
+  float: right;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-right: 3rem;
+
+}
+
+#step2 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+#step2content {
+  display: inline-block;
+  height: 70px;
+}
+
+#circles2and4 {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  display: inline-block;
+  float: right;
+  background-color: white;
+  text-align: center;
+  color: $color;
+  font-size: 20px;
+  margin-right: 3rem;
+
+}
+
+#step2and4icon {
+  float: left;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+#step3 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+#step3content {
+  display: inline-block;
+  height: 70px;
+}
+
+
+#step4 {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+#step4content {
+  display: inline-block;
+  height: 70px;
+
+}
+
+
+
+// Section 5: the bottom of the landing page with a final sign up button
+
+#landingBottom {
+  width: 100%;
+  background-color: white;
+}
+
+#textHeading {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  color: grey;
+  font-size: 35px;
+}
+
+.signupButton2 {
+  margin: 2rem;
+  margin-right: 43%;
+  margin-left: 43%;
+  margin-bottom: 4rem;
+  background-color: $color;
+  border: 1px solid $color;
+  border-radius: 5%;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+  position: absolute;
+  z-index: 5;
+}

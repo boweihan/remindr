@@ -7,13 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#Bowei's seeds
-# Contact.create(name: 'Ella', phone: '9999999999', email: 'ella@bitmaker.co', user_id:1)
-# Contact.create(name: 'Erik', phone: '9999999999', email: 'erik@bitmakerlabs.com' ,user_id:1)
-# Contact.create(name: 'Erik Invoices', phone: '9999999999', email: 'erik@bitmaker.co',user_id:1)
-# Contact.create(name: 'Adrian', phone: '9999999999', email: 'adrian@bitmakerlabs.com',user_id:1)
-# Contact.create(name: 'Adrian', phone: '9999999999', email: 'bad',user_id:1)
-# Contact.create(name: 'Adrian', phone: '9999999999', user_id:1)
+# Bowei's seeds
+Contact.create(name: 'Ella', phone: '9999999999', email: 'ella@bitmaker.co', user_id:1)
+Contact.create(name: 'Erik', phone: '9999999999', email: 'erik@bitmakerlabs.com' ,user_id:1)
+Contact.create(name: 'Erik Invoices', phone: '9999999999', email: 'erik@bitmaker.co',user_id:1)
+Contact.create(name: 'Adrian', phone: '9999999999', email: 'adrian@bitmakerlabs.com',user_id:1)
+Contact.create(name: 'Adrian', phone: '9999999999', email: 'bad',user_id:1)
+Contact.create(name: 'Adrian', phone: '9999999999', user_id:1)
 
 
 #Jon's seeds
