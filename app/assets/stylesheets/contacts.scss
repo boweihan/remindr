@@ -14,9 +14,9 @@
 
         // Section 2: Modal - Form for adding contacts (via 'add contact' icon at top left of page)
 
-.main-container {
-  overflow: hidden;
-}
+// .main-container {
+//   overflow: hidden;
+// }
 
 //add contact modal (dark overlay on top)
 .modal {
@@ -95,6 +95,7 @@
 
 
         // Section 3: List of All Contacts (left 25% of the page)
+
 // search bar
 .search-contacts-bar {
   height: 56px;
@@ -199,19 +200,11 @@
   background-color: #bcbcbc;
 }
 .contact-name-heading {
+  float: left;
   height: 56px;
   width: 100%;
   background-color: #fbfbfb;
   border: 1px solid rgba(0,0,0,0.2);
-}
-
-
-.contact-name-heading {
-  height: 56px;
-  width: 100%;
-  background-color: #fbfbfb;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  // overflow: visible;
 }
 
 #main-name {

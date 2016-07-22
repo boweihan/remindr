@@ -3,23 +3,24 @@
 <!-- Section 2: Modal - Form for adding contacts (via 'add contact' icon at top left of page)-->
 
 <div class="modal">
-    <div class="add-contact">
+  <div class="add-contact">
     <%= form_for @contact do |f| %>
       <button type="button" class="close">x</button>
       <div class="add-new-contact-div">
-          <h3 class="add-new-contact-heading">Add a New Contact</h3>
+        <h3 class="add-new-contact-heading">Add a New Contact</h3>
       </div>
       Name:  <%= f.text_field :name, class: 'field'%><br>
       Phone: <%= f.text_field :phone,  class: 'field' %><br>
       Email: <%= f.email_field :email, class: 'field' %><br>
       <%= f.submit "Add Contacts", class: 'submit'%>
     <% end %>
-    </div>
-    </div>
+  </div>
+</div>
 
 
 <!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
-<div class="main-container">
+<!-- <div class="main-container">
+   -->
 <!-- Section 3: List of All Contacts (left 25% of the page)  -->
 
 <!-- 'All Contacts' div with 'filter' & 'add contact' icons -->
@@ -33,40 +34,49 @@
           <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
         </div>
     </div>
-      <div class="search-contacts-bar">
-          <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
+<!-- 'Search bar' div -->
+    <div class="search-contacts-bar">
+        <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
         <% end %>
-      </div>
+    </div>
 
-      <div class="contacts-messages">
-          <% @contacts.each do |contact| %>
-          <%= link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
-          <div id=contact_id-<%=contact.id%> >
+<!-- 'List of Contacts/Messages' div -->
+
+    <div class="contacts-messages">
+      <% @contacts.each do |contact| %>
+      <%= link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
+        <div id=contact_id-<%=contact.id%> >
           <div class="contact-message">
             <div class="contact-profile-image">
             </div>
-            <div class="contact-last-message">
+              <div class="contact-last-message">
                 <p><%= contact.name %></p>
                 <p class="last-message-on">Last message on</p>
               </div>
-            </div>
           </div>
+        </div>
           <% end %>
           <% end %>
-      </div>
-      </div>
-    <div class="container">
-      <div class="contact-name-heading">
-        <h3 id="main-name"><%=@contacts.first.name%></h3>
-      </div>
+    </div>
+  </div>
+<!-- The last </div> directly above corresponds to the 'contacts container' div at the start of Section 3 -->
 
 
-      <div class="messages">
-        <div id="contact_name"><%=@contacts.first.name%></div>
+<!-- 'Container' contains everything to the right of the 'List of All Contacts' div  -->
+<!-- 'Container' takes up the right 75% of the page -->
 
-        <h1>Past Messages</h1>
-        <div id="messages">
+  <div class="container">
+
+    <div class="contact-name-heading">
+      <h3 id="main-name"><%=@contacts.first.name%></h3>
+    </div>
+
+<!-- Section 4: All messages received from individual contact (middle 50% of page) -->
+    <div class="messages">
+      <!-- <div id="contact_name"><%=@contacts.first.name%></div> -->
+      <h3>Message Heading</h3>
+        <div id="message-content">
 
           <ul>
             <%  @contacts.first.messages.each do |m| %>
@@ -92,7 +102,10 @@
           <%= submit_tag("Send!") %>
 
         <% end %>
-      </div>
+    </div>
+
+
+<!-- Section 5: All contact information for individual contact (right 25% of page) -->
 
       <div class="profiles">
         <div id="add_field_form">
@@ -109,4 +122,4 @@
       </div>
     </div>
 
-    </div>
+    <!-- </div> -->
