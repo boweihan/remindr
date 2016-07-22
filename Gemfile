@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'figaro'
 #taskrunner
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

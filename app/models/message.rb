@@ -3,6 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :user
 
   def self.send_email(sender, receiver, subj, bod, current_user)
+    # create RFC2822 message body
     user_input = Mail.new do
       from sender
       to receiver
@@ -11,18 +12,43 @@ class Message < ActiveRecord::Base
     end
     # enc = Base64.encode64(user_input)
     # enc = enc.gsub("+", "-").gsub("/","_")
+
+    # create gmail message object and pass in raw body as string
     message = Google::Apis::GmailV1::Message.new
     message.raw = user_input.to_s
+
+    # start an instance of gmailservice
     service = Google::Apis::GmailV1::GmailService.new
-    # need to add refresh token here
-    service.request_options.authorization = current_user.access_token
-    service.send_user_message(current_user.google_id, message_object = message)
+
+    # check token expiry and refresh if needed
+    binding.pry
+    if token_expired?(current_user)
+      refresh_token(current_user)
+      current_user.issued_at = DateTime.now
+    else
+      service.request_options.authorization = current_user.access_token
+      service.send_user_message(current_user.google_id, message_object = message)
+    end
   end
 
-  def refresh_token_if_expired
+  def self.refresh_token(current_user)
+    response = RestClient.post 'https://accounts.google.com/o/oauth2/token', :grant_type => 'refresh_token', :refresh_token => current_user.refresh_token, :client_id => ENV['CLIENT'], :client_secret => ENV['CLIENT_SECRET']
+
+    refresh = JSON.parse(response.body)
+    current_user.access_token = refresh['access_token']
+    puts "NEW TOKEN SAVED"
   end
 
-  def token_expired?
+  def self.token_expired?(current_user)
+    issued_at_time = current_user.issued_at.strftime('%s')
+    issued_at_time = issued_at_time.to_i+3600
+    expiry = DateTime.strptime(issued_at_time.to_s, '%s')
+    if expiry < DateTime.now
+      puts "THE TOKEN EXPIRED"
+      return true
+    end
+    puts "THE TOKEN IS STILL GOOD"
+    return false
   end
 
 end
