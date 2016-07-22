@@ -9,23 +9,27 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.main-container {
-  overflow: hidden;
-}
+        // Section 1: Navigation Bar (see: application.html.erb & landingpage.scss)
 
-//add contact modal
-  // dark overlay ontop
+
+        // Section 2: Modal - Form for adding contacts (via 'add contact' icon at top left of page)
+
+// .main-container {
+//   overflow: hidden;
+// }
+
+//add contact modal (dark overlay on top)
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30,30,30,0.7);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.7);
 }
 
-  // add contact form
+// add contact form
 .add-contact{
     display: block;
     width: 400px;
@@ -89,6 +93,9 @@
   padding: 16px;
 }
 
+
+        // Section 3: List of All Contacts (left 25% of the page)
+
 // search bar
 .search-contacts-bar {
   height: 56px;
@@ -108,13 +115,14 @@
   height: 56px;
   background-color: #fbfbfb;
   border-top: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
   overflow: hidden;
   border-right: 1px solid rgba(0,0,0,0.2);
 }
 
 .all-contacts-heading {
   float:left;
-  margin: 5% 5%;
+  line-height: 56px;
   color: rgba(0,0,0,0.77);
 }
 
@@ -122,7 +130,7 @@
   height: 24px;
   width: 24px;
   float:left;
-  margin: 5% 10%;
+  margin: 5.5% 10%;
 }
 
 .add-icon {
@@ -174,12 +182,17 @@
   color: gray;
 }
 
+
+// Sections 2 & 3 of the page:
+
+
 .container {
   height: 56px;
   width: 100%;
   background-color: #fbfbfb;
   border: 1px solid rgba(0,0,0,0.2);
 }
+
 .messages {
   float: left;
   width: 50%;
@@ -187,6 +200,7 @@
   background-color: #bcbcbc;
 }
 .contact-name-heading {
+  float: left;
   height: 56px;
   width: 100%;
   background-color: #fbfbfb;
@@ -197,6 +211,7 @@
   line-height: 56px;
   text-align: center;
 }
+
 .profiles {
   float: left;
   width: 25%;

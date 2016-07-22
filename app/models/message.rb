@@ -26,10 +26,10 @@ class Message < ActiveRecord::Base
     if token_expired?(current_user)
       refresh_token(current_user)
       current_user.issued_at = DateTime.now
-    else
-      service.request_options.authorization = current_user.access_token
-      service.send_user_message(current_user.google_id, message_object = message)
     end
+    
+    service.request_options.authorization = current_user.access_token
+    service.send_user_message(current_user.google_id, message_object = message)
   end
 
   def summary

@@ -20,6 +20,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @messages = @contact.messages
 
+
     respond_to do |format|
       format.html
       format.js {}

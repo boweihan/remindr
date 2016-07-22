@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
+
+  validates :name, :phone, :email, presence: true
+
   has_many :messages
   belongs_to :user
 

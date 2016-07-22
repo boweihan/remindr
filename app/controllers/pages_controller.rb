@@ -49,9 +49,10 @@ class PagesController < ApplicationController
     # current_user.messages.each do |message|
     #   @contacts << Contact.find(message.contact_id)
     #   @messages << message
+    @contact = Contact.new
     @contacts = current_user.contacts
     # create new contact on page to be able to add contact on newsfeed for modal
-    @contact = Contact.new
+
 
 
   end
