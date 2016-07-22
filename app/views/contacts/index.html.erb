@@ -8,7 +8,12 @@
   <div class="contacts-messages">
       <% @contacts.each do |contact| %>
       <div class="contact-message">
-        <%= link_to contact.name, contact_path(contact.id) %>
+        <div class="contact-profile-image">
+        </div>
+        <div class="contact-last-message">
+        <%= link_to contact.name, contact_path(contact.id), class: 'contact-name-link' %>
+        <p class="last-message-on">Last message on</p>
+        </div>
       </div>
       <% end %>
   </div>

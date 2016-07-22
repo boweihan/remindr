@@ -38,20 +38,46 @@
 .contacts-messages {
   float: left;
   height:702px;
-  width: 20%;
-  background-color: #ababab;
+  width: 25%;
   overflow: scroll;
 }
 
 .contact-message {
-  border: 1px solid gray;
+  border: 1px solid rgba(0,0,0,0.2);
   padding: 24px 16px;
-
+  background-color: #fbfbfb;
+  overflow: hidden;
 }
 
+.contact-name-link {
+  color: rgba(0,0,0,0.54);
+  text-decoration: none;
+}
+
+.contact-last-message {
+  float: left;
+  overflow: hidden;
+  margin-left: 16px;
+  margin-top: 10px;
+}
+.contact-profile-image {
+  border-radius: 100%;
+  background-color: #ccc;
+  width: 56px;
+  height: 56px;
+  float: left;
+}
+
+
+.last-message-on {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: gray;
+}
 .messages {
   float: left;
-  width: 55%;
+  width: 50%;
   height: 702px;
   background-color: #bcbcbc;
 }
