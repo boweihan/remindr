@@ -27,9 +27,9 @@ class Contact < ActiveRecord::Base
       email = self.fetch_email(user_google_id, token, email_id)
       status = first_interaction?(self)
       if status && email
-        Message.create(contact_id: self.id, user_id: self.user.id, body: email['body'], time_stamp:email['time_stamp'])
+        Message.create(contact_id: self.id, user_id: self.user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
       elsif email
-        Message.where(contact_id: self.id).first.update(body: email['body'], time_stamp:email['time_stamp'])
+        Message.where(contact_id: self.id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
       end
     else
       puts "error can't find emails with that user"
@@ -55,13 +55,19 @@ class Contact < ActiveRecord::Base
     message = {}
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i
     #decode mime base64
+    #0 text, 1 html
     if email['payload']['parts'][1]['body']['data'].class == String
-      message['body'] = email['payload']['parts'][1]['body']['data']
-      message['body'] = Base64.decode64(message['body'].gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+      plain = email['payload']['parts'][0]['body']['data']
+      message['text'] = Base64.decode64(plain.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+
+      html = email['payload']['parts'][1]['body']['data']
+      message['html'] = Base64.decode64(html.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+
       return message
     else
       puts "image"
-      message['body'] = "IMAGE*****"
+      message['html'] = "IMAGE*****"
+      message['text'] = "IMAGE*****"
       return message
     end
   end

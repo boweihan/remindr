@@ -6,6 +6,7 @@
 
   <% @messages.each do |message| %>
     <li><%= message.created_at %></li>
-    <li><%= message.body.html_safe %></li>
+    <% # do we want html %>
+    <li><%= message.body_html.html_safe %></li>
   <% end %>
 </ul>

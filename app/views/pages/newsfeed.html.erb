@@ -34,7 +34,7 @@
   <h1>Past Messages</h1>
   <ul>
     <%  @contacts.first.messages.each do |m| %>
-      <li><%=m.body%></li>
+      <li><%=m.body_plain_text%></li>
     <% end %>
   </ul>
 </div>
