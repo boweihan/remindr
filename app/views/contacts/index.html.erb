@@ -7,14 +7,18 @@
 
   <div class="contacts-container">
   <div class="all-contacts-header">
-    <div class="filter-icon"></div>
+    <div class="filter-icon">
+      <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
+    </div>
     <h3 class="all-contacts-heading">All Contacts</h3>
-    <div class="add-icon"></div>
+    <div class="add-icon">
+      <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
+
+    </div>
   </div>
   <div class="search-contacts-bar">
-    <%= form_tag contacts_path, method: :get do %>
-      <%= text_field_tag :search, params[:search], placeholder: "John Doe" %>
-      <%= submit_tag "Search" %>
+      <%= form_tag contacts_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
     <% end %>
   </div>
 

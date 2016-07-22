@@ -40,13 +40,18 @@
 .search-contacts-bar {
   height: 56px;
   background-color: #fbfbfb;
-  border: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
+.search-bar-field {
+  margin: 12px 36px;
+  padding: 6px 56px;
+}
 .all-contacts-header {
   height: 56px;
   background-color: #fbfbfb;
-  border: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(0,0,0,0.2);
   overflow: hidden;
 }
 
@@ -59,7 +64,6 @@
 .filter-icon {
   height: 24px;
   width: 24px;
-  background-color: orange;
   float:left;
   margin: 5% 10%;
 }
@@ -67,7 +71,6 @@
 .add-icon {
   height: 24px;
   width: 24px;
-  background-color: orange;
   float:left;
   margin: 5% 10%;
 }
@@ -81,7 +84,7 @@
 }
 
 .contact-message {
-  border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   padding: 16px 16px;
   background-color: #fbfbfb;
   overflow: hidden;
