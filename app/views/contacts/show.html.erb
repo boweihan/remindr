@@ -3,6 +3,7 @@
 
 <h2><%= @contact.name %></h2>
 <ul>
+
   <% @messages.each do |message| %>
     <li><%= message.created_at %></li>
     <li><%= message.body.html_safe %></li>
