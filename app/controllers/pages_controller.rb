@@ -49,7 +49,8 @@ class PagesController < ApplicationController
     # current_user.messages.each do |message|
     #   @contacts << Contact.find(message.contact_id)
     #   @messages << message
-    @contacts = User.all.first.contacts
+    @contacts = current_user.contacts
+
 
   end
 
