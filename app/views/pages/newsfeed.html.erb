@@ -1,3 +1,7 @@
+<!-- Section 1: Navigation Bar (see: application.html.erb & landingpage.scss)  -->
+
+<!-- Section 2: Modal - Form for adding contacts (via 'add contact' icon at top left of page)-->
+
 <div class="modal">
     <div class="add-contact">
     <%= form_for @contact do |f| %>
@@ -13,18 +17,22 @@
     </div>
     </div>
 
-    <div class="main-container">
 
-      <div class="contacts-container">
-      <div class="all-contacts-header">
-        <div class="filter-icon">
+<!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
+<div class="main-container">
+<!-- Section 3: List of All Contacts (left 25% of the page)  -->
+
+<!-- 'All Contacts' div with 'filter' & 'add contact' icons -->
+  <div class="contacts-container">
+    <div class="all-contacts-header">
+      <div class="filter-icon">
           <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
-        </div>
-        <h3 class="all-contacts-heading">All Contacts</h3>
+      </div>
+      <h3 class="all-contacts-heading">All Contacts</h3>
         <div class="add-icon">
           <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
         </div>
-      </div>
+    </div>
       <div class="search-contacts-bar">
           <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>

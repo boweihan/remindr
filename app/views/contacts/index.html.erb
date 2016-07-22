@@ -1,3 +1,7 @@
+<!-- Section 1: Navigation Bar (see: application.html.erb & landingpage.scss)  -->
+
+<!-- Section 2: Modal - Form for adding contacts (via 'add contact' icon at top left of page)-->
+
 <div class="modal">
     <div class="add-contact">
     <%= form_for @contact do |f| %>
@@ -11,20 +15,33 @@
       <%= f.submit "Add Contacts", class: 'submit'%>
     <% end %>
     </div>
-    </div>
+</div>
 
 
-<div class="container">
+<!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
+<div class="main-container">
 
+<!-- Section 3: List of All Contacts (left 25% of the page)  -->
+
+<!-- 'All Contacts' div with 'filter' & 'add contact' icons -->
   <div class="contacts-container">
-  <div class="all-contacts-header">
-    <div class="filter-icon">
-      <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
+    <div class="all-contacts-header">
+      <div class="filter-icon">
+        <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
+      </div>
+      <h3 class="all-contacts-heading">All Contacts</h3>
+        <div class="add-icon">
+          <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
+        </div>
     </div>
-    <h3 class="all-contacts-heading">All Contacts</h3>
-    <div class="add-icon">
-      <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
+
+<!-- 'Search bar' div -->
+    <div class="search-contacts-bar">
+        <%= form_tag contacts_path, method: :get do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
+      <% end %>
     </div>
+
   </div>
   <div class="search-contacts-bar">
       <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
@@ -32,25 +49,47 @@
     <% end %>
   </div>
 
-  <div class="contacts-messages">
+
+<!-- 'List of Contacts/Messages' div -->
+    <div class="contacts-messages">
       <% @contacts.each do |contact| %>
-      <div class="contact-message">
-        <div class="contact-profile-image">
+        <div class="contact-message">
+          <div class="contact-profile-image">
+          </div>
+          <div class="contact-last-message">
+            <%= link_to contact.name, contact_path(contact.id), class: 'contact-name-link' %>
+              <p class="last-message-on">Last message on</p>
+          </div>
         </div>
-        <div class="contact-last-message">
-        <%= link_to contact.name, contact_path(contact.id), class: 'contact-name-link' %>
-        <p class="last-message-on">Last message on</p>
-        </div>
-      </div>
       <% end %>
+    </div>
   </div>
-  </div>
+<!-- The last </div> directly above corresponds to the 'contacts container' div at the start of Section 3 -->
 
 
+<!-- 'Container' contains everything to the right of the 'List of All Contacts' div  -->
+<!-- 'Container' takes up the right 75% of the page -->
+  <div class=container>
 
-  <div class="messages">
-  </div>
+    <div class="contact-name-heading">
+      <h3 id="main-name">Name of contact goes here</h3>
+    </div>
+
 
   <div class="profiles">
+
+<!-- Section 4: All messages received from individual contact (middle 50% of page) -->
+
+    <div class="messages">
+      <% %>
+    </div>
+
+<!-- Section 5: All contact information for individual contact (right 25% of page) -->
+    <div class="profiles">
+
+    </div>
+
   </div>
 </div>
+<!-- End of 'container' (3 lines up) -->
+<!-- End of 'main-container' (2 lines up) -->
