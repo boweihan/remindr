@@ -58,31 +58,32 @@
       </div>
     <div class="container">
       <div class="contact-name-heading">
-        <h3 id="main-name"><%=@contacts.first.name%></h3>
+        <h3 id="main-name">Main Contact Name</h3>
       </div>
 
 
       <div class="messages">
-        <div id="contact_name"><%=@contacts.first.name%></div>
+        <div id="contact_name">Contact Name Placeholder</div>
 
         <h1>Past Messages</h1>
         <div id="messages">
 
           <ul>
-            <%  @contacts.first.messages.each do |m| %>
-              <li><%=m.summary%></li>
-            <% end %>
+            <%  #@contacts.first.messages.each do |m| %>
+              <%#m.summary%>
+            <%# end %>
           </ul>
         </div>
 
         <div id="contact_details">
-          <%= render partial: "/contacts/details", locals:{contact:@contacts.first} %>
+          <%# render partial: "/contacts/details", locals:{contact:@contacts.first} %>
         </div>
         <br><br>
 
         <%= form_tag "/", id:"send_email" do %>
         <% # no idea why there are [] after name %>
-          <%= hidden_field_tag "receiver", @contacts.first.email, id:"email_field"%>
+          <%# hidden_field_tag "receiver", @contacts.first.email, id:"email_field"%>
+          <%= hidden_field_tag "receiver", nil, id:"email_field"%>
           <%= label_tag "subject", "Subject:" %><br>
           <%= text_field_tag "subject", nil, id:"subject_field" %><br>
 
@@ -98,9 +99,11 @@
         <div id="add_field_form">
           <h1>Add Field</h1>
           <%= form_tag "/", id:"update_contact" do %>
-            <%= hidden_field_tag "contact", @contacts.first.id, id:"contact_id" %>
+            <%= hidden_field_tag "contact", nil, id:"contact_id" %>
+            <%# hidden_field_tag "contact", @contacts.first.id, id:"contact_id" %>
             <%= label_tag "field", "Field:" %><br>
-            <div id="contact_field"><%= select_tag "field", options_for_select(@contacts.first.generate_selectors)%></div>
+            <% #<div id="contact_field"><%= select_tag "field", options_for_select(@contacts.first.generate_selectors)</div>%>
+            <div id="contact_field"></div>
             <%= label_tag "information", "Information:" %><br>
             <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
             <%= submit_tag("Update") %>
