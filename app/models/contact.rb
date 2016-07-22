@@ -44,10 +44,9 @@ class Contact < ActiveRecord::Base
   end
 
   def search_email(user_google_id, token)
-    #change to to
+    binding.pry
     q= "from:#{self.email}"
     query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
-    binding.pry
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
       email_id = JSON.parse(RestClient.get(query_email_api_url))['messages'][0]['id']
       return email_id

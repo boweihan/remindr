@@ -33,6 +33,10 @@ class PagesController < ApplicationController
       @auth_client.fetch_access_token!
       current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
       current_user.get_email(current_user.access_token)
+      #hack
+      current_user.contacts.each do |contact|
+        contact.get_most_recent_message
+      end
     end
     redirect_to '/newsfeed'
   end
