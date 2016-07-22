@@ -29,12 +29,21 @@
 
 <% end %>
 <br>
-<div id=contact_name><%=@contacts.first.name%></div>
-<div id=messages>
+<div id="contact_name"><%=@contacts.first.name%></div>
+<div id="upper_middle_container">
   <h1>Past Messages</h1>
-  <ul>
-    <%  @contacts.first.messages.each do |m| %>
-      <li><%=m.body_plain_text%></li>
-    <% end %>
-  </ul>
+  <div id="messages">
+
+    <ul>
+      <%  @contacts.first.messages.each do |m| %>
+        <li><%=m.summary%></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div id="top_right_container">
+  <div id="contact_details">
+    <%= render partial: "/contacts/details", locals:{contact:@contacts.first} %>
+  </div>
 </div>

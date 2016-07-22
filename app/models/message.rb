@@ -23,4 +23,9 @@ class Message < ActiveRecord::Base
     service.request_options.authorization = current_user.access_token
     service.send_user_message(current_user.google_id, message_object = message)
   end
+
+  def summary
+    message = self.body_plain_text
+    return message.slice(0,250)+"...."
+  end
 end
