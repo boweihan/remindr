@@ -31,7 +31,7 @@ class PagesController < ApplicationController
       @auth_client.code = params[:code]
       #exchange auth for token
       @auth_client.fetch_access_token!
-      current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token})
+      current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
       current_user.get_email(current_user.access_token)
     end
     redirect_to '/newsfeed'

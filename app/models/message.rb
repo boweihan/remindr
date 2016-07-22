@@ -4,10 +4,6 @@ class Message < ActiveRecord::Base
 
   def self.send_email(sender, receiver, subj, bod, current_user)
     user_input = Mail.new do
-      # from 'Bowei Han <bowei.han100@gmail.com>'
-      # to 'Carol Yao <carolyaoo@gmail.com>'
-      # subject 'this is a test'
-      # body 'hello, hello, is it possible? Could this actually work?'
       from sender
       to receiver
       subject subj
@@ -22,4 +18,11 @@ class Message < ActiveRecord::Base
     service.request_options.authorization = current_user.access_token
     service.send_user_message(current_user.google_id, message_object = message)
   end
+
+  def refresh_token_if_expired
+  end
+
+  def token_expired?
+  end
+
 end
