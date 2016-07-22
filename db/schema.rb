@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160722024652) do
     t.string   "access_token"
     t.string   "refresh_token"
     t.string   "google_id"
+    t.datetime "issued_at"
   end
 
 end

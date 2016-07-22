@@ -2,13 +2,10 @@ class Message < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
 
-<<<<<<< HEAD
+
   #rename bug
   def self.send_mail(sender, receiver, subj, bod, current_user)
-=======
-  def self.send_email(sender, receiver, subj, bod, current_user)
-    # create RFC2822 message body
->>>>>>> a75db85a748776c07d911713fbe6f210e2cf2ad0
+
     user_input = Mail.new do
       from sender
       to receiver
@@ -36,12 +33,12 @@ class Message < ActiveRecord::Base
     end
   end
 
-<<<<<<< HEAD
+
   def summary
     message = self.body_plain_text
     return message.slice(0,250)+"...."
   end
-=======
+
   def self.refresh_token(current_user)
     response = RestClient.post 'https://accounts.google.com/o/oauth2/token', :grant_type => 'refresh_token', :refresh_token => current_user.refresh_token, :client_id => ENV['CLIENT'], :client_secret => ENV['CLIENT_SECRET']
 
@@ -62,5 +59,5 @@ class Message < ActiveRecord::Base
     return false
   end
 
->>>>>>> a75db85a748776c07d911713fbe6f210e2cf2ad0
+
 end
