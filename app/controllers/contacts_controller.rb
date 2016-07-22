@@ -14,6 +14,10 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @messages = @contact.messages
 
+    respond_to do |format|
+      format.html
+      format.js {}
+    end
     # if current_Contact
     #   @review = @contact.reviews.build
     # end

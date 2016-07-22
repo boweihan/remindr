@@ -1,23 +1,14 @@
 <h1>THIS IS A FEED PAGE</h1>
-<!-- all the messages go here for all the contacts -->
+
 <%= link_to "All Contacts Page", contacts_url %><br>
-<%= link_to "User Profile", user_path(current_user) %><br>
+
+<%= link_to "User Profile", user_path(@contacts.first.user) %><br>
 <%= link_to "Add a Contact", new_contact_url %><br>
-
-<ul>
-  <!-- <% for i in 0...@messages.length %>
-    <div class='feedElement'>
-      <li><%= link_to @contacts[i].name, contact_path(@contacts[i].id) %><br>
-        <%= @messages[i].created_at %></li>
-    </div>
-  <% end %> -->
-
-  <%= @messages.each do |message| %>
-    <div class='feedElement'>
-      <li><%= message.body.html_safe %></li>
-    </div>
+<% @contacts.each do |contact| %>
+  <%= link_to contact_path(contact), remote: true do %>
+  <div id=contact_id-<%=contact.id%> >
+      <p><%= contact.name %></p>
+  </div>
   <% end %>
-</ul>
-
-
-<%= @sent_message %>
+<% end %>
+<% #@sent_message %>

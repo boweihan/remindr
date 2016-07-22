@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def remind
     self.contacts.each do |contact|
       if contact.neglected?
-        puts "#{contact.name} is overdue"
+        #Send email from self.email to contact.email using
       end
     end
   end
