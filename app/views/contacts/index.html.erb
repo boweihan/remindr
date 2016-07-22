@@ -5,23 +5,19 @@
 </div>
 
 <div class="modal">
-  <div class="add-contact">
-  <%= form_for @contact do |f| %>
-    <button type="button" class="close">x</button>
-
-    <%= f.text_field :name, class: 'field'%><br>
-    <%= f.text_field :phone,  class: 'field' %><br>
-    <%= f.email_field :email, class: 'field' %><br>
-    <%= f.submit "Add Contacts" %>
-  <% end %>
-  </div>
-          <!-- <form class="add-contact">
-
-              <input type="text" name="user" placeholder="Username">
-              <input type="password" name="pass" placeholder="Password">
-              <button type="button" class="submit">submit</button>
-          </form> -->
+    <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+          <h3 class="add-new-contact-heading">Add a New Contact</h3>
       </div>
+      Name:  <%= f.text_field :name, class: 'field'%><br>
+      Phone: <%= f.text_field :phone,  class: 'field' %><br>
+      Email: <%= f.email_field :email, class: 'field' %><br>
+      <%= f.submit "Add Contacts", class: 'submit'%>
+    <% end %>
+    </div>
+    </div>
 
 
 <div class="container">
