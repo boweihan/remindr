@@ -123,4 +123,15 @@ class Contact < ActiveRecord::Base
     end
     return free_fields
   end
+
+  def self.generate_reminder
+    all_contacts = Contact.all
+    all_contacts.each do |contact|
+      message = contact.messages.first
+      time_difference = DateTime.now - message.time_stamp
+      # message_type =
+      binding.pry
+      # Reminder.create(contact_id:contact.id, type:message_type message:message.body_plain_text, time_since_last_contact:time_difference)
+    end
+  end
 end
