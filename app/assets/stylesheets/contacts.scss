@@ -65,12 +65,14 @@
     border-radius: 1%;
 }
 
+// add-contact text
 .add-new-contact-heading {
   color: green;
   margin-left: 25%;
   margin-bottom: 0.8em;
   display: inline-block;
 }
+// add contact form fields
 .field {
     display: block;
     border: none;
@@ -81,6 +83,7 @@
     color: #555 ;
 }
 
+// close button of modal
 .close {
     background-color: #e8e8e8;
     display: block;
@@ -97,6 +100,7 @@
     right: 0.25em;
 }
 
+// create contact button modal
 .submit {
   font-size: 14px;
   display: block;
@@ -109,7 +113,6 @@
   padding: 16px;
 }
 
-
 // search bar
 .search-contacts-bar {
   height: 56px;
@@ -120,7 +123,8 @@
 
 .search-bar-field {
   margin: 12px 36px;
-  padding: 6px 56px;
+  padding: 6px 8px;
+  width: 240px;
 }
 
 // all-contacts heading
