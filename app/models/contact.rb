@@ -93,4 +93,26 @@ class Contact < ActiveRecord::Base
       return true
     end
   end
+
+  def pretty_print
+    column_names= Contact.column_names
+    valid_fields = []
+    column_names.each do |column|
+      if (self.public_send(column) && column != 'name' && column != 'id' && column != 'created_at' && column != 'updated_at' && column != "user_id")
+        valid_fields << "#{column.capitalize}: #{self.public_send(column)}"
+      end
+    end
+    return valid_fields
+  end
+
+  def generate_selectors
+    column_names= Contact.column_names
+    free_fields = []
+    column_names.each do |column|
+      unless (self.public_send(column) || column == 'id' || column == 'created_at' || column == 'updated_at' ||column =="user_id" )
+        free_fields << [column,column]
+      end
+    end
+    return free_fields
+  end
 end

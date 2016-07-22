@@ -42,13 +42,20 @@ class ContactsController < ApplicationController
   end
 
   def update
-    @contact = Contact.find(params[:id])
-
-    if @contact.update_attributes(contact_params)
-      redirect_to contact_url(@contact)
+    if request.xhr?
+      @contact = Contact.find(params[:id])
+      @attribute = params[:attribute]
+      @contact.update(@attribute.to_sym =>params[:new])
+      render :nothing => true, :status => 200, :content_type => 'text/html'
     else
-      render :edit
+      @contact = Contact.find(params[:id])
+      if @contact.update_attributes(contact_params)
+        redirect_to contact_url(@contact)
+      else
+        render :edit
+      end
     end
+
   end
 
   def destroy

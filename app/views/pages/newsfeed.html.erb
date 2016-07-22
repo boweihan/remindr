@@ -14,7 +14,7 @@
 <% end %>
 
 </ul>
-<br><br><br><br>
+<br>
 
 <%= form_tag "/", id:"send_email" do %>
 <% # no idea why there are [] after name %>
@@ -28,22 +28,34 @@
   <%= submit_tag("Send!") %>
 
 <% end %>
+
 <br>
 <div id="contact_name"><%=@contacts.first.name%></div>
-<div id="upper_middle_container">
-  <h1>Past Messages</h1>
-  <div id="messages">
 
-    <ul>
-      <%  @contacts.first.messages.each do |m| %>
-        <li><%=m.summary%></li>
-      <% end %>
-    </ul>
-  </div>
+<h1>Past Messages</h1>
+<div id="messages">
+
+  <ul>
+    <%  @contacts.first.messages.each do |m| %>
+      <li><%=m.summary%></li>
+    <% end %>
+  </ul>
 </div>
 
-<div id="top_right_container">
-  <div id="contact_details">
-    <%= render partial: "/contacts/details", locals:{contact:@contacts.first} %>
-  </div>
+
+<div id="contact_details">
+  <%= render partial: "/contacts/details", locals:{contact:@contacts.first} %>
+</div>
+<br><br>
+
+<div id="add_field_form">
+  <h1>Add Field</h1>
+  <%= form_tag "/", id:"update_contact" do %>
+    <%= hidden_field_tag "contact", @contacts.first.id, id:"contact_id" %>
+    <%= label_tag "field", "Field:" %><br>
+    <div id="contact_field"><%= select_tag "field", options_for_select(@contacts.first.generate_selectors)%></div>
+    <%= label_tag "information", "Information:" %><br>
+    <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
+    <%= submit_tag("Update") %>
+  <% end%>
 </div>
