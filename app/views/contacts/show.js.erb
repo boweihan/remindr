@@ -1,3 +1,10 @@
 $(function(){
-  console.log('hi')
+  console.log("I am here")
+  // buggy for gmail &gt character
+  var email = "<%= j(@contact.email)%>"
+  var name = "<%= j(@contact.name)%>"
+  console.log(email)
+  console.log(name)
+  $("input[name='receiver']").val(email)
+  $("#contact_name").text(name)
 })

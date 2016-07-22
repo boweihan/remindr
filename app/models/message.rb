@@ -2,7 +2,8 @@ class Message < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
 
-  def self.send_email(sender, receiver, subj, bod, current_user)
+  #rename bug
+  def self.send_mail(sender, receiver, subj, bod, current_user)
     user_input = Mail.new do
       # from 'Bowei Han <bowei.han100@gmail.com>'
       # to 'Carol Yao <carolyaoo@gmail.com>'

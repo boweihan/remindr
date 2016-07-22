@@ -13,7 +13,6 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
     @messages = @contact.messages
-    binding.pry
 
     respond_to do |format|
       format.html
