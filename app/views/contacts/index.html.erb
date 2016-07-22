@@ -6,8 +6,17 @@
 <div class="container">
 
   <div class="contacts-container">
-  <div class="all-contacts-header"></div>
-  <div class="search-contacts-bar"></div>
+  <div class="all-contacts-header">
+    <div class="filter-icon"></div>
+    <h3 class="all-contacts-heading">All Contacts</h3>
+    <div class="add-icon"></div>
+  </div>
+  <div class="search-contacts-bar">
+    <%= form_tag contacts_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "John Doe" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
 
   <div class="contacts-messages">
       <% @contacts.each do |contact| %>

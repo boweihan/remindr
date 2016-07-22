@@ -6,7 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .nav {
@@ -21,7 +21,7 @@
 
 .nav-bar {
   width: 100%;
-  background-color: #ddd;
+  background-color: #fbfbfb;
   height: 56px;
 }
 
@@ -39,21 +39,43 @@
 
 .search-contacts-bar {
   height: 56px;
-  background-color: blue;
+  background-color: #fbfbfb;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .all-contacts-header {
   height: 56px;
-  background-color: black;
+  background-color: #fbfbfb;
+  border: 1px solid rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 
-.contacts-container {
+.all-contacts-heading {
+  float:left;
+  margin: 5% 5%;
+  color: rgba(0,0,0,0.77);
+}
+
+.filter-icon {
+  height: 24px;
+  width: 24px;
   background-color: orange;
+  float:left;
+  margin: 5% 10%;
+}
+
+.add-icon {
+  height: 24px;
+  width: 24px;
+  background-color: orange;
+  float:left;
+  margin: 5% 10%;
+}
+.contacts-container {
   width: 25%;
   float: left;
 }
 .contacts-messages {
-
   height:600px;
   overflow: scroll;
 }

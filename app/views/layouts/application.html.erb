@@ -11,14 +11,14 @@
   <% flash.each do |key, value | %>
     <div id='flash_message'>;<%= value %></div>
   <% end %>
-  <% if current_user %>
-    <br>You are currently signed in as <%= current_user.name %> <%= link_to 'View Profile', user_path(current_user) %>| <%= link_to "Logout", session_path("this session"), :method => :delete %>
-  <% else %>
-    <br><%= link_to "Login", new_session_path %> or <%= link_to "Sign-Up", new_user_path %>
-  <% end %>
 
 
 <%= yield %>
+<% if current_user %>
+  <br>You are currently signed in as <%= current_user.name %> <%= link_to 'View Profile', user_path(current_user) %>| <%= link_to "Logout", session_path("this session"), :method => :delete %>
+<% else %>
+  <br><%= link_to "Login", new_session_path %> or <%= link_to "Sign-Up", new_user_path %>
+<% end %>
 
 
 </body>

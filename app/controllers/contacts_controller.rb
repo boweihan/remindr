@@ -3,11 +3,16 @@ class ContactsController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    @contacts = Contact.all.where(user_id:current_user.id)
+
     # @messages = []
     # @contacts.each do |contact|
     #   @messages << contact.messages
     # end
+    if params[:search]
+      @contacts = Contact.all.where(user_id:current_user.id).search(params[:search])
+    else
+      @contacts = Contact.all.where(user_id:current_user.id)
+    end
   end
 
   def show
