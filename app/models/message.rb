@@ -33,7 +33,6 @@ class Message < ActiveRecord::Base
     end
   end
 
-
   def summary
     message = self.body_plain_text
     return message.slice(0,250)+"...."
@@ -47,6 +46,7 @@ class Message < ActiveRecord::Base
     puts "NEW TOKEN SAVED"
   end
 
+  # check if the token is expired
   def self.token_expired?(current_user)
     issued_at_time = current_user.issued_at.strftime('%s')
     issued_at_time = issued_at_time.to_i+3600

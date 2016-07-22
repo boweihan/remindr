@@ -17,15 +17,18 @@ class User < ActiveRecord::Base
   def self.check
     all_users = User.all
     all_users.each do |user|
-      user.remind
+      user.remind(user)
       puts "in user check loop"
     end
   end
 
-  def remind
+  def remind(user)
     self.contacts.each do |contact|
       if contact.neglected?
         #Send email from self.email to contact.email using
+        subj = 'Sorry for not talking to you for so long'
+        bod = 'ER MA GURD'
+        Message.send_email(user.email, contact.email, subj, bod, user)
       end
     end
   end
