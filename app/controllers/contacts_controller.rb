@@ -4,12 +4,21 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all.where(user_id:current_user.id)
+    # @messages = []
+    # @contacts.each do |contact|
+    #   @messages << contact.messages
+    # end
   end
 
   def show
     @contact = Contact.find(params[:id])
     @messages = @contact.messages
+    binding.pry
 
+    respond_to do |format|
+      format.html
+      format.js {}
+    end
     # if current_Contact
     #   @review = @contact.reviews.build
     # end

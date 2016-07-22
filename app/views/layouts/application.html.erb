@@ -18,6 +18,10 @@
 
 <body>
 
+  <% flash.each do |key, value | %>
+    <div id='flash_message'>;<%= value %></div>
+  <% end %>
+
 <%= yield %>
 
 

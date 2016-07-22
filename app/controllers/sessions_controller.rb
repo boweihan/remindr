@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      Message.api
       redirect_to '/googleauth', notice: "Thanks for logging in!"
     else
       render :new

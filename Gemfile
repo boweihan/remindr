@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'figaro'
+#taskrunner
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -26,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.10'
+
+gem "jquery-rails"
 
 gem 'bourbon', '5.0.0.beta.6'
 
