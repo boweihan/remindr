@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="search-contacts-bar">
-      <%= form_tag contacts_path, method: :get do %>
+      <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
     <% end %>
   </div>
@@ -49,9 +49,6 @@
 
 
   <div class="messages">
-  </div>
-
-  <div class="profile-name">
   </div>
 
   <div class="profiles">

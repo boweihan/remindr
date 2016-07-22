@@ -17,4 +17,8 @@ $( function() {
     $(this).css('border', '1px solid green')
   });
 
+  $(".search-bar-field").keyup(function(){
+    var query= $(".search-bar-field").val()
+    $("#search_contact").submit()
   })
+})

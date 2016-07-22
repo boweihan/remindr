@@ -1,26 +1,104 @@
-<h1>THIS IS A FEED PAGE</h1>
+<div class="modal">
+    <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+          <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      </div>
+      Name:  <%= f.text_field :name, class: 'field'%><br>
+      Phone: <%= f.text_field :phone,  class: 'field' %><br>
+      Email: <%= f.email_field :email, class: 'field' %><br>
+      <%= f.submit "Add Contacts", class: 'submit'%>
+    <% end %>
+    </div>
+    </div>
 
-<%= link_to "All Contacts Page", contacts_url %><br>
+    <div class="main-container">
 
-<%= link_to "User Profile", user_path(@contacts.first.user) %><br>
-<%= link_to "Add a Contact", new_contact_url %><br>
-<% @contacts.each do |contact| %>
-  <%= link_to contact_path(contact), remote: true do %>
-  <div id=contact_id-<%=contact.id%> >
-      <p><%= contact.name %></p>
-  </div>
-  <% end %>
-<% end %>
+      <div class="contacts-container">
+      <div class="all-contacts-header">
+        <div class="filter-icon">
+          <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
+        </div>
+        <h3 class="all-contacts-heading">All Contacts</h3>
+        <div class="add-icon">
+          <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
+        </div>
+      </div>
+      <div class="search-contacts-bar">
+          <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
+        <% end %>
+      </div>
 
-</ul>
-<br><br><br><br>
-<form id='send_email'>
+      <div class="contacts-messages">
+          <% @contacts.each do |contact| %>
+          <%= link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
+          <div id=contact_id-<%=contact.id%> >
+          <div class="contact-message">
+            <div class="contact-profile-image">
+            </div>
+            <div class="contact-last-message">
+                <p><%= contact.name %></p>
+                <p class="last-message-on">Last message on</p>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+      </div>
+      </div>
+    <div class="container">
+      <div class="contact-name-heading">
+        <h3 id="main-name"><%=@contacts.first.name%></h3>
+      </div>
 
-  To:<br>
-  <input type='email' name='contact email' id='email_field'><br>
-  Subject:<br>
-  <input type='text' name='subject' id='subject_field'><br>
-  Body:<br>
-  <input type='text' name='body' id='body_field'><br>
-  <input type='submit' value='submit'>
-<form>
+      
+      <div class="messages">
+        <div id="contact_name"><%=@contacts.first.name%></div>
+
+        <h1>Past Messages</h1>
+        <div id="messages">
+
+          <ul>
+            <%  @contacts.first.messages.each do |m| %>
+              <li><%=m.summary%></li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div id="contact_details">
+          <%= render partial: "/contacts/details", locals:{contact:@contacts.first} %>
+        </div>
+        <br><br>
+
+        <%= form_tag "/", id:"send_email" do %>
+        <% # no idea why there are [] after name %>
+          <%= hidden_field_tag "receiver", @contacts.first.email, id:"email_field"%>
+          <%= label_tag "subject", "Subject:" %><br>
+          <%= text_field_tag "subject", nil, id:"subject_field" %><br>
+
+          <%= label_tag "body", "Body:" %><br>
+          <%= text_area_tag "body", nil, id:"body_field" %><br>
+
+          <%= submit_tag("Send!") %>
+
+        <% end %>
+      </div>
+
+      <div class="profiles">
+        <div id="add_field_form">
+          <h1>Add Field</h1>
+          <%= form_tag "/", id:"update_contact" do %>
+            <%= hidden_field_tag "contact", @contacts.first.id, id:"contact_id" %>
+            <%= label_tag "field", "Field:" %><br>
+            <div id="contact_field"><%= select_tag "field", options_for_select(@contacts.first.generate_selectors)%></div>
+            <%= label_tag "information", "Information:" %><br>
+            <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
+            <%= submit_tag("Update") %>
+          <% end%>
+        </div>
+      </div>
+    </div>
+
+    </div>
