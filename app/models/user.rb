@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
         #Send email from self.email to contact.email using
         subj = 'Sorry for not talking to you for so long'
         bod = 'ER MA GURD'
-        Message.send_email(user.google_id, contact.email, subj, bod, user)
+        Message.send_mail(user.google_id, contact.email, subj, bod, user)
       end
     end
   end
