@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :contacts do
     resources :messages, only: [:index]
+    resources :reminders, only: [:show, :create, :new, :update, :destroy]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

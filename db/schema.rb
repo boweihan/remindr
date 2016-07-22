@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722024652) do
+ActiveRecord::Schema.define(version: 20160722201340) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20160722024652) do
     t.text     "body_plain_text"
     t.text     "body_html"
   end
+
+  create_table "reminders", force: :cascade do |t|
+    t.integer  "contact_id"
+    t.string   "type"
+    t.text     "message"
+    t.datetime "time_since_last_contact"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "reminders", ["contact_id"], name: "index_reminders_on_contact_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

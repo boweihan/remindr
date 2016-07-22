@@ -3,6 +3,7 @@ class Contact < ActiveRecord::Base
   validates :name, :phone, :email, presence: true
 
   has_many :messages
+  has_many :reminders
   belongs_to :user
 
   #handle search
