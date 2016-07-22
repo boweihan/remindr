@@ -1,19 +1,52 @@
-<h1>THIS IS A PAGE OF ALL THE CONTACTS</h1>
-<%= link_to "Feed", newsfeed_path %><br>
-<%= link_to "Contact's Messages", contact_messages_path(1) %>
+<div class="modal">
+    <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+          <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      </div>
+      Name:  <%= f.text_field :name, class: 'field'%><br>
+      Phone: <%= f.text_field :phone,  class: 'field' %><br>
+      Email: <%= f.email_field :email, class: 'field' %><br>
+      <%= f.submit "Add Contacts", class: 'submit'%>
+    <% end %>
+    </div>
+    </div>
 
-<ul>
-  <% @contacts.each do |contact| %>
-    <br><li><%= link_to contact.name, contact_path(contact.id) %></li>
-  <% end %>
-</ul>
 
-
-<h1 class="nav">Remindr</h1>
 <div class="container">
 
-  <div class="contacts-messages">
+  <div class="contacts-container">
+  <div class="all-contacts-header">
+    <div class="filter-icon">
+      <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
+    </div>
+    <h3 class="all-contacts-heading">All Contacts</h3>
+    <div class="add-icon">
+      <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
+    </div>
   </div>
+  <div class="search-contacts-bar">
+      <%= form_tag contacts_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
+    <% end %>
+  </div>
+
+  <div class="contacts-messages">
+      <% @contacts.each do |contact| %>
+      <div class="contact-message">
+        <div class="contact-profile-image">
+        </div>
+        <div class="contact-last-message">
+        <%= link_to contact.name, contact_path(contact.id), class: 'contact-name-link' %>
+        <p class="last-message-on">Last message on</p>
+        </div>
+      </div>
+      <% end %>
+  </div>
+  </div>
+
+
 
   <div class="messages">
   </div>

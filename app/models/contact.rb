@@ -2,6 +2,10 @@ class Contact < ActiveRecord::Base
   has_many :messages
   belongs_to :user
 
+  #handle search
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
   #handle photos
   def self.update
     all_contacts = Contact.all
