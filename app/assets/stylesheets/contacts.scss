@@ -203,3 +203,45 @@
   height: 702px;
   background-color: yellow;
 }
+
+
+
+
+
+// contacts all page starts here
+
+
+.all-contacts-container {
+  overflow: hidden;
+}
+
+.individual-contact-edit-area {
+  width: 45%;
+  height: 702px;
+  background-color: #eee;
+  float: left;
+  display: inline-block;
+}
+
+.all-contacts-list-area {
+  width: 55%;
+  height: 702px;
+  background-color: #ccc;
+  float: left;
+  display: inline-block;
+}
+
+.all-contacts-title {
+  text-align: center;
+  font-size: 16px;
+  padding: 0;
+}
+
+
+.all-contacts-list-area-top-div {
+  background-color: orange;
+  width: 100%;
+  height: 80px;
+  padding-top: 24px;
+}
+// contacts all page ends here
