@@ -11,7 +11,6 @@ class Message < ActiveRecord::Base
       subject subj
       body bod
     end
-    binding.pry
     # enc = Base64.encode64(user_input)
     # enc = enc.gsub("+", "-").gsub("/","_")
 

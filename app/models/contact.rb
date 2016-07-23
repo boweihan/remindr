@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
 
-  validates :name, :phone, :email, presence: true
+  # validates :name, :phone, :email, presence: true
 
   has_many :messages
   has_many :reminders
@@ -10,6 +10,12 @@ class Contact < ActiveRecord::Base
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
   end
+
+  # gives contacts in that category
+  def self.give_contacts_for(category)
+    where('category LIKE?', category)
+  end
+
   #handle photos
   def self.update
     all_contacts = Contact.all
@@ -45,7 +51,6 @@ class Contact < ActiveRecord::Base
   end
 
   def search_email(user_google_id, token)
-    #change to to
     q= "from:#{self.email}"
     query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
@@ -95,7 +100,6 @@ class Contact < ActiveRecord::Base
       Message.create(time_stamp:Time.now.to_i - 100000, contact_id: self.id, user_id: self.user.id)
       return false
     end
-    # binding.pry
     days_since = ((message.time_stamp - Time.now.to_i)/86400.0).floor
     if days_since == 30
       return true
@@ -115,7 +119,6 @@ class Contact < ActiveRecord::Base
 
   def generate_selectors
     column_names= Contact.column_names
-    free_fields = []
     column_names.each do |column|
       unless (self.public_send(column) || column == 'id' || column == 'created_at' || column == 'updated_at' ||column =="user_id" )
         free_fields << [column,column]
