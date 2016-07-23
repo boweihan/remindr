@@ -18,6 +18,33 @@ class ContactsController < ApplicationController
 
   end
 
+  def friends
+    @contacts = Contact.all.where(user_id:current_user.id)
+    @friends = @contacts.give_contacts_for('friend')
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @friends}
+    end
+  end
+
+  def business
+    @contacts = Contact.all.where(user_id:current_user.id)
+    @business = @contacts.give_contacts_for('business')
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @business}
+    end
+  end
+
+  def family
+    @contacts = Contact.all.where(user_id:current_user.id)
+    @family = @contacts.give_contacts_for('family')
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @family}
+    end
+  end
+
   def show
     @contact = Contact.find(params[:id])
     @messages = @contact.messages
