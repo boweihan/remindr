@@ -26,20 +26,27 @@
     <div class="all-contacts-list-area-top-div">
       <h4 class="all-contacts-title">All Contacts</h4>
     </div>
+
     <div class="contact-types-wrapper">
-      <div class="contact-types-all"><h6 class="contact-type-title">All</h6></div>
-      <div class="contact-types-friends"><h6 class="contact-type-title">Friends</h6></div>
-      <div class="contact-types-family"><h6 class="contact-type-title">Family</h6></div>
-      <div class="contact-types-business"><h6 class="contact-type-title">Business</h6></div>
+      <%= link_to contacts_all_path do %><div class="contact-types-all"><h6 class="contact-type-title">All</h6></div><% end %>
+      <%= link_to contacts_friends_path do %><div class="contact-types-friends"><h6 class="contact-type-title">Friends</h6></div><% end %>
+      <%= link_to contacts_family_path do %><div class="contact-types-family"><h6 class="contact-type-title">Family</h6></div><% end %>
+      <%= link_to contacts_business_path do %><div class="contact-types-business"><h6 class="contact-type-title">Business</h6></div><% end %>
     </div>
+
     <div class="contacts-area">
     <% @contacts.give_contacts_for('family').each do |contact| %>
+
     <div class="contact-page-contact">
       <div class="contact-page-contact-image"></div>
       <div class="contact-page-contact-information">
-        <%= contact.name %><br>
-        <%= contact.phone %><br>
-        <%= contact.email %> | @twitterhandle
+        <script id="contact-template" type="text/x-handlebars-template">
+          <ul>
+            <li>{{name}}</li>
+            <li>{{phone}}</li>
+            <li>{{email}}</li>
+          </ul>
+          </script>
       </div>
     </div>
     <% end %>
