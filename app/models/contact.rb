@@ -124,16 +124,16 @@ class Contact < ActiveRecord::Base
     return free_fields
   end
 
-  def self.generate_reminder
+  def self.generate_reminder(current_user)
     @contacts = Contact.all
     @contacts.each do |contact|
       if contact.messages != []
         time_difference = (DateTime.now.strftime('%s').to_i) - (contact.messages.first.time_stamp)
         message_type = check_message_overdue(time_difference/86400)
         if contact.reminders == []
-          Reminder.create(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400))
+          Reminder.create(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:current_user.id)
         else
-          Reminder.update(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400))
+          Reminder.update(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:current_user.id)
         end
       else
       end
