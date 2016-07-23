@@ -1,0 +1,18 @@
+<div class="modal">
+  <div class="add-contact">
+    <%= form_for @user do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+        <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      </div>
+      Name:  <%= f.text_field :name, class: 'field'%><br>
+      Phone: <%= f.text_field :phone,  class: 'field' %><br>
+      Email: <%= f.email_field :email, class: 'field' %><br>
+      Twitter: <%= f.text_field :email, class: 'field' %><br>
+      <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
+      <%= f.submit "Update Account", class: 'submit'%>
+    <% end %>
+  </div>
+</div>
+
+<%= image_tag "alarm-clock.png" %>
