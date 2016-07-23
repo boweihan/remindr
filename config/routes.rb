@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get '/send' => 'messages#send_mail'
   get 'newsfeed' => 'pages#newsfeed'
   get '/dashboard' => 'pages#dashboard'
+  get '/contacts/family' => 'contacts#family'
+  get '/contacts/all' => 'contacts#index'
+  get '/contacts/friends' => 'contacts#friends'
+  get '/contacts/business' => 'contacts#business'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
