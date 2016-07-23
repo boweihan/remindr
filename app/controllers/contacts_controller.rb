@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
     @all = Contact.all.where(user_id:current_user.id)
     respond_to do |format|
       format.html {}
-      format.json {render json: @all}
+      format.json {render json: {objects: @all }}
     end
   end
 
@@ -32,7 +32,7 @@ class ContactsController < ApplicationController
     @friends = @contacts.give_contacts_for('friend')
     respond_to do |format|
       format.html {}
-      format.json {render json: @friends}
+      format.json {render json: {objects: @friends }}
     end
   end
 
@@ -41,7 +41,7 @@ class ContactsController < ApplicationController
     @business = @contacts.give_contacts_for('business')
     respond_to do |format|
       format.html {}
-      format.json {render json: @business}
+      format.json {render json: {objects: @business }}
     end
   end
 
@@ -50,7 +50,7 @@ class ContactsController < ApplicationController
     @family = @contacts.give_contacts_for('family')
     respond_to do |format|
       format.html {}
-      format.json {render json: @family}
+      format.json {render json: {objects: @family }}
     end
   end
 

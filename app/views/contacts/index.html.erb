@@ -35,23 +35,16 @@
     </div>
 
     <div class="contacts-area">
-    <% @contacts.give_contacts_for('family').each do |contact| %>
-
-    <div class="contact-page-contact">
-      <div class="contact-page-contact-image"></div>
-      <div class="contact-page-contact-information">
-        <script id="contact-template" type="text/x-handlebars-template">
-          <ul>
-            <li>{{name}}</li>
-            <li>{{phone}}</li>
-            <li>{{email}}</li>
-          </ul>
-          </script>
-      </div>
-    </div>
-    <% end %>
-
     </div>
 </div>
 
 </div>
+
+<script id="contact-template" type="text/x-handlebars-template">
+  <ul>
+    {{#objects}}
+    <li>{{name}}</li>
+    {{/objects}}
+  </ul>
+
+  </script>
