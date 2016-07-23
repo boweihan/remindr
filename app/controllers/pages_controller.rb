@@ -54,7 +54,6 @@ class PagesController < ApplicationController
     # create new contact on page to be able to add contact on newsfeed for modal
 
 
-
   end
 
 

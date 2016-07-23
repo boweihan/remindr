@@ -14,6 +14,7 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.all.where(user_id:current_user.id)
     end
+
   end
 
   def show

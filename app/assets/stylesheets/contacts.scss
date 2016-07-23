@@ -280,6 +280,36 @@
   width: 100%;
   height: 600px;
   border-top: 1px solid rgba(0,0,0,0.2);
+  overflow: scroll;
 }
 
 // contacts all page ends here
+
+
+// individual contacts
+.contact-page-contact {
+  background-color: #eee;
+  padding: 16px;
+  width: 96%;
+  height: 100px;
+  border: 1px solid rgba(0,0,0,0.3);
+  margin: 0 auto;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.contact-page-contact-image {
+  float: left;
+  width: 64px;
+  height: 64px;
+  background-color: gray;
+  border-radius: 100%;
+  margin-left: 24px;
+}
+
+.contact-page-contact-information {
+  float: left;
+  font-size: 14px;
+  margin-left: 24px;
+  margin-top: 8px;
+}

@@ -16,6 +16,17 @@
       <div class="contact-types-business"><h6 class="contact-type-title">Business</h6></div>
     </div>
     <div class="contacts-area">
+    <% @contacts.each do |contact| %>
+    <div class="contact-page-contact">
+      <div class="contact-page-contact-image"></div>
+      <div class="contact-page-contact-information">
+        <%= contact.name %><br>
+        <%= contact.phone %><br>
+        <%= contact.email %> | @twitterhandle 
+
+      </div>
+    </div>
+    <% end %>
 
     </div>
 </div>
