@@ -9,10 +9,11 @@ class ContactsController < ApplicationController
     # @contacts.each do |contact|
     #   @messages << contact.messages
     # end
-    if params[:search]
-      @contacts = Contact.all.where(user_id:current_user.id).search(params[:search])
-    else
-      @contacts = Contact.all.where(user_id:current_user.id)
+
+    @contacts = Contact.all.where(user_id:current_user.id)
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @contacts}
     end
   end
 

@@ -44,7 +44,6 @@ class Contact < ActiveRecord::Base
   end
 
   def search_email(user_google_id, token)
-    binding.pry
     q= "from:#{self.email}"
     query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
@@ -94,7 +93,6 @@ class Contact < ActiveRecord::Base
       Message.create(time_stamp:Time.now.to_i - 100000, contact_id: self.id, user_id: self.user.id)
       return false
     end
-    # binding.pry
     days_since = ((message.time_stamp - Time.now.to_i)/86400.0).floor
     if days_since == 30
       return true

@@ -33,27 +33,28 @@
         </div>
     </div>
       <div class="search-contacts-bar">
-          <%= form_tag contacts_path, remote: true, method:"get", id:"search_contact" do %>
+          <%= form_tag contacts_path,id:"search_contact" do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
         <% end %>
       </div>
 
-      <div class="contacts-messages">
-          <% @contacts.each do |contact| %>
-          <%= link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
-          <div id=contact_id-<%=contact.id%> >
-          <div class="contact-message">
-            <div class="contact-profile-image">
-            </div>
-            <div class="contact-last-message">
-                <p><%= contact.name %></p>
-                <p class="last-message-on">Last message on</p>
+        <div class="contacts-messages">
+          <%# @contacts.each do |contact| %>
+            <%# link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
+            <!-- <div id=contact_id-<%#contact.id%> >
+              <div class="contact-message">
+                <div class="contact-profile-image"></div>
+                <div class="contact-last-message">
+                  <p> -->
+                    <%# contact.name %>
+                  <!-- </p>
+                  <p class="last-message-on">Last message on</p>
+                </div>
               </div>
-            </div>
-          </div>
-          <% end %>
-          <% end %>
-      </div>
+            </div> -->
+            <%# end %>
+          <%# end %>
+        </div>
       </div>
     <div class="container">
       <div class="contact-name-heading">
