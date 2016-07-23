@@ -18,6 +18,15 @@ class ContactsController < ApplicationController
 
   end
 
+
+  def all
+    @all = Contact.all.where(user_id:current_user.id)
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @all}
+    end
+  end
+
   def friends
     @contacts = Contact.all.where(user_id:current_user.id)
     @friends = @contacts.give_contacts_for('friend')

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'newsfeed' => 'pages#newsfeed'
   get '/dashboard' => 'pages#dashboard'
   get '/contacts/family' => 'contacts#family'
-  get '/contacts/all' => 'contacts#index'
+  get '/contacts/all' => 'contacts#all'
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
