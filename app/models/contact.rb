@@ -9,6 +9,19 @@ class Contact < ActiveRecord::Base
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
   end
+
+  # gives contacts in that category
+  def self.give_contacts_for(category)
+    @contacts = Contact.all
+    @contacts_for_category = []
+    @contacts.each do |contact|
+      if contact.category == category
+        @contacts_for_category << contact
+      end
+    end
+    @contacts_for_category
+  end
+
   #handle photos
   def self.update
     all_contacts = Contact.all
