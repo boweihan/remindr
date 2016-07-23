@@ -313,3 +313,38 @@
   margin-left: 24px;
   margin-top: 8px;
 }
+
+// indivudal contact
+
+.individual-photo {
+  margin: auto;
+  margin-top: 36px;
+  width: 144px;
+  height: 144px;
+  background-color: gray;
+  border-radius: 100%;
+
+}
+.individual-contact-wrapper {
+  height: 500px;
+  width: 100%;
+  padding: 48px;
+}
+
+.edit-contact-form {
+  margin: 0 auto;
+  margin-top: 36px;
+
+}
+
+
+.edit-contact-field {
+  padding: 4px;
+  width: 200px;
+  margin: 20px 0;
+
+}
+
+.edit-contact-label {
+  margin: 20px 8px;
+}
