@@ -92,8 +92,8 @@ class AlchemyAPI
 	def initialize()
 
 		begin
-			key = File.read('./lib/api_key.txt')
-			key.strip!
+			key = ENV["WATSON_SENTIMENT"]
+			# key.strip!
 
 			if key.empty?
 				#The key file should't be blank
