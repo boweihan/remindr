@@ -154,4 +154,24 @@ class Contact < ActiveRecord::Base
       return 'overdue'
     end
   end
+
+  def self.check_sentiment
+    @messages = Message.all
+    alchemyapi = AlchemyAPI.new()
+    sentiment_average = []
+    @messages.each do |message|
+
+      if message.body_plain_text != nil
+        myText = message.body_plain_text
+        response = alchemyapi.sentiment("text", myText)
+        puts "Sentiment: " + response["docSentiment"]["type"]
+
+        if response['docSentiment']['score'] != nil && response["docSentiment"]["type"] != 'neutral'
+          puts "Score: " + response['docSentiment']['score']
+          sentiment_average << response['docSentiment']['score']
+        end
+      end
+    end
+  end
+
 end
