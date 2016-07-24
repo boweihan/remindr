@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'figaro'
-gem 'easytone'
+gem 'easytone', '0.1.5'
 #taskrunner
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

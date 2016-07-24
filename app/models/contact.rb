@@ -174,26 +174,21 @@ class Contact < ActiveRecord::Base
     end
   end
 
-  def self.check_tone(text)
-    username_tone = ENV["CLIENT_TONE"]
-    password_tone = ENV["CLIENT_TONE_SECRET"]
-    tone_url = "https://#{username_tone}:#{password_tone}@gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&text=#{text}"
-    # response = RestClient::Request.execute(
-    #   method: :post,
-    #   url: tone_url,
-    #   username: username_tone,
-    #   password: password_tone,
-    #   payload: text,
-    #   headers: {"Content-Type": "text/plain", Accept: "application/json"}
-    # )
-    response = JSON.parse(RestClient.get(tone_url))
-    puts response["document_tone"]["tone_categories"][0]["tones"]
+  # def self.check_tone(text)
+  #   username_tone = ENV["CLIENT_TONE"]
+  #   password_tone = ENV["CLIENT_TONE_SECRET"]
+  #   tone_url = "https://#{username_tone}:#{password_tone}@gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&text=#{text}"
+  #   response = JSON.parse(RestClient.get(tone_url))
+  #   puts response["document_tone"]["tone_categories"][0]["tones"]
+  #   binding.pry
+  # end
+
+  def self.call_easytone(text)
+    username = ENV["CLIENT_TONE"]
+    password = ENV["CLIENT_TONE_SECRET"]
+    response = Easytone::ToneGen.tone(username, password, text)
     binding.pry
   end
 
-  def self.tester
-    include Easytone
-    binding.pry
-  end
 
 end
