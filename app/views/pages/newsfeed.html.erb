@@ -19,8 +19,8 @@
 
 
 <!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
-<!-- <div class="main-container">
-   -->
+<div class="main-container">
+
 <!-- Section 3: List of All Contacts (left 25% of the page)  -->
 <!-- 'All Contacts' div with 'filter' & 'add contact' icons -->
   <div class="contacts-container">
@@ -42,31 +42,27 @@
 
 <!-- 'List of Contacts/Messages' div -->
 
-
         <div class="contacts-messages">
-          <%# @contacts.each do |contact| %>
-            <%# link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
-            <!-- <div id=contact_id-<%#contact.id%> >
+          <% @contacts.each do |contact| %>
+            <% link_to contact_path(contact), remote: true, class: 'contact-name-link' do %>
+            <div id=contact_id-<%contact.id%> >
               <div class="contact-message">
                 <div class="contact-profile-image"></div>
                 <div class="contact-last-message">
-                  <p> -->
-                    <%# contact.name %>
-                  <!-- </p>
+                  <p>
+                    <% contact.name %>
+                  </p>
                   <p class="last-message-on">Last message on</p>
                 </div>
               </div>
-            </div> -->
-            <%# end %>
-          <%# end %>
+            </div>
+            <%end %>
+          <% end %>
         </div>
       </div>
-    <div class="container">
       <div class="contact-name-heading">
         <h3 id="main-name"></h3>
       </div>
-    </div>
-  </div>
 <!-- The last </div> directly above corresponds to the 'contacts container' div at the start of Section 3 -->
 
 
@@ -74,37 +70,23 @@
 <!-- 'Container' takes up the right 75% of the page -->
 
 
-      <div class="messages">
-        <div id="contact_name"></div>
 
-  <div class="container">
-
-
-    <div class="contact-name-heading">
-      <h3 id="main-name"><%=@contacts.first.name%></h3>
-    </div>
 
 <!-- Section 4: All messages received from individual contact (middle 50% of page) -->
+<div class="contact-info-updating-container">
     <div class="messages">
-      <!-- <div id="contact_name"><%=@contacts.first.name%></div> -->
-      <h3>Message Heading</h3>
         <div id="message-content">
-
           <ul>
-            <%  #@contacts.first.messages.each do |m| %>
-              <%#m.summary%>
-            <%# end %>
+            <%  @contacts.first.messages.each do |m| %>
+              <% m.summary%>
+            <% end %>
           </ul>
         </div>
 
-        <div id="contact_details">
-          <%# render partial: "/contacts/details", locals:{contact:@contacts.first} %>
-        </div>
-        <br><br>
-
+    <div class="send-message-div">
         <%= form_tag "/", id:"send_email" do %>
         <% # no idea why there are [] after name %>
-          <%# hidden_field_tag "receiver", @contacts.first.email, id:"email_field"%>
+          <% hidden_field_tag "receiver", @contacts.first.email, id:"email_field"%>
           <%= hidden_field_tag "receiver", nil, id:"email_field"%>
           <%= label_tag "subject", "Subject:" %><br>
           <%= text_field_tag "subject", nil, id:"subject_field" %><br>
@@ -116,25 +98,30 @@
 
         <% end %>
     </div>
+    </div>
+
 
 
 <!-- Section 5: All contact information for individual contact (right 25% of page) -->
 
-      <div class="profiles">
-        <div id="add_field_form">
-          <h1>Add Field</h1>
-          <%= form_tag "/", id:"update_contact" do %>
-            <%= hidden_field_tag "contact", nil, id:"contact_id" %>
-            <%# hidden_field_tag "contact", @contacts.first.id, id:"contact_id" %>
-            <%= label_tag "field", "Field:" %><br>
-            <% #<div id="contact_field"><%= select_tag "field", options_for_select(@contacts.first.generate_selectors)</div>%>
-            <div id="contact_field"></div>
-            <%= label_tag "information", "Information:" %><br>
-            <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
-            <%= submit_tag("Update") %>
-          <% end%>
-        </div>
+    <div class="profiles">
+      <div id="contact_details">
+        <% render partial: "/contacts/details", locals:{contact:@contacts.first} %>
+      </div><br>
+
+      <div id="add_field_form">
+        <h1>Add Field</h1>
+        <%= form_tag "/", id:"update_contact" do %>
+          <%= hidden_field_tag "contact", nil, id:"contact_id" %>
+          <%# hidden_field_tag "contact", @contacts.first.id, id:"contact_id" %>
+          <%= label_tag "field", "Field:" %><br>
+          <% #<div id="contact_field"><%= select_tag "field", options_for_select(@contacts.first.generate_selectors)</div>%>
+          <div id="contact_field"></div>
+          <%= label_tag "information", "Information:" %><br>
+          <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
+          <%= submit_tag("Update") %>
+        <% end%>
       </div>
     </div>
-
-    <!-- </div> -->
+</div>
+</div>

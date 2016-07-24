@@ -3,12 +3,19 @@ class Contact < ActiveRecord::Base
   # validates :name, :phone, :email, presence: true
 
   has_many :messages
+  has_many :reminders
   belongs_to :user
 
   #handle search
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
   end
+
+  # gives contacts in that category
+  def self.give_contacts_for(category)
+    where('category LIKE?', category)
+  end
+
   #handle photos
   def self.update
     all_contacts = Contact.all
@@ -112,12 +119,39 @@ class Contact < ActiveRecord::Base
 
   def generate_selectors
     column_names= Contact.column_names
-    free_fields = []
     column_names.each do |column|
       unless (self.public_send(column) || column == 'id' || column == 'created_at' || column == 'updated_at' ||column =="user_id" )
         free_fields << [column,column]
       end
     end
     return free_fields
+  end
+
+  def self.generate_reminder
+    @contacts = Contact.all
+    @contacts.each do |contact|
+      if contact.messages != []
+        time_difference = (DateTime.now.strftime('%s').to_i) - (contact.messages.first.time_stamp)
+        message_type = check_message_overdue(time_difference/86400)
+        if contact.reminders == []
+          Reminder.create(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:contact.user_id)
+        else
+          Reminder.update(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:contact.user_id)
+        end
+      else
+      end
+
+      # convert milliseconds to day and store in reminder database along with message, message type, contact id
+      # message_type =
+      # Reminder.create(contact_id:contact.id, type:message_type message:message.body_plain_text, time_since_last_contact:time_difference)
+    end
+  end
+
+  def self.check_message_overdue(days)
+    if days < 30
+      return 'upcoming'
+    else
+      return 'overdue'
+    end
   end
 end

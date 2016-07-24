@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
       format.html {}
       format.json {render json: @contacts}
     end
+
   end
 
   def show
