@@ -1,0 +1,10 @@
+$(function() {
+  var name = "<%= j(@contact.name)%>"
+  var phone = "<%= j(@contact.phone)%>"
+  var email = "<%= j(@contact.email)%>"
+  // do var twitter after
+  $("input[name='contact[name]']").val(name)
+  $("input[name='contact[phone]']").val(phone)
+  $("input[name='contact[email]']").val(email)
+    // do input twitter after 
+})

@@ -74,10 +74,10 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
-
     respond_to  do |format|
       format.html {}
       format.json {render json: @contact}
+      format.js {}  # to show the contacts info in form on all contacts page 
     end
 
   end
@@ -94,14 +94,20 @@ class ContactsController < ApplicationController
 
   def update
     if request.xhr?
+
       @contact = Contact.find(params[:id])
       @attribute = params[:attribute]
       @contact.update(@attribute.to_sym =>params[:new])
       render :nothing => true, :status => 200, :content_type => 'text/html'
     else
+
       @contact = Contact.find(params[:id])
+
       if @contact.update_attributes(contact_params)
-        redirect_to contact_url(@contact)
+        respond_to do |format|
+          format.html {redirect_to contact_url(@contact)}
+          format.js {}
+        end
       else
         render :edit
       end
