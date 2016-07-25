@@ -12,39 +12,37 @@
 <!-- Section 2: The following is the photo background w text & sign up button -->
 
   <div class="photo-background">
-    <%= image_tag "SFbridge.jpg" %>
 
+    <div class="welcome-text">
+      <p>Keep in touch no matter</p>
+      <p>where life takes you!</p>
+    </div>
 
-  <div id="welcome-text">
-    <p>Keep in touch no matter</p>
-    <p>where life takes you!</p>
-  </div>
-
-  <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
+    <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
   </div>
 <!-- Section 3: The following are the 3 main selling points of the app -->
 
-  <div id="sellingPoints">
+  <ul id="sellingPoints">
 
-    <div id="sellingPoint1">
-      <%= image_tag "calendar(3).png", id:"icon" %>
-        <h3 id="sellingPointHeader">Selling Point 1</h3>
+    <li id="sellingPoint1" class="selling-points">
+      <%= image_tag "calendar(3).png", class:"icon" %>
+        <h3>Selling Point 1</h3>
         <p>Explanation blah blah blah blah blah blah</p>
-    </div>
+    </li>
 
-    <div id="sellingPoint2">
-      <%= image_tag "contacts.png", id:"icon" %>
-        <h3 id="sellingPointHeader">Selling Point 2</h3>
+    <li id="sellingPoint2" class="selling-points">
+      <%= image_tag "contacts.png", class:"icon" %>
+        <h3>Selling Point 2</h3>
           <p>Explanation blah blah blah blah blah blah</p>
-    </div>
+    </li>
 
-    <div id="sellingPoint3">
-      <%= image_tag "bell(1).png", id:"icon" %>
-        <h3 id="sellingPointHeader">Selling Point 3</h3>
+    <li id="sellingPoint3" class="selling-points">
+      <%= image_tag "bell(1).png", class:"icon" %>
+        <h3>Selling Point 3</h3>
         <p>Explanation blah blah blah blah blah blah</p>
-    </div>
+    </li>
 
-  </div>
+  </ul>
 
 
 <!-- Section 4: Step by step explanation of the app; everything falls under the 'stepbystep'div -->
