@@ -1,4 +1,9 @@
 class RemindersController < ApplicationController
+
+  def index
+    @reminders = Reminder.where(user_id:current_user.id).order(time_since_last_contact: :desc)
+  end
+
   def show
     @reminder = Reminder.find(params[:id])
   end

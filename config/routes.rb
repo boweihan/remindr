@@ -13,11 +13,12 @@ Rails.application.routes.draw do
   patch '/contacts/:id/update_contact_patch' => 'contacts#update_contact_patch'
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
+  get '/reminders' => 'reminders#index'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
     resources :messages, only: [:index]
-    resources :reminders, only: [:show, :create, :new, :update, :destroy]
+    resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

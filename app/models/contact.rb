@@ -185,10 +185,7 @@ class Contact < ActiveRecord::Base
   # end
 
   def self.call_easytone(text)
-    username = ENV["CLIENT_TONE"]
-    password = ENV["CLIENT_TONE_SECRET"]
-    response = Easytone::ToneGen.tone(username, password, text)
-    binding.pry
+    response = Easytone::ToneGen.tone(ENV["CLIENT_TONE"], ENV["CLIENT_TONE_SECRET"], text)
   end
 
 

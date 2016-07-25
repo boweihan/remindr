@@ -1,0 +1,9 @@
+<h1> REMINDER INDEX PAGE </h1>
+<h3>Get Notifications by: Text Message | Email | Twitter</h3>
+<ul>
+  <% @reminders.each do |reminder| %>
+    <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
+    <li>It's been <%= reminder.time_since_last_contact %> since your last contact</li>
+    <li>Your reminder is <strong><%= reminder.reminder_type %></strong></li><br />
+  <% end %>
+</ul>
