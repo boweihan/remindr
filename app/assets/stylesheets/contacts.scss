@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(30,30,30,0.7);
+    z-index: 2;
 }
 
   // add contact form
@@ -251,9 +252,6 @@
 }
 
 
-
-
-
 // contacts all page starts here
 
   // basic layout styling
@@ -360,6 +358,10 @@
   margin-top: 8px;
 }
 
+.contact-page-contact-information > li {
+  list-style: none;
+}
+
 // indivudal contact
 
 .individual-photo {
@@ -375,12 +377,6 @@
   height: 500px;
   width: 100%;
   padding: 48px;
-}
-
-.edit-contact-form {
-  margin: 0 auto;
-  margin-top: 36px;
-
 }
 
 
