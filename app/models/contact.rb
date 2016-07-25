@@ -132,30 +132,22 @@ class Contact < ActiveRecord::Base
   def self.generate_reminder
     @contacts = Contact.all
     @contacts.each do |contact|
-      if contact.messages != []
-        time_difference = (DateTime.now.strftime('%s').to_i) - (contact.messages.first.time_stamp)
-        message_type = check_message_overdue(time_difference/86400)
-        if contact.reminders == []
-          Reminder.create(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:contact.user_id)
-        else
-          Reminder.update(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:contact.user_id)
-        end
+      contact.make_reminder
+    end
+  end
+
+  def make_reminder
+    if self.messages != []
+      time_difference = (DateTime.now.strftime('%s').to_i) - (self.messages.first.time_stamp)
+      message_type = ( ((time_difference/86400) < 30) ? 'upcoming' : 'overdue')
+      if self.reminders == []
+        Reminder.create(contact_id:self.id, reminder_type:message_type, message:self.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:self.user_id)
       else
+        self.reminders.first.update(contact_id:self.id, reminder_type:message_type, message:self.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:self.user_id)
       end
-
-      # convert milliseconds to day and store in reminder database along with message, message type, contact id
-      # message_type =
-      # Reminder.create(contact_id:contact.id, type:message_type message:message.body_plain_text, time_since_last_contact:time_difference)
     end
   end
 
-  def self.check_message_overdue(days)
-    if days < 30
-      return 'upcoming'
-    else
-      return 'overdue'
-    end
-  end
 
   def self.check_sentiment
     @messages = Message.all
