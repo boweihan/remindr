@@ -36,29 +36,26 @@
 
       <div class="search-contacts-bar">
           <%= form_tag contacts_path,id:"search_contact" do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
+          <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class: 'search-bar-field'%>
         <% end %>
-    </div>
+      </div>
 
 <!-- 'List of Contacts/Messages' div -->
-
-        <div class="contacts-messages"></div>
-  </div>
-
-  <div class="contact-name-heading">
-    <h3 id="main-name"></h3>
-  </div>
+      <div class="contacts-messages">
+      </div>
+</div>
 <!-- The last </div> directly above corresponds to the 'contacts container' div at the start of Section 3 -->
 
 
-<!-- 'Container' contains everything to the right of the 'List of All Contacts' div  -->
-<!-- 'Container' takes up the right 75% of the page -->
-
-
-
+<!-- 'contact-info-updating-container' contains everything to the right of the 'List of All Contacts' div  -->
+<!-- 'contact-info-updating-container' contains the right 75% of the page -->
 
 <!-- Section 4: All messages received from individual contact (middle 50% of page) -->
   <div class="contact-info-updating-container">
+    <div class="contact-name-heading">
+      <h3 id="main-name"></h3>
+    </div>
+
     <div class="messages">
       <div id="message-content">
       <% #Messages of contact you click on %>
@@ -75,7 +72,7 @@
 
           <%= submit_tag("Send!") %>
 
-      <% end %>
+        <% end %>
       </div>
     </div>
 
@@ -84,17 +81,15 @@
 
     <div class="profiles">
       <div id="contact_details">
-      </div><br>
-
+      </div>
       <div id="add_field_form">
-        <h1>Add Field</h1>
         <%= form_tag "/", id:"update_contact" do %>
           <%= hidden_field_tag "contact", nil, id:"contact_id" %>
-          <%= label_tag "field", "Field:" %><br>
+          <%= label_tag "field", "Add Field:" %><br>
           <div id="contact_field"></div>
           <%= label_tag "information", "Information:" %><br>
           <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
-          <%= submit_tag("Update") %>
+          <%= submit_tag "Update", id:"update_contact_button" %>
         <% end%>
       </div>
     </div>
