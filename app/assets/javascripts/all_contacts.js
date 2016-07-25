@@ -1,6 +1,6 @@
 $(function() {
 
-// on page load - contacts div will populate with all contacts info 
+// on page load - contacts div will populate with all contacts info
   $.ajax({
     url: '/contacts/all',
     method: "get",
@@ -35,4 +35,5 @@ $(function() {
         console.log('Request failed')
       });
   });
+
 });
