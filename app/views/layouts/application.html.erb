@@ -17,7 +17,7 @@
       <%= link_to "Log In", new_session_path, class:"loginButton" %>  <%= link_to "Sign Up", new_user_path, class:"signup" %>
     <% end %>
     <% if current_user %>
-      <%= link_to (image_tag "notification.png"), root_path, class: "nav-icon" %>
+      <%= link_to (image_tag "notification.png"), reminders_path, class: "nav-icon" %>
       <%= link_to (image_tag "user.png"), user_path(current_user), class: "nav-icon" %>
       <%= link_to (image_tag "allcontacts.png"), contacts_path, class: "nav-icon" %>
       <%= link_to (image_tag "menu.png"), newsfeed_path, class: "nav-icon" %>
