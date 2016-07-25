@@ -32,4 +32,5 @@ class Message < ActiveRecord::Base
     message = self.body_plain_text
     return message.slice(0,250)+"...."
   end
+
 end

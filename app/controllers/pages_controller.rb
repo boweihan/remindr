@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   before_action :load_client
 
+  def analytics
+    @messages = Message.all
+  end
+
   def login_page
   end
 
