@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'figaro'
-gem 'devise'
+gem 'easytone', '0.1.5'
 #taskrunner
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -34,8 +34,6 @@ gem "jquery-rails"
 gem 'bourbon', '5.0.0.beta.6'
 
 gem 'neat'
-
-
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_id: 
+  type: 
+  message: MyText
+  time_since_last_contact: 2016-07-22 16:13:40
+
+two:
+  contact_id: 
+  type: 
+  message: MyText
+  time_since_last_contact: 2016-07-22 16:13:40

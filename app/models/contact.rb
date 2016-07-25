@@ -1,14 +1,21 @@
 class Contact < ActiveRecord::Base
 
-  validates :name, :phone, :email, presence: true
+  # validates :name, :phone, :email, presence: true
 
   has_many :messages
+  has_many :reminders
   belongs_to :user
 
   #handle search
   def self.search(search)
     where("name LIKE ?", "%#{search}%")
   end
+
+  # gives contacts in that category
+  def self.give_contacts_for(category)
+    where('category LIKE?', category)
+  end
+
   #handle photos
   def self.update
     all_contacts = Contact.all
@@ -44,7 +51,6 @@ class Contact < ActiveRecord::Base
   end
 
   def search_email(user_google_id, token)
-    #change to to
     q= "from:#{self.email}"
     query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
@@ -94,7 +100,6 @@ class Contact < ActiveRecord::Base
       Message.create(time_stamp:Time.now.to_i - 100000, contact_id: self.id, user_id: self.user.id)
       return false
     end
-    # binding.pry
     days_since = ((message.time_stamp - Time.now.to_i)/86400.0).floor
     if days_since == 30
       return true
@@ -114,7 +119,6 @@ class Contact < ActiveRecord::Base
 
   def generate_selectors
     column_names= Contact.column_names
-    free_fields = []
     column_names.each do |column|
       unless (self.public_send(column) || column == 'id' || column == 'created_at' || column == 'updated_at' ||column =="user_id" )
         free_fields << [column,column]
@@ -122,4 +126,69 @@ class Contact < ActiveRecord::Base
     end
     return free_fields
   end
+
+  def self.generate_reminder
+    @contacts = Contact.all
+    @contacts.each do |contact|
+      if contact.messages != []
+        time_difference = (DateTime.now.strftime('%s').to_i) - (contact.messages.first.time_stamp)
+        message_type = check_message_overdue(time_difference/86400)
+        if contact.reminders == []
+          Reminder.create(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:contact.user_id)
+        else
+          Reminder.update(contact_id:contact.id, reminder_type:message_type, message:contact.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:contact.user_id)
+        end
+      else
+      end
+
+      # convert milliseconds to day and store in reminder database along with message, message type, contact id
+      # message_type =
+      # Reminder.create(contact_id:contact.id, type:message_type message:message.body_plain_text, time_since_last_contact:time_difference)
+    end
+  end
+
+  def self.check_message_overdue(days)
+    if days < 30
+      return 'upcoming'
+    else
+      return 'overdue'
+    end
+  end
+
+  def self.check_sentiment
+    @messages = Message.all
+    alchemyapi = AlchemyAPI.new()
+    sentiment_average = []
+    @messages.each do |message|
+
+      if message.body_plain_text != nil
+        myText = message.body_plain_text
+        response = alchemyapi.sentiment("text", myText)
+        puts "Sentiment: " + response["docSentiment"]["type"]
+
+        if response['docSentiment']['score'] != nil && response["docSentiment"]["type"] != 'neutral'
+          puts "Score: " + response['docSentiment']['score']
+          sentiment_average << response['docSentiment']['score']
+        end
+      end
+    end
+  end
+
+  # def self.check_tone(text)
+  #   username_tone = ENV["CLIENT_TONE"]
+  #   password_tone = ENV["CLIENT_TONE_SECRET"]
+  #   tone_url = "https://#{username_tone}:#{password_tone}@gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&text=#{text}"
+  #   response = JSON.parse(RestClient.get(tone_url))
+  #   puts response["document_tone"]["tone_categories"][0]["tones"]
+  #   binding.pry
+  # end
+
+  def self.call_easytone(text)
+    username = ENV["CLIENT_TONE"]
+    password = ENV["CLIENT_TONE_SECRET"]
+    response = Easytone::ToneGen.tone(username, password, text)
+    binding.pry
+  end
+
+
 end

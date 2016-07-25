@@ -11,7 +11,6 @@ class Message < ActiveRecord::Base
       subject subj
       body bod
     end
-    binding.pry
     # enc = Base64.encode64(user_input)
     # enc = enc.gsub("+", "-").gsub("/","_")
 
@@ -27,7 +26,7 @@ class Message < ActiveRecord::Base
       refresh_token(current_user)
       current_user.issued_at = DateTime.now
     end
-    
+
     service.request_options.authorization = current_user.access_token
     service.send_user_message(current_user.google_id, message_object = message)
   end
