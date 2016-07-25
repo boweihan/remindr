@@ -5,7 +5,7 @@ $(function(){
   $("input[name='receiver']").val(email)
   $("#contact_name").text(name)
   var messages= "<%= j(render partial: "messages", locals: {contact: @contact})%>"
-  $("#messages").html(messages)
+  $("#message-content").html(messages)
   var info = "<%= j(render partial: "details", locals: {contact: @contact})%>"
   $("#contact_details").html(info)
   $("#contact_id").val(id)

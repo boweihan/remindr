@@ -118,6 +118,7 @@ class Contact < ActiveRecord::Base
   end
 
   def generate_selectors
+    free_fields = []
     column_names= Contact.column_names
     column_names.each do |column|
       unless (self.public_send(column) || column == 'id' || column == 'created_at' || column == 'updated_at' ||column =="user_id" )
