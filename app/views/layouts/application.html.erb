@@ -16,13 +16,33 @@
       <%= link_to "Log In", new_session_path, class:"loginButton" %>  <%= link_to "Sign Up", new_user_path, class:"signup" %>
     <% end %>
     <% if current_user %>
-      <%= link_to (image_tag "menu.png"), dashboard_path, class: "nav-icon" %>
+      <%= link_to (image_tag "menu.png"), newsfeed_path, class: "nav-icon" %>
       <%= image_tag "settings.png", id: "nav-icon" %>
       <!-- <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %> -->
     <% end %>
 </div>
 
 <body>
+  <% if current_user %>
+  <% @user = current_user %>
+  <div class="modal2">
+    <div class="updateInfo">
+      <%= form_for @user do |f| %>
+        <button type="button" class="close">x</button>
+        <div class="edit-user-div">
+          <h3 class="edit-user-heading">Edit Personal Information</h3>
+        </div>
+        Name:  <%= f.text_field :name, class: 'field'%><br>
+        Phone: <%= f.text_field :phone,  class: 'field' %><br>
+        Email: <%= f.email_field :email, class: 'field' %><br>
+        Twitter: <%= f.text_field :email, class: 'field' %><br>
+        <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
+        <%= f.submit "Update Account", class: 'submit'%>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
 
   <!-- <% flash.each do |key, value | %>
     <div id='flash_message'>;<%= value %></div>

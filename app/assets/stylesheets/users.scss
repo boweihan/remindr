@@ -20,13 +20,12 @@
 }
 
 // edit user information form
-.edit_user {
+.updateInfo {
     display: block;
     width: 400px;
     height: 400px;
     padding: 2.5em;
-    background-color: pink;
-    // background-color: rgba(256, 256, 256, 0.87);
+    background-color: rgba(256, 256, 256, 0.87);
     position: absolute;
     margin: auto;
     top: 0;
