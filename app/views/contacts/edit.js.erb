@@ -15,7 +15,7 @@ $(function() {
   //
 
 
-  $("form").attr("action","/contacts/" + id);
+  $("form").attr("action","/contacts/" + id + "/update_contact_patch");
   $("input").first().attr('type', 'hidden');
   $("input").first().attr('name', '_method');
   $("input").first().attr('value', 'patch');

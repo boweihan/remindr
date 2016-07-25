@@ -93,21 +93,31 @@ class ContactsController < ApplicationController
   end
 
   def update
-    # if request.xhr?
-    #   # @contact = Contact.find(params[:id])
-    #   # @attribute = params[:attribute]
-    #   # @contact.update(@attribute.to_sym =>params[:new])
-    #   # render :nothing => true, :status => 200, :content_type => 'text/html'
-    # else
-    #   @contact = Contact.find(params[:id])
-    #
-    #   if @contact.update_attributes(contact_params)
-    #     redirect_to contact_url(@contact)
-    #   else
-    #     render :edit
-    #   end
-    # end
+    if request.xhr?
+      @contact = Contact.find(params[:id])
+      @attribute = params[:attribute]
+      @contact.update(@attribute.to_sym =>params[:new])
+      render :nothing => true, :status => 200, :content_type => 'text/html'
+    else
+      @contact = Contact.find(params[:id])
 
+      if @contact.update_attributes(contact_params)
+        redirect_to contact_url(@contact)
+      else
+        render :edit
+      end
+    end
+
+
+  end
+
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+    redirect_to contacts_url
+  end
+
+  def update_contact_patch
     @contact = Contact.find(params[:id])
   respond_to do |format|
       if @contact.update_attributes(contact_params)
@@ -118,12 +128,6 @@ class ContactsController < ApplicationController
       end
     end
 
-  end
-
-  def destroy
-    @contact = Contact.find(params[:id])
-    @contact.destroy
-    redirect_to contacts_url
   end
 
   private

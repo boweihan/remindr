@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'pages#dashboard'
   get '/contacts/family' => 'contacts#family'
   get '/contacts/all' => 'contacts#all'
+  patch '/contacts/:id/update_contact_patch' => 'contacts#update_contact_patch'
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
