@@ -224,14 +224,56 @@
   color: gray;
 }
 
+
+// Section 4: All messages received from individual contact (middle 50% of page)
+
+.contact-info-updating-container {
+  width: 75%;
+  height: 700px;
+  float: left;
+  overflow: hidden;
+}
+
 .messages {
   float: left;
   width: 66.666%;
   height: 600px;
-  background-color: #bcbcbc;
+  // background-color: #bcbcbc;
   border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 3px solid gray;
   overflow: hidden;
 }
+
+#message-content {
+  width: 100%;
+  margin: auto;
+  height: 200px;
+  background-color: #fff;
+  border: 2px solid rgba(0,0,0,0.2)
+}
+
+.send-message-div {
+  width: 100%;
+  height: 400px;
+  margin: auto;
+  padding: 8px;
+  background-color: white;
+  border: 3px solid gray;
+  bottom: 0;
+  position: relative;
+}
+
+#subject_field {
+  width: 100%;
+  height: 24px;
+
+}
+
+#body_field {
+  width: 100%;
+  height: 200px;
+}
+
 .contact-name-heading {
   height: 56px;
   width: 100%;
@@ -243,6 +285,16 @@
   line-height: 56px;
   text-align: center;
 }
+
+// restyling for the newsfeed page
+
+
+
+
+
+
+// Section 5: Right 25% of page
+
 .profiles {
   float: left;
   width: 33.333%;
@@ -250,6 +302,9 @@
   background-color: #eee;
   padding: 8px;
 }
+
+
+
 
 
 // contacts all page starts here
@@ -389,43 +444,4 @@
 
 .edit-contact-label {
   margin: 20px 8px;
-}
-
-
-// restyling for the newsfeed page
-
-#message-content {
-  width: 100%;
-  margin: auto;
-  height: 100px;
-  background-color: #fff;
-  border: 2px solid rgba(0,0,0,0.2)
-}
-
-.contact-info-updating-container {
-  width: 75%;
-  height: 700px;
-  float: left;
-  overflow: hidden;
-}
-
-.send-message-div {
-  width: 50%;
-  margin: auto;
-  padding: 8px;
-  background-color: white;
-  border: 1px solid gray;
-  bottom: 0;
-  position: absolute;
-}
-
-#subject_field {
-  width: 100%;
-  height: 24px;
-
-}
-
-#body_field {
-  width: 100%;
-  height: 200px;
 }
