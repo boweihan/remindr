@@ -12,6 +12,7 @@
 .modal2 {
   display: none;
   position: fixed;
+  z-index: 20;
   top: 0;
   left: 0;
   width: 100%;
@@ -38,19 +39,52 @@
 // edit user text
 .edit-user-heading {
   color: grey;
-  margin-left: 25%;
+  margin: 0 2.7em;
   margin-bottom: 0.8em;
   display: inline-block;
 }
 // edit user form fields
 .field {
-    display: block;
+    display: inline-block;
     border: none;
     outline: none;
     padding: 0.5em;
-    width: 100%;
+    width: 81.7%;
+    margin: 1.5em 0;
+    margin-left: .5em;
+    color: #555 ;
+}
+
+.lastPhoneField {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 42%;
     margin: 0.8em 0;
     color: #555 ;
+}
+
+.twitterfield {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  width: 80.9%;
+  margin: 1.5em 0;
+  margin-left: .1em;
+  color: #555 ;
+}
+
+.efield {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  width: 81%;
+  margin: 1.5em 0;
+  margin-left: 1em;
+  color: #555;
 }
 
 // close button of modal
@@ -77,8 +111,10 @@
   border: none;
   outline: none;
   width: 100%;
-  padding: 0.5em;
   background-color: gray;
-  color: #fcf6ce;
+  color: white;
+  // color: #fcf6ce;
   padding: 16px;
+  margin: auto;
+  margin-top: 2rem;
 }

@@ -113,9 +113,11 @@ a.signup {
   font-size: 55px;
   font-weight: lighter;
   color: $color;
-
 }
 
+.welcome-text {
+  position: relative;
+}
 .signupButton {
   background-color: $color;
   border: 1px solid $color;
