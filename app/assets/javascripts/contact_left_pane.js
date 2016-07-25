@@ -5,8 +5,9 @@ $(function() {
     datatype: "json"
   }).done(function(response){
     all_contacts = response
-    $($(".contact-message")[0]).click()
-    response.forEach(load_contacts)
+    response.forEach(load_contacts);
+    $(".contact-message")[0].click()
+
   })
 
   $('.close').on('click', function() {
