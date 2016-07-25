@@ -22,10 +22,12 @@ $(function() {
     $('.modal').css('display', 'none')
   });
 
-  $('.field').on('click', function(e) {
+  $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field').on('click', function(e) {
     e.stopPropagation();
     $(this).css('border', '1px solid green')
   });
+
+
 
   $("#search_contact").on("submit",function(event){
     event.preventDefault()
