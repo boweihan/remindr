@@ -288,22 +288,45 @@
   text-align: center;
 }
 
-// restyling for the newsfeed page
-
-
-
-
-
 
 // Section 5: Right 25% of page
 
 .profiles {
   float: left;
+  border-right: 2px solid rgba(0,0,0,0.2);
   width: 33.333%;
   height: 700px;
   background-color: #eee;
-  padding: 8px;
 }
+
+#contact_details {
+  border: 2px solid rgba(0,0,0,0.2);
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+
+#add_field_form {
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+#update_contact {
+  margin-left: 4em;
+  margin-right: 4em;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+#update_contact_button {
+  margin: 2em;
+  margin-left: 1.5em;
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: $color;
+  color: white;
+}
+
 
 
 

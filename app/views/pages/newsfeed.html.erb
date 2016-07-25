@@ -81,17 +81,15 @@
 
     <div class="profiles">
       <div id="contact_details">
-      </div><br>
-
+      </div>
       <div id="add_field_form">
-        <h1>Add Field</h1>
         <%= form_tag "/", id:"update_contact" do %>
           <%= hidden_field_tag "contact", nil, id:"contact_id" %>
-          <%= label_tag "field", "Field:" %><br>
+          <%= label_tag "field", "Add Field:" %><br>
           <div id="contact_field"></div>
           <%= label_tag "information", "Information:" %><br>
           <%= text_field_tag "information:",nil, id:"contact_new_info" %><br>
-          <%= submit_tag("Update") %>
+          <%= submit_tag "Update", id:"update_contact_button" %>
         <% end%>
       </div>
     </div>
