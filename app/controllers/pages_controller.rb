@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   before_action :load_client
 
+  def login_page
+  end
+
   def dashboard
   end
   def load_client
@@ -39,7 +42,7 @@ class PagesController < ApplicationController
         contact.get_most_recent_message
       end
     end
-    redirect_to '/newsfeed'
+    redirect_to '/login_page'
   end
 
   def newsfeed
