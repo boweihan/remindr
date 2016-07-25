@@ -43,22 +43,8 @@ class PagesController < ApplicationController
   end
 
   def newsfeed
-    #write the loop to grab all the messages of all the contacts with current user
-
-    # puts current_user.id
-    # puts Contact.all
-    # puts Message.all
-    #
-    # @messages = Array.new
-    # @contacts = Array.new
-    # current_user.messages.each do |message|
-    #   @contacts << Contact.find(message.contact_id)
-    #   @messages << message
     @contact = Contact.new
     @contacts = current_user.contacts
-    # create new contact on page to be able to add contact on newsfeed for modal
-
-
   end
 
 
