@@ -36,13 +36,13 @@
 
       <div class="search-contacts-bar">
           <%= form_tag contacts_path,id:"search_contact" do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search for your contacts", class: 'search-bar-field'%>
+          <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class: 'search-bar-field'%>
         <% end %>
-    </div>
+      </div>
 
 <!-- 'List of Contacts/Messages' div -->
-        <div class="contacts-messages">
-        </div>
+      <div class="contacts-messages">
+      </div>
 </div>
 <!-- The last </div> directly above corresponds to the 'contacts container' div at the start of Section 3 -->
 
@@ -72,7 +72,7 @@
 
           <%= submit_tag("Send!") %>
 
-      <% end %>
+        <% end %>
       </div>
     </div>
 
