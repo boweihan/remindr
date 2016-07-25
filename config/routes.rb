@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'pages#landing'
+  get '/login_page' => 'pages#login_page'
   get '/googleauth' => 'pages#googleauth'
   get '/callback'=> 'pages#callback'
   get '/send' => 'messages#send_mail'
@@ -13,11 +14,12 @@ Rails.application.routes.draw do
   patch '/contacts/:id/update_contact_patch' => 'contacts#update_contact_patch'
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
+  get '/reminders' => 'reminders#index'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
     resources :messages, only: [:index]
-    resources :reminders, only: [:show, :create, :new, :update, :destroy]
+    resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   before_action :load_client
 
+  def login_page
+  end
+
   def dashboard
   end
   def load_client
@@ -34,31 +37,14 @@ class PagesController < ApplicationController
       current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
       #find google email adress of user
       current_user.get_email(current_user.access_token)
-      #hack
-      current_user.contacts.each do |contact|
-        contact.get_most_recent_message
-      end
+      UserLoadFeedJob.perform_later(current_user)
     end
-    redirect_to '/newsfeed'
+    redirect_to '/login_page'
   end
 
   def newsfeed
-    #write the loop to grab all the messages of all the contacts with current user
-
-    # puts current_user.id
-    # puts Contact.all
-    # puts Message.all
-    #
-    # @messages = Array.new
-    # @contacts = Array.new
-    # current_user.messages.each do |message|
-    #   @contacts << Contact.find(message.contact_id)
-    #   @messages << message
     @contact = Contact.new
     @contacts = current_user.contacts
-    # create new contact on page to be able to add contact on newsfeed for modal
-
-
   end
 
 

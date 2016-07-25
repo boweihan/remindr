@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.10'
 gem 'bourbon', '5.0.0.beta.6'
 
 gem 'neat'
+gem 'delayed_job_active_record'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
