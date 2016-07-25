@@ -42,12 +42,12 @@
 
 <!-- 'List of Contacts/Messages' div -->
 
-        <div class="contacts-messages">
-        </div>
-      </div>
-      <div class="contact-name-heading">
-        <h3 id="main-name"></h3>
-      </div>
+        <div class="contacts-messages"></div>
+  </div>
+
+  <div class="contact-name-heading">
+    <h3 id="main-name"></h3>
+  </div>
 <!-- The last </div> directly above corresponds to the 'contacts container' div at the start of Section 3 -->
 
 
@@ -58,12 +58,13 @@
 
 
 <!-- Section 4: All messages received from individual contact (middle 50% of page) -->
-<div class="contact-info-updating-container">
+  <div class="contact-info-updating-container">
     <div class="messages">
-        <div id="message-content">
-        </div>
+      <div id="message-content">
+      <% #Messages of contact you click on %>
+      </div>
 
-    <div class="send-message-div">
+      <div class="send-message-div">
         <%= form_tag "/", id:"send_email" do %>
           <%= hidden_field_tag "receiver", nil, id:"email_field"%>
           <%= label_tag "subject", "Subject:" %><br>
@@ -74,10 +75,9 @@
 
           <%= submit_tag("Send!") %>
 
-        <% end %>
+      <% end %>
+      </div>
     </div>
-    </div>
-
 
 
 <!-- Section 5: All contact information for individual contact (right 25% of page) -->
@@ -98,5 +98,5 @@
         <% end%>
       </div>
     </div>
-</div>
+  </div>
 </div>
