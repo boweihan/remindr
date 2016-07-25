@@ -1,0 +1,17 @@
+<h1>Message Analytics</h1>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li>Message From: <%= current_user.contacts.where(id:message.contact_id).first["name"] %></li>
+    <li>Message Sent At: <%= DateTime.strptime(message.time_stamp.to_s, '%s') %></li>
+    <li>Message Snippet: <%= message.summary.gsub(/[^0-9a-z ]/i, '') %></li>
+    
+    <% if message.body_plain_text.gsub(/[^0-9a-z ]/i, '') != nil %>
+      <li>Your message breakdown is <%= Contact.easytoner(message.body_plain_text.gsub(/[^0-9a-z]/i, '')) %></li>
+    <% else %>
+      <li>Your message was not sent in a proper ASCII form</li>
+    <% end %>
+
+    <li>Your message has the following Sentiment: <strong><%= Contact.check_sentiment(message.body_plain_text)%></strong><br /><br />
+  <% end %>
+</ul>

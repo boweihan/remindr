@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
   get '/reminders' => 'reminders#index'
+  get '/analytics' => 'pages#analytics'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
