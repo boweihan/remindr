@@ -54,15 +54,58 @@
 }
 // add contact form fields
 .field {
-    display: block;
+    display: inline-block;
     border: none;
     outline: none;
     padding: 0.5em;
-    width: 100%;
+    width: 81.7%;
+    margin: 1.5em 0;
+    margin-left: .5em;
+    color: #555 ;
+}
+
+.phoneField {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 15%;
+    margin: 1.5em 0;
+    margin-left: .4em;
+    color: #555 ;
+}
+
+.phoneField2 {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 15%;
+    margin: 1.5em 0;
+    // margin-left: .5em;
+    color: #555 ;
+}
+
+.phoneField3 {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 41.5%;
     margin: 0.8em 0;
     color: #555 ;
 }
 
+.eField {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 0.5em;
+    width: 81%;
+    margin: 1.5em 0;
+    margin-left: 1em;
+    color: #555 ;
+}
 // close button of modal
 .close {
     background-color: #e8e8e8;
@@ -86,10 +129,13 @@
   display: block;
   border: none;
   outline: none;
-  width: 100%;
+  width: 55%;
+  margin-left: 25%;
+  margin-top: 2em;
   padding: 0.5em;
   background-color: gray;
-  color: #fcf6ce;
+  color: white;
+  // color: #fcf6ce;
   padding: 16px;
 }
 

@@ -8,9 +8,9 @@
   font-family: 'Raleway', sans-serif;
 }
 
-//add contact modal (dark overlay on top)
-.modal {
-  // display: none;
+//edit user information modal (dark overlay on top)
+.modal2 {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,13 +19,14 @@
   background-color: rgba(30,30,30,0.7);
 }
 
-// add contact form
-.add-contact{
+// edit user information form
+.edit_user {
     display: block;
     width: 400px;
     height: 400px;
     padding: 2.5em;
-    background-color: rgba(256, 256, 256, 0.87);
+    background-color: pink;
+    // background-color: rgba(256, 256, 256, 0.87);
     position: absolute;
     margin: auto;
     top: 0;
@@ -35,14 +36,14 @@
     border-radius: 1%;
 }
 
-// add-contact text
-.add-new-contact-heading {
+// edit user text
+.edit-user-heading {
   color: grey;
   margin-left: 25%;
   margin-bottom: 0.8em;
   display: inline-block;
 }
-// add contact form fields
+// edit user form fields
 .field {
     display: block;
     border: none;
@@ -70,7 +71,7 @@
     right: 0.25em;
 }
 
-// create contact button modal
+// submit updates button modal
 .submit {
   font-size: 14px;
   display: block;

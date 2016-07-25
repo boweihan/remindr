@@ -1,9 +1,9 @@
-<div class="modal">
-  <div class="add-contact">
+<div class="modal2">
+  <div class="updateInfo">
     <%= form_for @user do |f| %>
       <button type="button" class="close">x</button>
-      <div class="add-new-contact-div">
-        <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      <div class="edit-user-div">
+        <h3 class="edit-user-heading">Edit Personal Information</h3>
       </div>
       Name:  <%= f.text_field :name, class: 'field'%><br>
       Phone: <%= f.text_field :phone,  class: 'field' %><br>
@@ -14,5 +14,3 @@
     <% end %>
   </div>
 </div>
-
-<%= image_tag "alarm-clock.png" %>

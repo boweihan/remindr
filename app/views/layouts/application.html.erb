@@ -8,19 +8,25 @@
 </head>
 
 <div class="nav-bar">
-  <h1 class="logo">Remindr</h1>
-  <% if current_user %>
-    <br>You are currently signed in as <%= current_user.name %> <%= link_to 'View Profile', user_path(current_user), class:"nav-button" %> | <%= link_to "Logout", session_path("this session"), class:"nav-button", :method => :delete %>
-  <% else %>
-    <br><%= link_to "Log In", new_session_path, class:"nav-button" %>  <%= link_to "Sign Up", new_user_path, class:"nav-button" %>
-  <% end %>
+  <%= link_to "Remindr", root_path, class:"logo" %>
+    <% if current_user %>
+      <!-- <br>Signed in as <%= current_user.name.capitalize %>   -->
+      <br><%= link_to "Log Out", session_path("this session"), class:"logoutButton", :method => :delete %>  <%= link_to (image_tag "user.png"), user_path(current_user), class:"nav-icon" %>
+    <% else %>
+      <%= link_to "Log In", new_session_path, class:"loginButton" %>  <%= link_to "Sign Up", new_user_path, class:"signup" %>
+    <% end %>
+    <% if current_user %>
+      <%= link_to (image_tag "menu.png"), dashboard_path, class: "nav-icon" %>
+      <%= image_tag "settings.png", id: "nav-icon" %>
+      <!-- <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %> -->
+    <% end %>
 </div>
 
 <body>
 
-  <% flash.each do |key, value | %>
+  <!-- <% flash.each do |key, value | %>
     <div id='flash_message'>;<%= value %></div>
-  <% end %>
+  <% end %> -->
 <!-- <h1><%= yield :header %></h1> -->
 <%= yield %>
 

@@ -10,9 +10,9 @@
         <h3 class="add-new-contact-heading">Add a New Contact</h3>
       </div>
       Name:  <%= f.text_field :name, class: 'field'%><br>
-      Phone: <%= f.text_field :phone,  class: 'field' %><br>
-      Email: <%= f.email_field :email, class: 'field' %><br>
-      <%= f.submit "Add Contacts", class: 'submit'%>
+      Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
+      Email: <%= f.email_field :email, class: 'eField' %>
+      <%= f.submit "Add Contact", class: 'submit'%>
     <% end %>
   </div>
 </div>
