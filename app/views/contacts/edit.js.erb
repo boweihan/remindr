@@ -3,6 +3,7 @@ $(function() {
   var phone = "<%= j(@contact.phone)%>"
   var email = "<%= j(@contact.email)%>"
   var id = <%= @contact.id%>
+  var category = "<%= j(@contact.category)%>"
   // need to do with twitter
 
   // ask jon what the @contact thing is doing...why can i just get ID like that?
@@ -11,6 +12,7 @@ $(function() {
   $("input[name='contact[name]']").val(name);
   $("input[name='contact[phone]']").val(phone);
   $("input[name='contact[email]']").val(email);
+    $("input[name='contact[category]']").val(category);
     // do input twitter after
   //
 
