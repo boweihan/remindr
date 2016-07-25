@@ -34,6 +34,7 @@ class Contact < ActiveRecord::Base
   end
 
   def get_email
+    self.user.check_token
     token = self.user.access_token
     user_google_id = self.user.google_id
     email_id = self.search_email(user_google_id, token)
