@@ -41,10 +41,7 @@ class PagesController < ApplicationController
       current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
       #find google email adress of user
       current_user.get_email(current_user.access_token)
-      #hack
-      current_user.contacts.each do |contact|
-        contact.get_most_recent_message
-      end
+      UserLoadFeedJob.perform_later(current_user)
     end
     redirect_to '/login_page'
   end
