@@ -178,33 +178,4 @@ class Contact < ActiveRecord::Base
       reminders.first.update(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
     end
   end
-
-
-  def self.check_sentiment(text)
-      alchemyapi = AlchemyAPI.new()
-      response = alchemyapi.sentiment("text", text)
-
-      if response['docSentiment']['score'] != nil && response["docSentiment"]["type"] != 'neutral'
-        return "Score: " + response['docSentiment']['score'] + " Sentiment: " + response["docSentiment"]["type"]
-      end
-      "Sentiment: " + response["docSentiment"]["type"]
-  end
-
-  def self.easytoner(text)
-    response = Easytone::ToneGen.tone(ENV["CLIENT_TONE"], ENV["CLIENT_TONE_SECRET"], text)
-  end
-
-  def self.check_sentiment_all_messages
-    @messages = Message.all
-    array = []
-    @messages.each do |message|
-      if message.body_plain_text != nil
-        myText = message.body_plain_text
-        array << check_sentiment(myText)
-      end
-    end
-    array
-  end
-
-
 end
