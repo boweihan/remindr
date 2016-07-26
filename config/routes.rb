@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'pages#landing'
   get '/login_page' => 'pages#login_page'
+  get '/auth/twitter/callback', to: 'pages#login_page'
   get '/googleauth' => 'pages#googleauth'
   get '/callback'=> 'pages#callback'
   get '/send' => 'messages#send_mail'
