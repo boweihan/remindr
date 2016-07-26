@@ -29,7 +29,10 @@ class Contact < ActiveRecord::Base
       #Fetch email
       get_email
     else
-      puts "Contact has no email"
+      #Create a message with no body to start countdown of 30 days if there is no email for contact
+      unless messages.first
+        Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
+      end
     end
   end
 
@@ -58,7 +61,11 @@ class Contact < ActiveRecord::Base
       end
     #No past email interactions
     else
-      puts "error can't find emails with that user"
+      unless messages.first
+        #Create a message with no body to start countdown of 30 days if no email has been sent to the contact.
+        #This happens when the user is newly created.
+        Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
+      end
     end
   end
 
@@ -117,12 +124,6 @@ class Contact < ActiveRecord::Base
   # method called daily
   def neglected?
     message = messages.first
-    unless message == true
-      #makes a message with no body for today if there are no interactions (ex. made  new contact tht day)
-      #will remind you to talk to them in 30 days
-      Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
-      return false
-    end
     #days since last interaction
     days_since = ((message.time_stamp - Time.now.to_i)/86400.0).floor
     if days_since == 30
@@ -142,7 +143,7 @@ class Contact < ActiveRecord::Base
         valid_fields << "#{column.capitalize}: #{self.public_send(column)}"
       end
     end
-    return valid_fields
+    valid_fields
   end
 
   #Find empty fields in db that can be edited to create dynamic dropdown
@@ -155,7 +156,7 @@ class Contact < ActiveRecord::Base
         editable << [column,column]
       end
     end
-    return editable
+    editable
   end
 
   #Called daily to update the reminders seen on dashboard
@@ -178,4 +179,5 @@ class Contact < ActiveRecord::Base
       reminders.first.update(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
     end
   end
+
 end

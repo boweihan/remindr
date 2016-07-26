@@ -1,9 +1,8 @@
 class Message < ActiveRecord::Base
+  #ActiveRecord associations
   belongs_to :contact
   belongs_to :user
 
-
-  #rename bug
   def self.send_mail(sender, receiver, subj, bod, user)
     user_input = Mail.new do
       from sender
@@ -28,8 +27,10 @@ class Message < ActiveRecord::Base
     service.send_user_message(user.google_id, message_object = message)
   end
 
+
+  #Summarizes the message body for display
   def summary
-    message = body_plain_text.gsub(/[^0-9a-z ]/i, '')
+    message = body_plain_text
     message.slice(0,250)+"...."
   end
 
