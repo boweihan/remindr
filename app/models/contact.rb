@@ -1,59 +1,73 @@
 class Contact < ActiveRecord::Base
+  #Contact must have name
+  validates :name, presence: true
 
-  # validates :name, :phone, :email, presence: true
-
+  #Activerecord associations
   has_many :messages
   has_many :reminders
   belongs_to :user
 
-  #handle search
-  def self.search(search)
-    where("name LIKE ?", "%#{search}%")
-  end
-
-  # gives contacts in that category
+  #Query for contacts that match the category
   def self.give_contacts_for(category)
     where('category LIKE?', category)
   end
 
-  #handle photos
+  #handle photos******
+
+  #Called during scheduled task to get the most recent interaction with every contact
   def self.update
     all_contacts = Contact.all
     all_contacts.each do |contact|
       contact.get_most_recent_message
-      puts "in update loop"
     end
   end
 
+  #Get most recent email
   def get_most_recent_message
-    if self.email
-      self.get_email
+    #Check if email exists for contact
+    if email
+      #Fetch email
+      get_email
     else
       puts "Contact has no email"
     end
   end
 
+  #Make api calls to gmail
   def get_email
-    self.user.check_token
-    token = self.user.access_token
-    user_google_id = self.user.google_id
-    email_id = self.search_email(user_google_id, token)
+    #Get new token for the user associated with contact if expired
+    user.check_token
+    token = user.access_token
+    user_google_id = user.google_id
+    #Query gmail to find email_id of last email
+    email_id = search_email(user_google_id, token)
+    #Past interactions exist
     if email_id
-      email = self.fetch_email(user_google_id, token, email_id)
+      #Find email body an message details
+      email = fetch_email(user_google_id, token, email_id)
+      #Since only 1 message is being saved, we have to check if its the first interaction
+      #Between contact and user to decide if we should overwrite an existing entry for message
+      #Or Make a new one
       status = first_interaction?(self)
       if status && email
-        Message.create(contact_id: self.id, user_id: self.user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+        #New entry
+        Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
       elsif email
-        Message.where(contact_id: self.id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+        #Edit old entry
+        Message.where(contact_id: id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
       end
+    #No past email interactions
     else
       puts "error can't find emails with that user"
     end
   end
 
+  #Finds email id of most recent outbound email from user to contact
   def search_email(user_google_id, token)
-    q= "from:#{self.email}"
-    query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{q}&access_token=#{token}"
+    #search string
+    query= "from:#{email}"
+    query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{query}&access_token=#{token}"
+    #True if there are past interactions on email
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
       email_id = JSON.parse(RestClient.get(query_email_api_url))['messages'][0]['id']
       return email_id
@@ -62,23 +76,27 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  #Gets email body given the email_id
   def fetch_email(user_google_id, token, email_id)
     api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages/#{email_id}?access_token=#{token}"
     puts api_url
     email = JSON.parse(RestClient.get(api_url))
     message = {}
+    #Slice for unixtime in seconds because it is given in ms
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i
-    #decode mime base64
-    #0 text, 1 html
+    #parts[0] gives plaintext and parts[1] gives html
+    #check if email body is string (could be image)
     if email['payload']['parts'][1]['body']['data'].class == String
       plain = email['payload']['parts'][0]['body']['data']
+      #Convert mimebase64 into utf8
       message['text'] = Base64.decode64(plain.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
 
       html = email['payload']['parts'][1]['body']['data']
       message['html'] = Base64.decode64(html.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
-
+      #both copies *html and text are returned and saved in db
       return message
     else
+      #handles non-text interactions
       puts "image"
       message['html'] = "IMAGE*****"
       message['text'] = "IMAGE*****"
@@ -86,6 +104,7 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  #check if contact and user have interacted before
   def first_interaction?(contact)
     if Message.where(contact_id: contact.id) != []
       return false
@@ -94,23 +113,31 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  #check if you havent talked to your contact for 30 days
+  # method called daily
   def neglected?
-    message = self.messages.first
+    message = messages.first
     unless message == true
-      #hack pelase fix
-      Message.create(time_stamp:Time.now.to_i - 100000, contact_id: self.id, user_id: self.user.id)
+      #makes a message with no body for today if there are no interactions (ex. made  new contact tht day)
+      #will remind you to talk to them in 30 days
+      Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
       return false
     end
+    #days since last interaction
     days_since = ((message.time_stamp - Time.now.to_i)/86400.0).floor
     if days_since == 30
       return true
+    else
+      return false
     end
   end
 
+  #capitalizes db columns and makes it easy to print out and only prints filled columns
   def pretty_print
     column_names= Contact.column_names
     valid_fields = []
     column_names.each do |column|
+      #Checks filled columns and prints them if they should be visible to user
       if (self.public_send(column) && column != 'name' && column != 'id' && column != 'created_at' && column != 'updated_at' && column != "user_id")
         valid_fields << "#{column.capitalize}: #{self.public_send(column)}"
       end
@@ -118,35 +145,40 @@ class Contact < ActiveRecord::Base
     return valid_fields
   end
 
+  #Find empty fields in db that can be edited to create dynamic dropdown
   def generate_selectors
-    free_fields = []
+    editable = []
     column_names= Contact.column_names
     column_names.each do |column|
-      unless (self.public_send(column) || column == 'id' || column == 'created_at' || column == 'updated_at' ||column =="user_id" )
-        free_fields << [column,column]
+      #dynamically calls method given by string stored in variable column (ex name, id..)
+      unless self.public_send(column)
+        editable << [column,column]
       end
     end
-    return free_fields
+    return editable
   end
 
-  def self.generate_reminder
-    @contacts = Contact.all
-    @contacts.each do |contact|
-      contact.make_reminder
+  #Called daily to update the reminders seen on dashboard
+  def self.update_reminders
+    all.each do |contact|
+      contact.update_reminder
     end
   end
 
-  def make_reminder
-    if self.messages != []
-      time_difference = (DateTime.now.strftime('%s').to_i) - (self.messages.first.time_stamp)
-      message_type = ( ((time_difference/86400) < 30) ? 'upcoming' : 'overdue')
-      if self.reminders == []
-        Reminder.create(contact_id:self.id, reminder_type:message_type, message:self.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:self.user_id)
-      else
-        self.reminders.first.update(contact_id:self.id, reminder_type:message_type, message:self.messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:self.user_id)
-      end
+  #update reminder for each contact
+  def update_reminder
+    #Time since last contact
+    time_difference = (DateTime.now.strftime('%s').to_i) - (messages.first.time_stamp)
+    #Status of interactions
+    message_type = ( ((time_difference/86400) < 30) ? 'upcoming' : 'overdue')
+    #Check if you should update an existing reminder or create a new one
+    if reminders == []
+      Reminder.create(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
+    else
+      reminders.first.update(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
     end
   end
+
 
   def self.check_sentiment(text)
       alchemyapi = AlchemyAPI.new()
