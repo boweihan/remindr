@@ -1,9 +1,8 @@
 class Message < ActiveRecord::Base
+  #ActiveRecord associations
   belongs_to :contact
   belongs_to :user
 
-
-  #rename bug
   def self.send_mail(sender, receiver, subj, bod, user)
     user_input = Mail.new do
       from sender
@@ -28,9 +27,48 @@ class Message < ActiveRecord::Base
     service.send_user_message(user.google_id, message_object = message)
   end
 
+
+  #Summarizes the message body for display
   def summary
-    message = self.body_plain_text
-    return message.slice(0,250)+"...."
+    message = body_plain_text
+    #Check if messsage has a body. And is not system generated
+    if message
+      return message.slice(0,250)+"...."
+    else
+      return nil
+    end
+
   end
 
+  def check_sentiment
+    text = body_plain_text
+    alchemyapi = AlchemyAPI.new()
+    response = alchemyapi.sentiment("text", text)
+
+    if response['docSentiment']['score'] != nil && response["docSentiment"]["type"] != 'neutral'
+      return "Score: " + response['docSentiment']['score'] + " Sentiment: " + response["docSentiment"]["type"]
+    end
+    "Sentiment: " + response["docSentiment"]["type"]
+  end
+
+  def easytoner
+      message = body_plain_text..gsub(/[^0-9a-z ]/i, '')
+      if message == nil
+        return "Message is not in ASCII Format"
+      else
+        analysis = Easytone::ToneGen.tone(ENV["CLIENT_TONE"], ENV["CLIENT_TONE_SECRET"], message)
+        return "Your message breakdown is #{analysis}"
+      end
+  end
+
+  def self.check_sentiment_all_messages
+    array = []
+    all.each do |message|
+      if message.body_plain_text != nil
+        myText = message.body_plain_text
+        array << message.check_sentiment
+      end
+    end
+    array
+  end
 end

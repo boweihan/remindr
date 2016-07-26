@@ -26,6 +26,9 @@
     width: 450px;
     height: 450px;
     padding: 2.5em;
+    width: 400px;
+    height: 450px;
+    padding: 30px;
     background-color: rgba(256, 256, 256, 0.87);
     position: absolute;
     margin: auto;
@@ -40,30 +43,34 @@
 // edit user text
 .edit-user-heading {
   color: grey;
-  margin: 0 2.7em;
-  margin-bottom: 0.8em;
-  display: inline-block;
+  margin: auto 30px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
 }
 // edit user form fields
 .field {
     display: inline-block;
     border: none;
     outline: none;
-    padding: 0.5em;
+    padding: 7px;
     width: 81.7%;
     margin: 1.5em 0;
     margin-left: .5em;
     color: #555;
     font-size: 12px;
+    margin: 20px 0;
+    margin-left: 8px;
+    color: #555 ;
 }
 
 .lastPhoneField {
     display: inline-block;
     border: none;
     outline: none;
-    padding: 0.5em;
+    padding: 8px;
     width: 42%;
-    margin: 0.8em 0;
+    margin: 10px 0;
     color: #555 ;
 }
 
@@ -71,10 +78,10 @@
   display: inline-block;
   border: none;
   outline: none;
-  padding: 0.5em;
+  padding: 8px;
   width: 80.9%;
-  margin: 1.5em 0;
-  margin-left: .1em;
+  margin: 20px 0;
+  margin-left: 1.7px;
   color: #555 ;
 }
 
@@ -82,10 +89,10 @@
   display: inline-block;
   border: none;
   outline: none;
-  padding: 0.5em;
+  padding: 8px;
   width: 81%;
-  margin: 1.5em 0;
-  margin-left: 1em;
+  margin: 20px 0;
+  margin-left: 13.3px;
   color: #555;
 }
 
