@@ -23,12 +23,13 @@
 // edit user information form
 .updateInfo {
     display: block;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     padding: 2.5em;
     background-color: rgba(256, 256, 256, 0.87);
     position: absolute;
     margin: auto;
+    margin-top: 50px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -52,7 +53,8 @@
     width: 81.7%;
     margin: 1.5em 0;
     margin-left: .5em;
-    color: #555 ;
+    color: #555;
+    font-size: 12px;
 }
 
 .lastPhoneField {

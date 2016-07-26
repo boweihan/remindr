@@ -159,15 +159,18 @@
 .all-contacts-header {
   height: 56px;
   background-color: #fbfbfb;
-  border-top: 1px solid rgba(0,0,0,0.2);
+  border-top: 4px solid white;
+  border-right: 4px solid white;
+  // border-top: 1px solid rgba(0,0,0,0.2);
   overflow: hidden;
-  border-right: 1px solid rgba(0,0,0,0.2);
+  // border-right: 1px solid rgba(0,0,0,0.2);
 }
 
 .all-contacts-heading {
   float:left;
   margin: 5% 5%;
-  color: rgba(0,0,0,0.77);
+  // color: rgba(0,0,0,0.77);
+  color: $color2;
 }
 
 .filter-icon {
@@ -194,14 +197,16 @@
 }
 
 .contact-message {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  // border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 5px solid white;
   padding: 16px 16px;
   background-color: #fbfbfb;
   overflow: hidden;
 }
 
 .contact-name-link {
-  color: rgba(0,0,0,0.87);
+  // color: rgba(0,0,0,0.87);
+  color: $color2;
   text-decoration: none;
 }
 
@@ -293,21 +298,27 @@
 
 .profiles {
   float: left;
-  border-right: 2px solid rgba(0,0,0,0.2);
+  border-right: 2px solid $color4;
   width: 33.333%;
   height: 700px;
   background-color: #eee;
+
 }
 
 #contact_details {
-  border: 2px solid rgba(0,0,0,0.2);
-  border-left: none;
-  border-right: none;
+  // border: 2px solid white;
+  // border-left: none;
+  // border-right: none;
+  padding: 1em;
   width: 100%;
+  height: 175px;
+  color: white;
+  font-weight: bold;
 }
 
 #add_field_form {
-  border-bottom: 2px solid rgba(0,0,0,0.2);
+  border-bottom: 2px solid white;
+  color: white;
 }
 
 #update_contact {
@@ -323,7 +334,7 @@
   width: 100px;
   height: 30px;
   border: none;
-  background-color: $color;
+  background-color: $color3;
   color: white;
 }
 
