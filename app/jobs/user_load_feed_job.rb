@@ -4,7 +4,7 @@ class UserLoadFeedJob < ActiveJob::Base
   def perform(user)
     user.contacts.each do |contact|
       contact.get_most_recent_message
-      contact.make_reminder
+      contact.update_reminder
     end
   end
 end

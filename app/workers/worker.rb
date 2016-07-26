@@ -1,7 +1,7 @@
 class Worker
   def newsfeed
     Contact.update
-    Contact.generate_reminder
+    Contact.update_reminders
   end
 
   def overdue
