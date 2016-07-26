@@ -31,7 +31,13 @@ class Message < ActiveRecord::Base
   #Summarizes the message body for display
   def summary
     message = body_plain_text
-    message.slice(0,250)+"...."
+    #Check if messsage has a body. And is not system generated
+    if message
+      return message.slice(0,250)+"...."
+    else
+      return nil
+    end
+
   end
 
   def check_sentiment
