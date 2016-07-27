@@ -14,31 +14,16 @@ class ContactsController < ApplicationController
     end
   end
 
-
-  def edit
-    @contact = Contact.find(params[:id])
-    respond_to  do |format|
-      format.html {}
-      format.json {render json: @contact}
-      format.js {}  # to show the contacts info in form on all contacts page
-    end
-
-  end
-
+  #Show one user's info on click
   def show
     @contact = Contact.find(params[:id])
-    @messages = @contact.messages
-
     respond_to do |format|
-      format.html
+      #responds to ajax request and executes script on click
       format.js {}
     end
-    # if current_Contact
-    #   @review = @contact.reviews.build
-    # end
   end
 
-
+  #Creating a new contact
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
@@ -49,42 +34,52 @@ class ContactsController < ApplicationController
     end
   end
 
+  #path to update one attribute
   def update
     if request.xhr?
       @contact = Contact.find(params[:id])
       @attribute = params[:attribute]
-      @contact.update(@attribute.to_sym =>params[:new])
-      render :nothing => true, :status => 200, :content_type => 'text/html'
-    else
-      @contact = Contact.find(params[:id])
-
-      if @contact.update_attributes(contact_params)
-        redirect_to contact_url(@contact)
+      if @contact.update(@attribute.to_sym =>params[:new])
+        head :ok, content_type: "text/html"
       else
-        render :edit
+        head :internal_server_errror
       end
     end
-
-
   end
 
+  #Delete a contact
   def destroy
     @contact = Contact.find(params[:id])
-    @contact.destroy
-    redirect_to contacts_url
+    if @contact.destroy
+      redirect_to contacts_url
+    else
+      head :internal_server_errror
+    end
   end
+
 
   def update_contact_patch
     @contact = Contact.find(params[:id])
     respond_to do |format|
       if @contact.update_attributes(contact_params)
-        format.html {}
-        format.js   {}
+        format.js {}
       else
-        redirect_to contacts_path
+        head :internal_server_errror
       end
     end
   end
+
+  def edit
+    @contact = Contact.find(params[:id])
+    respond_to  do |format|
+      format.html {}
+      format.json {render json: @contact}
+      format.js {}  # to show the contacts info in form on all contacts page
+    end
+  end
+
+
+
 
 
   #All, Friends, Business, Family paths will throw 404 if not accesed by ajax. Called by contact index page

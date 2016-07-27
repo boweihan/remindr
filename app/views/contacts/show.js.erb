@@ -2,6 +2,7 @@ $(function(){
   var email = "<%= j(@contact.email)%>"
   var name = "<%= j(@contact.name)%>"
   var id = <%= @contact.id%>
+  $("#information").val("")
   $("input[name='receiver']").val(email)
   $("#contact_name").text(name)
   var messages= "<%= j(render partial: "messages", locals: {contact: @contact})%>"
