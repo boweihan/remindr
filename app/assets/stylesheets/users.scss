@@ -129,16 +129,16 @@
 }
 
 // submit updates button modal
-.submit {
+input.modal-submit {
   font-size: 14px;
   display: block;
   border: none;
   outline: none;
   width: 100%;
+  line-height: 2px;
   background-color: gray;
   color: white;
-  // color: #fcf6ce;
-  padding: 16px;
+  padding: 20px;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 20px;
 }
