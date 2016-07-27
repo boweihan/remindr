@@ -25,9 +25,6 @@
     display: block;
     width: 450px;
     height: 450px;
-    padding: 2.5em;
-    width: 400px;
-    height: 450px;
     padding: 30px;
     background-color: rgba(256, 256, 256, 0.87);
     position: absolute;
@@ -55,12 +52,30 @@
     outline: none;
     padding: 7px;
     width: 81.7%;
-    margin: 1.5em 0;
-    margin-left: .5em;
     color: #555;
     font-size: 12px;
     margin: 20px 0;
     margin-left: 8px;
+}
+
+.phoneField {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 15%;
+    margin: 20px 3px;
+    margin-left: 5.5px;
+    color: #555 ;
+}
+
+.phoneField2 {
+    display: inline-block;
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 15%;
+    margin: 20px 0;
     color: #555 ;
 }
 
@@ -69,8 +84,8 @@
     border: none;
     outline: none;
     padding: 8px;
-    width: 42%;
-    margin: 10px 0;
+    width: 43%;
+    margin: 20px 0;
     color: #555 ;
 }
 
@@ -81,7 +96,7 @@
   padding: 8px;
   width: 80.9%;
   margin: 20px 0;
-  margin-left: 1.7px;
+  margin-left: 5.5px;
   color: #555 ;
 }
 
@@ -92,7 +107,7 @@
   padding: 8px;
   width: 81%;
   margin: 20px 0;
-  margin-left: 13.3px;
+  margin-left: 12px;
   color: #555;
 }
 
@@ -114,16 +129,16 @@
 }
 
 // submit updates button modal
-.submit {
+input.modal-submit {
   font-size: 14px;
   display: block;
   border: none;
   outline: none;
   width: 100%;
+  line-height: 2px;
   background-color: gray;
   color: white;
-  // color: #fcf6ce;
-  padding: 16px;
+  padding: 20px;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 20px;
 }
