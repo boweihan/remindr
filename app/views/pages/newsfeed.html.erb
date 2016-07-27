@@ -60,7 +60,17 @@
       <div id="message-content">
       <% #Messages of contact you click on %>
       </div>
+        <!-- send direct message via twitter  -->
+      <div class="send-direct-message">
+        <%= form_tag "/", id:"send_direct-message" do %>
+          <%= hidden_field_tag "receiver", nil, id:"twitter_id_field"%>
+          <%= label_tag "direct_message", "Direct Message:" %><br>
+          <%= text_area_tag "direct_message", nil, id:"direct_message_field" %><br>
+          <%= submit_tag("Send!") %>
+        <% end %>
 
+      </div>
+      <!-- send email  -->
       <div class="send-message-div">
         <%= form_tag "/", id:"send_email" do %>
           <%= hidden_field_tag "receiver", nil, id:"email_field"%>

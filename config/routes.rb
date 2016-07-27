@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/contacts/business' => 'contacts#business'
   get '/reminders' => 'reminders#index'
   get '/analytics' => 'pages#analytics'
+
+  get '/directmessage' => 'messages#send_direct_message'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do

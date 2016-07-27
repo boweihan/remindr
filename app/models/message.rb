@@ -3,6 +3,39 @@ class Message < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
 
+  def send_direct_message
+    current_user.twitter_client.direct_message_create(direct_messages_params[:user], direct_messages_params[:message])
+  end
+
+  private
+   def direct_messages_params
+     params.require(:direct_message).permit(:user, :message)
+   end
+
+  def self.send_mail(sender, receiver, subj, bod, user)
+    user_input = Mail.new do
+      from sender
+      to receiver
+      subject subj
+      body bod
+    end
+    # enc = Base64.encode64(user_input)
+    # enc = enc.gsub("+", "-").gsub("/","_")
+
+    # create gmail message object and pass in raw body as string
+    message = Google::Apis::GmailV1::Message.new
+    message.raw = user_input.to_s
+
+    # start an instance of gmailservice
+    service = Google::Apis::GmailV1::GmailService.new
+
+    # check token expiry and refresh if needed
+    user.check_token
+
+    service.request_options.authorization = user.access_token
+    service.send_user_message(user.google_id, message_object = message)
+  end
+
   #Summarizes the message body for display
   def summary
     message = body_plain_text
