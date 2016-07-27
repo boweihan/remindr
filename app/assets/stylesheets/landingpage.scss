@@ -8,8 +8,9 @@
 
 $color: #07DEFF;
 // $color2: #170061;
-$color2: #019587;
+// $color2: #019587;
 // $color2: #240099;
+$color2: #40e0d0;
 $color3: #FFDD24;
 $color4: #00C7BD;
 $color5: #ccfffc;
@@ -26,7 +27,7 @@ $color6: #f2f2f2;
 .nav-bar {
   width: 100%;
   height: 50px;
-  background-color: $color2;
+  background-color: #240099;
   // background-color: hsl(240, 20%, 95%);
   text-align: right;
 }
@@ -49,7 +50,6 @@ $color6: #f2f2f2;
   text-decoration: none;
   font-size: 17px;
   line-height: 50px;
-  color: $color3;
 }
 
 .nav-icon img {
@@ -76,7 +76,7 @@ $color6: #f2f2f2;
   text-decoration: none;
   display: inline-block;
   float: right;
-  color: $color;
+  color: white;
   font-size: 17px;
   margin: 0 2rem;
   line-height: 50px;
@@ -86,7 +86,7 @@ $color6: #f2f2f2;
   text-decoration: none;
   display: inline-block;
   float: right;
-  color: $color;
+  color: white;
   margin-left: 1rem;
   margin-right: 2rem;
 }
@@ -94,12 +94,12 @@ $color6: #f2f2f2;
 a.signup {
   text-decoration: none;
   background-color:white;
-  border:1px solid $color;
+  border:1px solid $color2;
   display:inline-block;
   font-size:17px;
   line-height: 25px;
   font-weight: lighter;
-  color: $color;
+  color: $color2;
   padding:1px 15px;
   margin-right: 1rem;
   margin-top: .7rem;
