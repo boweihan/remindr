@@ -9,7 +9,6 @@
 
 # Bowei's seeds
 
-<<<<<<< c6836b6bd84796c32df05e7edd96889cf22b13b0
 # Contact.create(name: 'Ella', phone: '9999999999', email: 'ella@bitmaker.co', user_id:1, category: 'business')
 # Contact.create(name: 'Erik', phone: '9999999999', email: 'erik@bitmakerlabs.com' ,user_id:1, category: 'business')
 # Contact.create(name: 'Erik Invoices', phone: '9999999999', email: 'erik@bitmaker.co',user_id:1, category: 'business')
@@ -38,4 +37,4 @@ Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", use
 
 #Carol's seeds to seed
 
-Contact.create(name: 'Bowei', phone: '9999999999', email:"bowei.han100@gmail.com", user_id:1, category: 'friend', twitter: '3265762357')
+Contact.create(name: 'Bowei', phone: '9999999999', email:"bowei.han100@gmail.com", user_id:1, category: 'friend', twitter: '1967377645')

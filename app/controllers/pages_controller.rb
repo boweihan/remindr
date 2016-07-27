@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def analytics
     @messages = Message.all
+  end
 
   def tweet_info
     @user = User.from_omniauth(request.env['omniauth.auth'], current_user)
