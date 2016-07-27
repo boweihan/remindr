@@ -22,12 +22,12 @@ class Contact < ActiveRecord::Base
         if dms.length > 0
           if self.messages == []
             # if no messages saved, take most recent message (first) and create a message
-            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
+            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
           elsif dms.length == 1
             # if there is only one message but messages are already filled - nothing happens
           else
             # replace if one already exists
-            Message.where(contact_id: self.id).first.update(body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
+            Message.where(contact_id: self.id).first.update(body_plain_text: last_message.text, time_stamp: last_message.created_at)
           end
         end
   end

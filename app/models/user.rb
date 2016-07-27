@@ -60,9 +60,11 @@ class User < ActiveRecord::Base
    client.update(tweet)
   end
 
-  def get_direct_messages
-    self.contacts.each do |contact|
-      contact.get_dms(self.twitter_client, self)
+  def self.get_direct_messages
+    all.each do |user|
+      user.contacts.each do |contact|
+        contact.get_dms(user.twitter_client, user)
+      end
     end
   end
 
