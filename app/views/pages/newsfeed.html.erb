@@ -24,17 +24,19 @@
 <!-- Section 3: List of All Contacts (left 25% of the page)  -->
 <!-- 'All Contacts' div with 'filter' & 'add contact' icons -->
   <div class="contacts-container">
-    <div class="filter-icon">
+    <div class="searchbar-with-icons-div">
+      <div class="filter-icon">
         <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
-    </div>
-    <div class="search-contacts-bar">
+      </div>
+      <div class="search-contacts-bar">
         <%= form_tag contacts_path,id:"search_contact" do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class: 'search-bar-field'%>
-      <% end %>
+        <% end %>
+      </div>
+      <div class="add-icon">
+        <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
+      </div>
     </div>
-    <div class="add-icon">
-      <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
-    </div><br>
 
 <!-- 'List of Contacts/Messages' div -->
   <div id='load_contact_box'>
@@ -83,10 +85,10 @@
       <div id="add_field_form">
         <%= form_tag "/", id:"update_contact" do %>
           <%= hidden_field_tag "contact", nil, id:"contact_id" %>
-          <%= label_tag "field", "Add Field:", id:'contact_add_field' %><br>
+          <%= label_tag "field", "Add Field:", class:'contact_add_field' %><br>
           <div id="contact_field"></div>
-          <%= label_tag "information", "Information:" %><br>
-          <%= text_field_tag "information:",nil, id:"contact_add_info" %><br>
+          <%= label_tag "information", "Information:", class:"contact_add_info" %><br>
+          <%= text_field_tag "information:",nil %><br>
           <%= submit_tag "Update", id:"update_contact_button" %>
         <% end%>
       </div>
