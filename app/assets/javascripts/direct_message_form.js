@@ -1,13 +1,14 @@
 $(document).ready(function() {
-  $('#send_direct_message').submit(function(event) {
+  $('#send-direct-message').submit(function(event) {
     event.preventDefault();
     $.ajax({
-      type: "GET",
-      url: '/directmessage',
-      data: {receiver: $("#twitter_id_field").val(), direct_message: $("#direct_message_field").val()}
+      type: "get",
+      url: '/direct_messages',
+      data: {direct_message: {user: $("#username").val(), text: $("#direct_message_field").val()}}
     }).done(function(){
       $("#twitter_id_field").val("");
       $("#direct_message_field").val("");
+      $("#username").val("");
     });
   });
 });

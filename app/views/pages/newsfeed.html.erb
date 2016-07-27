@@ -62,8 +62,10 @@
       </div>
         <!-- send direct message via twitter  -->
       <div class="send-direct-message">
-        <%= form_tag "/", id:"send_direct-message" do %>
-          <%= hidden_field_tag "receiver", nil, id:"twitter_id_field"%>
+        <%= form_tag "/", id:"send-direct-message" do %>
+          <% #hidden_field_tag "receiver-twitter-dm", nil, id:"twitter_id_field"%>
+          <%= label_tag "username", "Username:" %><br>
+          <%= text_area_tag "username", nil, id:"username" %><br>
           <%= label_tag "direct_message", "Direct Message:" %><br>
           <%= text_area_tag "direct_message", nil, id:"direct_message_field" %><br>
           <%= submit_tag("Send!") %>

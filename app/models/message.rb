@@ -3,14 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
 
-  def send_direct_message
-    current_user.twitter_client.direct_message_create(direct_messages_params[:user], direct_messages_params[:message])
-  end
 
-  private
-   def direct_messages_params
-     params.require(:direct_message).permit(:user, :message)
-   end
 
   def self.send_mail(sender, receiver, subj, bod, user)
     user_input = Mail.new do
@@ -84,4 +77,6 @@ class Message < ActiveRecord::Base
     end
     array
   end
+
+
 end
