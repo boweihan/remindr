@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Raleway', sans-serif;
-}
+// * {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+//   font-family: 'Helvetica-Neue', sans-serif;
+// }
 
 .main-container {
   overflow: hidden;
@@ -143,11 +143,24 @@
 // Section 3: List of All Contacts (left 25% of the page)
 
 // search bar
+
+.contacts-container {
+  width: 25%;
+  height: 700px;
+  float: left;
+}
+
+.searchbar-with-icons-div {
+  height: 56px;
+  min-width: 320px;
+  background-color: $color6;
+}
+
 .search-contacts-bar {
   height: 56px;
   display:inline-block;
   width: 65%;
-  background-color: #fbfbfb;
+  background-color: $color6;
   float: left;
 }
 
@@ -156,14 +169,6 @@
   padding: 6px 0px;
   width: 100%;
   text-align: center;
-}
-
-
-.all-contacts-heading {
-  float:left;
-  margin: 5% 5%;
-  // color: rgba(0,0,0,0.77);
-  color: $color2;
 }
 
 .filter-icon {
@@ -175,29 +180,25 @@
 }
 
 .add-icon {
-  height: 24px;
   width: 24px;
+  height: 24px;
   float:left;
   margin: 5% 5%;
   display: inline-block;
 }
-.contacts-container {
-  width: 25%;
-  height: 700px;
-  float: left;
-}
+
 .contacts-messages {
   height: 700px;
   overflow: scroll;
 }
 
 .contact-message {
-  // border-bottom: 1px solid rgba(0,0,0,0.2);
   border-bottom: 5px solid white;
   padding: 16px 16px;
-  background-color: #fbfbfb;
+  background-color: $color6;
   overflow: hidden;
 }
+
 #load_contact_box {
   width: 100%;
   position: relative;
@@ -245,28 +246,33 @@
   float: left;
   width: 66.666%;
   height: 700px;
-  border: 1px solid rgba(0,0,0,0.2);
+  background-color: $color2;
+  // border: 3px solid $color2;
   overflow: hidden;
 }
 
 #message-content {
   width: 100%;
   margin: auto;
-  background-color: #fff;
-  border: 2px solid rgba(0,0,0,0.2);
-  border-bottom: none;
+  background-color: $color2;
   padding: 20px;
-  background-color: #cffffc;
+  color: white;
+  // background-color: #cffffc;
 }
 
 .send-message-div {
   width: 49.9%;
   margin: auto;
   padding: 10px 8px;
-  background-color: gray;
-  border: 0px solid rgba(0,0,0,0.2);
+  background-color: $color2;
+  // border: 0px solid rgba(0,0,0,0.2);
   bottom: 0;
   position: fixed;
+}
+
+label {
+  color: white;
+  font-size: 17px;
 }
 
 #subject_field {
@@ -280,17 +286,29 @@
   height: 200px;
 }
 
+input[type=submit] {
+  width: 90px;
+  height: 30px;
+  margin-top: 6px;
+  border: none;
+  background-color: $color3;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
 .contact-name-heading {
   height: 56px;
   width: 100%;
-  background-color: #fbfbfb;
-  border: 1px solid rgba(0,0,0,0.2);
-  border-top: none;
+  background-color: $color6;
 }
 
 #main-name {
   line-height: 56px;
-  text-align: center;
+  text-align: left;
+  margin-left: 300px;
+  font-size: 36px;
+  color: $color2;
 }
 
 
@@ -298,17 +316,14 @@
 
 .profiles {
   float: left;
-  border-right: 2px solid $color4;
+  border-right: 1px solid rgba(0,0,0,0.2);
   width: 33.333%;
   height: 700px;
-  background-color: white;
+  background-color: $color6;
 
 }
 
 #contact_details {
-  // border: 2px solid white;
-  // border-left: none;
-  // border-right: none;
   padding: 1em;
   height: 175px;
   color: black;
@@ -319,15 +334,23 @@
 
 #contact_details > h2 {
   text-align: center;
+  font-size: 18px;
 }
 
 #contact_details p {
   margin-top: 10px;
 }
 
+label.contact_add_field {
+  color: black;
+}
+
+label.contact_add_info {
+  color: black;
+}
 #add_field_form {
   color: black;
-  border-bottom: 2px solid black;
+  border-bottom: 5px solid white;
 }
 
 #update_contact {
@@ -339,7 +362,7 @@
 #update_contact_button {
   margin: 2em;
   margin-left: 1.5em;
-  width: 100px;
+  width: 90px;
   height: 30px;
   border: none;
   background-color: $color3;
