@@ -8,10 +8,6 @@ class Contact < ActiveRecord::Base
   belongs_to :user
 
 
-  #Query for contacts that match the category
-  def self.give_contacts_for(category)
-    where('category LIKE?', category)
-  end
 
   #handle photos******
 

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/analytics' => 'pages#analytics'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
-  resources :contacts do
+  resources :contacts, except: [:new] do
     resources :messages, only: [:index]
     resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
   end
