@@ -80,16 +80,6 @@ ActiveRecord::Schema.define(version: 20160727170750) do
     t.string   "refresh_token"
     t.string   "google_id"
     t.datetime "issued_at"
-    t.string   "twitter"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "url"
-    t.string   "token"
-    t.string   "secret"
   end
-
-  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
-  add_index "users", ["provider"], name: "index_users_on_provider"
-  add_index "users", ["uid"], name: "index_users_on_uid"
 
 end

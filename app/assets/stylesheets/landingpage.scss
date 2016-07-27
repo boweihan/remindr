@@ -1,9 +1,10 @@
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
-  src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html)
-  // src: url(https://material.google.com/resources/roboto-noto-fonts.html);
-  // src: url('Roboto-Light.ttf') format('truetype');
+  src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html);
+  src: url(https://material.google.com/resources/roboto-noto-fonts.html);
+  src: url('Roboto-Light.ttf') format('truetype');
 }
 
 $color: #07DEFF;
@@ -20,7 +21,7 @@ $color6: #f2f2f2;
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Roboto-Light', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 // Section 1: the navigation bar
 
@@ -108,7 +109,7 @@ a.signup {
 // Block 2: the photo background with text & sign up button
 
 .photo-background {
-  background: url("SFbridge.jpg") center center no-repeat;
+  background: image-url("SFbridge.jpg") center center no-repeat;
   background-size: cover;
   border-bottom: 1px solid grey;
   text-align: center;
