@@ -54,12 +54,14 @@ class Contact < ActiveRecord::Base
       #Between contact and user to decide if we should overwrite an existing entry for message
       #Or Make a new one
       status = first_interaction?(self)
-      if status && email
-        #New entry
+      exist = message_exist?(self, email['time_stamp'])
+      # if status && email
+      #   #New entry
+      #   Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+      if email && !exist
         Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
-      elsif email
         #Edit old entry
-        Message.where(contact_id: id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+        # Message.where(contact_id: id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
       end
     #No past email interactions
     else
@@ -125,6 +127,14 @@ class Contact < ActiveRecord::Base
       return false
     else
       return true
+    end
+  end
+
+  def message_exist?(contact, timestamp)
+    if Message.where(time_stamp: timestamp) != []
+      return true
+    else
+      return false
     end
   end
 
