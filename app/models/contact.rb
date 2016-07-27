@@ -19,14 +19,11 @@ class Contact < ActiveRecord::Base
           dms
         end
         last_message = dms.last
-          # if = or greater 5 messages,remove last message and add
         if last_message
-          if self.messages.length >= 5
-            self.messages.shift
-            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
-            # otherwise, just add
+          # checks to se if message time stamp exists, if not, will add it in
+          if self.messages.exists?(time_stamp: last_message[:created_at])
           else
-            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
+              Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
           end
         end
   end
