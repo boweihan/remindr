@@ -18,17 +18,18 @@ class Contact < ActiveRecord::Base
               end
           dms
         end
-
         last_message = dms.first
-          if dms.length == 1 && (self.messages = nil)
-            # if no messages saved and there are recent messages, create a message
+        if dms.length > 0
+          if self.messages == []
+            # if no messages saved, take most recent message (first) and create a message
             Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
           elsif dms.length == 1
-            # nothing is created if there is only one and messages isn't nil
+            # if there is only one message but messages are already filled - nothing happens
           else
             # replace if one already exists
             Message.where(contact_id: self.id).first.update(body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
           end
+        end
   end
 
   #Query for contacts that match the category

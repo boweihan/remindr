@@ -9,6 +9,6 @@ class Worker
   end
 
   def dms
-    User.get_dms
+    User.get_direct_messages
   end
 end

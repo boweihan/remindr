@@ -1,35 +1,5 @@
-<%= current_user %>
-<% if current_user.twitter_client.user_timeline(current_user)[0] %>
-      <p>My tweets on timeline</p>
-      <ul>
-        <% current_user.twitter_client.user_timeline(current_user, options = {}).each do |timeline_tweet| %>
-          <li><%=  timeline_tweet[:text]%> | <%=  timeline_tweet[:created_at]%></li>
-          <% end %>
-      </ul>
-    <% end %>
-
-  <p>My direct messages sent</p>
-  <ul>
-    <% current_user.twitter_client.direct_messages_sent(options = {}).each do |direct_message| %>
-      <li><%= direct_message[:text] %> | Recipient Name: <%= direct_message[:recipient][:name] %> | Recipient Id: <%= direct_message[:recipient][:id] %> | Created at: <%= direct_message[:created_at] %></li>
-    <% end %>
-  </ul>
-<hr>
-  <p>My direct messages received</p>
-  <ul>
-    <% current_user.twitter_client.direct_messages_received(options = {}).each do |direct_message| %>
-      <li><%= direct_message[:text] %> | Sender Name: <%= direct_message[:sender][:name] %> | Sender Id:<%= direct_message[:sender][:id] %> | Created at:<%= direct_message[:created_at] %></li>
-    <% end %>
-  </ul>
-
-  <hr>
-    <p>My mentions</p>
-    <ul>
-      <% current_user.twitter_client.mentions_timeline(options = {}).each do |mention| %>
-        <li><%= mention[:text] %> | Sent From: <%= mention[:user][:name] %> | <%= mention[:created_at] %></li>
-      <% end %>
-    </ul>
-
 <% @contacts.each do |contact| %>
-  <%= contact.get_dms(current_user.twitter_client, current_user) %>
+  <% contact.get_dms(current_user.twitter_client, current_user) %>
 <% end %>
+
+ <h1>this is the page that loads after method is called that I need to test for rake </h1>
