@@ -5,6 +5,7 @@ class UserLoadFeedJob < ActiveJob::Base
     user.contacts.each do |contact|
       contact.get_most_recent_message
       contact.update_reminder
+      contact.get_dms
     end
   end
 end

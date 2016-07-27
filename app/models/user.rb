@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :messages, through: :contacts
   has_many :reminders, through: :contacts
 
+
   #find the google-email adress on sign-in b/c user email !=  (always) their gmail
   #it is run everytime on login because the user could sign into different email accounts
   def get_email_address(token)
@@ -21,6 +22,57 @@ class User < ActiveRecord::Base
     user_json = RestClient.get(url)
     email = JSON.parse(user_json)['email']
     #save record in db
+    self.google_id = email
+    self.save
+  end
+
+
+# added this part starts
+  def twitter_client
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["twitter_consumer_key"]
+      config.consumer_secret     = ENV["twitter_consumer_secret"]
+      config.access_token        = self.token
+      config.access_token_secret = self.secret
+    end
+    return client
+  end
+
+
+  def self.from_omniauth(auth_hash, current_user)
+    current_user.uid = auth_hash['uid']
+    current_user.provider = auth_hash['provider']
+    current_user.name = auth_hash['info']['name']
+    current_user.url = auth_hash['info']['urls']['Twitter']
+    current_user.token = auth_hash['credentials']['token']
+    current_user.secret = auth_hash['credentials']['secret']
+    current_user.save!
+    current_user
+  end
+
+  def tweet(tweet)
+   client = Twitter::REST::Client.new do |config|
+     config.consumer_key        = Rails.application.secrets.twitter_consumer_key
+     config.consumer_secret     = Rails.application.secrets.twitter_consumer_secret
+     config.access_token        = self.token
+     config.access_token_secret = self.secret
+   end
+   client.update(tweet)
+  end
+
+  def self.get_direct_messages
+    all.each do |user|
+      user.contacts.each do |contact|
+        contact.get_dms(user.twitter_client, user)
+      end
+    end
+  end
+
+  def get_email(token)
+    self.check_token
+    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{token}"
+    user_json = RestClient.get(url)
+    email = JSON.parse(user_json)['email']
     self.google_id = email
     self.save
   end

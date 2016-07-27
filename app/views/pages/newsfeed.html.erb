@@ -60,7 +60,28 @@
       <div id="message-content">
       <% #Messages of contact you click on %>
       </div>
+        <!-- send direct message via twitter  -->
+      <div class="send-direct-message">
+        <%= form_tag "/", id:"send-direct-message" do %>
+          <%#=hidden_field_tag "receiver-twitter-dm", nil, id:"twitter_id_field"%>
+          <%#= label_tag "username", "Username:" %>
+          <%#= text_area_tag "username", nil, id:"username" %>
+          <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
+          <%= label_tag "direct_message", "Direct Message:" %><br>
+          <%= text_area_tag "direct_message", nil, id:"direct_message_field" %><br>
+          <%= submit_tag("Send!") %>
+        <% end %>
+      </div>
 
+      <div class="send-tweet">
+      <%= form_tag '/', id:'send-tweet' do %>
+      <%= label_tag "tweet_message", "Tweet Message:" %><br>
+      <%= text_area_tag "tweet_message", nil, id:"tweet-message-field" %><br>
+      <%= submit_tag("Send Tweet!") %>
+      <% end %>
+      </div>
+
+      <!-- send email  -->
       <div class="send-message-div">
         <%= form_tag "/", id:"send_email" do %>
           <%= hidden_field_tag "receiver", nil, id:"email_field"%>

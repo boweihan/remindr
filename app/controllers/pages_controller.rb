@@ -5,6 +5,12 @@ class PagesController < ApplicationController
     @messages = Message.all
   end
 
+  def tweet_info
+    @user = User.from_omniauth(request.env['omniauth.auth'], current_user)
+    @contacts = Contact.all
+
+  end
+
   def login_page
   end
 
