@@ -18,16 +18,14 @@ class Contact < ActiveRecord::Base
               end
           dms
         end
+
         last_message = dms.first
         if dms.length > 0
-          if self.messages == []
-            # if no messages saved, take most recent message (first) and create a message
+          dm_exist = message_exist?(self, last_message.created_at)
+          if !dm_exist
             Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
-          elsif dms.length == 1
-            # if there is only one message but messages are already filled - nothing happens
           else
-            # replace if one already exists
-            Message.where(contact_id: self.id).first.update(body_plain_text: last_message.text, time_stamp: last_message.created_at)
+            puts '************************IN ELSE ********************'
           end
         end
   end
