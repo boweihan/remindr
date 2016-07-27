@@ -1,5 +1,6 @@
 class RemindersController < ApplicationController
 
+  #reminder crud actions
   def index
     @reminders = Reminder.where(user_id:current_user.id).order(time_since_last_contact: :desc)
   end

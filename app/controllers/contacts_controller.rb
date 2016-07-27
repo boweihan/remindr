@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  #path to update one attribute
+  # path to update one attribute
   def update
     if request.xhr?
       @contact = Contact.find(params[:id])
@@ -57,7 +57,7 @@ class ContactsController < ApplicationController
     end
   end
 
-
+  #update all attributes
   def update_contact_patch
     @contact = Contact.find(params[:id])
     respond_to do |format|
@@ -69,17 +69,13 @@ class ContactsController < ApplicationController
     end
   end
 
+  #Path is reached when the user is clicked on contacts index
   def edit
     @contact = Contact.find(params[:id])
-    respond_to  do |format|
-      format.html {}
-      format.json {render json: @contact}
+    respond_to do |format|
       format.js {}  # to show the contacts info in form on all contacts page
     end
   end
-
-
-
 
 
   #All, Friends, Business, Family paths will throw 404 if not accesed by ajax. Called by contact index page
@@ -94,6 +90,7 @@ class ContactsController < ApplicationController
     end
   end
 
+  #Friends tab
   def friends
     if request.xhr?
       @contacts = Contact.all.where(user_id:current_user.id)
@@ -104,6 +101,7 @@ class ContactsController < ApplicationController
     end
   end
 
+  #Business tab
   def business
     if request.xhr?
       @contacts = Contact.all.where(user_id:current_user.id)
@@ -114,7 +112,7 @@ class ContactsController < ApplicationController
     end
   end
 
-
+  #Family tab
   def family
     if request.xhr?
       @contacts = Contact.all.where(user_id:current_user.id)

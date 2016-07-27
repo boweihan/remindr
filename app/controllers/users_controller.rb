@@ -11,10 +11,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def create
     @user = User.new(user_params)
     @user.google_id = params[:email]
@@ -37,11 +33,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to users_url
-  end
+
 
   private
   def user_params
