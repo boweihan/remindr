@@ -19,7 +19,6 @@
     <% end %>
     <% if current_user %>
       <%= link_to (image_tag "notification.png"), reminders_path, class: "nav-icon" %>
-      <%= link_to (image_tag "user.png"), user_path(current_user), class: "nav-icon" %>
       <%= link_to (image_tag "allcontacts.png"), contacts_path, class: "nav-icon" %>
       <%= link_to (image_tag "menu.png"), newsfeed_path, class: "nav-icon" %>
       <%= image_tag "settings.png", id: "nav-icon" %>
@@ -42,7 +41,7 @@
         Email: <%= f.email_field :email, class: 'efield' %><br>
         Twitter: <%= f.text_field :email, class: 'twitterfield' %><br>
         <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
-        <%= f.submit "Update Account", class: 'submit'%>
+        <%= f.submit "Update Account", class: 'modal-submit'%>
       <% end %>
     </div>
   </div>
