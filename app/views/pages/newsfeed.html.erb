@@ -71,8 +71,16 @@
           <%= text_area_tag "direct_message", nil, id:"direct_message_field" %><br>
           <%= submit_tag("Send!") %>
         <% end %>
-
       </div>
+
+      <div class="send-tweet">
+      <%= form_tag '/', id:'send-tweet' do %>
+      <%= label_tag "tweet_message", "Tweet Message:" %><br>
+      <%= text_area_tag "tweet_message", nil, id:"tweet-message-field" %><br>
+      <%= submit_tag("Send Tweet!") %>
+      <% end %>
+      </div>
+
       <!-- send email  -->
       <div class="send-message-div">
         <%= form_tag "/", id:"send_email" do %>

@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
     current_user.twitter_client.direct_message_create(direct_messages_params[:user], direct_messages_params[:text])
   end
 
+  def create_tweet
+  current_user.tweet(tweet_params[:message])
+  end
 
   def send_mail
     MailSenderJob.perform_later(current_user.google_id,params[:receiver], params[:subj], params[:bod])
@@ -20,4 +23,9 @@ class MessagesController < ApplicationController
    def direct_messages_params
      params.require(:direct_message).permit(:user, :text)
    end
+
+   def tweet_params
+     params.require(:tweet).permit(:message)
+   end
+
 end
