@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20160727170750) do
     t.string   "name"
     t.string   "phone"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
     t.string   "category"
     t.string   "twitter"
+    t.string   "twitter_username"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

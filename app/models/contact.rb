@@ -18,7 +18,7 @@ class Contact < ActiveRecord::Base
               end
           dms
         end
-        last_message = dms.last
+        last_message = dms.first
         if last_message
           # checks to se if message time stamp exists, if not, will add it in
           if self.messages.exists?(time_stamp: last_message[:created_at])
