@@ -3,6 +3,7 @@ $(function(){
   var name = "<%= j(@contact.name)%>"
   var id = <%= @contact.id%>
   var twitter = "<%= j(@contact.twitter)%>"
+  var twitterUsername = "<%= j(@contact.twitter_username)%>"
   $("input[name='receiver']").val(email)
   $("#contact_name").text(name)
   var messages= "<%= j(render partial: "messages", locals: {contact: @contact})%>"
@@ -17,5 +18,5 @@ $(function(){
   $("#subject_field").val("")
   $("#body_field").val("")
   $("#main-name").text(name);
-  // $("input[id='twitter_id_field']").val(twitter);
+  $("input[id='twitter-user-field']").val(twitterUsername);
 })
