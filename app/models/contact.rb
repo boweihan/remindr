@@ -7,6 +7,7 @@ class Contact < ActiveRecord::Base
   has_many :reminders
   belongs_to :user
 
+
   #Query for contacts that match the category
   def self.give_contacts_for(category)
     where('category LIKE?', category)
@@ -42,6 +43,7 @@ class Contact < ActiveRecord::Base
     user.check_token
     token = user.access_token
     user_google_id = user.google_id
+    puts user_google_id
     #Query gmail to find email_id of last email
     email_id = search_email(user_google_id, token)
     #Past interactions exist
