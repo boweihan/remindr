@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   end
 
   def create_tweet
-  current_user.tweet(tweet_params[:message])
+  current_user.twitter_client.update(tweet_params[:message])
   end
 
   def send_mail

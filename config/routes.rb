@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/analytics' => 'pages#analytics'
 
   get '/direct_messages' => 'messages#create_direct_message'
+  get '/tweets' => 'messages#create_tweet'
   resources :users, only: [:show, :create, :new, :destroy, :update, :edit]
 
   resources :contacts do
