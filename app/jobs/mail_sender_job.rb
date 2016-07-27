@@ -1,8 +1,8 @@
 class MailSenderJob < ActiveJob::Base
   queue_as :default
 
-  def perform(google_id, receiver, subject, body, user)
-    Message.send_mail(google_id, receiver, subject, body ,user)
+  def perform(user, receiver, subject, body)
+    Misc.send_mail(user, receiver, subject, body)
     puts "SENT MAIL"
   end
 end

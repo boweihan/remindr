@@ -5,8 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def send_mail
-    #this will be current_user.email eventually was Message.send_mail('bowei.han100@gmail.com', params[:receiver], params[:subj], params[:bod], current_user)
-    MailSenderJob.perform_later(current_user.google_id,params[:receiver], params[:subj], params[:bod], current_user )
+    MailSenderJob.perform_later(current_user.google_id,params[:receiver], params[:subj], params[:bod])
     flash[:alert] = "Your email has been sent!"
     redirect_to newsfeed_url
   end

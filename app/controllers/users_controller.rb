@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @user.google_id = params[:email]
     if @user.save
       #log the user in
       session[:user_id] = @user.id

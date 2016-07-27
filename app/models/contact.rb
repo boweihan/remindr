@@ -7,6 +7,7 @@ class Contact < ActiveRecord::Base
   has_many :reminders
   belongs_to :user
 
+
   #Query for contacts that match the category
   def self.give_contacts_for(category)
     where('category LIKE?', category)
@@ -42,6 +43,7 @@ class Contact < ActiveRecord::Base
     user.check_token
     token = user.access_token
     user_google_id = user.google_id
+    puts user_google_id
     #Query gmail to find email_id of last email
     email_id = search_email(user_google_id, token)
     #Past interactions exist
@@ -93,13 +95,19 @@ class Contact < ActiveRecord::Base
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i
     #parts[0] gives plaintext and parts[1] gives html
     #check if email body is string (could be image)
-    if email['payload']['parts'][1]['body']['data'].class == String
+    if email['payload']['body']['data'] != nil
+      text = email['payload']['body']['data']
+      message['text'] = Base64.decode64(text.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+      return message
+    elsif email['payload']['parts'][0]['body']['data'].class == String
       plain = email['payload']['parts'][0]['body']['data']
       #Convert mimebase64 into utf8
       message['text'] = Base64.decode64(plain.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
 
       html = email['payload']['parts'][1]['body']['data']
-      message['html'] = Base64.decode64(html.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+      if html != nil
+        message['html'] = Base64.decode64(html.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
+      end
       #both copies *html and text are returned and saved in db
       return message
     else

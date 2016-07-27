@@ -39,8 +39,8 @@ class PagesController < ApplicationController
       #exchange auth for token
       @auth_client.fetch_access_token!
       current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
-      #find google email adress of user
-      current_user.get_email(current_user.access_token)
+      #find google email adress of account that was signed into google
+      current_user.get_email_address(current_user.access_token)
       UserLoadFeedJob.perform_later(current_user)
     end
     redirect_to '/login_page'
