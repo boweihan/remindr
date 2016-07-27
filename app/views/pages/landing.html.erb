@@ -10,15 +10,18 @@
 
 
 <!-- Section 2: The following is the photo background w text & sign up button -->
-
+  <%= video_tag "video.mp4", :controls => false, autoplay: :autoplay, loop: :loop, id:"photo-background"%>
+  <div class="photo-background-filter"></div>
   <div class="photo-background">
+  <!-- <video autoplay loop id="photo-background">
+    <source src="/assets/images/video.mp4" type="video/mp4">
+  </video> -->
+  <div class="welcome-text">
+    <p>Keep in touch no matter</p>
+    <p>where life takes you!</p>
+  </div>
 
-    <div class="welcome-text">
-      <p>Keep in touch no matter</p>
-      <p>where life takes you!</p>
-    </div>
-
-    <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
+  <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
   </div>
 <!-- Section 3: The following are the 3 main selling points of the app -->
 

@@ -109,19 +109,37 @@ a.signup {
 // Block 2: the photo background with text & sign up button
 
 .photo-background {
-  background: image-url("SFbridge.jpg") center center no-repeat;
   background-size: cover;
   border-bottom: 1px solid grey;
   text-align: center;
   padding: 120px 0;
   height: 90vh;
+  position: relative;
+  z-index: 2;
 }
 
+#photo-background {
+  background-size: cover;
+  background: white;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.8;
+}
+.photo-background-filter {
+  height: 90vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.5;
+}
 .welcome-text {
   font-weight: lighter;
   margin-bottom: 30px;
   font-size: 55px;
-  color: $color;
+  // color: $color;
+  color: white;
 }
 
 .signupButton {

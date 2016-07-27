@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727170750) do
+ActiveRecord::Schema.define(version: 20160727200549) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -80,6 +80,12 @@ ActiveRecord::Schema.define(version: 20160727170750) do
     t.string   "refresh_token"
     t.string   "google_id"
     t.datetime "issued_at"
+    t.string   "twitter"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "url"
   end
 
 end
