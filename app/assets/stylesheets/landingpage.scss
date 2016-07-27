@@ -1,18 +1,14 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: helvetica, sans-serif;
-  font-weight: lighter;
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html)
+  // src: url(https://material.google.com/resources/roboto-noto-fonts.html);
+  // src: url('Roboto-Light.ttf') format('truetype');
 }
 
-// @font-face {
-//   font-family: 'Always In My Heart', cursive;
-//   src: local('Always In My Heart');
-//   src: url('Always In My Heart.ttf');
-// // }
-
 $color: #07DEFF;
-$color2: #170061;
+// $color2: #170061;
+$color2: #019587;
 // $color2: #240099;
 $color3: #FFDD24;
 $color4: #00C7BD;
@@ -20,6 +16,11 @@ $color5: #ccfffc;
 // $color6: #fbfbfb;
 $color6: #f2f2f2;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto-Light', sans-serif;
+}
 // Section 1: the navigation bar
 
 .nav-bar {
