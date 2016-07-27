@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def tweet_info
     @user = User.from_omniauth(request.env['omniauth.auth'], current_user)
+    @contacts = Contact.all
 
   end
 

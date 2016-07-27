@@ -60,6 +60,20 @@ class User < ActiveRecord::Base
    client.update(tweet)
   end
 
+  def get_direct_messages
+    self.contacts.each do |contact|
+      contact.get_dms(self.twitter_client, self)
+    end
+  end
+
+  def get_email(token)
+    self.check_token
+    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{token}"
+    user_json = RestClient.get(url)
+    email = JSON.parse(user_json)['email']
+    self.google_id = email
+    self.save
+  end
 
   #class method that calls eamil_my_contacts on every contact
   def self.check

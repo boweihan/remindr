@@ -8,7 +8,35 @@ class Contact < ActiveRecord::Base
   belongs_to :user
 
 
+
+  def get_dms(user_client, current_user)
+    dms = []
+      # loop through messages and store them in dms array
+        user_client.direct_messages_sent(options = {}).each do |direct_message|
+              if direct_message.recipient.id == self.twitter.to_i
+                dms << direct_message
+              end
+          dms
+        end
+        last_message = dms.last
+          # if = or greater 5 messages,remove last message and add
+        if last_message
+          if self.messages.length >= 5
+            self.messages.shift
+            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
+            # otherwise, just add
+          else
+            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message[:text], time_stamp: last_message[:created_at])
+          end
+        end
+  end
+
   #Query for contacts that match the category
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+
+  # gives contacts in that category
   def self.give_contacts_for(category)
     where('category LIKE?', category)
   end

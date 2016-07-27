@@ -7,4 +7,8 @@ class Worker
   def overdue
     User.check
   end
+
+  def dms
+    User.get_dms
+  end
 end
