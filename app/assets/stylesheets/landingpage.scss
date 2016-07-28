@@ -130,15 +130,15 @@ $offblack: #323232;
   width: 94%;
   font-weight: lighter;
 }
-// #nav-icon {
-//   height: 25px;
-//   width: 23px;
-//   line-height: 56px;
-//   display: inline-block;
-//   margin-right: 1rem;
-//   margin-left: 1rem;
-//   padding-bottom: .4rem;
-// }
+#nav-icon img{
+  height: 25px;
+  width: 23px;
+  line-height: 56px;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding-bottom: .4rem;
+}
 
 a.logo:hover {
   color: $mediumblue;
