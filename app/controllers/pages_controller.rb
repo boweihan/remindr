@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :load_client, only: [:load_client, :googleauth]
+  before_action :load_client, only: [:load_client, :googleauth, :callback]
 
   #twitter callback after verification
   def tweet_info
@@ -41,6 +41,7 @@ class PagesController < ApplicationController
 
   #After they are authenitcated with google
   def callback
+    binding.pry
     #if user clicks deny
     if params[:error]
       puts "error"

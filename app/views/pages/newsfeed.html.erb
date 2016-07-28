@@ -13,7 +13,6 @@
       Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
       Email: <%= f.email_field :email, class: 'eField' %>
       Category: <%= f.text_field :category, class: 'catField' %>
-      Twitter ID: <%= f.text_field :twitter, class: 'twitField' %>
       Twitter Username: <%= f.text_field :twitter_username, class: 'twitField2' %><br>
       <%= f.submit "Add Contact", class: 'modal-submit'%>
     <% end %>
@@ -23,7 +22,7 @@
 
 <!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
 <div class="main-container">
-  <div class="main-container-heading"> <!-search bar & 'name'-->
+  <div class="main-container-heading"> 
     <div class="searchbar-with-icons-div">
       <div class="filter-icon">
         <%= image_tag "filter.png" %>

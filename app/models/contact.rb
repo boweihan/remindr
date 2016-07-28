@@ -7,10 +7,11 @@ class Contact < ActiveRecord::Base
   has_many :reminders
   belongs_to :user
 
-  
+
   #Load a contact's direct messages from twitter
   def get_dms(user_client, current_user)
     dms = []
+    binding.pry
     # loop through messages and store them in dms array
     user_client.direct_messages_sent(options = {}).each do |direct_message|
       if direct_message.recipient.screen_name == self.twitter_username
