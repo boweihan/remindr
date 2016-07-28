@@ -106,7 +106,30 @@
     <div class="profiles">
       <div id="contact_details">
       </div>
-      <div id="add_field_form">
+      <div id='newfeed_reminders'>
+        <!-- <% @reminders.each do |reminder| %>
+          <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
+          <div class='reminderbox_newsfeed' id='<%= reminder.reminder_type %>'>
+            <li>Reminder For: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
+            <li>is <strong><%= reminder.reminder_type %></strong></li>
+          </div>
+          <% end %>
+        <% end %> -->
+        <% i=0 %>
+        <% 5.times do %>
+          <% if current_user.contacts.where(id:@reminders[i]) != nil && @reminders[i] != nil%>
+            <% if current_user.contacts.where(id:@reminders[i].contact_id).first != nil %>
+              <div class='reminderbox_newsfeed' id='<%= @reminde@reminders[i] != nilrs[i].reminder_type %>'>
+                <li>Reminder For: <%= current_user.contacts.where(id:@reminders[i].contact_id).first["name"] %></li>
+                <li>is <strong><%= @reminders[i].reminder_type %></strong></li>
+              </div>
+            <% end %>
+            <% i += 1 %>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Add attribute form that we are't using at the moment -->
+      <!-- <div id="add_field_form">
         <%= form_tag "/", id:"update_contact" do %>
           <%= hidden_field_tag "contact", nil, id:"contact_id" %>
           <%= label_tag "field", "Add Field:", class:'contact_add_field' %><br>
@@ -115,7 +138,7 @@
           <%= text_field_tag "information:",nil %><br>
           <%= submit_tag "Update", id:"update_contact_button" %>
         <% end%>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

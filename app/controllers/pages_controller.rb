@@ -55,6 +55,7 @@ class PagesController < ApplicationController
   def newsfeed
     @contact = Contact.new
     @contacts = current_user.contacts
+    @reminders = Reminder.where(user_id:current_user.id).order(time_since_last_contact: :desc)
   end
 
 
