@@ -1,9 +1,8 @@
 class MessagesController < ApplicationController
   before_action :ensure_logged_in
-  def index
-    @messages = Message.all
-  end
 
+
+  #ajax email send
   def create_direct_message
     current_user.twitter_client.direct_message_create(direct_messages_params[:user], direct_messages_params[:text])
     # head :ok, content_type: "text/html"
@@ -16,10 +15,8 @@ class MessagesController < ApplicationController
 
   def send_mail
     MailSenderJob.perform_later(current_user.google_id,params[:receiver], params[:subj], params[:bod])
-    flash[:alert] = "Your email has been sent!"
-    redirect_to newsfeed_url
+    head :ok, content_type: "text/html"
   end
-  #there probably doesn't need to be anything in here?
 
   private
    def direct_messages_params
@@ -29,5 +26,4 @@ class MessagesController < ApplicationController
    def tweet_params
      params.require(:tweet).permit(:message)
    end
-
 end

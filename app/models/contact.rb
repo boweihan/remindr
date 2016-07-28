@@ -9,25 +9,22 @@ class Contact < ActiveRecord::Base
 
 
 
+  #Load a contact's direct messages from twitter
   def get_dms(user_client, current_user)
     dms = []
-      # loop through messages and store them in dms array
-        user_client.direct_messages_sent(options = {}).each do |direct_message|
-              if direct_message.recipient.id == self.twitter.to_i
-                dms << direct_message
-              end
-          dms
-        end
-
-        last_message = dms.first
-        if dms.length > 0
-          dm_exist = message_exist?(self, last_message.created_at)
-          if !dm_exist
-            Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
-          else
-            puts '************************IN ELSE ********************'
-          end
-        end
+    # loop through messages and store them in dms array
+    user_client.direct_messages_sent(options = {}).each do |direct_message|
+      if direct_message.recipient.id == self.twitter.to_i
+        dms << direct_message
+      end
+    end
+    last_message = dms.first
+    if dms.length > 0
+      dm_exist = message_exist?(self, last_message.created_at)
+      if !dm_exist
+        Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
+      end
+    end
   end
 
   #Query for contacts that match the category
