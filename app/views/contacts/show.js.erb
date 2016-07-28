@@ -2,7 +2,11 @@ $(function(){
   var email = "<%= j(@contact.email)%>"
   var name = "<%= j(@contact.name)%>"
   var id = <%= @contact.id%>
+
   $("#information").val("")
+
+  var twitter = "<%= j(@contact.twitter)%>"
+  var twitterUsername = "<%= j(@contact.twitter_username)%>"
   $("input[name='receiver']").val(email)
   $("#contact_name").text(name)
   var messages= "<%= j(render partial: "messages", locals: {contact: @contact})%>"
@@ -16,5 +20,6 @@ $(function(){
   $("#contact_new_info").val("")
   $("#subject_field").val("")
   $("#body_field").val("")
-  $("#main-name").text(name)
+  $("#main-name").text(name);
+  $("input[id='twitter-user-field']").val(twitterUsername);
 })

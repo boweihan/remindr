@@ -9,6 +9,34 @@ class Contact < ActiveRecord::Base
 
 
 
+  #Load a contact's direct messages from twitter
+  def get_dms(user_client, current_user)
+    dms = []
+    # loop through messages and store them in dms array
+    user_client.direct_messages_sent(options = {}).each do |direct_message|
+      if direct_message.recipient.id == self.twitter.to_i
+        dms << direct_message
+      end
+    end
+    last_message = dms.first
+    if dms.length > 0
+      dm_exist = message_exist?(self, last_message.created_at)
+      if !dm_exist
+        Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
+      end
+    end
+  end
+
+  #Query for contacts that match the category
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+
+  # gives contacts in that category
+  def self.give_contacts_for(category)
+    where('category LIKE?', category)
+  end
+
   #handle photos******
 
   #Called during scheduled task to get the most recent interaction with every contact
@@ -50,12 +78,14 @@ class Contact < ActiveRecord::Base
       #Between contact and user to decide if we should overwrite an existing entry for message
       #Or Make a new one
       status = first_interaction?(self)
-      if status && email
-        #New entry
+      exist = message_exist?(self, email['time_stamp'])
+      # if status && email
+      #   #New entry
+      #   Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+      if email && !exist
         Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
-      elsif email
         #Edit old entry
-        Message.where(contact_id: id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+        # Message.where(contact_id: id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
       end
     #No past email interactions
     else
@@ -91,11 +121,13 @@ class Contact < ActiveRecord::Base
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i
     #parts[0] gives plaintext and parts[1] gives html
     #check if email body is string (could be image)
+
     if email['payload']['body']['data'] != nil
       text = email['payload']['body']['data']
       message['text'] = Base64.decode64(text.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
       return message
     elsif email['payload']['parts'][0]['body']['data'].class == String
+
       plain = email['payload']['parts'][0]['body']['data']
       #Convert mimebase64 into utf8
       message['text'] = Base64.decode64(plain.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
@@ -121,6 +153,14 @@ class Contact < ActiveRecord::Base
       return false
     else
       return true
+    end
+  end
+
+  def message_exist?(contact, timestamp)
+    if Message.where(time_stamp: timestamp) != []
+      return true
+    else
+      return false
     end
   end
 

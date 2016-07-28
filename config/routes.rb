@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'pages#landing'
   get '/login_page' => 'pages#login_page'
+  get '/tweet_info' => 'pages#tweet_info'
+  get '/auth/twitter/callback', to: 'pages#tweet_info'
   get '/googleauth' => 'pages#googleauth'
   get '/callback'=> 'pages#callback'
   get '/send' => 'messages#send_mail'
@@ -16,8 +18,11 @@ Rails.application.routes.draw do
   get '/contacts/business' => 'contacts#business'
   get '/reminders' => 'reminders#index'
   get '/analytics' => 'pages#analytics'
-  resources :users, only: [:create, :new, :update]
+  get '/direct_messages' => 'messages#create_direct_message'
+  get '/tweets' => 'messages#create_tweet'
 
+  resources :users, only: [:create, :new, :update]
+  
   resources :contacts, only: [:show, :create, :destroy, :update, :index, :edit] do
     resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
   end
