@@ -11,15 +11,17 @@
 
 <!-- Section 2: The following is the photo background w text & sign up button -->
   <!-- <%= video_tag "video.mp4", :controls => false, autoplay: :autoplay, loop: :loop, id:"photo-background"%> -->
-  <div class="photo-background-image"></div>
-  <div class="photo-background">
-  <div class="welcome-text">
-    <p id="main-heading">Keep in touch no matter where life takes you</p>
-    <p id="second-heading">Remindr makes it easy to keep in touch with friends, family and your networking connections.</p>
+  <div class="photo-background-image">
+    <div class="photo-background">
+    <div class="welcome-text">
+      <p id="main-heading">Keep in touch no matter where life takes you</p>
+      <p id="second-heading">Remindr makes it easy to keep in touch with friends, family and your networking connections.</p>
+    </div>
+
+    <%= link_to "START CONNECTING", new_user_path, class:"getstarted" %>
+    </div>
   </div>
 
-  <%= link_to "START CONNECTING", new_user_path, class:"getstarted" %>
-  </div>
 <!-- Section 3: The following are the 3 main selling points of the app -->
 
   <ul id="sellingPoints">
