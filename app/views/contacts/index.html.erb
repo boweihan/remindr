@@ -31,7 +31,9 @@
       <%= f.label :email, class: 'edit-contact-label' %>
       <%= f.email_field :email, class: 'edit-contact-field', id:"edit-contact-email" %><br>
       <%= f.label :twitter, class: 'edit-contact-label' %>
-      <%= f.text_field :email, class: 'edit-contact-field', id:"edit-contact-twitter" %><br>
+      <%= f.text_field :twitter, class: 'edit-contact-field', id:"edit-contact-twitter" %><br>
+      <%= f.label :twitter_username, class: 'edit-contact-label' %>
+      <%= f.text_field :twitter_username, class: 'edit-contact-field', id:"edit-contact-twitter-username" %><br>
       <%= f.label :category, class: 'edit-contact-label' %>
       <%= f.text_field :category, class: 'edit-contact-field', id:"edit-contact-category" %><br>
       <div class="update-contact-submit">
@@ -84,8 +86,10 @@
         <div class="contact-page-contact-image "></div>
         <div class="contact-page-contact-information">
           <li>{{name}}</li>
-          <li>{{phone}}</li>
-          <li>{{email}}</li>
+          <li>Phone: {{phone}}</li>
+          <li>Email: {{email}}</li>
+          <li>Twitter Id: {{twitter}}</li>
+          <li>Twitter Handle: {{twitter_username}}</li>
           <%= link_to 'delete', "/contacts/{{id}}", method: :delete, data: {confirm: "Are you sure you want to delete {{name}}"}%>
         </div>
       </div>
