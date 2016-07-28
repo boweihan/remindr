@@ -4,7 +4,6 @@ $(function(){
   var id = <%= @contact.id%>
   $("#information").val("")
 
-  var twitter = "<%= j(@contact.twitter)%>"
   var twitterUsername = "<%= j(@contact.twitter_username)%>"
   $("input[name='receiver']").val(email)
   $("#contact_name").text(name)
