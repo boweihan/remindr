@@ -147,6 +147,7 @@
 // search bar
 .main-container-heading {
   height: 50px;
+  margin-right: 38px;
   background-color: $color6;
 }
 
@@ -159,7 +160,7 @@
 
 .messages-heading {
   height: 50px;
-  background-color: $color7;
+  background-color: $color2;
 }
 
 .contact-name-heading {
@@ -183,9 +184,9 @@
   height: 50px;
   float: left;
   width: 23.3%;
-  margin-left: 15px;
+  margin-left: 20px;
   display: inline-block;
-  background-color: $color7;
+  background-color: $color2;
 
 }
 
@@ -193,7 +194,7 @@
   height: 50px;
   display:inline-block;
   width: 50%;
-  background-color: $color7;
+  background-color: $color2;
   float: left;
 }
 
@@ -232,7 +233,7 @@
 
 .contacts-messages {
   height: 800px;
-  margin-left: 15px;
+  margin-left: 20px;
   margin-top: 15px;
   overflow: scroll;
 }
@@ -251,7 +252,7 @@
 }
 .contact-name-link {
   // color: rgba(0,0,0,0.87);
-  color: #4b69c8;
+  color: $color2;
   text-decoration: none;
 }
 
@@ -342,7 +343,7 @@
   width: 100%;
   height: 45vh;
   margin: auto;
-  padding: 10px 15px;
+  padding: 10px 20px;
   background-color: $color6;
   position: absolute;
   bottom: 0%;
@@ -350,7 +351,7 @@
 }
 
 label {
-  color: $color7;
+  color: $color2;
   font-size: 17px;
 }
 
@@ -369,9 +370,9 @@ input[type=submit] {
   width: 80px;
   height: 25px;
   margin-top: 6px;
-  border: 1px solid $color2;
+  border: 1px solid hsl(48, 100%, 50%);
   border-radius: 20px;
-  background-color: $color2;
+  background-color: hsl(48, 100%, 50%);
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -388,7 +389,6 @@ input[type=submit] {
   background-color: white;
   margin-top: 15px;
   margin-right: 15px;
-
 }
 
 #contact_details {
@@ -401,7 +401,7 @@ input[type=submit] {
 
 #contact_details > h2 {
   text-align: center;
-  color: $color7;
+  color: $color2;
   font-size: 18px;
 }
 
@@ -410,11 +410,11 @@ input[type=submit] {
 }
 
 label.contact_add_field {
-  color: $color7;
+  color: $color2;
 }
 
 label.contact_add_info {
-  color: $color7;
+  color: $color2;
 }
 #add_field_form {
   color: black;
@@ -433,7 +433,7 @@ label.contact_add_info {
   width: 90px;
   height: 30px;
   border: none;
-  background-color: $color2;
+  background-color: hsl(48, 100%, 50%);
   color: white;
 }
 
