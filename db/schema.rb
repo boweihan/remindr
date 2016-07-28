@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727200549) do
+ActiveRecord::Schema.define(version: 20160728231853) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20160727200549) do
     t.datetime "updated_at",       null: false
     t.integer  "user_id"
     t.string   "category"
-    t.string   "twitter"
     t.string   "twitter_username"
   end
 
@@ -80,12 +79,9 @@ ActiveRecord::Schema.define(version: 20160727200549) do
     t.string   "refresh_token"
     t.string   "google_id"
     t.datetime "issued_at"
-    t.string   "twitter"
     t.string   "provider"
-    t.string   "uid"
     t.string   "token"
     t.string   "secret"
-    t.string   "url"
   end
 
 end
