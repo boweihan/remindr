@@ -21,6 +21,28 @@
     </div>
   </div>
 
+  <div class="login-modal">
+    <div class="login-form">
+      <%= form_tag sessions_path do %>
+      <button type="button" class="close">x</button>
+      <div class="sign-up-user">
+        <h3 class="sign-up-heading">LOG IN</h3>
+      </div>
+
+        <div class="field">
+          <%= label_tag :email %>:
+          <%= email_field_tag :email, params[:email], placeholder: "ex. name@domain.com", class: 'field'%>
+        </div>
+        <div class="field">
+          <%= label_tag :password %>:
+          <%= password_field_tag :password, class: 'field' %>
+        </div>
+        <%= submit_tag "Log In", class: 'modal-submit', id: 'modal-submit-login' %>
+      <% end %>
+    </div>
+  </div>
+
+
 
 <!-- Section 1: Navigation Bar (See: application.html.erb) *CSS located in 'landingpage.scss'* -->
 
