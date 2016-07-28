@@ -20,10 +20,7 @@
 
 <!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
 <div class="main-container">
-
-<!-- Section 3: List of All Contacts (left 25% of the page)  -->
-<!-- 'All Contacts' div with 'filter' & 'add contact' icons -->
-  <div class="contacts-container">
+  <div class="main-container-heading"> <!--search bar & 'name'-->
     <div class="searchbar-with-icons-div">
       <div class="filter-icon">
         <%= image_tag "ic_filter_list_black_24dp_2x.png", size: "24"  %>
@@ -37,6 +34,12 @@
         <%= image_tag "ic_person_add_black_24dp_2x.png",size: "24"   %>
       </div>
     </div>
+    <!-- <div class="contact-name-heading"> -->
+      <h3 id="main-name"></h3>
+    <!-- </div> -->
+  </div>
+<!-- Section 3: List of All Contacts (left 25% of the page)  -->
+  <div class="contacts-container">
 
 <!-- 'List of Contacts/Messages' div -->
   <div id='load_contact_box'>
@@ -52,33 +55,27 @@
 
 <!-- Section 4: All messages received from individual contact (middle 50% of page) -->
   <div class="contact-info-updating-container">
-    <!-- <div class="contact-name-heading">
-      <h3 id="main-name"></h3>
-    </div> -->
-
     <div class="messages">
       <div id="message-content">
       <% #Messages of contact you click on %>
       </div>
         <!-- send direct message via twitter  -->
-      <div class="send-direct-message">
-        <%= form_tag "/", id:"send-direct-message" do %>
-          <%#=hidden_field_tag "receiver-twitter-dm", nil, id:"twitter_id_field"%>
-          <%#= label_tag "username", "Username:" %>
-          <%#= text_area_tag "username", nil, id:"username" %>
-          <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
-          <%= label_tag "direct_message", "Direct Message:" %><br>
-          <%= text_area_tag "direct_message", nil, id:"direct_message_field" %><br>
-          <%= submit_tag("Send!") %>
-        <% end %>
-      </div>
+      <div class="twitter-messaging-div">
+        <div class="send-direct-message">
+          <%= form_tag "/", id:"send-direct-message" do %>
+            <%#=hidden_field_tag "receiver-twitter-dm", nil, id:"twitter_id_field"%>
+            <%#= label_tag "username", "Username:" %>
+            <%#= text_area_tag "username", nil, id:"username" %>
+            <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
+            <%= label_tag "direct_message", "DM:", class:"message-label" %><%= text_area_tag "direct_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
+          <% end %>
+        </div>
 
-      <div class="send-tweet">
-      <%= form_tag '/', id:'send-tweet' do %>
-      <%= label_tag "tweet_message", "Tweet Message:" %><br>
-      <%= text_area_tag "tweet_message", nil, id:"tweet-message-field" %><br>
-      <%= submit_tag("Send Tweet!") %>
-      <% end %>
+        <div class="send-tweet">
+        <%= form_tag '/', id:'send-tweet' do %>
+        <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><%= text_area_tag "tweet_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
+        <% end %>
+        </div>
       </div>
 
       <!-- send email  -->

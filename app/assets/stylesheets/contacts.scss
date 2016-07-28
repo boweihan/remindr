@@ -145,24 +145,40 @@
 // Section 3: List of All Contacts (left 25% of the page)
 
 // search bar
+.main-container-heading {
+  height: 50px;
+  background-color: $color2;
+}
 
-.contacts-container {
-  width: 25%;
-  height: 700px;
+// .contact-name-heading {
+//   height: 56px;
+//   width: 100%;
+//   background-color: $color6;
+// }
+
+#main-name {
+  display: inline-block;
+  line-height: 50px;
   float: left;
+  font-size: 36px;
+  background-color: $color2;
+  color: $color6;
 }
 
 .searchbar-with-icons-div {
-  height: 56px;
-  min-width: 320px;
-  background-color: $color6;
+  height: 50px;
+  float: left;
+  width: 40%;
+  margin-left: 15px;
+  // display: inline-block;
+  background-color: $color2;
 }
 
 .search-contacts-bar {
-  height: 56px;
+  height: 50px;
   display:inline-block;
-  width: 65%;
-  background-color: $color6;
+  width: 50%;
+  background-color: $color2;
   float: left;
 }
 
@@ -176,21 +192,29 @@
 .filter-icon {
   height: 24px;
   width: 24px;
+  line-height: 70px;
+  margin-right: 3%;
   float:left;
-  margin: 5% 5%;
   display:inline-block;
 }
 
 .add-icon {
   width: 24px;
   height: 24px;
+  line-height: 70px;
   float:left;
-  margin: 5% 5%;
+  margin-left: 3%;
   display: inline-block;
 }
 
+.contacts-container {
+  width: 25%;
+  height: 800px;
+  float: left;
+}
+
 .contacts-messages {
-  height: 700px;
+  height: 800px;
   overflow: scroll;
 }
 
@@ -239,7 +263,7 @@
 
 .contact-info-updating-container {
   width: 75%;
-  height: 700px;
+  height: 800px;
   float: left;
   overflow: hidden;
 }
@@ -247,29 +271,53 @@
 .messages {
   float: left;
   width: 66.666%;
-  height: 700px;
-  background-color: $color2;
+  height: 800px;
+  background-color: black;
   // border: 3px solid $color2;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 #message-content {
   width: 100%;
+  position: relative;
   margin: auto;
   background-color: $color2;
-  padding: 20px;
+  border: 1px solid $color2;
+  border-radius: 3%;
+  margin: 10px;
   color: white;
+  overflow: scroll;
   // background-color: #cffffc;
+}
+
+.twitter-messaging-div {
+  // height: 22vh;
+  position: relative;
+  overflow: scroll;
+  margin: 0 10px;
+  top: 20px;
+  background-color: blue;
+}
+
+.message-label {
+  line-height: 32px;
+  font-size: 16px;
+}
+.twitter_field {
+  height: 25px;
+  margin: -8px 10px;
 }
 
 .send-message-div {
   width: 49.9%;
+  // height: 55vh;
   margin: auto;
   padding: 10px 8px;
-  background-color: $color2;
+  background-color: pink;
   // border: 0px solid rgba(0,0,0,0.2);
-  bottom: 0;
-  position: fixed;
+  position: absolute;
+  bottom: 45px;
+  overflow: scroll;
 }
 
 label {
@@ -285,33 +333,20 @@ label {
 
 #body_field {
   width: 100%;
-  height: 200px;
+  height: 150px;
 }
 
 input[type=submit] {
-  width: 90px;
-  height: 30px;
+  width: 80px;
+  height: 25px;
   margin-top: 6px;
   border: none;
   background-color: $color3;
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
 }
 
-.contact-name-heading {
-  height: 56px;
-  width: 100%;
-  background-color: $color6;
-}
-
-#main-name {
-  line-height: 56px;
-  text-align: left;
-  margin-left: 300px;
-  font-size: 36px;
-  color: $color2;
-}
 
 
 // Section 5: Right 25% of page
@@ -320,7 +355,8 @@ input[type=submit] {
   float: left;
   border-right: 1px solid rgba(0,0,0,0.2);
   width: 33.333%;
-  height: 700px;
+  // width: 25%;
+  height: 800px;
   background-color: $color6;
 
 }
