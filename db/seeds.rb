@@ -33,8 +33,8 @@ Contact.create(name: 'Codecademy', phone: '9999999999', email: 'contact@codecade
 Contact.create(name: 'Google', phone: '9999999999', email: 'no-reply@accounts.google.com' ,user_id:1, category: 'friend')
 Contact.create(name: 'Random', phone: '9999999999', email: 'random@random.com',user_id:1, category: 'friend')
 Contact.create(name: 'Person With no Email', phone: '9999999999',user_id:1, category: 'friend')
-Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend', twitter_username: 'BoweiHan')
+Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
 
 #Carol's seeds to seed
 
-Contact.create(name: 'Bowei', phone: '9999999999', email:"bowei.han100@gmail.com", user_id:1, category: 'friend', twitter: '1967377645', twitter_username: 'BoweiHan')
+Contact.create(name: 'Bowei', phone: '9999999999', email:"bowei.han100@gmail.com", user_id:1, category: 'friend',  twitter_username: 'BoweiHan')
