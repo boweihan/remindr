@@ -58,6 +58,7 @@
           <li>{{name}}</li>
           <li>{{phone}}</li>
           <li>{{email}}</li>
+          <%= link_to 'delete', "/contacts/{{id}}", method: :delete, data: {confirm: "Are you sure you want to delete {{name}}"}%>
         </div>
       </div>
       </a>
