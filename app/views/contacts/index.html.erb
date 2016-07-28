@@ -19,8 +19,15 @@
       <div class="update-contact-submit">
         <%= f.submit "Update Contact" %>
       </div>
-      <div class="add-field-section">
-      <h5 class="add-field-title">Add Field</h5>
+      <div id="add_field_form">
+        <%= form_tag "/", id:"update_contact" do %>
+          <%= hidden_field_tag "contact", nil, id:"contact_id" %>
+          <%= label_tag "field", "Add Field:", class:'contact_add_field' %><br>
+          <div id="contact_field"></div>
+          <%= label_tag "information", "Information:", class:"contact_add_info" %><br>
+          <%= text_field_tag "information:",nil %><br>
+          <%= submit_tag "Update", id:"update_contact_button" %>
+        <% end%>
       </div>
     <% end %>
 
