@@ -11,7 +11,6 @@ $(function() {
     var template = Handlebars.compile(source);
     var output = template(responseData);
     $('.contacts-area').html(output);
-
   }).fail(function() {
     console.log('Request failed')
   });

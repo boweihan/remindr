@@ -35,7 +35,7 @@
 .add-contact{
     display: block;
     width: 450px;
-    height: 450px;
+    height: 570px;
     padding: 30px;
     background-color: rgba(256, 256, 256, 0.87);
     position: absolute;
@@ -95,7 +95,7 @@
     border: none;
     outline: none;
     padding: 8px;
-    width: 43%;
+    width: 44%;
     margin: 20px 0;
     color: #555 ;
 }
@@ -109,6 +109,39 @@
     margin: 20px 0;
     margin-left: 12px;
     color: #555 ;
+}
+
+.catField {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 75%;
+  margin: 20px 0;
+  margin-left: 12px;
+  color: #555 ;
+}
+
+.twitField {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 74%;
+  margin: 20px 0;
+  margin-left: 12px;
+  color: #555 ;
+}
+
+.twitField2 {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 60%;
+  margin: 20px 0;
+  margin-left: 12px;
+  color: #555 ;
 }
 // close button of modal
 .close {
@@ -525,7 +558,7 @@ label.contact_add_info {
   background-color: #eee;
   padding: 16px;
   width: 96%;
-  height: 100px;
+  height: 148px;
   border: 1px solid rgba(0,0,0,0.3);
   margin: 0 auto;
   margin-top: 8px;
@@ -534,11 +567,12 @@ label.contact_add_info {
 
 .contact-page-contact-image {
   float: left;
-  width: 64px;
-  height: 64px;
+  width: 100px;
+  height: 100px;
   background-color: gray;
   border-radius: 100%;
   margin-left: 24px;
+  margin-top: 8px;
 }
 
 .contact-page-contact-information {
@@ -587,4 +621,8 @@ label.contact_add_info {
 
 #contact_add_info {
   text-align: center;
+}
+
+#contact_clicked {
+  background-color: purple;
 }

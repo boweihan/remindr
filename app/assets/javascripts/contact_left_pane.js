@@ -1,46 +1,53 @@
 $(function() {
-  $.ajax({
-    method: "GET",
-    url: "/contacts.json",
-    datatype: "json"
-  }).done(function(response){
-    all_contacts = response
-    response.forEach(load_contacts);
-    $(".contact-message")[0].click()
+  if (window.location.href.split("/")[3] === "newsfeed") {
+    $.ajax({
+      method: "GET",
+      url: "/contacts.json",
+      datatype: "json"
+    }).done(function(response){
+      all_contacts = response
+      response.forEach(load_contacts);
+      $(".contact-message")[0].click()
 
-  })
-
-  $('.close').on('click', function() {
-    $('.modal').css('display', 'none')
     })
 
-  $('.add-icon').on('click', function() {
-    $('.modal').css('display', 'block')
-  })
+    $('.close').on('click', function() {
+      $('.modal').css('display', 'none')
+      })
 
-  $('.modal').on('click', function() {
-    $('.modal').css('display', 'none')
-  });
-
-  $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field').on('click', function(e) {
-    e.stopPropagation();
-    $(this).css('border', '1px solid green')
-  });
-
-
-
-  $("#search_contact").on("submit",function(event){
-    event.preventDefault()
-  })
-
-  $(".search-bar-field").keyup(function(){
-    var query= $(".search-bar-field").val()
-    var similar = duplicated_elements(query,all_contacts)
-    $(".contacts-messages").html("")
-    similar.forEach(function(contact){
-      load_contacts(contact)
+    $('.add-icon').on('click', function() {
+      $('.modal').css('display', 'block')
     })
-  })
+
+    $('.modal').on('click', function() {
+      $('.modal').css('display', 'none')
+    });
+
+    $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field, .eField, .catField, .twitField, .twitField2').on('click', function(e) {
+      e.stopPropagation();
+      $(this).css('border', '1px solid green')
+    });
+
+    $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field').on('click', function(e) {
+      e.stopPropagation();
+      $(this).css('border', '1px solid green')
+    });
+
+
+
+    $("#search_contact").on("submit",function(event){
+      event.preventDefault()
+    })
+
+    $(".search-bar-field").keyup(function(){
+      var query= $(".search-bar-field").val()
+      var similar = duplicated_elements(query,all_contacts)
+      $(".contacts-messages").html("")
+      similar.forEach(function(contact){
+        load_contacts(contact)
+      })
+    })
+  }
 })
 
 function load_contacts(contact){

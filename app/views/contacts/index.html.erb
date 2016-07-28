@@ -1,3 +1,21 @@
+<div class="modal">
+  <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+        <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      </div>
+      Name:  <%= f.text_field :name, class: 'field'%><br>
+      Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
+      Email: <%= f.email_field :email, class: 'eField' %>
+      Category: <%= f.text_field :category, class: 'catField' %>
+      Twitter ID: <%= f.text_field :twitter, class: 'twitField' %>
+      Twitter Username: <%= f.text_field :twitter_username, class: 'twitField2' %><br>
+      <%= f.submit "Add Contact", class: 'modal-submit'%>
+    <% end %>
+  </div>
+</div>
+
 
 <div class="all-contacts-container">
 
@@ -13,14 +31,26 @@
       <%= f.label :email, class: 'edit-contact-label' %>
       <%= f.email_field :email, class: 'edit-contact-field', id:"edit-contact-email" %><br>
       <%= f.label :twitter, class: 'edit-contact-label' %>
-      <%= f.text_field :email, class: 'edit-contact-field', id:"edit-contact-twitter" %><br>
+      <%= f.text_field :twitter, class: 'edit-contact-field', id:"edit-contact-twitter" %><br>
+      <%= f.label :twitter_username, class: 'edit-contact-label' %>
+      <%= f.text_field :twitter_username, class: 'edit-contact-field', id:"edit-contact-twitter-username" %><br>
       <%= f.label :category, class: 'edit-contact-label' %>
       <%= f.text_field :category, class: 'edit-contact-field', id:"edit-contact-category" %><br>
       <div class="update-contact-submit">
         <%= f.submit "Update Contact" %>
       </div>
-      <div class="add-field-section">
-      <h5 class="add-field-title">Add Field</h5>
+      <div class="add-icon">
+        <button>Add Contact</button>
+      </div>
+      <div id="add_field_form">
+        <%= form_tag "/", id:"update_contact" do %>
+          <%= hidden_field_tag "contact", nil, id:"contact_id" %>
+          <%= label_tag "field", "Add Field:", class:'contact_add_field' %><br>
+          <div id="contact_field"></div>
+          <%= label_tag "information", "Information:", class:"contact_add_info" %><br>
+          <%= text_field_tag "information:",nil %><br>
+          <%= submit_tag "Update", id:"update_contact_button" %>
+        <% end%>
       </div>
     <% end %>
 
@@ -56,13 +86,14 @@
         <div class="contact-page-contact-image "></div>
         <div class="contact-page-contact-information">
           <li>{{name}}</li>
-          <li>{{phone}}</li>
-          <li>{{email}}</li>
+          <li>Phone: {{phone}}</li>
+          <li>Email: {{email}}</li>
+          <li>Twitter Id: {{twitter}}</li>
+          <li>Twitter Handle: {{twitter_username}}</li>
+          <%= link_to 'delete', "/contacts/{{id}}", method: :delete, data: {confirm: "Are you sure you want to delete {{name}}"}%>
         </div>
       </div>
       </a>
     {{/objects}}
   </ul>
-
-
-  </script>
+</script>

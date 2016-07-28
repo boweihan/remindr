@@ -2,86 +2,28 @@ class ContactsController < ApplicationController
 
   before_action :ensure_logged_in
 
+  #All contacts page
   def index
-    # create a new contact to render form
-    @contact = Contact.new
-    # @messages = []
-    # @contacts.each do |contact|
-    #   @messages << contact.messages
-    # end
-
-    @contacts = Contact.all.where(user_id:current_user.id)
-    respond_to do |format|
-      format.html {}
-      format.json {render json: @contacts}
-    end
-
-  end
-
-
-  def all
-    @all = Contact.all.where(user_id:current_user.id)
-    respond_to do |format|
-      format.html {}
-      format.json {render json: {objects: @all }}
+    #return json of all contacts if ajax
+    if request.xhr?
+        @contacts = Contact.all.where(user_id:current_user.id)
+        render json: @contacts
+    else
+      # create a new contact to render form
+      @contact = Contact.new
     end
   end
 
-  def friends
-    @contacts = Contact.all.where(user_id:current_user.id)
-    @friends = @contacts.give_contacts_for('friend')
-    respond_to do |format|
-      format.html {}
-      format.json {render json: {objects: @friends }}
-    end
-  end
-
-  def business
-    @contacts = Contact.all.where(user_id:current_user.id)
-    @business = @contacts.give_contacts_for('business')
-    respond_to do |format|
-      format.html {}
-      format.json {render json: {objects: @business }}
-    end
-  end
-
-  def family
-    @contacts = Contact.all.where(user_id:current_user.id)
-    @family = @contacts.give_contacts_for('family')
-    respond_to do |format|
-      format.html {}
-      format.json {render json: {objects: @family }}
-    end
-  end
-
+  #Show one user's info on click
   def show
     @contact = Contact.find(params[:id])
-    @messages = @contact.messages
-
-
     respond_to do |format|
-      format.html
+      #responds to ajax request and executes script on click
       format.js {}
     end
-    # if current_Contact
-    #   @review = @contact.reviews.build
-    # end
   end
 
-  def new
-    @contact = Contact.new
-  end
-
-  def edit
-    @contact = Contact.find(params[:id])
-    respond_to  do |format|
-      format.html {}
-      format.json {render json: @contact}
-      format.js {}  # to show the contacts info in form on all contacts page
-    end
-
-  end
-
+  #Creating a new contact
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
@@ -92,43 +34,96 @@ class ContactsController < ApplicationController
     end
   end
 
+  # path to update one attribute
   def update
     if request.xhr?
       @contact = Contact.find(params[:id])
       @attribute = params[:attribute]
-      @contact.update(@attribute.to_sym =>params[:new])
-      render :nothing => true, :status => 200, :content_type => 'text/html'
-    else
-      @contact = Contact.find(params[:id])
-
-      if @contact.update_attributes(contact_params)
-        redirect_to contact_url(@contact)
+      if @contact.update(@attribute.to_sym =>params[:new])
+        head :ok, content_type: "text/html"
       else
-        render :edit
+        head :internal_server_errror
       end
     end
-
-
   end
 
+  #Delete a contact
   def destroy
     @contact = Contact.find(params[:id])
-    @contact.destroy
-    redirect_to contacts_url
-  end
-
-  def update_contact_patch
-    @contact = Contact.find(params[:id])
-  respond_to do |format|
-      if @contact.update_attributes(contact_params)
-        format.html {}
-        format.js   {}
-      else
-        redirect_to contacts_path
-      end
+    if @contact.destroy
+      redirect_to contacts_url
+    else
+      head :internal_server_errror
     end
 
   end
+
+  #update all attributes
+  def update_contact_patch
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      if @contact.update_attributes(contact_params)
+        format.js {}
+      else
+        head :internal_server_errror
+      end
+    end
+  end
+
+  #Path is reached when the user is clicked on contacts index
+  def edit
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      format.js {}  # to show the contacts info in form on all contacts page
+    end
+  end
+
+
+  #All, Friends, Business, Family paths will throw 404 if not accesed by ajax. Called by contact index page
+  def all
+    #only allow access if the route is called by ajax
+    if request.xhr?
+      @all = Contact.all.where(user_id:current_user.id)
+        #handlebars iterates through all values in the objects key for templating
+        render json: {objects: @all }
+    else
+      not_found
+    end
+  end
+
+  #Friends tab
+  def friends
+    if request.xhr?
+      @contacts = Contact.all.where(user_id:current_user.id)
+      @friends = Misc.give_contacts_for(@contacts, 'friend')
+        render json: {objects: @friends }
+    else
+      not_found
+    end
+  end
+
+  #Business tab
+  def business
+    if request.xhr?
+      @contacts = Contact.all.where(user_id:current_user.id)
+      @business = Misc.give_contacts_for(@contacts, 'business')
+      render json: {objects: @business }
+    else
+      not_found
+    end
+  end
+
+  #Family tab
+  def family
+    if request.xhr?
+      @contacts = Contact.all.where(user_id:current_user.id)
+      @family = @contacts.give_contacts_for('family')
+      render json: {objects: @family }
+    else
+      not_found
+    end
+  end
+
 
   private
   def contact_params
