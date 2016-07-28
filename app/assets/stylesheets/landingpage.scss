@@ -85,7 +85,7 @@ $offblack: #323232;
 .sign-up-form {
   display: block;
   width: 450px;
-  height: 570px;
+  height: 430px;
   padding: 30px;
   background-color: rgba(256, 256, 256, 0.87);
   position: absolute;
@@ -101,7 +101,17 @@ $offblack: #323232;
   margin-left: 10px;
 }
 #twitter-signup {
-  margin-left: 10px;
+  margin-left: 0px;
+}
+.sign-up-heading {
+  text-align: center;
+  color: gray;
+}
+.sign-up-user {
+}
+#modal-submit-create {
+  width: 94%;
+  font-weight: lighter;
 }
 // #nav-icon {
 //   height: 25px;
