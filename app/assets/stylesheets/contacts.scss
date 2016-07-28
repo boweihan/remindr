@@ -272,19 +272,21 @@
   float: left;
   width: 66.666%;
   height: 800px;
-  background-color: black;
+  background-color: $color6;
   // border: 3px solid $color2;
   overflow: scroll;
 }
 
 #message-content {
   width: 100%;
+  height: 20vh;
   position: relative;
   margin: auto;
   background-color: $color2;
   border: 1px solid $color2;
   border-radius: 3%;
-  margin: 10px;
+  margin: 15px;
+  padding: 10px;
   color: white;
   overflow: scroll;
   // background-color: #cffffc;
@@ -294,9 +296,9 @@
   // height: 22vh;
   position: relative;
   overflow: scroll;
-  margin: 0 10px;
-  top: 20px;
-  background-color: blue;
+  margin: 0 15px;
+  top: 5px;
+  background-color: $color6;
 }
 
 .message-label {
@@ -312,8 +314,8 @@
   width: 49.9%;
   // height: 55vh;
   margin: auto;
-  padding: 10px 8px;
-  background-color: pink;
+  padding: 10px 15px;
+  background-color: $color6;
   // border: 0px solid rgba(0,0,0,0.2);
   position: absolute;
   bottom: 45px;
@@ -321,7 +323,7 @@
 }
 
 label {
-  color: white;
+  color: $color2;
   font-size: 17px;
 }
 
@@ -341,7 +343,7 @@ input[type=submit] {
   height: 25px;
   margin-top: 6px;
   border: none;
-  background-color: $color3;
+  background-color: $color7;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -364,14 +366,15 @@ input[type=submit] {
 #contact_details {
   padding: 1em;
   height: 175px;
-  color: black;
-  font-weight: bold;
+  color: gray;
+  // font-weight: bold;
   display: block;
   margin: auto;
 }
 
 #contact_details > h2 {
   text-align: center;
+  color: $color2;
   font-size: 18px;
 }
 
@@ -380,11 +383,11 @@ input[type=submit] {
 }
 
 label.contact_add_field {
-  color: black;
+  color: $color2;
 }
 
 label.contact_add_info {
-  color: black;
+  color: $color2;
 }
 #add_field_form {
   color: black;
@@ -398,12 +401,12 @@ label.contact_add_info {
 }
 
 #update_contact_button {
-  margin: 2em;
-  margin-left: 1.5em;
+  margin: 15px;
+  margin-left: 15px;
   width: 90px;
   height: 30px;
   border: none;
-  background-color: $color3;
+  background-color: $color7;
   color: white;
 }
 

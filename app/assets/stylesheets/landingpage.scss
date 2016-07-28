@@ -11,13 +11,17 @@ $color: #07DEFF;
 // $color2: #170061;
 // $color2: #019587;
 // $color2: #240099;
-// $color2: #40e0d0;
-$color2: #20c5b5;
+$color4: #20c5b5;
 $color3: #FFDD24;
-$color4: #00C7BD;
-$color5: #ccfffc;
+// $color4: #00C7BD;
+// $color5: #ccfffc;
 // $color6: #fbfbfb;
 $color6: #f2f2f2;
+$color1: #775aa7;
+$color2: #4b69c8;
+$color7: #27c5ef;
+$color8: #00a4ff;
+
 
 
 * {
@@ -145,8 +149,8 @@ a.signup {
 }
 
 .signupButton {
-  background-color: $color;
-  border: 1px solid $color;
+  background-color: $color4;
+  border: 1px solid $color4;
   border-radius: 5%;
   display: inline-block;
   color: white;
