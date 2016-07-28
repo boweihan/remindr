@@ -12,10 +12,14 @@
 <div class="nav-bar">
   <%= link_to "Remindr", root_path, class:"logo" %>
     <% if current_user %>
-      <!-- <br>Signed in as <%= current_user.name.capitalize %>   -->
-      <br><%= link_to "Log Out", session_path("this session"), class:"logoutButton", :method => :delete %>
+      <%= link_to "LOG OUT", session_path("this session"), class:"logoutButton", :method => :delete %>
     <% else %>
-      <%= link_to "Log In", new_session_path, class:"loginButton" %>  <%= link_to "Sign Up", new_user_path, class:"signup" %>
+
+      <%= link_to "LOG IN", new_session_path, class:"loginButton" %>
+
+    <%= link_to "SIGN UP", new_user_path, class:"signup" %>
+
+
     <% end %>
     <% if current_user %>
       <!-- code to check if current user has overdue messages -->

@@ -1,4 +1,5 @@
-
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
@@ -18,7 +19,13 @@ $color4: #00C7BD;
 $color5: #ccfffc;
 // $color6: #fbfbfb;
 $color6: #f2f2f2;
-
+$offwhite: #F2F6F7;
+$logocolor: #4b69c8;
+$brightblue: #00a4ff;
+$lightblue: #9bdbff;
+$mediumblue: #27c5ef;
+$purple: #775aa7;
+$offblack: #323232;
 
 * {
   box-sizing: border-box;
@@ -29,8 +36,8 @@ $color6: #f2f2f2;
 
 .nav-bar {
   width: 100%;
-  height: 50px;
-  background-color: #240099;
+  height: 56px;
+  background-color: $offwhite;
   // background-color: hsl(240, 20%, 95%);
   text-align: right;
 }
@@ -39,10 +46,10 @@ $color6: #f2f2f2;
   float: left;
   margin-left: 2rem;
   font-size: 25px;
-  line-height: 50px;
-  font-style: 'Always In My Heart', cursive;
+  line-height: 56px;
+  font-family: 'Lobster', sans-serif;
   text-decoration: none;
-  color: white;
+  color: $logocolor;
 
 }
 
@@ -52,13 +59,13 @@ $color6: #f2f2f2;
   margin-left: 1rem;
   text-decoration: none;
   font-size: 17px;
-  line-height: 50px;
+  line-height: 56px;
 }
 
 .nav-icon img {
   height: 25px;
   width: 23px;
-  line-height: 50px;
+  line-height: 56px;
   display: inline-block;
   margin-right: 1rem;
   margin-left: 1rem;
@@ -74,74 +81,106 @@ $color6: #f2f2f2;
   margin-left: 1rem;
   padding-bottom: .4rem;
 }
-
-.loginButton {
-  text-decoration: none;
-  display: inline-block;
-  float: right;
-  color: white;
-  font-size: 17px;
-  margin: 0 2rem;
-  line-height: 50px;
+a.logo:hover {
+  color: $mediumblue;
 }
 
-.logoutButton {
-  text-decoration: none;
-  display: inline-block;
-  float: right;
-  color: white;
-  margin-left: 1rem;
-  margin-right: 2rem;
+a.loginButton:hover,
+a.getstarted:hover,
+a.logoutButton:hover,
+a.signup:hover
+ {
+  text-decoration: line-through;
+  background-color: $mediumblue;
 }
-
 a.signup {
   text-decoration: none;
-  background-color:white;
-  border:1px solid #240099;
+  background-color: $offwhite;
+  border:2px solid $logocolor;
   display:inline-block;
-  font-size:17px;
+  font-size:14px;
   line-height: 25px;
-  font-weight: lighter;
-  color: #240099;
-  padding:1px 15px;
-  margin-right: 1rem;
+  color: $logocolor;
   margin-top: .7rem;
+  width: 96px;
+  text-align: center;
+}
+
+a.loginButton {
+  text-decoration: none;
+  background-color: $logocolor;
+  display: inline-block;
+  float: right;
+  color: $offwhite;
+  font-size: 14px;
+  text-align: center;
+  width: 96px;
+  margin: .7rem 2rem;
+  line-height: 27px;
+}
+
+a.logoutButton {
+  text-decoration: none;
+  background-color: $logocolor;
+  display: inline-block;
+  float: right;
+  color: $offwhite;
+  font-size: 14px;
+  text-align: center;
+  width: 96px;
+  margin: .7rem 2rem;
+  line-height: 27px;
+}
+
+a.getstarted {
+  text-decoration: none;
+  background-color: $logocolor;
+  display: inline-block;
+  color: $offwhite;
+  font-size: 14px;
+  text-align: center;
+  width: 12rem;
+  margin: auto;
+  line-height: 36px;
+
 }
 
 // Block 2: the photo background with text & sign up button
 
 .photo-background {
   background-size: cover;
-  border-bottom: 1px solid grey;
   text-align: center;
   padding: 120px 0;
   height: 90vh;
   position: relative;
   z-index: 2;
 }
+.photo-background-image {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  background-image: url('background-hero.svg');
+}
+.welcome-text{
+  margin-bottom: 2rem;
+}
 
-#photo-background {
-  background-size: cover;
-  background: white;
-  width: 100%;
-  position: absolute;
-  z-index: 0;
-  opacity: 0.8;
+#main-heading {
+  font-size: 3rem;
+  color: $offwhite;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  margin: 2rem 0;
 }
-.photo-background-filter {
-  height: 90vh;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  background-color: black;
-  opacity: 0.5;
-}
-.welcome-text {
-  font-weight: lighter;
-  margin-bottom: 30px;
-  font-size: 55px;
-  // color: $color;
-  color: white;
+
+#second-heading {
+  font-size: 1.5rem;
+  color: $offwhite;
+  font-family: 'Roboto', sans-serif;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 2.5rem;
 }
 
 .signupButton {
@@ -171,13 +210,13 @@ a.signup {
   text-align: center;
   width: 28%;
   margin: 2%;
-  padding: 0 20px;
+  padding: 3rem 36px;
   color: #4A4A4A;
   font-size: 16px;
 
   .icon {
-    margin-bottom: 10px;
-    max-width: 150px;
+    margin-bottom: 16px;
+    max-width: 120px;
     height: auto;
     width: 100%;
   }
@@ -186,8 +225,6 @@ a.signup {
     margin-bottom: 10px;
   }
 }
-
-
 
 // Section 4: the entire step by step process of how to use the app
 
@@ -198,154 +235,169 @@ a.signup {
   background-color: hsl(240, 20%, 93%);
 }
 
+#step-contents-div {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+}
 #stepbystepHeading {
   width: 100%;
   text-align: center;
-  color: grey;
-  font-size: 40px;
-  padding-top: 3rem;
+  color: $logocolor;
+  font-size: 1.5rem;
+  padding: 3rem 0;
 }
 
-#step1 {
-  width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  position: relative;
-
-}
-
-#step1content {
-  display: inline-block;
-  height: 70px;
-}
-
-p.stepcontent {
-  font-size: 25px;
-  line-height: 70px;
-  color: grey;
-  margin-left: 10rem;
-  // position: relative;
-
-
-
-}
-
-#circles1and3 {
-  height: 70px;
-  width: 70px;
-  border-radius: 100%;
-  display: inline-block;
-  background-color: white;
-  text-align: center;
-  color: $color;
-  font-size: 20px;
-  margin-left: 3rem;
-}
-
-p.center {
-  line-height: 70px;
-}
-
-#step1and3icon {
-  float: right;
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  margin-right: 3rem;
-
-}
-
-#step2 {
-  width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-#step2content {
-  display: inline-block;
-  height: 70px;
-}
-
-#circles2and4 {
-  height: 70px;
-  width: 70px;
-  border-radius: 100%;
-  display: inline-block;
-  float: right;
-  background-color: white;
-  text-align: center;
-  color: $color;
-  font-size: 20px;
-  margin-right: 3rem;
-
-}
-
-#step2and4icon {
+.left-div {
+  width: 50%;
+  height: 250px;
   float: left;
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
-#step3 {
+.right-div {
+  width: 50%;
+  padding: 2rem;
+  height: 250px;
+  float: right;
+  margin-bottom: 2rem;
+}
+
+.number-div {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+
+.text-div {
+  background-color: $offwhite;
+  opacity: 0.8;
   width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  position: relative;
+  height: auto;
+  padding: 2rem;
+  border-radius: 8px;
+}
+.number {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  text-align: center;
+  color: $offwhite;
 }
 
-#step3content {
-  display: inline-block;
-  height: 70px;
+.step-text {
+  font-size: 1.1rem;
+  color: rgba(0,0,0,0.54);
+  line-height: 1.8rem;
+  text-align: center;
+}
+.step-text-div {
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0 2rem;
 }
 
+.step-icon-div {
+  width: 10rem;
+  height: auto;
+  margin: auto;
+}
 
-#step4 {
+#first-number {
+  background-color: $purple;
+}
+#second-number {
+  background-color: $logocolor;
+}
+#third-number {
+  background-color: $mediumblue;
+}
+#fourth-number {
+  background-color: $lightblue;
+}
+
+#add-user-icon {
   width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-#step4content {
+  margin: auto;
   display: inline-block;
-  height: 70px;
-
 }
-
-
-
 // Section 5: the bottom of the landing page with a final sign up button
 
 #landingBottom {
   width: 100%;
   background-color: white;
+  text-align: center;
+  padding: 30px;
 }
 
 #textHeading {
   width: 100%;
   margin-top: 3rem;
   text-align: center;
-  color: grey;
-  font-size: 35px;
+  color: gray;
+  font-size: 2.4rem;
 }
 
-.signupButton2 {
-  margin: 2rem;
-  margin-right: 43%;
-  margin-left: 43%;
-  margin-bottom: 4rem;
-  background-color: $color;
-  border: 1px solid $color;
-  border-radius: 5%;
+#bottom-button {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+// FOOTER
+.footer {
+  background-color: $offblack;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.left-list {
   display: inline-block;
-  color: white;
-  font-size: 20px;
-  padding: 10px 15px;
-  text-decoration: none;
-  // position: absolute;
-  // z-index: 5;
+  margin: 2em 5em;
+  list-style: none;
+}
+
+.logo-footer {
+  display: inline-block;
+  margin: 80px 6% 0 0;
+  float: right;
+}
+
+
+.logo-footer-text {
+  font-size: 4em;
+  font-family: 'Lobster', sans-serif;
+  color: gray;
+}
+
+.middle-list {
+  display: inline-block;
+  list-style: none;
+  margin: 0 16px;
+}
+.bottom-footer-list {
+  overflow: hidden;
+  margin: 0 5%;
+}
+.bottom-list-link {
+  display: inline-block;
+  color: gray;
+  margin: 16px 36px;
+}
+.left-list-link {
+  color: rgba(256,256,256,0.9);
+}
+.middle-list-link {
+  color: gray;
+}
+#bottom-list-right {
+  float: right;
+}
+.divider {
+  width: 90%;
+  margin: 0 auto;
+  height: 2px;
+  background-color: $offwhite;
+  opacity: 0.7;
 }
