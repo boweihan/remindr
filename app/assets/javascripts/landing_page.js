@@ -4,9 +4,12 @@ $(function() {
     $('.sign-up-modal').css('display', 'block');
   });
 
-  $('.close').on('click', function(e) {
-    $('.sign-up-modal').css('display', 'block');
+  $('.close').on('click', function() {
+    $('.sign-up-modal').css('display', 'none');
   });
 
+  $('.sign-up-modal').on('click', function() {
+    $('.sign-up-modal').css('display', 'none');
+  })
 
 })
