@@ -68,6 +68,7 @@ class PagesController < ApplicationController
 
   #landing page
   def landing
+    @user = User.new
   end
 
 end

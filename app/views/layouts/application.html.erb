@@ -3,8 +3,8 @@
 <head>
   <title>Remindr</title>
   <!-- <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet"> -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js' %>
   <%= csrf_meta_tags %>
 </head>
@@ -12,11 +12,12 @@
 <div class="nav-bar">
   <%= link_to "Remindr", root_path, class:"logo" %>
     <% if current_user %>
-      <!-- <br>Signed in as <%= current_user.name.capitalize %>   -->
-      <br><%= link_to "Log Out", session_path("this session"), class:"logoutButton", :method => :delete %>
+      <%= link_to "LOG OUT", session_path("this session"), class:"logoutButton", :method => :delete %>
     <% else %>
-      <%= link_to "Log In", new_session_path, class:"loginButton" %>  <%= link_to "Sign Up", new_user_path, class:"signup" %>
+      <%= link_to "LOG IN", new_session_path, class:"loginButton" %>
+    <%= link_to "SIGN UP", new_user_path, class:"signup" %>
     <% end %>
+
     <% if current_user %>
       <!-- code to check if current user has overdue messages -->
       <% counter = 0 %>
@@ -26,18 +27,18 @@
         <% end %>
       <% end %>
       <% if counter > 0 %>
-        <%= link_to (image_tag "notification-warning.png"), reminders_path, class: "nav-icon"%>
-        <%= link_to (image_tag "allcontacts.png"), contacts_path, class: "nav-icon" %>
-        <%= link_to (image_tag "menu.png"), newsfeed_path, class: "nav-icon" %>
-        <%= image_tag "settings.png", id: "nav-icon" %>
+        <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon"%>
+        <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
+        <%= link_to (image_tag "notification-warning.png"), newsfeed_path, class: "nav-icon" %>
+        <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %>
       <% else %>
       <!-- code for nav links -->
-        <%= link_to (image_tag "notification.png"), reminders_path, class: "nav-icon" %>
-        <%= link_to (image_tag "allcontacts.png"), contacts_path, class: "nav-icon" %>
-        <%= link_to (image_tag "menu.png"), newsfeed_path, class: "nav-icon" %>
-        <%= image_tag "settings.png", id: "nav-icon" %>
+        <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon" %>
+        <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
+        <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
+        <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %>
       <% end %>
-      <!-- <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %> -->
+
     <% end %>
 </div>
 

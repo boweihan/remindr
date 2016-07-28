@@ -8,7 +8,9 @@
       Name:  <%= f.text_field :name, class: 'field'%><br>
       Phone: <%= f.text_field :phone,  class: 'field' %><br>
       Email: <%= f.email_field :email, class: 'field' %><br>
-      Twitter: <%= f.text_field :email, class: 'field' %><br>
+      Twitter Id: <%= f.text_field :twitter, class: 'field' %><br>
+      Twitter Username: <%= f.text_field :twitter_username, class: 'field' %><br>
+      Category: <%= f.text_field :category, class: 'field' %>
       <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
       <%= f.submit "Update Account", class: 'submit'%>
     <% end %>
