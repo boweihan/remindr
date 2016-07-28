@@ -3,8 +3,8 @@
 <head>
   <title>Remindr</title>
   <!-- <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet"> -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js' %>
   <%= csrf_meta_tags %>
 </head>
@@ -14,13 +14,10 @@
     <% if current_user %>
       <%= link_to "LOG OUT", session_path("this session"), class:"logoutButton", :method => :delete %>
     <% else %>
-
       <%= link_to "LOG IN", new_session_path, class:"loginButton" %>
-
     <%= link_to "SIGN UP", new_user_path, class:"signup" %>
-
-
     <% end %>
+
     <% if current_user %>
       <!-- code to check if current user has overdue messages -->
       <% counter = 0 %>
@@ -32,16 +29,16 @@
       <% if counter > 0 %>
         <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon"%>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
-        <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon" %>
+        <%= link_to (image_tag "notification-warning.png"), newsfeed_path, class: "nav-icon" %>
+        <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %>
       <% else %>
       <!-- code for nav links -->
         <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon" %>
+        <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %>
       <% end %>
-      <!-- <%=link_to (image_tag "settings.png"), edit_user_path(current_user),class: "nav-icon" %> -->
+
     <% end %>
 </div>
 

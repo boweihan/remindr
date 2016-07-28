@@ -6,6 +6,23 @@
 </head>
 <body>
 
+  <div class="sign-up-modal">
+    <div class="sign-up-form">
+      <%= form_for @user do |f| %>
+        <button type="button" class="close">x</button>
+        <div class="sign-up-user">
+          <h3 class="sign-up-heading">Sign Up</h3>
+        </div>
+        Name:  <%= f.text_field :name, class: 'field'%><br>
+        Phone: <%= f.text_field :phone,  class: 'phone-field' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
+        Email: <%= f.email_field :email, class: 'email-field' %><br>
+        Twitter ID: <%= f.text_field :twitter, class: 'twitter-field' %><br>
+        <%= f.submit "Create Account", class: 'modal-submit'%>
+      <% end %>
+    </div>
+  </div>
+
+
 <!-- Section 1: Navigation Bar (See: application.html.erb) *CSS located in 'landingpage.scss'* -->
 
 
