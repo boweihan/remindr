@@ -2,15 +2,12 @@
 <html>
 <head>
   <title>Remindr</title>
-<<<<<<< HEAD
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-=======
   <!-- <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet"> -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
->>>>>>> c73454252ee32615bc4c3a67a0c87015ef2ca494
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js' %>
   <%= csrf_meta_tags %>
 </head>
@@ -35,7 +32,7 @@
       <% if counter > 0 %>
         <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon"%>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
-        <%= link_to (image_tag "notification-warning.png"), newsfeed_path, class: "nav-icon" %>
+        <%= link_to (image_tag "notification-warning.png"), newsfeed_path, class: "nav-icon", id:'nav-icon' %>
         <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon" %>
       <% else %>
       <!-- code for nav links -->
