@@ -6,114 +6,177 @@
 </head>
 <body>
 
+  <div class="sign-up-modal">
+    <div class="sign-up-form">
+      <%= form_for @user do |f| %>
+        <button type="button" class="close">x</button>
+        <div class="sign-up-user">
+          <h3 class="sign-up-heading">SIGN UP</h3>
+        </div>
+        Name:  <%= f.text_field :name, class: 'field'%><br>
+        Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
+        Email: <%= f.email_field :email, class: 'field', id: 'email-signup' %><br>
+        <%= f.submit "Create Account", class: 'modal-submit', id: 'modal-submit-create'%>
+      <% end %>
+    </div>
+  </div>
+
+
 <!-- Section 1: Navigation Bar (See: application.html.erb) *CSS located in 'landingpage.scss'* -->
 
 
 <!-- Section 2: The following is the photo background w text & sign up button -->
-  <%= video_tag "video.mp4", :controls => false, autoplay: :autoplay, loop: :loop, id:"photo-background"%>
-  <div class="photo-background-filter"></div>
-  <div class="photo-background">
-  <!-- <video autoplay loop id="photo-background">
-    <source src="/assets/images/video.mp4" type="video/mp4">
-  </video> -->
-  <div class="welcome-text">
-    <p>Keep in touch no matter</p>
-    <p>where life takes you!</p>
+  <!-- <%= video_tag "video.mp4", :controls => false, autoplay: :autoplay, loop: :loop, id:"photo-background"%> -->
+  <div class="photo-background-image">
+    <div class="photo-background">
+    <div class="welcome-text">
+      <p id="main-heading">Keep in touch no matter where life takes you</p>
+      <p id="second-heading">Remindr makes it easy to keep in touch with friends, family and your networking connections.</p>
+    </div>
+
+    <%= link_to "START CONNECTING", new_user_path, class:"getstarted" %>
+    </div>
+
   </div>
 
-  <%= link_to "Get Started!", new_user_path, class:"signupButton" %>
-  </div>
 <!-- Section 3: The following are the 3 main selling points of the app -->
 
   <ul id="sellingPoints">
 
     <li id="sellingPoint1" class="selling-points">
-      <%= image_tag "calendar(3).png", class:"icon" %>
-        <h3>Selling Point 1</h3>
-        <p>Explanation blah blah blah blah blah blah</p>
+      <%= image_tag "message.svg", class:"icon" %>
+        <h3>EASY</h3>
+        <p>Access all your messages from twitter and gmail, with one click of a button.</p>
     </li>
 
     <li id="sellingPoint2" class="selling-points">
-      <%= image_tag "contacts.png", class:"icon" %>
-        <h3>Selling Point 2</h3>
-          <p>Explanation blah blah blah blah blah blah</p>
+      <%= image_tag "clock.svg", class:"icon" %>
+        <h3>FAST</h3>
+          <p>Receive and deliver messsages quickly and simply.</p>
     </li>
 
     <li id="sellingPoint3" class="selling-points">
-      <%= image_tag "bell(1).png", class:"icon" %>
-        <h3>Selling Point 3</h3>
-        <p>Explanation blah blah blah blah blah blah</p>
+      <%= image_tag "ring.svg", class:"icon" %>
+        <h3>CUSTOMIZE</h3>
+        <p>Choose how you want to get your notifications; text or email.</p>
     </li>
-
   </ul>
 
 
 <!-- Section 4: Step by step explanation of the app; everything falls under the 'stepbystep'div -->
-  <div id="stepbystep">
+<div id="stepbystep">
+  <div id="step-contents-div">
+    <h1 id="stepbystepHeading">HOW IT WORKS</h1>
 
-    <h1 id="stepbystepHeading">Remindr makes it easy to keep in touch with old friends!</h1>
-
-      <div id="step1">
-        <div id="circles1and3">
-          <p class="center">1</p>
-        </div>
-          <div id="step1content">
-            <p class="stepcontent">Add contacts that you want to keep in touch with</p>
-          </div>
-            <div id="step1and3icon">
-              <%= image_tag "addcontact.png", id:"step1and3icon" %>
-            </div>
+    <div class="left-div">
+      <div class="text-div">
+      <div class="number-div" id="first-number">
+        <p class="number">1</p>
       </div>
-
-
-      <div id="step2">
-        <div id="circles2and4">
-          <p class="center">2</p>
-        </div>
-          <div id="step2content">
-            <p class="stepcontent">Tell us how often you'd like to be reminded to get in touch</p>
-          </div>
-            <div id="step2and4icon">
-              <%= image_tag "alarm-clock.png", id:"step2and4icon" %>
-            </div>
+      <div class="step-text-div">
+      <p class="step-text">Add all your contacts and social media accounts that you want to keep in touch with.</p>
       </div>
-
-
-      <div id="step3">
-        <div id="circles1and3">
-          <p class="center">3</p>
-        </div>
-          <div id="step3content">
-            <p class="stepcontent">Save important dates like anniversaries and birthdays</p>
-          </div>
-            <div id="step1and3icon">
-              <%= image_tag "calendar(3).png", id:"step1and3icon" %>
-            </div>
       </div>
+    </div>
 
-
-      <div id="step4">
-        <div id="circles2and4">
-          <p class="center">4</p>
-        </div>
-          <div id="step4content">
-            <p class="stepcontent">Get notified when it's time to reach out!</p>
-          </div>
-            <div id="step2and4icon">
-              <%= image_tag "notification.png", id:"step2and4icon" %>
-            </div>
+    <div class="right-div">
+      <div class="step-icon-div">
+          <%= image_tag "user.svg", id:"add-user-icon" %>
       </div>
+    </div>
+
+    <div class="left-div">
+      <div class="step-icon-div">
+        <%= image_tag "calendar.svg", id:"add-user-icon" %>
+      </div>
+    </div>
+    <div class="right-div">
+      <div class="text-div">
+      <div class="number-div" id="second-number">
+        <p class="number">2</p>
+      </div>
+      <div class="step-text-div">
+      <p class="step-text">Customize your reminders for when you want to be notified to keep in touch with your contacts.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="left-div">
+      <div class="text-div">
+      <div class="number-div" id="third-number">
+        <p class="number">3</p>
+      </div>
+      <div class="step-text-div">
+      <p class="step-text">Import your messages from Gmail and Twitter.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="right-div">
+      <div class="step-icon-div">
+        <%= image_tag "mail.svg", id:"add-user-icon" %>
+      </div>
+    </div>
+
+
+    <div class="left-div">
+      <div class="step-icon-div">
+        <%= image_tag "chat.svg", id:"add-user-icon" %>
+      </div>
+    </div>
+
+    <div class="right-div">
+      <div class="text-div">
+      <div class="number-div" id="fourth-number">
+        <p class="number">4</p>
+      </div>
+      <div class="step-text-div">
+      <p class="step-text">Get notified via text or email to keep in touch and message directly through our platform.</p>
+      </div>
+    </div>
+    </div>
+
+
 
   </div>
+</div>
 
 
 <!-- Section 4: The following is the final div of the landing page -->
 
   <div id="landingBottom">
     <h1 id="textHeading">Ready to join?</h1>
-      <%= link_to "Get Started!", new_user_path, class:"signupButton2" %>
+      <%= link_to "START CONNECTING", new_user_path, class:"getstarted", id:'bottom-button'%>
   </div>
 
+  <div class="footer">
+    <ul class="left-list">
+        <li class="left-list-link">Help</li>
+        <li class="left-list-link">About</li>
+        <li class="left-list-link">Careers</li>
+        <li class="left-list-link">Press</li>
+        <li class="left-list-link">Blog</li>
+        <li class="left-list-link">Contact Us</li>
+    </ul>
+    <ul class="middle-list">
+        <li class="middle-list-link">LOCATIONS</li>
+        <li class="middle-list-link">Toronto</li>
+        <li class="middle-list-link">New York - Coming Soon</li>
+        <li class="middle-list-link">Boston - Coming Soon</li>
+        <li class="middle-list-link">San Francisco - Coming Soon</li>
+        <li class="middle-list-link">Las Vegas - Coming Soon</li>
+    </ul>
+    <div class="logo-footer">
+      <p class="logo-footer-text">Remindr</p>
+    </div>
+    <div class="divider"></div>
+    <ul class="bottom-footer-list">
+      <li class="bottom-list-link">Privacy</li>
+      <li class="bottom-list-link">Cookies</li>
+      <li class="bottom-list-link">Terms</li>
+      <li class="bottom-list-link" id='bottom-list-right'>2016 Remindr. All rights reserved.</li>
 
+    </ul>
+  </div>
 </body>
 </html>

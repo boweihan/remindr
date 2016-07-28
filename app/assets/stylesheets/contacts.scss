@@ -15,6 +15,7 @@
   height: 100vh;
   position: fixed;
   border-bottom: 2px solid rgba(0,0,0,0.2);
+  background-color: $color6;
 }
 
 //add contact modal
@@ -94,7 +95,7 @@
     border: none;
     outline: none;
     padding: 8px;
-    width: 43%;
+    width: 44%;
     margin: 20px 0;
     color: #555 ;
 }
@@ -171,31 +172,62 @@
   padding: 0.5em;
   background-color: gray;
   color: white;
-  // color: #fcf6ce;
   padding: 16px;
 }
 
 // Section 3: List of All Contacts (left 25% of the page)
 
 // search bar
-
-.contacts-container {
-  width: 25%;
-  height: 700px;
-  float: left;
+.main-container-heading {
+  height: 50px;
+  margin-right: 38px;
+  background-color: $color6;
 }
 
-.searchbar-with-icons-div {
+.contact-name-heading {
   height: 56px;
-  min-width: 320px;
+  width: 100%;
+  margin-left: 20px;
   background-color: $color6;
+}
+
+.messages-heading {
+  height: 50px;
+  background-color: $color2;
+}
+
+.contact-name-heading {
+  font-size: 36px;
+  text-align: center;
+  color: $color6;
+  line-height: 50px;
+}
+// #main-name {
+//   display: inline-block;
+//   line-height: 50px;
+//   float: left;
+//   margin-left: 150px;
+//   font-size: 36px;
+//   background-color: $color2;
+//   color: $color6;
+// }
+
+.searchbar-with-icons-div {
+  position: relative;
+  height: 50px;
+  float: left;
+  width: 23.3%;
+  margin-left: 20px;
+  display: inline-block;
+  background-color: $color2;
+
 }
 
 .search-contacts-bar {
-  height: 56px;
+  height: 50px;
   display:inline-block;
-  width: 65%;
-  background-color: $color6;
+  width: 50%;
+  background-color: $color2;
   float: left;
 }
 
@@ -206,37 +238,49 @@
   text-align: center;
 }
 
-.filter-icon {
-  height: 24px;
-  width: 24px;
+.filter-icon img{
+  height: 28px;
+  width: 28px;
+  margin: 15px;
+  margin-right: 5%;
+  margin-left: 2%;
   float:left;
-  margin: 5% 5%;
   display:inline-block;
 }
 
-.add-icon {
-  width: 24px;
-  height: 24px;
+.add-icon img{
+  width: 28px;
+  height: 28px;
   float:left;
-  margin: 5% 5%;
+  margin: 15px;
+  margin-left: 4%;
   display: inline-block;
 }
 
+.contacts-container {
+  width: 25%;
+  height: 800px;
+  float: left;
+  position: relative;
+}
+
 .contacts-messages {
-  height: 700px;
+  height: 800px;
+  margin-left: 20px;
+  margin-top: 15px;
   overflow: scroll;
 }
 
 .contact-message {
-  border-bottom: 5px solid white;
+  border-bottom: 5px solid $color6;
   padding: 16px 16px;
-  background-color: $color6;
+  background-color: white;
   overflow: hidden;
 }
 
 #load_contact_box {
   width: 100%;
-  position: relative;
+  // position: relative;
   float: left;
 }
 .contact-name-link {
@@ -264,7 +308,7 @@
   margin: 0;
   padding: 0;
   font-size: 14px;
-  color: gray;
+  color: #ccc;
 }
 
 
@@ -272,41 +316,75 @@
 
 .contact-info-updating-container {
   width: 75%;
-  height: 700px;
+  height: 800px;
   float: left;
   overflow: hidden;
+}
+
+.twitter-and-email-container {
+  position: fixed;
+  right: 25%;
+  width: 49.9%;
+  height: 50vh;
+  bottom: 0%;
+  // overflow: scroll;
 }
 
 .messages {
   float: left;
   width: 66.666%;
-  height: 700px;
-  background-color: $color2;
-  // border: 3px solid $color2;
-  overflow: hidden;
+  height: 800px;
+  background-color: $color6;
+  overflow: scroll;
 }
 
 #message-content {
-  width: 100%;
-  margin: auto;
+  width: 93%;
+  height: 20vh;
+  position: relative;
   background-color: $color2;
-  padding: 20px;
+  border: 1px solid $color2;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 10px;
   color: white;
-  // background-color: #cffffc;
+  word-wrap: break-word;
+  overflow: scroll;
+}
+
+.twitter-messaging-div {
+  position: absolute;
+  margin: 0 20px;
+  top: -50px;
+  background-color: $color6;
+}
+
+.send-direct-message {
+  margin-left: 19px;
+}
+.message-label {
+  line-height: 32px;
+  font-size: 16px;
+}
+.twitter_field {
+  height: 25px;
+  width: 175px;
+  margin: -8px 10px;
 }
 
 .send-message-div {
-  width: 49.9%;
+  width: 100%;
+  height: 45vh;
   margin: auto;
-  padding: 10px 8px;
-  background-color: $color2;
-  // border: 0px solid rgba(0,0,0,0.2);
-  bottom: 0;
-  position: fixed;
+  padding: 10px 20px;
+  background-color: $color6;
+  position: absolute;
+  bottom: 0%;
+  overflow: scroll;
 }
 
 label {
-  color: white;
+  color: $color2;
   font-size: 17px;
 }
 
@@ -318,57 +396,45 @@ label {
 
 #body_field {
   width: 100%;
-  height: 200px;
+  height: 150px;
 }
 
 input[type=submit] {
-  width: 90px;
-  height: 30px;
+  width: 80px;
+  height: 25px;
   margin-top: 6px;
-  border: none;
-  background-color: $color3;
+  border: 1px solid hsl(48, 100%, 50%);
+  border-radius: 20px;
+  background-color: hsl(48, 100%, 50%);
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
 }
 
-.contact-name-heading {
-  height: 56px;
-  width: 100%;
-  background-color: $color6;
-}
-
-#main-name {
-  line-height: 56px;
-  text-align: left;
-  margin-left: 300px;
-  font-size: 36px;
-  color: $color2;
-}
 
 
 // Section 5: Right 25% of page
 
 .profiles {
   float: left;
-  border-right: 1px solid rgba(0,0,0,0.2);
-  width: 33.333%;
-  height: 700px;
-  background-color: $color6;
-
+  width: 31.333%;
+  height: 800px;
+  background-color: white;
+  margin-top: 15px;
+  margin-right: 15px;
 }
 
 #contact_details {
   padding: 1em;
   height: 175px;
-  color: black;
-  font-weight: bold;
+  color: gray;
   display: block;
   margin: auto;
 }
 
 #contact_details > h2 {
   text-align: center;
+  color: $color2;
   font-size: 18px;
 }
 
@@ -377,11 +443,11 @@ input[type=submit] {
 }
 
 label.contact_add_field {
-  color: black;
+  color: $color2;
 }
 
 label.contact_add_info {
-  color: black;
+  color: $color2;
 }
 #add_field_form {
   color: black;
@@ -395,12 +461,12 @@ label.contact_add_info {
 }
 
 #update_contact_button {
-  margin: 2em;
-  margin-left: 1.5em;
+  margin: 15px;
+  margin-left: 15px;
   width: 90px;
   height: 30px;
   border: none;
-  background-color: $color3;
+  background-color: hsl(48, 100%, 50%);
   color: white;
 }
 
@@ -492,7 +558,7 @@ label.contact_add_info {
   background-color: #eee;
   padding: 16px;
   width: 96%;
-  height: 100px;
+  height: 148px;
   border: 1px solid rgba(0,0,0,0.3);
   margin: 0 auto;
   margin-top: 8px;
@@ -501,11 +567,12 @@ label.contact_add_info {
 
 .contact-page-contact-image {
   float: left;
-  width: 64px;
-  height: 64px;
+  width: 100px;
+  height: 100px;
   background-color: gray;
   border-radius: 100%;
   margin-left: 24px;
+  margin-top: 8px;
 }
 
 .contact-page-contact-information {
@@ -556,6 +623,7 @@ label.contact_add_info {
   text-align: center;
 }
 
+
 .reminderbox_newsfeed {
   display: block;
   width: 100%;
@@ -567,4 +635,7 @@ label.contact_add_info {
 
 #newsfeed_reminders {
   margin-top: 20vh;
+
+#contact_clicked {
+  background-color: purple;
 }

@@ -26,4 +26,9 @@ class Misc < ActiveRecord::Base
     service.send_user_message(user.google_id, message_object = message)
   end
 
+  #Query for contacts that match the category
+  def self.give_contacts_for(collection, category)
+    collection.where(category: category)
+  end
+
 end
