@@ -1,3 +1,21 @@
+<div class="modal">
+  <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+        <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      </div>
+      Name:  <%= f.text_field :name, class: 'field'%><br>
+      Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
+      Email: <%= f.email_field :email, class: 'eField' %>
+      Category: <%= f.text_field :category, class: 'catField' %>
+      Twitter ID: <%= f.text_field :twitter, class: 'twitField' %>
+      Twitter Username: <%= f.text_field :twitter_username, class: 'twitField2' %><br>
+      <%= f.submit "Add Contact", class: 'modal-submit'%>
+    <% end %>
+  </div>
+</div>
+
 
 <div class="all-contacts-container">
 
@@ -18,6 +36,9 @@
       <%= f.text_field :category, class: 'edit-contact-field', id:"edit-contact-category" %><br>
       <div class="update-contact-submit">
         <%= f.submit "Update Contact" %>
+      </div>
+      <div class="add-icon">
+        <button>Add Contact</button>
       </div>
       <div id="add_field_form">
         <%= form_tag "/", id:"update_contact" do %>
