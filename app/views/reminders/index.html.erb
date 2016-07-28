@@ -1,9 +1,16 @@
-<h1> REMINDER INDEX PAGE </h1>
-<h3>Get Notifications by: Text Message | Email | Twitter</h3>
+<div class='remindertitle'>
+  <h1> REMINDER INDEX PAGE </h1>
+  <h3>Get Notifications by: Text Message | Email | Twitter</h3>
+</div>
 <ul>
   <% @reminders.each do |reminder| %>
-    <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
-    <li>It's been <%= reminder.time_since_last_contact %> since your last contact</li>
-    <li>Your reminder is <strong><%= reminder.reminder_type %></strong></li><br />
+    <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
+    <div class='reminderbox' id='<%= reminder.reminder_type %>'>
+      <br>
+      <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
+      <li>It's been <%= reminder.time_since_last_contact %> since your last contact</li>
+      <li>Your reminder is <strong><%= reminder.reminder_type %></strong></li><br />
+    </div>
+    <% end %>
   <% end %>
 </ul>

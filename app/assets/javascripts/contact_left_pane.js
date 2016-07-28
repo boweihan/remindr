@@ -22,7 +22,7 @@ $(function() {
     $('.modal').css('display', 'none')
   });
 
-  $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field').on('click', function(e) {
+  $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field, .eField, .catField, .twitField, .twitField2').on('click', function(e) {
     e.stopPropagation();
     $(this).css('border', '1px solid green')
   });

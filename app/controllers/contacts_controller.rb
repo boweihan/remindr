@@ -114,7 +114,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
-    redirect_to contacts_url
+    redirect_to contacts_path
   end
 
   def update_contact_patch
