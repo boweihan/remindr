@@ -50,20 +50,12 @@ class User < ActiveRecord::Base
     current_user
   end
 
-  def tweet(tweet)
-   client = Twitter::REST::Client.new do |config|
-     config.consumer_key        = Rails.application.secrets.twitter_consumer_key
-     config.consumer_secret     = Rails.application.secrets.twitter_consumer_secret
-     config.access_token        = self.token
-     config.access_token_secret = self.secret
-   end
-   client.update(tweet)
-  end
 
   def self.get_direct_messages
     all.each do |user|
+      twitter_client = user.twitter_client
       user.contacts.each do |contact|
-        contact.get_dms(user.twitter_client, user)
+        contact.get_dms(twitter_client, user)
       end
     end
   end

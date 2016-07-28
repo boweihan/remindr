@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/tweets' => 'messages#create_tweet'
 
   resources :users, only: [:create, :new, :update]
-  
+
   resources :contacts, only: [:show, :create, :destroy, :update, :index, :edit] do
     resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
   end
