@@ -15,6 +15,7 @@
   height: 100vh;
   position: fixed;
   border-bottom: 2px solid rgba(0,0,0,0.2);
+  background-color: $color6;
 }
 
 //add contact modal
@@ -147,7 +148,7 @@
 // search bar
 .main-container-heading {
   height: 50px;
-  background-color: $color2;
+  background-color: $color7;
 }
 
 // .contact-name-heading {
@@ -160,25 +161,27 @@
   display: inline-block;
   line-height: 50px;
   float: left;
+  margin-left: 150px;
   font-size: 36px;
-  background-color: $color2;
+  background-color: $color7;
   color: $color6;
 }
 
 .searchbar-with-icons-div {
   height: 50px;
   float: left;
-  width: 40%;
+  width: 30%;
   margin-left: 15px;
+  // margin-right:15px;
   // display: inline-block;
-  background-color: $color2;
+  background-color: $color7;
 }
 
 .search-contacts-bar {
   height: 50px;
   display:inline-block;
   width: 50%;
-  background-color: $color2;
+  background-color: $color7;
   float: left;
 }
 
@@ -189,39 +192,42 @@
   text-align: center;
 }
 
-.filter-icon {
-  height: 24px;
-  width: 24px;
-  line-height: 70px;
-  margin-right: 3%;
+.filter-icon img{
+  height: 28px;
+  width: 28px;
+  margin: 15px;
+  margin-right: 5%;
+  margin-left: 2%;
   float:left;
   display:inline-block;
 }
 
-.add-icon {
-  width: 24px;
-  height: 24px;
-  line-height: 70px;
+.add-icon img{
+  width: 30px;
+  height: 30px;
   float:left;
-  margin-left: 3%;
+  margin: 15px;
+  margin-left: 4%;
   display: inline-block;
 }
 
 .contacts-container {
   width: 25%;
   height: 800px;
+  margin-top: 17px;
   float: left;
 }
 
 .contacts-messages {
   height: 800px;
+  margin-left: 15px;
   overflow: scroll;
 }
 
 .contact-message {
   border-bottom: 5px solid white;
   padding: 16px 16px;
-  background-color: $color6;
+  background-color: $color7;
   overflow: hidden;
 }
 
@@ -232,7 +238,7 @@
 }
 .contact-name-link {
   // color: rgba(0,0,0,0.87);
-  color: $color2;
+  color: $color6;
   text-decoration: none;
 }
 
@@ -255,7 +261,7 @@
   margin: 0;
   padding: 0;
   font-size: 14px;
-  color: gray;
+  color: #ccc;
 }
 
 
@@ -268,36 +274,42 @@
   overflow: hidden;
 }
 
+.twitter-and-email-container {
+  position: fixed;
+  right: 25%;
+  width: 49.9%;
+  height: 50vh;
+  bottom: 0%;
+  // overflow: scroll;
+}
+
 .messages {
   float: left;
   width: 66.666%;
   height: 800px;
   background-color: $color6;
-  // border: 3px solid $color2;
   overflow: scroll;
 }
 
 #message-content {
-  width: 100%;
+  width: 95%;
   height: 20vh;
   position: relative;
   margin: auto;
-  background-color: $color2;
-  border: 1px solid $color2;
-  border-radius: 3%;
+  background-color: #768ed5;
+  border: 1px solid #768ed5;
+  border-radius: 5px;
   margin: 15px;
   padding: 10px;
   color: white;
+  word-wrap: break-word;
   overflow: scroll;
-  // background-color: #cffffc;
 }
 
 .twitter-messaging-div {
-  // height: 22vh;
-  position: relative;
-  overflow: scroll;
+  position: absolute;
   margin: 0 15px;
-  top: 5px;
+  top: -50px;
   background-color: $color6;
 }
 
@@ -307,23 +319,23 @@
 }
 .twitter_field {
   height: 25px;
+  width: 175px;
   margin: -8px 10px;
 }
 
 .send-message-div {
-  width: 49.9%;
-  // height: 55vh;
+  width: 100%;
+  height: 45vh;
   margin: auto;
   padding: 10px 15px;
   background-color: $color6;
-  // border: 0px solid rgba(0,0,0,0.2);
   position: absolute;
-  bottom: 45px;
+  bottom: 0%;
   overflow: scroll;
 }
 
 label {
-  color: $color2;
+  color: $color7;
   font-size: 17px;
 }
 
@@ -342,8 +354,9 @@ input[type=submit] {
   width: 80px;
   height: 25px;
   margin-top: 6px;
-  border: none;
-  background-color: $color7;
+  border: 1px solid $color2;
+  border-radius: 20px;
+  background-color: $color2;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -374,7 +387,7 @@ input[type=submit] {
 
 #contact_details > h2 {
   text-align: center;
-  color: $color2;
+  color: $color7;
   font-size: 18px;
 }
 
@@ -383,11 +396,11 @@ input[type=submit] {
 }
 
 label.contact_add_field {
-  color: $color2;
+  color: $color7;
 }
 
 label.contact_add_info {
-  color: $color2;
+  color: $color7;
 }
 #add_field_form {
   color: black;
@@ -406,7 +419,7 @@ label.contact_add_info {
   width: 90px;
   height: 30px;
   border: none;
-  background-color: $color7;
+  background-color: $color2;
   color: white;
 }
 

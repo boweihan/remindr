@@ -1,11 +1,11 @@
 
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html);
-  src: url(https://material.google.com/resources/roboto-noto-fonts.html);
-  src: url('Roboto-Light.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Roboto';
+//   font-style: normal;
+//   src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html);
+//   src: url(https://material.google.com/resources/roboto-noto-fonts.html);
+//   src: url('Roboto-Light.ttf') format('truetype');
+// }
 
 $color: #07DEFF;
 // $color2: #170061;
@@ -18,8 +18,8 @@ $color3: #FFDD24;
 // $color6: #fbfbfb;
 $color6: #f2f2f2;
 $color1: #775aa7;
-$color2: #4b69c8;
-$color7: #27c5ef;
+$color7: #4b69c8;
+$color2: #27c5ef;
 $color8: #00a4ff;
 
 
@@ -28,13 +28,14 @@ $color8: #00a4ff;
   box-sizing: border-box;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
 }
 // Section 1: the navigation bar
 
 .nav-bar {
   width: 100%;
   height: 50px;
-  background-color: #240099;
+  background-color: #F2F6F7;
   // background-color: hsl(240, 20%, 95%);
   text-align: right;
 }
@@ -46,7 +47,7 @@ $color8: #00a4ff;
   line-height: 50px;
   font-style: 'Always In My Heart', cursive;
   text-decoration: none;
-  color: white;
+  color: $color2;
 
 }
 
