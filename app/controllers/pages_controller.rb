@@ -65,6 +65,8 @@ class PagesController < ApplicationController
   def newsfeed
     #new contact the form for new contact
     @contact = Contact.new
+    @contacts = current_user.contacts
+    @reminders = Reminder.where(user_id:current_user.id).order(time_since_last_contact: :desc)
   end
 
   #landing page
