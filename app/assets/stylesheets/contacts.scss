@@ -139,7 +139,6 @@
   padding: 0.5em;
   background-color: gray;
   color: white;
-  // color: #fcf6ce;
   padding: 16px;
 }
 
@@ -148,33 +147,46 @@
 // search bar
 .main-container-heading {
   height: 50px;
+  background-color: $color6;
+}
+
+.contact-name-heading {
+  height: 56px;
+  width: 100%;
+  margin-left: 20px;
+  background-color: $color6;
+}
+
+.messages-heading {
+  height: 50px;
   background-color: $color7;
 }
 
-// .contact-name-heading {
-//   height: 56px;
-//   width: 100%;
-//   background-color: $color6;
+.contact-name-heading {
+  font-size: 36px;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+}
+// #main-name {
+//   display: inline-block;
+//   line-height: 50px;
+//   float: left;
+//   margin-left: 150px;
+//   font-size: 36px;
+//   background-color: $color7;
+//   color: $color6;
 // }
 
-#main-name {
-  display: inline-block;
-  line-height: 50px;
-  float: left;
-  margin-left: 150px;
-  font-size: 36px;
-  background-color: $color7;
-  color: $color6;
-}
-
 .searchbar-with-icons-div {
+  position: relative;
   height: 50px;
   float: left;
-  width: 30%;
+  width: 23.3%;
   margin-left: 15px;
-  // margin-right:15px;
-  // display: inline-block;
+  display: inline-block;
   background-color: $color7;
+
 }
 
 .search-contacts-bar {
@@ -203,8 +215,8 @@
 }
 
 .add-icon img{
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   float:left;
   margin: 15px;
   margin-left: 4%;
@@ -214,31 +226,32 @@
 .contacts-container {
   width: 25%;
   height: 800px;
-  margin-top: 17px;
   float: left;
+  position: relative;
 }
 
 .contacts-messages {
   height: 800px;
   margin-left: 15px;
+  margin-top: 15px;
   overflow: scroll;
 }
 
 .contact-message {
-  border-bottom: 5px solid white;
+  border-bottom: 5px solid $color6;
   padding: 16px 16px;
-  background-color: $color7;
+  background-color: white;
   overflow: hidden;
 }
 
 #load_contact_box {
   width: 100%;
-  position: relative;
+  // position: relative;
   float: left;
 }
 .contact-name-link {
   // color: rgba(0,0,0,0.87);
-  color: $color6;
+  color: #4b69c8;
   text-decoration: none;
 }
 
@@ -292,14 +305,13 @@
 }
 
 #message-content {
-  width: 95%;
+  width: 93%;
   height: 20vh;
   position: relative;
-  margin: auto;
-  background-color: #768ed5;
-  border: 1px solid #768ed5;
-  border-radius: 5px;
-  margin: 15px;
+  background-color: $color2;
+  border: 1px solid $color2;
+  border-radius: 15px;
+  margin: 20px;
   padding: 10px;
   color: white;
   word-wrap: break-word;
@@ -308,11 +320,14 @@
 
 .twitter-messaging-div {
   position: absolute;
-  margin: 0 15px;
+  margin: 0 20px;
   top: -50px;
   background-color: $color6;
 }
 
+.send-direct-message {
+  margin-left: 19px;
+}
 .message-label {
   line-height: 32px;
   font-size: 16px;
@@ -368,11 +383,11 @@ input[type=submit] {
 
 .profiles {
   float: left;
-  border-right: 1px solid rgba(0,0,0,0.2);
-  width: 33.333%;
-  // width: 25%;
+  width: 31.333%;
   height: 800px;
-  background-color: $color6;
+  background-color: white;
+  margin-top: 15px;
+  margin-right: 15px;
 
 }
 
@@ -380,7 +395,6 @@ input[type=submit] {
   padding: 1em;
   height: 175px;
   color: gray;
-  // font-weight: bold;
   display: block;
   margin: auto;
 }
