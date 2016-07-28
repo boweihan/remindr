@@ -55,6 +55,7 @@ class ContactsController < ApplicationController
     else
       head :internal_server_errror
     end
+
   end
 
   #update all attributes

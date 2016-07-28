@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def tweet_info
     @user = User.from_omniauth(request.env['omniauth.auth'], current_user)
     @contacts = Contact.all
+    TwitterLoadFeedJob.perform_later(current_user)
   end
 
   #create a new client for authentication

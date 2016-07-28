@@ -206,7 +206,9 @@ class Contact < ActiveRecord::Base
   #Called daily to update the reminders seen on dashboard
   def self.update_reminders
     all.each do |contact|
-      contact.update_reminder
+      if contact.messages != []
+        contact.update_reminder
+      end
     end
   end
 

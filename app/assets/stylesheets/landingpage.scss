@@ -1,26 +1,29 @@
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
-  src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html)
-  // src: url(https://material.google.com/resources/roboto-noto-fonts.html);
-  // src: url('Roboto-Light.ttf') format('truetype');
+  src: local('Roboto'), local('Roboto-Light'), url(https://material.google.com/resources/roboto-noto-fonts.html);
+  src: url(https://material.google.com/resources/roboto-noto-fonts.html);
+  src: url('Roboto-Light.ttf') format('truetype');
 }
 
 $color: #07DEFF;
 // $color2: #170061;
 // $color2: #019587;
 // $color2: #240099;
-$color2: #40e0d0;
+// $color2: #40e0d0;
+$color2: #20c5b5;
 $color3: #FFDD24;
 $color4: #00C7BD;
 $color5: #ccfffc;
 // $color6: #fbfbfb;
 $color6: #f2f2f2;
 
+
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Roboto-Light', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 // Section 1: the navigation bar
 
@@ -108,19 +111,37 @@ a.signup {
 // Block 2: the photo background with text & sign up button
 
 .photo-background {
-  background: url("SFbridge.jpg") center center no-repeat;
   background-size: cover;
   border-bottom: 1px solid grey;
   text-align: center;
   padding: 120px 0;
   height: 90vh;
+  position: relative;
+  z-index: 2;
 }
 
+#photo-background {
+  background-size: cover;
+  background: white;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.8;
+}
+.photo-background-filter {
+  height: 90vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.5;
+}
 .welcome-text {
   font-weight: lighter;
   margin-bottom: 30px;
   font-size: 55px;
-  color: $color;
+  // color: $color;
+  color: white;
 }
 
 .signupButton {
