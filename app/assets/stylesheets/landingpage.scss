@@ -26,6 +26,7 @@ $lightblue: #9bdbff;
 $mediumblue: #27c5ef;
 $purple: #775aa7;
 $offblack: #323232;
+$yellowbuttons:  hsl(48, 100%, 50%);
 
 * {
   box-sizing: border-box;
@@ -71,7 +72,7 @@ $offblack: #323232;
   margin-left: 1rem;
 }
 
-.sign-up-modal {
+.sign-up-modal, .login-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -82,7 +83,7 @@ $offblack: #323232;
   z-index: 2;
 }
 
-.sign-up-form {
+.sign-up-form, .login-form {
   display: block;
   width: 450px;
   height: 430px;
@@ -109,10 +110,10 @@ $offblack: #323232;
 }
 .sign-up-user {
 }
-#modal-submit-create {
+#modal-submit-create, #modal-submit-login {
   width: 94%;
   font-weight: lighter;
-  background-color: hsl(48, 100%, 46%);
+  background-color: $yellowbuttons;
 }
 // #nav-icon {
 //   height: 25px;
@@ -133,7 +134,7 @@ a.getstarted:hover,
 a.logoutButton:hover,
 a.signup:hover
  {
-  text-decoration: line-through;
+  font-weight: bold;
   background-color: $mediumblue;
 }
 a.signup {
