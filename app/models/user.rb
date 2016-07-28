@@ -40,10 +40,7 @@ class User < ActiveRecord::Base
 
 
   def self.from_omniauth(auth_hash, current_user)
-    current_user.uid = auth_hash['uid']
     current_user.provider = auth_hash['provider']
-    current_user.name = auth_hash['info']['name']
-    current_user.url = auth_hash['info']['urls']['Twitter']
     current_user.token = auth_hash['credentials']['token']
     current_user.secret = auth_hash['credentials']['secret']
     current_user.save!
