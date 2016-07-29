@@ -350,6 +350,7 @@
 #message-content {
   width: 100%;
   height: 50vh;
+  overflow: scroll;
   // position: relative;
   // background-color: $color2;
   // border: 1px solid $color2;
@@ -358,40 +359,63 @@
   // padding: 16px;
   // color: white;
   // word-wrap: break-word;
-  overflow: scroll;
+
 }
 
 .individual-message-div {
-  width: 80%;
+  width: 95%;
   height: auto;
   padding: 10px;
   word-wrap: break-word;
   background-color: $offwhite;
   color: rgba(0,0,0,0.87);
-  border-radius: 8px;
+  border-radius: 6px;
+  margin: 16px;
 }
 
 .twitter-and-email-container {
   position: fixed;
   right: 25%;
-  width: 49.9%;
-  height: 300px;
+  width: 50%;
+  height: 55vh;
   bottom: 0%;
   overflow: hidden;
   // overflow: scroll;
   background-color: $color6;
+  padding: 20px 20px;
 }
 
+//
+// .twitter-messaging-div {
+//   // position: absolute;
+//   // margin: 0 20px;
+//   // top: -40px;
+//   // background-color: $offwhite;
+// }
 
-.twitter-messaging-div {
-  // position: absolute;
-  // margin: 0 20px;
-  // top: -40px;
-  // background-color: $offwhite;
+.send-twitter-div {
+  overflow: hidden;
 }
 
 .send-direct-message {
-  // margin-left: 19px;
+  float: left;
+  display: inline-block;
+  width: 47.5%;
+  margin-right: 5%;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 8px;
+  padding: 20px;
+}
+.send-tweet {
+  float: left;
+  width: 47.5%;
+  display: inline-block;
+  padding: 20px;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 8px;
+  padding: 20px;
 }
 .message-label {
   line-height: 32px;
@@ -400,18 +424,30 @@
 .twitter_field {
   height: 25px;
   width: 175px;
-  margin: -8px 10px -8px 0;
+  // margin: -8px 10px -8px 0;
 }
 
-.send-message-div {
-  width: 100%;
+.send-email-div {
+  width: 93%;
   height: 35vh;
-  margin: auto;
-  padding: 10px 20px;
-  // background-color: $color6;
-  // position: absolute;
+  padding-top: 30px;
+  // background-color: red;
+  position: absolute;
   bottom: 0%;
   // overflow: scroll;
+
+}
+
+textarea {
+  border: 1px solid lightgray;
+}
+
+textarea#twitter-text-area {
+  width: 100%;
+}
+
+textarea#send-text-area{
+  width: 100%;
 }
 
 label {
@@ -443,7 +479,6 @@ input[type=submit] {
 }
 
 
-
 // Section 5: Right 25% of page
 
 .profiles {
@@ -466,10 +501,31 @@ input[type=submit] {
 
 #contact_details > h2 {
   text-align: center;
-  color: black;
-  font-size: 18px;
+  color: $offblack;
+  font-size: 24px;
+  margin: 16px 0;
 }
 
+
+.profile-divider {
+  width: 90%;
+  margin: 0 auto;
+  height: 2px;
+  background-color: $offblack;
+  opacity: 0.2;
+}
+
+.reminders-heading {
+  font-size: 20px;
+  color: $offblack;
+  text-align: center;
+  margin: 16px;
+}
+
+#inner_details {
+  margin: 24px;
+  margin-top: 36px;
+}
 #contact_details p {
   margin-top: 10px;
 }
@@ -658,17 +714,21 @@ label.contact_add_info {
 
 .reminderbox_newsfeed {
   display: block;
-  width: 100%;
-  height: 40px;
-  border: 2px solid black;
+  width: 92%;
+  margin: 8px;
+  height: auto;
+  font-size: 14px;
+  border: 1px solid rgba(0,0,0,0.4);
+  padding: 8px;
   text-align: center;
   list-style: none;
+  border-radius: 6px;
 }
 
 #newsfeed_reminders {
-  margin-top: 20vh;
+  margin-top: 13vh;
 }
 
 #contact_clicked {
-  background-color: $lightblue;
+  background-color: rgba(256,256,256, 0.8);
 }

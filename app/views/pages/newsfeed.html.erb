@@ -59,26 +59,31 @@
       </div>
         <!-- send direct message via twitter  -->
       <div class="twitter-and-email-container">
-
+        <div class-"send-twitter-div">
           <div class="send-direct-message">
               <%= form_tag "/", id:"send-direct-message" do %>
                 <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
-                <%= label_tag "direct_message", "DM:", class:"message-label" %>
-                <%= text_area_tag "direct_message", nil, class:"twitter_field" %>
-                <%= submit_tag("Send!") %>
+                <%= label_tag "direct_message", "Twitter Direct Message: ", class:"message-label" %><br>
+                <%= text_area_tag "direct_message", nil, class:"twitter_field", id: 'twitter-text-area'  %>
+                <div class="send-dm-submit">
+                <%= submit_tag "Send"%>
+                </div>
               <% end %>
           </div>
 
           <div class="send-tweet">
             <%= form_tag '/', id:'send-tweet' do %>
-            <%= label_tag "tweet_message", "Tweet:", class:"message-label" %>
-            <%= text_area_tag "tweet_message", nil, class:"twitter_field" %>
-            <%= submit_tag("Send!") %>
+            <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><br>
+            <%= text_area_tag "tweet_message", nil, class:"twitter_field",id: 'send-text-area' %>
+            <div class="send-tweet-submit">
+            <%= submit_tag "Send" %>
+            </div>
             <% end %>
+          </div>
           </div>
 
         <!-- send email  -->
-        <div class="send-message-div">
+        <div class="send-email-div">
           <%= form_tag "/", id:"send_email" do %>
             <%= hidden_field_tag "receiver", nil, id:"email_field"%>
             <%= label_tag "subject", "Subject:" %><br>
@@ -87,7 +92,7 @@
             <%= label_tag "body", "Body:" %><br>
             <%= text_area_tag "body", nil, id:"body_field" %><br>
 
-            <%= submit_tag("Send!") %>
+            <%= submit_tag("Send") %>
 
           <% end %>
         </div>
@@ -100,7 +105,11 @@
     <div class="profiles">
       <div id="contact_details">
       </div>
+
       <div id='newsfeed_reminders'>
+        <div class='profile-divider'></div><br>
+          <h2 class="reminders-heading">Reminders</h2>
+
         <!-- <% @reminders.each do |reminder| %>
           <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
           <div class='reminderbox_newsfeed' id='<%= reminder.reminder_type %>'>
