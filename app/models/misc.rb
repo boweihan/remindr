@@ -3,7 +3,6 @@ class Misc < ActiveRecord::Base
 
   #Send email to a given email
   def self.send_mail(user, to_email, subj, bod)
-    binding.pry
     user_input = Mail.new do
       from user.google_id
       to to_email

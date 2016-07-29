@@ -4,13 +4,11 @@ class MessagesController < ApplicationController
 
   #ajax email send
   def create_direct_message
-    binding.pry
     current_user.twitter_client.direct_message_create(direct_messages_params[:user], direct_messages_params[:text])
     # head :ok, content_type: "text/html"
   end
 
   def create_tweet
-    binding.pry
     current_user.twitter_client.update(tweet_params[:message])
     # head :ok, content_type: "text/html"
   end
