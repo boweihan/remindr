@@ -17,8 +17,8 @@ class PagesController < ApplicationController
       'https://www.googleapis.com/auth/userinfo.profile '+
       'https://www.googleapis.com/auth/gmail.readonly '+
       'https://www.googleapis.com/auth/gmail.send',
-      # :redirect_uri => 'http://localhost:3000/callback'
-        :redirect_uri => 'http://remindr-me.herokuapp.com/callback'
+      :redirect_uri => 'http://localhost:3000/callback'
+        # :redirect_uri => 'http://remindr-me.herokuapp.com/callback'
       )
   end
 

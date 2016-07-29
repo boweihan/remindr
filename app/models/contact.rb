@@ -83,8 +83,10 @@ class Contact < ActiveRecord::Base
       end
 
     else
+      if messages.all.length == 0
       # Create a message with no body to start countdown of 30 days if there is no email for contact
       Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id, body_plain_text: "~")
+      end
     end
     #   #Create a message with no body to start countdown of 30 days if there is no email for contact
     #     Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
