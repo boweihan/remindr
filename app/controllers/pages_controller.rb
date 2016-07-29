@@ -10,7 +10,6 @@ class PagesController < ApplicationController
 
   #create a new client for authentication
   def load_client
-    binding.pry
     client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_CLIENT_SECRETS']))
     @auth_client = client_secrets.to_authorization
     @auth_client.update!(
