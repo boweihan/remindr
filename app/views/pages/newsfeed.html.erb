@@ -24,17 +24,21 @@
 <div class="main-container">
   <div class="main-container-heading">
     <div class="searchbar-with-icons-div">
+      <a href=#>
       <div class="filter-icon">
         <%= image_tag "filter.png" %>
       </div>
+      </a>
       <div class="search-contacts-bar">
         <%= form_tag contacts_path,id:"search_contact" do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class: 'search-bar-field'%>
         <% end %>
       </div>
-      <div class="add-icon">
+      <a href=#>
+        <div class="add-icon">
         <%= image_tag "add-contact.png" %>
-      </div>
+        </div>
+      </a>
     </div>
     <div class="contact-name-heading">
       <p class="messages-heading">Messages</p> <
