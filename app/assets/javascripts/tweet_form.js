@@ -4,9 +4,9 @@ $(document).ready(function() {
     $.ajax({
       type: "get",
       url: '/tweets',
-      data: {tweet: {message: $("#tweet-message-field").val()}}
+      data: {tweet: {message: $("#send-text-area").val()}}
     }).done(function(){
-      $("#tweet-message-field").val("");
+      $("#send-text-area").val("");
     });
   });
 });
