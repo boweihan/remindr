@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'figaro'
 gem 'easytone', '0.1.5'
+
 #taskrunner
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -56,4 +57,10 @@ group :development do
   gem 'pry-rails'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :production do
+  # gems for deployment (heroku requires rails_12 factor)
+  gem 'rails_12factor'
+  gem 'puma'
 end
