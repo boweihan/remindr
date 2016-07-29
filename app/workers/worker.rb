@@ -12,3 +12,5 @@ class Worker
     User.get_direct_messages
   end
 end
+
+#DM id increase by time
