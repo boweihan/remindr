@@ -41,7 +41,6 @@ class PagesController < ApplicationController
 
   #After they are authenitcated with google
   def callback
-    binding.pry
     #if user clicks deny
     if params[:error]
       puts "error"
