@@ -17,20 +17,16 @@ development:
   adapter: postgresql
   encoding: unicode
   database: platform_development
-  pool: 5
-  host: localhost
 
 test:
   adapter: postgresql
   encoding: unicode
   database: platform_test
-  pool: 5
-  host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: platform_test
+  database: platform_production
   pool: 5
   host: localhost
 # Warning: The database defined as "test" will be erased and
