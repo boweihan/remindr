@@ -15,63 +15,63 @@
   </div>
 </div>
 
+  <div class="all-contacts-container">
 
-<div class="all-contacts-container">
+    <div class="individual-contact-edit-area">
+      <div class="individual-photo"></div>
+      <div class="individual-contact-wrapper">
+      <%= form_for(@contact, remote: true) do |f| %>
+        <%= f.label :name, class: 'edit-contact-label'%><br>
+        <%= f.text_field :name, class: 'edit-contact-field', id:"edit-contact-name" %><br>
+        <%= f.label :phone, class: 'edit-contact-label' %><br>
+        <%= f.text_field :phone, class: 'edit-contact-field', id:"edit-contact-phone" %><br>
+        <%= f.label :email, class: 'edit-contact-label' %><br>
+        <%= f.email_field :email, class: 'edit-contact-field', id:"edit-contact-email" %><br>
+        <%= f.label :twitter_username, class: 'edit-contact-label' %><br>
+        <%= f.text_field :twitter_username, class: 'edit-contact-field', id:"edit-contact-twitter-username" %><br>
+        <%= f.label :category, class: 'edit-contact-label' %><br>
+        <%= f.text_field :category, class: 'edit-contact-field', id:"edit-contact-category" %><br>
+        <div class="update-contact-submit">
+          <%= f.submit "Update Contact" %>
+        </div>
+        <!-- <div class="add-icon">
+          <button>Add Contact</button>
+        </div> -->
+        <!-- <div id="add_field_form">
+          <%= form_tag "/", id:"update_contact" do %>
+            <%= hidden_field_tag "contact", nil, id:"contact_id" %>
+            <%= label_tag "field", "Add Field:", class:'contact_add_field' %><br>
+            <div id="contact_field"></div>
+            <%= label_tag "information", "Information:", class:"contact_add_info" %><br>
+            <%= text_field_tag "information:",nil %><br>
+            <%= submit_tag "Update", id:"update_contact_button" %>
+          <% end%>
+        </div>
+      <% end %> -->
 
-
-  <div class="individual-contact-edit-area">
-    <div class="individual-photo"></div>
-    <div class="individual-contact-wrapper">
-    <%= form_for(@contact, remote: true) do |f| %>
-      <%= f.label :name, class: 'edit-contact-label'%>
-      <%= f.text_field :name, class: 'edit-contact-field', id:"edit-contact-name" %><br>
-      <%= f.label :phone, class: 'edit-contact-label' %>
-      <%= f.text_field :phone, class: 'edit-contact-field', id:"edit-contact-phone" %><br>
-      <%= f.label :email, class: 'edit-contact-label' %>
-      <%= f.email_field :email, class: 'edit-contact-field', id:"edit-contact-email" %><br>
-      <%= f.label :twitter_username, class: 'edit-contact-label' %>
-      <%= f.text_field :twitter_username, class: 'edit-contact-field', id:"edit-contact-twitter-username" %><br>
-      <%= f.label :category, class: 'edit-contact-label' %>
-      <%= f.text_field :category, class: 'edit-contact-field', id:"edit-contact-category" %><br>
-      <div class="update-contact-submit">
-        <%= f.submit "Update Contact" %>
       </div>
-      <div class="add-icon">
-        <button>Add Contact</button>
-      </div>
-      <div id="add_field_form">
-        <%= form_tag "/", id:"update_contact" do %>
-          <%= hidden_field_tag "contact", nil, id:"contact_id" %>
-          <%= label_tag "field", "Add Field:", class:'contact_add_field' %><br>
-          <div id="contact_field"></div>
-          <%= label_tag "information", "Information:", class:"contact_add_info" %><br>
-          <%= text_field_tag "information:",nil %><br>
-          <%= submit_tag "Update", id:"update_contact_button" %>
-        <% end%>
-      </div>
-    <% end %>
-
-
-
     </div>
+
+    <div class="all-contacts-list-area">
+      <div class="all-contacts-list-area-top-div">
+        <h4 class="all-contacts-title">All Contacts</h4>
+        <div class="add-icon-all-contacts-page">
+          <%= image_tag "blue-add-contact.png" %>
+        </div>
+      </div>
+
+      <div class="contact-types-wrapper">
+        <%= link_to contacts_all_path do %><div class="contact-types"><h6 class="contact-type-title">All</h6></div><% end %>
+        <%= link_to contacts_friends_path do %><div class="contact-types"><h6 class="contact-type-title">Friends</h6></div><% end %>
+        <%= link_to contacts_family_path do %><div class="contact-types"><h6 class="contact-type-title">Family</h6></div><% end %>
+        <%= link_to contacts_business_path do %><div class="contact-types"><h6 class="contact-type-title">Business</h6></div><% end %>
+      </div>
+
+      <div class="contacts-area">
+      </div>
   </div>
 
-  <div class="all-contacts-list-area">
-    <div class="all-contacts-list-area-top-div">
-      <h4 class="all-contacts-title">All Contacts</h4>
-    </div>
-
-    <div class="contact-types-wrapper">
-      <%= link_to contacts_all_path do %><div class="contact-types-all"><h6 class="contact-type-title">All</h6></div><% end %>
-      <%= link_to contacts_friends_path do %><div class="contact-types-friends"><h6 class="contact-type-title">Friends</h6></div><% end %>
-      <%= link_to contacts_family_path do %><div class="contact-types-family"><h6 class="contact-type-title">Family</h6></div><% end %>
-      <%= link_to contacts_business_path do %><div class="contact-types-business"><h6 class="contact-type-title">Business</h6></div><% end %>
-    </div>
-
-    <div class="contacts-area">
-    </div>
-</div>
-
+  </div>
 </div>
 
 <script id="contact-template" type="text/x-handlebars-template">
