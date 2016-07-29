@@ -9,7 +9,6 @@
       Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
       Email: <%= f.email_field :email, class: 'eField' %>
       Category: <%= f.text_field :category, class: 'catField' %>
-      Twitter ID: <%= f.text_field :twitter, class: 'twitField' %>
       Twitter Username: <%= f.text_field :twitter_username, class: 'twitField2' %><br>
       <%= f.submit "Add Contact", class: 'modal-submit'%>
     <% end %>
@@ -30,8 +29,6 @@
       <%= f.text_field :phone, class: 'edit-contact-field', id:"edit-contact-phone" %><br>
       <%= f.label :email, class: 'edit-contact-label' %>
       <%= f.email_field :email, class: 'edit-contact-field', id:"edit-contact-email" %><br>
-      <%= f.label :twitter, class: 'edit-contact-label' %>
-      <%= f.text_field :twitter, class: 'edit-contact-field', id:"edit-contact-twitter" %><br>
       <%= f.label :twitter_username, class: 'edit-contact-label' %>
       <%= f.text_field :twitter_username, class: 'edit-contact-field', id:"edit-contact-twitter-username" %><br>
       <%= f.label :category, class: 'edit-contact-label' %>
