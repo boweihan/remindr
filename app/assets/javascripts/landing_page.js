@@ -29,4 +29,8 @@ $(function() {
     e.preventDefault();
     $('.sign-up-modal').css('display', 'block');
   })
+
+  $('.field, .phoneField, .phoneField2, .phoneField3, #password').on('click', function(e) {
+    e.stopPropagation();
+  })
 })
