@@ -50,7 +50,7 @@
   <% @user = current_user %>
   <div class="modal2">
     <div class="updateInfo">
-      <%= form_for @user do |f| %>
+      <%= form_for @user, remote: true do |f| %>
         <button type="button" class="close">x</button>
         <div class="edit-user-div">
           <h3 class="edit-user-heading">Edit Personal Information</h3>

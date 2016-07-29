@@ -25,12 +25,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update_attributes(user_params)
-      redirect_to user_url(@user)
-    else
-      render :edit
+    respond_to do |format|
+      if @user.update_attributes(user_params)
+        format.js {head(:ok)}
+      else
+        head(:internal_server_error)
+      end
     end
+
   end
 
 
