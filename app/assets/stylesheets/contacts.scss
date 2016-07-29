@@ -303,7 +303,8 @@
 }
 .contact-profile-image {
   border-radius: 100%;
-  background-color: #ccc;
+  background-repeat: none;
+  background-image: url('duck.svg');
   width: 56px;
   height: 56px;
   float: left;
@@ -653,7 +654,7 @@ label.contact_add_info {
   float: left;
   width: 100px;
   height: 100px;
-  background-color: #ccc;
+  background-image: url('duck-2.svg');
   border-radius: 100%;
   margin-left: 24px;
   margin-top: 8px;
@@ -679,7 +680,7 @@ a {
   margin-top: 36px;
   width: 144px;
   height: 144px;
-  background-color: #ccc;
+  background-image: url('duck-3.svg');
   border-radius: 100%;
 
 }
