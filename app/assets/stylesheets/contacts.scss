@@ -68,17 +68,7 @@
     margin: 20px 0;
     margin-left: 8px;
 }
-.field, #password {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 7px;
-  width: 73%;
-  color: #555 ;
-  font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
-}
+
 
 
 .phoneField {
@@ -747,4 +737,28 @@ input[type=submit].update-contact-submit{
 
 #contact_clicked {
   background-color: rgba(256,256,256, 0.8);
+}
+
+.field, #password, #signup-field{
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 7px;
+  width: 73%;
+  color: #555 ;
+  font-size: 12px;
+  margin: 20px 0;
+  margin-left: 8px;
+}
+
+.field, #signup-confirmation {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 7px;
+  width: 48%;
+  color: #555 ;
+  font-size: 12px;
+  margin: 20px 0;
+  margin-left: 8px;
 }
