@@ -21,8 +21,12 @@ $(function() {
     $('.login-modal').css('display', 'none');
   });
 
-  $('.sign-up-modal').on('click', function() {
+  $('.login-modal').on('click', function() {
     $('.login-modal').css('display', 'none');
   })
 
+  $('.getstarted').on('click', function(e) {
+    e.preventDefault();
+    $('.sign-up-modal').css('display', 'block');
+  })
 })

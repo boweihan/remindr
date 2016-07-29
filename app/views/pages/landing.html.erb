@@ -28,15 +28,10 @@
       <div class="sign-up-user">
         <h3 class="sign-up-heading">LOG IN</h3>
       </div>
-
-        <div class="field">
           <%= label_tag :email %>:
           <%= email_field_tag :email, params[:email], placeholder: "ex. name@domain.com", class: 'field'%>
-        </div>
-        <div class="field">
           <%= label_tag :password %>:
-          <%= password_field_tag :password, class: 'field' %>
-        </div>
+          <%= password_field_tag :password %>
         <%= submit_tag "Log In", class: 'modal-submit', id: 'modal-submit-login' %>
       <% end %>
     </div>
