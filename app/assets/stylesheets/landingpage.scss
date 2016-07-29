@@ -17,7 +17,7 @@ $lightblue: #9bdbff;
 $mediumblue: #27c5ef;
 $purple: #775aa7;
 $offblack: #323232;
-$yellowbuttons:  hsl(48, 100%, 50%);
+$yellowbuttons:  hsl(48, 100%, 45%);
 
 
 * {
@@ -77,20 +77,25 @@ $yellowbuttons:  hsl(48, 100%, 50%);
   z-index: 2;
 }
 
-.sign-up-form, .login-form {
+.sign-up-form, .login-form{
   display: block;
   width: 450px;
-  height: 430px;
+  height: 500px;
   padding: 30px;
   background-color: rgba(256, 256, 256, 0.87);
   position: absolute;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 80px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   border-radius: 1%;
+}
+
+.login-form {
+  height: 300px;
+  margin-top: 200px;
 }
 #email-signup {
   margin-left: 10px;
@@ -173,7 +178,7 @@ a.logoutButton {
 
 a.getstarted {
   text-decoration: none;
-  background-color: $logocolor;
+  background-color: $yellowbuttons;
   display: inline-block;
   color: $offwhite;
   font-size: 14px;
