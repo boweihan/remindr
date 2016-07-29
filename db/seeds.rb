@@ -28,6 +28,8 @@ Contact.create(name: 'Google', phone: '9999999999', email: 'no-reply@accounts.go
 Contact.create(name: 'Random', phone: '9999999999', email: 'random@random.com',user_id:1, category: 'friend')
 Contact.create(name: 'Person With no Email', phone: '9999999999',user_id:1, category: 'friend')
 Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
+Contact.create(name: 'Uber Eats', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
+Contact.create(name: 'Uber Dogs', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
 
 #Carol's seeds to seed
 

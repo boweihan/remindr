@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      redirect_to contacts_url
+      redirect_to newsfeed_path
     else
       render :new
     end
