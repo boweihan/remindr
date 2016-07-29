@@ -39,7 +39,7 @@ $lightblue: #9bdbff;
 $mediumblue: #27c5ef;
 $purple: #775aa7;
 $offblack: #323232;
-$yellowbuttons:  hsl(48, 100%, 50%);
+$yellowbuttons:  hsl(48, 100%, 45%);
 
 
 * {
@@ -114,6 +114,16 @@ $yellowbuttons:  hsl(48, 100%, 50%);
   right: 0;
   border-radius: 1%;
 }
+
+.login-form {
+  height: 300px;
+  margin-top: 10%;
+}
+
+.sign-up-form {
+  height: 380px;
+  margin-top: 10%;
+}
 #email-signup {
   margin-left: 10px;
 }
@@ -132,6 +142,7 @@ $yellowbuttons:  hsl(48, 100%, 50%);
   font-weight: lighter;
   background-color: $yellowbuttons;
 }
+
 #nav-icon img{
   height: 25px;
   width: 23px;
@@ -195,7 +206,7 @@ a.logoutButton {
 
 a.getstarted {
   text-decoration: none;
-  background-color: $logocolor;
+  background-color: $yellowbuttons;
   display: inline-block;
   color: $offwhite;
   font-size: 14px;

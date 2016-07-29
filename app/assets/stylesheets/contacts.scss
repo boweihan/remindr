@@ -68,6 +68,18 @@
     margin: 20px 0;
     margin-left: 8px;
 }
+.field, #password {
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 7px;
+  width: 73%;
+  color: #555 ;
+  font-size: 12px;
+  margin: 20px 0;
+  margin-left: 8px;
+}
+
 
 .phoneField {
     display: inline-block;
@@ -384,7 +396,7 @@
 }
 
 label {
-  color: $color2;
+  color: $offblack;
   font-size: 17px;
 }
 

@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   #on logout
   def destroy
     session[:user_id] = nil
-    redirect_to new_session_url, notice: "You have logged out."
+    redirect_to root_path, notice: "You have logged out."
   end
 
 
