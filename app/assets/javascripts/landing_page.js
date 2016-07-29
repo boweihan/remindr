@@ -26,8 +26,12 @@ $(function() {
   })
 
   $('.getstarted').on('click', function(e) {
-    e.preventDefault();
-    $('.sign-up-modal').css('display', 'block');
+
+    if ($('.sign-up-modal').length !== 0) {
+      e.preventDefault();
+      $('.sign-up-modal').css('display', 'block');
+    }
+
   })
 
   $('.field, .phoneField, .phoneField2, .phoneField3, #password, #signup-confirmation, #signup-field').on('click', function(e) {

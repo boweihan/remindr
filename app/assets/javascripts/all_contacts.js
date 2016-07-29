@@ -1,5 +1,6 @@
 $(function() {
-
+  //hack
+ if (window.location.href.split("/")[3] === "contacts" ||  window.location.href.split("/")[3] === "contacts#"){
 // on page load - contacts div will populate with all contacts info
   $.ajax({
     url: '/contacts/all',
@@ -34,5 +35,5 @@ $(function() {
         console.log('Request failed')
       });
   });
-
-});
+}
+  });

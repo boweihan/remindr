@@ -1,5 +1,5 @@
 $(function() {
-  if (window.location.href.split("/")[3] === "newsfeed") {
+  if (window.location.href.split("/")[3] === "newsfeed" ||window.location.href.split("/")[3] === "newsfeed#" ) {
     $.ajax({
       method: "GET",
       url: "/contacts.json",

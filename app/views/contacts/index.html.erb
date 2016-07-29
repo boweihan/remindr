@@ -31,9 +31,8 @@
         <%= f.text_field :twitter_username, class: 'edit-contact-field', id:"edit-contact-twitter-username" %><br>
         <%= f.label :category, class: 'edit-contact-label' %><br>
         <%= f.text_field :category, class: 'edit-contact-field', id:"edit-contact-category" %><br>
-        <div class="update-contact-submit">
-          <%= f.submit "Update Contact" %>
-        </div>
+        <%= f.submit "Update Contact", class:"update-contact-submit" %>
+
         <!-- <div class="add-icon">
           <button>Add Contact</button>
         </div> -->
@@ -55,9 +54,11 @@
     <div class="all-contacts-list-area">
       <div class="all-contacts-list-area-top-div">
         <h4 class="all-contacts-title">All Contacts</h4>
+        <a href=#>
         <div class="add-icon-all-contacts-page">
           <%= image_tag "blue-add-contact.png" %>
         </div>
+      </a>
       </div>
 
       <div class="contact-types-wrapper">

@@ -15,7 +15,7 @@
   height: 100vh;
   position: fixed;
   border-bottom: 2px solid rgba(0,0,0,0.2);
-  background-color: $color6;
+  background-image: url('background-light-medium-blue.svg');
 }
 
 //add contact modal
@@ -228,18 +228,19 @@
   position: relative;
   height: 50px;
   float: left;
-  width: 23.3%;
-  margin-left: 20px;
+  width: 100%;
+  // margin-left: 20px;
   display: inline-block;
-  background-color: $color2;
+  // background-color: $color2;
+  background-color: $mediumblue;
 
 }
 
 .search-contacts-bar {
   height: 50px;
   display:inline-block;
-  width: 50%;
-  background-color: $color2;
+  width: 55%;
+  // background-color: $color2;
   float: left;
 }
 
@@ -248,6 +249,9 @@
   padding: 6px 0px;
   width: 100%;
   text-align: center;
+  border:  none;
+  border-radius: 2px;
+  opacity: 0.96;
 }
 
 .filter-icon img{
@@ -255,7 +259,7 @@
   width: 28px;
   margin: 15px;
   margin-right: 5%;
-  margin-left: 2%;
+  margin-left: 16px;
   float:left;
   display:inline-block;
 }
@@ -264,8 +268,8 @@
   width: 28px;
   height: 28px;
   float:left;
-  margin: 15px;
-  margin-left: 4%;
+  margin: 16px;
+  margin-left: 10%;
   display: inline-block;
 }
 
@@ -278,8 +282,8 @@
 
 .contacts-messages {
   height: 800px;
-  margin-left: 20px;
-  margin-top: 15px;
+  // margin-left: 20px;
+  // margin-top: 15px;
   overflow: scroll;
 }
 
@@ -333,46 +337,85 @@
   overflow: hidden;
 }
 
-.twitter-and-email-container {
-  position: fixed;
-  right: 25%;
-  width: 49.9%;
-  height: 50vh;
-  bottom: 0%;
-  // overflow: scroll;
-}
-
 .messages {
   float: left;
   width: 66.666%;
   height: 800px;
-  background-color: $color6;
-  overflow: scroll;
+  overflow: hidden;
+  // background-color: $color6;
+  // overflow: scroll;
 }
+
 
 #message-content {
-  width: 93%;
-  height: 20vh;
-  position: relative;
-  background-color: $color2;
-  border: 1px solid $color2;
-  border-radius: 15px;
-  margin: 20px;
-  padding: 10px;
-  color: white;
-  word-wrap: break-word;
+  width: 100%;
+  height: 50vh;
   overflow: scroll;
+  // position: relative;
+  // background-color: $color2;
+  // border: 1px solid $color2;
+  // border-radius: 15px;
+  // margin: 20px;
+  // padding: 16px;
+  // color: white;
+  // word-wrap: break-word;
+
 }
 
-.twitter-messaging-div {
-  position: absolute;
-  margin: 0 20px;
-  top: -40px;
+.individual-message-div {
+  width: 95%;
+  height: auto;
+  padding: 10px;
+  word-wrap: break-word;
+  background-color: $offwhite;
+  color: rgba(0,0,0,0.87);
+  border-radius: 6px;
+  margin: 16px;
+}
+
+.twitter-and-email-container {
+  position: fixed;
+  right: 25%;
+  width: 50%;
+  height: 55vh;
+  bottom: 0%;
+  overflow: hidden;
+  // overflow: scroll;
   background-color: $color6;
+  padding: 20px 20px;
+}
+
+//
+// .twitter-messaging-div {
+//   // position: absolute;
+//   // margin: 0 20px;
+//   // top: -40px;
+//   // background-color: $offwhite;
+// }
+
+.send-twitter-div {
+  overflow: hidden;
 }
 
 .send-direct-message {
-  // margin-left: 19px;
+  float: left;
+  display: inline-block;
+  width: 47.5%;
+  margin-right: 5%;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 8px;
+  padding: 20px;
+}
+.send-tweet {
+  float: left;
+  width: 47.5%;
+  display: inline-block;
+  padding: 20px;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 8px;
+  padding: 20px;
 }
 .message-label {
   line-height: 32px;
@@ -381,18 +424,30 @@
 .twitter_field {
   height: 25px;
   width: 175px;
-  margin: -8px 10px -8px 0;
+  // margin: -8px 10px -8px 0;
 }
 
-.send-message-div {
-  width: 100%;
+.send-email-div {
+  width: 93%;
   height: 35vh;
-  margin: auto;
-  padding: 10px 20px;
-  background-color: $color6;
+  padding-top: 30px;
+  // background-color: red;
   position: absolute;
   bottom: 0%;
-  overflow: scroll;
+  // overflow: scroll;
+
+}
+
+textarea {
+  border: 1px solid lightgray;
+}
+
+textarea#twitter-text-area {
+  width: 100%;
+}
+
+textarea#send-text-area{
+  width: 100%;
 }
 
 label {
@@ -424,16 +479,16 @@ input[type=submit] {
 }
 
 
-
 // Section 5: Right 25% of page
 
 .profiles {
   float: left;
-  width: 31.333%;
+  width: 33.333%;
   height: 800px;
   background-color: white;
-  margin-top: 15px;
-  margin-right: 15px;
+  opacity: 0.8;
+  // margin-top: 15px;
+  // margin-right: 15px;
 }
 
 #contact_details {
@@ -446,10 +501,31 @@ input[type=submit] {
 
 #contact_details > h2 {
   text-align: center;
-  color: $color2;
-  font-size: 18px;
+  color: $offblack;
+  font-size: 24px;
+  margin: 16px 0;
 }
 
+
+.profile-divider {
+  width: 90%;
+  margin: 0 auto;
+  height: 2px;
+  background-color: $offblack;
+  opacity: 0.2;
+}
+
+.reminders-heading {
+  font-size: 20px;
+  color: $offblack;
+  text-align: center;
+  margin: 16px;
+}
+
+#inner_details {
+  margin: 24px;
+  margin-top: 36px;
+}
 #contact_details p {
   margin-top: 10px;
 }
@@ -637,7 +713,7 @@ a {
   font-size: 20px;
 }
 
-.update-contact-submit > input[type="submit"] {
+input[type=submit].update-contact-submit{
   width: 130px;
   height: 30px;
   margin-top: 6px;
@@ -647,7 +723,12 @@ a {
   color: white;
   font-size: 16px;
   font-weight: bold;
+  &:hover{
+    background-color: $logocolor;
+    border-color: $logocolor;
+  }
 }
+
 
 // #contact_add_field {
 //     text-align: center;
@@ -658,11 +739,23 @@ a {
 // }
 
 
+.reminderbox_newsfeed {
+  display: block;
+  width: 92%;
+  margin: 8px;
+  height: 50px;
+  font-size: 14px;
+  border: 1px solid rgba(0,0,0,0.4);
+  padding: 8px;
+  text-align: center;
+  list-style: none;
+  border-radius: 6px;
+}
+
+#newsfeed_reminders {
+  margin-top: 13vh;
+}
 
 #contact_clicked {
-
-  background-color: $lightblue;
-
-  background-color: $color6;
-
+  background-color: rgba(256,256,256, 0.8);
 }

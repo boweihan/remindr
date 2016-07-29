@@ -22,28 +22,27 @@
 
 <!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
 <div class="main-container">
-  <div class="main-container-heading">
+
+
+<!-- Section 3: List of All Contacts (left 25% of the page)  -->
+  <div class="contacts-container">
     <div class="searchbar-with-icons-div">
+      <a href=#>
       <div class="filter-icon">
         <%= image_tag "filter.png" %>
       </div>
+      </a>
       <div class="search-contacts-bar">
         <%= form_tag contacts_path,id:"search_contact" do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class: 'search-bar-field'%>
         <% end %>
       </div>
-      <div class="add-icon">
+      <a href=#>
+        <div class="add-icon">
         <%= image_tag "add-contact.png" %>
-      </div>
+        </div>
+      </a>
     </div>
-    <div class="contact-name-heading">
-      <p class="messages-heading">Messages</p> <
-      <!-- <h3 id="main-name"></h3> -->
-    </div>
-  </div>
-<!-- Section 3: List of All Contacts (left 25% of the page)  -->
-  <div class="contacts-container">
-
 <!-- 'List of Contacts/Messages' div -->
   <div id='load_contact_box'>
       <div class="contacts-messages">
@@ -64,27 +63,31 @@
       </div>
         <!-- send direct message via twitter  -->
       <div class="twitter-and-email-container">
-        <div class="twitter-messaging-div">
+        <div class-"send-twitter-div">
           <div class="send-direct-message">
-            <%= form_tag "/", id:"send-direct-message" do %>
-              <%#=hidden_field_tag "receiver-twitter-dm", nil, id:"twitter_id_field"%>
-              <%#= label_tag "username", "Username:" %>
-              <%#= text_area_tag "username", nil, id:"username" %>
-              <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
-              <%= label_tag "direct_message", "Direct Message:", class:"message-label" %><br>
-              <%= text_area_tag "direct_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
-            <% end %>
+              <%= form_tag "/", id:"send-direct-message" do %>
+                <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
+                <%= label_tag "direct_message", "Twitter Direct Message: ", class:"message-label" %><br>
+                <%= text_area_tag "direct_message", nil, class:"twitter_field", id: 'twitter-text-area'  %>
+                <div class="send-dm-submit">
+                <%= submit_tag "Send"%>
+                </div>
+              <% end %>
           </div>
 
           <div class="send-tweet">
-          <%= form_tag '/', id:'send-tweet' do %>
-          <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><br>
-          <%= text_area_tag "tweet_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
-          <% end %>
+            <%= form_tag '/', id:'send-tweet' do %>
+            <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><br>
+            <%= text_area_tag "tweet_message", nil, class:"twitter_field",id: 'send-text-area' %>
+            <div class="send-tweet-submit">
+            <%= submit_tag "Send" %>
+            </div>
+            <% end %>
           </div>
-        </div>
+          </div>
+
         <!-- send email  -->
-        <div class="send-message-div">
+        <div class="send-email-div">
           <%= form_tag "/", id:"send_email" do %>
             <%= hidden_field_tag "receiver", nil, id:"email_field"%>
             <%= label_tag "subject", "Subject:" %><br>
@@ -93,7 +96,7 @@
             <%= label_tag "body", "Body:" %><br>
             <%= text_area_tag "body", nil, id:"body_field" %><br>
 
-            <%= submit_tag("Send!") %>
+            <%= submit_tag("Send") %>
 
           <% end %>
         </div>
@@ -106,7 +109,11 @@
     <div class="profiles">
       <div id="contact_details">
       </div>
+
       <div id='newsfeed_reminders'>
+        <div class='profile-divider'></div><br>
+          <h2 class="reminders-heading">Reminders</h2>
+
         <!-- <% @reminders.each do |reminder| %>
           <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
           <div class='reminderbox_newsfeed' id='<%= reminder.reminder_type %>'>

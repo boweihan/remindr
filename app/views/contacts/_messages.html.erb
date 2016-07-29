@@ -1,6 +1,6 @@
-<ul>
   <% contact.messages.each do |m| %>
-    <li class='individual_message' data='<%=m.id%>'><%=m.summary.gsub(/[^0-9a-zA-Z .]/, ' ')%></li>
-    <div class='individual_message_outer_div' id='<%=m.id%>' style='display:none'><div class='individual_message_div' id='<%=m.id%>'><%= m.body_plain_text.gsub(/[^0-9a-zA-Z .]/, ' ') %></div></div>
+  <div class="individual-message-div">
+    <div class='individual_message' data='<%=m.id%>'><%=m.summary.gsub(/[^0-9a-zA-Z .]/, ' ')%></div>
+    <div class='individual_message_outer_div' id='<%=m.id%>' style='display:none'><div class='individual_message_div'><%= m.body_plain_text.gsub(/[^0-9a-zA-Z .]/, ' ') %></div></div>
+  </div>
   <% end %>
-</ul>
