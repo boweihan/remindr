@@ -33,13 +33,13 @@
         <%= link_to (image_tag "ic_notifications_active_red_24px.svg"), reminders_path, class: "nav-icon"%>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon" %>
+        <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon", id: 'settings-icon' %>
       <% else %>
       <!-- code for nav links -->
         <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon" %>
+        <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon", id: 'settings-icon' %>
       <% end %>
 
     <% end %>

@@ -121,8 +121,8 @@ $yellowbuttons:  hsl(48, 100%, 45%);
 }
 
 .sign-up-form {
-  height: 380px;
-  margin-top: 10%;
+  height: 500px;
+  margin-top: 5%;
 }
 #email-signup {
   margin-left: 10px;
@@ -142,6 +142,31 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   font-weight: lighter;
   background-color: $yellowbuttons;
 }
+
+input#signup-field {
+  width:74%;
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 7px;
+  color: #555 ;
+  font-size: 12px;
+  margin: 20px 0;
+  margin-left: 8px;
+}
+
+input#signup-confirmation {
+  width:49%;
+  display: inline-block;
+  border: none;
+  outline: none;
+  padding: 7px;
+  color: #555 ;
+  font-size: 12px;
+  margin: 20px 0;
+  margin-left: 8px;
+}
+
 
 // #nav-icon img{
 //   height: 25px;

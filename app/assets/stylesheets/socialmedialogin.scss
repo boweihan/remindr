@@ -1,0 +1,42 @@
+.social-link-page {
+  width: 100%;
+  height: 92vh;
+  background-image: url('background-light-medium-blue.svg');
+  padding-top: 18%;
+}
+.sign-in-link {
+  margin: 0 auto;
+  height: 50%;
+  width: 40%;
+}
+
+
+.sm-link {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  line-height: 64px;
+}
+.google-login {
+  height: 64px;
+  width: 100%;
+  background-color: #DA4436;
+  margin-bottom: 2rem;
+  text-align: center;
+
+}
+
+.twitter-login {
+  height: 64px;
+  width: 100%;
+  background-color: #2096E1;
+  text-align: center;
+}
+
+.logo-image {
+  margin-right: 1rem;
+  width:24px;
+  height: 64px;
+  display: inline-block;
+
+}

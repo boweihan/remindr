@@ -367,12 +367,12 @@
 .twitter-messaging-div {
   position: absolute;
   margin: 0 20px;
-  top: -50px;
+  top: -40px;
   background-color: $color6;
 }
 
 .send-direct-message {
-  margin-left: 19px;
+  // margin-left: 19px;
 }
 .message-label {
   line-height: 32px;
@@ -381,12 +381,12 @@
 .twitter_field {
   height: 25px;
   width: 175px;
-  margin: -8px 10px;
+  margin: -8px 10px -8px 0;
 }
 
 .send-message-div {
   width: 100%;
-  height: 45vh;
+  height: 35vh;
   margin: auto;
   padding: 10px 20px;
   background-color: $color6;
@@ -408,7 +408,7 @@ label {
 
 #body_field {
   width: 100%;
-  height: 150px;
+  height: 100px;
 }
 
 input[type=submit] {
@@ -416,7 +416,7 @@ input[type=submit] {
   height: 25px;
   margin-top: 6px;
   border: 1px solid hsl(48, 100%, 50%);
-  border-radius: 20px;
+  border-radius: 2px;
   background-color: hsl(48, 100%, 50%);
   color: white;
   font-size: 16px;
@@ -650,5 +650,5 @@ label.contact_add_info {
 }
 
 #contact_clicked {
-  background-color: purple;
+  background-color: $lightblue;
 }
