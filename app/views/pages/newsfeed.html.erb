@@ -22,7 +22,7 @@
 
 <!-- 'main-container' contains everything on the page except the navigation bar at the top of the page -->
 <div class="main-container">
-  <div class="main-container-heading"> 
+  <div class="main-container-heading">
     <div class="searchbar-with-icons-div">
       <div class="filter-icon">
         <%= image_tag "filter.png" %>
@@ -71,17 +71,18 @@
               <%#= label_tag "username", "Username:" %>
               <%#= text_area_tag "username", nil, id:"username" %>
               <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
-              <%= label_tag "direct_message", "DM:", class:"message-label" %><%= text_area_tag "direct_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
+              <%= label_tag "direct_message", "Direct Message:", class:"message-label" %><br>
+              <%= text_area_tag "direct_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
             <% end %>
           </div>
 
           <div class="send-tweet">
           <%= form_tag '/', id:'send-tweet' do %>
-          <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><%= text_area_tag "tweet_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
+          <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><br>
+          <%= text_area_tag "tweet_message", nil, class:"twitter_field" %><%= submit_tag("Send!") %>
           <% end %>
           </div>
         </div>
-
         <!-- send email  -->
         <div class="send-message-div">
           <%= form_tag "/", id:"send_email" do %>

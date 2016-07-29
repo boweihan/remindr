@@ -30,7 +30,7 @@ $(function() {
     $('.sign-up-modal').css('display', 'block');
   })
 
-  $('.field, .phoneField, .phoneField2, .phoneField3, #password').on('click', function(e) {
+  $('.field, .phoneField, .phoneField2, .phoneField3, #password, #signup-confirmation, #signup-field').on('click', function(e) {
     e.stopPropagation();
   })
 })
