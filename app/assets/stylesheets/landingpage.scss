@@ -18,20 +18,13 @@
 
 
 $color: #07DEFF;
-// $color2: #170061;
-// $color2: #019587;
-// $color2: #240099;
 $color4: #20c5b5;
 $color3: #FFDD24;
-// $color4: #00C7BD;
-// $color5: #ccfffc;
-// $color6: #fbfbfb;
 $color6: #f2f2f2;
 $color1: #775aa7;
 $color7: #4b69c8;
 $color2: #27c5ef;
 $color8: #00a4ff;
-
 $offwhite: #F2F6F7;
 $logocolor: #4b69c8;
 $brightblue: #00a4ff;
@@ -39,7 +32,7 @@ $lightblue: #9bdbff;
 $mediumblue: #27c5ef;
 $purple: #775aa7;
 $offblack: #323232;
-$yellowbuttons:  hsl(48, 100%, 45%);
+$yellowbuttons:  hsl(48, 100%, 50%);
 
 
 * {
@@ -114,16 +107,6 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   right: 0;
   border-radius: 1%;
 }
-
-.login-form {
-  height: 300px;
-  margin-top: 10%;
-}
-
-.sign-up-form {
-  height: 500px;
-  margin-top: 5%;
-}
 #email-signup {
   margin-left: 10px;
 }
@@ -142,41 +125,15 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   font-weight: lighter;
   background-color: $yellowbuttons;
 }
-
-input#signup-field {
-  width:74%;
+#nav-icon img{
+  height: 25px;
+  width: 23px;
+  line-height: 56px;
   display: inline-block;
-  border: none;
-  outline: none;
-  padding: 7px;
-  color: #555 ;
-  font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding-bottom: .4rem;
 }
-
-input#signup-confirmation {
-  width:49%;
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 7px;
-  color: #555 ;
-  font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
-}
-
-
-// #nav-icon img{
-//   height: 25px;
-//   width: 23px;
-//   line-height: 56px;
-//   display: inline-block;
-//   margin-right: 1rem;
-//   margin-left: 1rem;
-//   padding-bottom: .4rem;
-// }
 
 a.logo:hover {
   color: $mediumblue;
@@ -231,7 +188,7 @@ a.logoutButton {
 
 a.getstarted {
   text-decoration: none;
-  background-color: $yellowbuttons;
+  background-color: $logocolor;
   display: inline-block;
   color: $offwhite;
   font-size: 14px;

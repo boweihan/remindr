@@ -5,6 +5,7 @@
   <title>Remindr</title>
 </head>
 <body>
+<% unless current_user %>
 
   <div class="sign-up-modal">
     <div class="sign-up-form">
@@ -22,6 +23,7 @@
       <% end %>
     </div>
   </div>
+<% end %>
 
   <div class="login-modal">
     <div class="login-form">
@@ -53,7 +55,7 @@
       <p id="second-heading">Remindr makes it easy to keep in touch with friends, family and your networking connections.</p>
     </div>
 
-    <%= link_to "START CONNECTING", new_user_path, class:"getstarted" %>
+    <%= link_to "START CONNECTING", newsfeed_path, class:"getstarted" %>
     </div>
 
   </div>
