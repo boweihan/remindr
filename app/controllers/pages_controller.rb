@@ -56,7 +56,7 @@ class PagesController < ApplicationController
       #find google email adress of account that was signed into google
       current_user.get_email_address(current_user.access_token)
       #update feed in background
-      UserLoadFeedJob.perform_later(current_user)
+      # UserLoadFeedJob.perform_later(current_user)
     end
     redirect_to '/login_page'
   end
