@@ -10,14 +10,16 @@ class Contact < ActiveRecord::Base
 
   #Load a contact's direct messages from twitter
   def get_dms(user_client, current_user)
-    dms = []
     binding.pry
+    dms = []
     # loop through messages and store them in dms array
     user_client.direct_messages_sent(options = {}).each do |direct_message|
+      binding.pry
       if direct_message.recipient.screen_name == self.twitter_username
         dms << direct_message
       end
     end
+
     last_message = dms.first
     if dms.length > 0
       dm_exist = message_exist?(self, last_message.created_at)
