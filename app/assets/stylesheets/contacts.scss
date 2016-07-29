@@ -626,7 +626,7 @@ a {
   margin: 20px 8px;
 }
 
-.update-contact-submit > input[type="submit"] {
+input[type=submit].update-contact-submit{
   width: 130px;
   height: 30px;
   margin-top: 6px;
@@ -636,7 +636,12 @@ a {
   color: white;
   font-size: 16px;
   font-weight: bold;
+  &:hover{
+    background-color: $logocolor;
+    border-color: $logocolor;
+  }
 }
+
 
 // #contact_add_field {
 //     text-align: center;
