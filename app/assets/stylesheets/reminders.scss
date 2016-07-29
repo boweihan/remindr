@@ -14,9 +14,10 @@
   display: block;
   width: 50%;
   height: 15vh;
-  border: 2px solid rgba(0,0,0,0.7);
+  border: 2px solid rgba(0,0,0,0.3);
   margin-left: 25%;
   margin-top: 5vh;
+  border-radius: 8px;
   text-align: center;
   list-style: none;
   background-color: $offwhite;
@@ -57,9 +58,10 @@
 
 .reminderbox_newsfeed {
   display: block;
-  width: 100%;
-  height: 20px;
-  border: 2px solid black;
+  margin: 16px;
+  width: 92%;
+  height: auto;
+  border: 1px solid lightgray;
   text-align: center;
   list-style: none;
   border-radius: 8px;
