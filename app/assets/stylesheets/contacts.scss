@@ -497,24 +497,30 @@ label.contact_add_info {
 
 .individual-contact-edit-area {
   width: 45%;
-  height: 702px;
-  background-color: #eee;
+  height: 750px;
   float: left;
   display: inline-block;
+  background-image: url('background-hero.svg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .all-contacts-list-area {
   width: 55%;
-  height: 702px;
-  background-color: #eee;
+  height: 705px;
+  background-color: white;
   float: left;
   display: inline-block;
+  margin-top: 46px;
 }
 
 .add-icon-all-contacts-page img{
   height: 30px;
   width: 30px;
-  margin-left: 15px;
+  margin-left: 30px;
+  margin-top: 30px;
 }
 
 .all-contacts-title {
@@ -522,17 +528,19 @@ label.contact_add_info {
   font-size: 32px;
   color: $logocolor;
   padding: 0;
+  background-color: white;
+  margin-bottom: 20px;
 }
 
 .all-contacts-list-area-top-div {
-  background-color: #eee;
+  background-color: white;
   width: 100%;
   height: 56px;
-  padding-top: 24px;
+  margin-bottom: 15px;
 }
 
 .contact-types-wrapper {
-  background-color: #eee;
+  background-color: white;
   width: 100%;
   height: 48px;
   margin-left: 13%;
@@ -546,6 +554,7 @@ label.contact_add_info {
   line-height: 48px;
   font-size: 28px;
   color: $color2;
+  margin-top: 10px;
 }
 
 .contacts-area {
@@ -624,6 +633,8 @@ a {
 
 .edit-contact-label {
   margin: 20px 8px;
+  color: white;
+  font-size: 20px;
 }
 
 .update-contact-submit > input[type="submit"] {
