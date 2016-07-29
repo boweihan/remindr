@@ -14,17 +14,23 @@ class Contact < ActiveRecord::Base
     # loop through messages and store them in dms array
     user_client.direct_messages_sent(options = {}).each do |direct_message|
       if direct_message.recipient.screen_name == self.twitter_username
-        dms << direct_message
+        message = {}
+        message['time_stamp'] = direct_message.created_at
+        message['text'] = direct_message.text
+        message['html'] = nil
+        dms << message
       end
     end
-
-    last_message = dms.first
+    # last_message = dms.first
     if dms.length > 0
-      dm_exist = message_exist?(self, last_message.created_at)
-      if !dm_exist
-        Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
-      end
+      return dms
+    else
+      return []
     end
+      # dm_exist = message_exist?(self, last_message.created_at)
+      # if !dm_exist
+        # Message.create(contact_id: self.id, user_id: current_user.id, body_plain_text: last_message.text, time_stamp: last_message.created_at)
+      # end
   end
 
   #Query for contacts that match the category
@@ -49,16 +55,40 @@ class Contact < ActiveRecord::Base
 
   #Get most recent email
   def get_most_recent_message
+    message_list = []
     #Check if email exists for contact
     if email
       #Fetch email
-      get_email
-    else
-      #Create a message with no body to start countdown of 30 days if there is no email for contact
-      unless messages.first
-        Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
-      end
+      message_list += get_email
     end
+
+    if user.token
+      message_list += get_dms(user.twitter_client,user)
+    end
+    if message_list.length > 0
+      db_messages = messages
+      converted = []
+      message_list.each do |message|
+        a = message
+        a['time_stamp']= a['time_stamp'].to_i
+        converted << a
+      end
+      sorted = converted.sort_by{|message| message['time_stamp']}.reverse
+
+      Message.destroy_all(contact_id: id)
+      i=0
+      while i<=4 && i < sorted.length
+        Message.create(user_id: user.id, contact_id: id, time_stamp: sorted[i]['time_stamp'], body_plain_text: sorted[i]['text'], body_html: sorted[i]['html'])
+        i+= 1
+      end
+
+    else
+      # Create a message with no body to start countdown of 30 days if there is no email for contact
+      Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id, body_plain_text: "~")
+    end
+    #   #Create a message with no body to start countdown of 30 days if there is no email for contact
+    #     Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
+    #   end
   end
 
   #Make api calls to gmail
@@ -67,33 +97,33 @@ class Contact < ActiveRecord::Base
     user.check_token
     token = user.access_token
     user_google_id = user.google_id
-    puts user_google_id
     #Query gmail to find email_id of last email
-    email_id = search_email(user_google_id, token)
+    email_ids = search_email(user_google_id, token)
     #Past interactions exist
-    if email_id
+    if email_ids
+      emails = []
       #Find email body an message details
-      email = fetch_email(user_google_id, token, email_id)
+      email_ids.each do |id|
+        emails << fetch_email(user_google_id, token, id)
+      end
+      return emails
       #Since only 1 message is being saved, we have to check if its the first interaction
       #Between contact and user to decide if we should overwrite an existing entry for message
       #Or Make a new one
-      status = first_interaction?(self)
-      exist = message_exist?(self, email['time_stamp'])
-      # if status && email
-      #   #New entry
-      #   Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
-      if email && !exist
-        Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
-        #Edit old entry
-        # Message.where(contact_id: id).first.update(body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
-      end
-    #No past email interactions
+    #   status = first_interaction?(self)
+    #   exist = message_exist?(self, email['time_stamp'])
+    #   if email && !exist
+    #     Message.create(contact_id: id, user_id: user.id, body_plain_text: email['text'], body_html: email['html'], time_stamp:email['time_stamp'])
+    #   end
+    # #No past email interactions
+    # else
+    #   unless messages.first
+    #     #Create a message with no body to start countdown of 30 days if no email has been sent to the contact.
+    #     #This happens when the user is newly created.
+    #     Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
+    #   end
     else
-      unless messages.first
-        #Create a message with no body to start countdown of 30 days if no email has been sent to the contact.
-        #This happens when the user is newly created.
-        Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id)
-      end
+      return []
     end
   end
 
@@ -101,11 +131,14 @@ class Contact < ActiveRecord::Base
   def search_email(user_google_id, token)
     #search string
     query= "from:#{email}"
-    query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=1&q=#{query}&access_token=#{token}"
+    query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=5&q=#{query}&access_token=#{token}"
     #True if there are past interactions on email
     if JSON.parse(RestClient.get(query_email_api_url))['messages']
-      email_id = JSON.parse(RestClient.get(query_email_api_url))['messages'][0]['id']
-      return email_id
+      email_ids = []
+      JSON.parse(RestClient.get(query_email_api_url))['messages'].each do |message|
+        email_ids << message['id']
+      end
+      return email_ids
     else
       return nil
     end
@@ -114,7 +147,6 @@ class Contact < ActiveRecord::Base
   #Gets email body given the email_id
   def fetch_email(user_google_id, token, email_id)
     api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages/#{email_id}?access_token=#{token}"
-    puts api_url
     email = JSON.parse(RestClient.get(api_url))
     message = {}
     #Slice for unixtime in seconds because it is given in ms
