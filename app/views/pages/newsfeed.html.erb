@@ -119,7 +119,7 @@
         <% 5.times do %>
           <% if current_user.contacts.where(id:@reminders[i]) != nil && @reminders[i] != nil%>
             <% if current_user.contacts.where(id:@reminders[i].contact_id).first != nil %>
-              <div class='reminderbox_newsfeed' id='<%= @reminders[i].reminder_type %>'>
+              <div class='reminderbox_newsfeed' id='x<%= @reminders[i].reminder_type %>'>
                 <li>Reminder For: <%= current_user.contacts.where(id:@reminders[i].contact_id).first["name"] %></li>
                 <li>is <strong><%= @reminders[i].reminder_type %></strong></li>
               </div>

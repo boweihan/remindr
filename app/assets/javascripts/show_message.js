@@ -1,4 +1,5 @@
 $(document).on('ready', function() {
+
   $(document).on('click', '.individual_message',  function() {
     var summary = $(this)
     var data = $(this).attr('data');

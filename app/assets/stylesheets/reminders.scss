@@ -3,20 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .reminder-background {
   width: 100%;
-  height: 92vh;
-  padding-top: 16px;
+  height: 110vh;
+  top: -10vh;
   background-image: url('background-light-medium-blue.svg');
+  background-attachment: fixed;
+  position: fixed;
+  z-index: -10;
 }
 .reminderbox {
   display: block;
   width: 50%;
   height: 15vh;
-  border: 2px solid black;
+  border: 2px solid rgba(0,0,0,0.7);
   margin-left: 25%;
   margin-top: 5vh;
   text-align: center;
   list-style: none;
-
+  background-color: $offwhite;
 }
 
 .remindertitle {
@@ -42,4 +45,16 @@
   border-radius: 50%;
   margin-top: 5vh;
   margin-left: 5%;
+}
+
+#xoverdue {
+  background-color: red;
+}
+
+#xupcoming {
+  background-color: yellow;
+}
+
+#newsfeed_reminders {
+  margin-top: 20vh;
 }
