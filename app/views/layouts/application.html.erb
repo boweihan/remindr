@@ -30,9 +30,9 @@
         <% end %>
       <% end %>
       <% if counter > 0 %>
-        <%= link_to (image_tag "notification-warning.png"), reminders_path, class: "nav-icon"%>
+        <%= link_to (image_tag "notification-warning.png"), reminders_path, class: "nav-icon", id:'nav-icon'%>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
-        <%= link_to (image_tag "c_message_black_24px.svg"), newsfeed_path, class: "nav-icon", id:'nav-icon' %>
+        <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
         <%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon" %>
       <% else %>
       <!-- code for nav links -->
