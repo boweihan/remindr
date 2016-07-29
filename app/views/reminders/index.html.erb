@@ -1,3 +1,4 @@
+<div class='reminder-background'></div>
 <div class='remindertitle'>
   <h1> REMINDER INDEX PAGE </h1>
   <h3>Get Notifications by: Text Message | Email | Twitter</h3>
@@ -5,7 +6,8 @@
 <ul>
   <% @reminders.each do |reminder| %>
     <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
-    <div class='reminderbox' id='<%= reminder.reminder_type %>'>
+    <div class='reminderbox'>
+      <div id='<%= reminder.reminder_type %>'></div>
       <br>
       <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
       <li>It's been <%= reminder.time_since_last_contact %> since your last contact</li>
@@ -13,4 +15,5 @@
     </div>
     <% end %>
   <% end %>
-</ul>
+  </ul>
+</div>

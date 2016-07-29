@@ -1,2 +1,6 @@
-<button><%= link_to 'Import messages from Google', '/googleauth' %></button>
-<button><%= link_to 'Import messages from Twitter', '/auth/twitter' %></button>
+<div class="social-link-page">
+  <div class="sign-in-link">
+    <div class="google-login"><div class="logo-image"><%= image_tag "gmail-logo.svg", class:"gmail-logo" %></div><%= link_to 'Import messages from Gmail', '/googleauth', class: 'sm-link'%></div>
+    <div class="twitter-login"><div class="logo-image"><%= image_tag "twitter-logo.svg", class:"twitter-logo" %></div><%= link_to 'Import messages from Twitter', '/auth/twitter', class: 'sm-link' %></div>
+  </div>
+</div>

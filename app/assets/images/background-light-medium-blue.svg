@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="697px" viewBox="0 0 1440 697" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>background-hero copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="9.43478954%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#9BDBFF" offset="0%"></stop>
+            <stop stop-color="#00A4FF" stop-opacity="0.910326087" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="background-hero-copy-2">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="1440" height="700"></rect>
+            <circle id="Oval-4" stroke="#F1F2F3" stroke-width="4" opacity="0.200000003" cx="1149" cy="515" r="142"></circle>
+            <circle id="Oval-4" stroke="#F1F2F3" stroke-width="4" opacity="0.100000001" cx="1149" cy="515" r="170"></circle>
+            <circle id="Oval-4" stroke="#F1F2F3" stroke-width="4" opacity="0.5" cx="1149" cy="515" r="115"></circle>
+            <circle id="Oval-4" stroke="#F1F2F3" stroke-width="4" opacity="0.699999988" cx="1149" cy="515" r="90"></circle>
+            <g id="message" transform="translate(392.602892, 557.128824) rotate(31.000000) translate(-392.602892, -557.128824) translate(336.602892, 517.128824)">
+                <g id="Capa_1">
+                    <g id="mail-(1)">
+                        <g id="Capa_1">
+                            <g id="Group">
+                                <g id="Shape">
+                                    <polygon fill="#DCD6CD" points="0.581970906 -0.350559798 0.581970906 78.2459314 56.5819709 78.2459314 112.581971 78.2459314 112.581971 -0.350559798"></polygon>
+                                    <path d="M61.9964041,44.4840302 C58.7224041,47.331499 53.4124041,47.331499 50.1364041,44.4840302 L45.9624041,40.8945056 C32.9044041,52.2454277 0.0664040778,77.3857336 0.0664040778,77.3857336 L43.2804041,77.3857336 L68.8544041,77.3857336 L112.066404,77.3857336 C112.066404,77.3857336 79.2284041,52.2434801 66.1704041,40.8945056 L61.9964041,44.4840302 L61.9964041,44.4840302 Z" fill="#E8E3D9"></path>
+                                    <path d="M-0.433108908,0.260890312 L49.6368911,44.38799 C52.9108911,47.306243 58.2208911,47.306243 61.4968911,44.38799 L111.566891,0.260890312 L-0.433108908,0.260890312 L-0.433108908,0.260890312 Z" fill="#EFEBDE"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group-2" transform="translate(-5.000000, 421.000000)" stroke="#F1F2F3" stroke-width="5" stroke-dasharray="20">
+                <path d="M0,149.5 L0,149.5 C62.9604615,149.5 114,115.249783 114,73" id="Oval-2"></path>
+                <path d="M111.5,73 L111.5,73 C153.749783,73 188,40.5406444 188,0.5" id="Oval-3"></path>
+            </g>
+            <g id="Group-2" opacity="0.200000003" transform="translate(1197.743993, 79.192695) rotate(45.000000) translate(-1197.743993, -79.192695) translate(923.743993, -117.307305)" stroke="#F1F2F3" stroke-width="7.5" stroke-dasharray="30">
+                <path d="M0.0351692581,392.338815 L1.30180684,390.248971 C153.565714,390.248971 277,275.276214 277,133.45013" id="Oval-2"></path>
+                <path d="M270.636039,166.795419 L270.636039,166.795419 C423.599491,166.795419 547.60087,92.5170294 547.60087,0.889992963" id="Oval-3"></path>
+            </g>
+            <g id="Group-2" opacity="0.200000003" transform="translate(125.331259, 45.331259) scale(-1, 1) rotate(45.000000) translate(-125.331259, -45.331259) translate(-13.668741, -38.168741)" stroke="#F1F2F3" stroke-width="7.5" stroke-dasharray="30">
+                <path d="M0.636038969,166.795419 L0.636038969,166.795419 C153.599491,166.795419 277.60087,92.5170294 277.60087,0.889992963" id="Oval-3"></path>
+            </g>
+            <g id="Group-2" transform="translate(555.000000, 672.000000) scale(-1, 1) translate(-555.000000, -672.000000) translate(461.000000, 597.000000)" stroke="#F1F2F3" stroke-width="5" stroke-dasharray="20">
+                <path d="M0,149.5 L0,149.5 C62.9604615,149.5 114,115.249783 114,73" id="Oval-2"></path>
+                <path d="M111.5,73 L111.5,73 C153.749783,73 188,40.5406444 188,0.5" id="Oval-3"></path>
+            </g>
+            <g id="paper-plane" transform="translate(167.000000, 323.000000)">
+                <g id="Capa_1">
+                    <polygon id="Shape" fill="#E7ECED" points="43.9515018 46 0 31.584 116 0 71.9206393 86"></polygon>
+                    <polygon id="Shape" fill="#AFB6BB" points="43.9562485 46 40 78 57 64.84"></polygon>
+                    <path d="M42.796,44.6488665 C42.39,44.9088161 42.138,45.3017632 42,45.7289673 L43.872,46.3476071 L45.02,48 L114.25,3.43576826 L116,3.55271368e-15 L109.31,1.83375315 L42.796,44.6488665 L42.796,44.6488665 Z" id="Shape" fill="#AFB6BB"></path>
+                </g>
+            </g>
+            <g id="paper-plane" transform="translate(1117.000000, 494.000000) scale(-1, 1) translate(-1117.000000, -494.000000) translate(1059.000000, 451.000000)">
+                <g id="Capa_1">
+                    <polygon id="Shape" fill="#E7ECED" points="43.9515018 46 0 31.584 116 0 71.9206393 86"></polygon>
+                    <polygon id="Shape" fill="#AFB6BB" points="43.9562485 46 40 78 57 64.84"></polygon>
+                    <path d="M42.796,44.6488665 C42.39,44.9088161 42.138,45.3017632 42,45.7289673 L43.872,46.3476071 L45.02,48 L114.25,3.43576826 L116,3.55271368e-15 L109.31,1.83375315 L42.796,44.6488665 L42.796,44.6488665 Z" id="Shape" fill="#AFB6BB"></path>
+                </g>
+            </g>
+            <ellipse id="Oval-5" stroke="#F1F2F3" stroke-width="7" stroke-dasharray="20" opacity="0.200000003" cx="1221" cy="-18" rx="37" ry="63"></ellipse>
+        </g>
+    </g>
+</svg>

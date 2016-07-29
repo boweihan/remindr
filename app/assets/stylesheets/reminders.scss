@@ -1,16 +1,25 @@
 // Place all the styles related to the reminders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.reminder-background {
+  width: 100%;
+  height: 110vh;
+  top: -10vh;
+  background-image: url('background-light-medium-blue.svg');
+  background-attachment: fixed;
+  position: fixed;
+  z-index: -10;
+}
 .reminderbox {
   display: block;
   width: 50%;
   height: 15vh;
-  border: 2px solid black;
+  border: 2px solid rgba(0,0,0,0.7);
   margin-left: 25%;
   margin-top: 5vh;
   text-align: center;
   list-style: none;
-
+  background-color: $offwhite;
 }
 
 .remindertitle {
@@ -20,8 +29,42 @@
 
 #overdue {
   background-color: red;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  border-radius: 50%;
+  margin-top: 5vh;
+  margin-left: 5%;
 }
 
 #upcoming {
   background-color: yellow;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  border-radius: 50%;
+  margin-top: 5vh;
+  margin-left: 5%;
+}
+
+#xoverdue {
+  background-color: red;
+}
+
+#xupcoming {
+  background-color: yellow;
+}
+
+.reminderbox_newsfeed {
+  display: block;
+  width: 100%;
+  height: 20px;
+  border: 2px solid black;
+  text-align: center;
+  list-style: none;
+  border-radius: 8px;
+}
+
+#newsfeed_reminders {
+  margin-top: 20vh;
 }
