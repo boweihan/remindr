@@ -155,7 +155,8 @@ class Contact < ActiveRecord::Base
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i
     #parts[0] gives plaintext and parts[1] gives html
     #check if email body is string (could be image)
-    message['snippet'] = email['snippet']
+    snippet = email['snippet'].gsub("&lt;", "<").gsub("&gt;",">").gsub("&#39;", "'").gsub("&quot;", "\"")
+    message['snippet'] = snippet
     if email['payload']['body']['data'] != nil
       text = email['payload']['body']['data']
       message['text'] = Base64.decode64(text.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
