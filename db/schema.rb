@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728231853) do
+ActiveRecord::Schema.define(version: 20160802173718) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160728231853) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -65,16 +68,16 @@ ActiveRecord::Schema.define(version: 20160728231853) do
     t.integer  "user_id"
   end
 
-  add_index "reminders", ["contact_id"], name: "index_reminders_on_contact_id"
-  add_index "reminders", ["user_id"], name: "index_reminders_on_user_id"
+  add_index "reminders", ["contact_id"], name: "index_reminders_on_contact_id", using: :btree
+  add_index "reminders", ["user_id"], name: "index_reminders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "phone"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "access_token"
     t.string   "refresh_token"
     t.string   "google_id"
@@ -82,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160728231853) do
     t.string   "provider"
     t.string   "token"
     t.string   "secret"
+    t.string   "reminder_platform"
   end
 
 end
