@@ -21,7 +21,7 @@
 
 
 #Jon's seeds
-User.create(name: 'test', phone: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test', reminder_type: "email")
+User.create(name: 'test', phone: 'test', email: 'test@test.com', password: 'test', password_confirmation: 'test', reminder_platform: "Email")
 
 Contact.create(name: 'Codecademy', phone: '9999999999', email: 'contact@codecademy.com', user_id:1, category: 'friend')
 Contact.create(name: 'Google', phone: '9999999999', email: 'no-reply@accounts.google.com' ,user_id:1, category: 'friend')

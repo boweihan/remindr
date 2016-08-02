@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
       # redirect_to '/googleauth', notice: "Thanks for logging in!"
       redirect_to '/login_page'
     else
-      render :new
+      @user = User.new
+      render "pages/landing"
     end
   end
 
