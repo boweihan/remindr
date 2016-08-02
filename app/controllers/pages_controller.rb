@@ -16,7 +16,8 @@ class PagesController < ApplicationController
       :scope => 'https://www.googleapis.com/auth/userinfo.email ' +
       'https://www.googleapis.com/auth/userinfo.profile '+
       'https://www.googleapis.com/auth/gmail.readonly '+
-      'https://www.googleapis.com/auth/gmail.send',
+      'https://www.googleapis.com/auth/gmail.send '+
+      'https://www.googleapis.com/auth/contacts.readonly',
       :redirect_uri => 'http://localhost:3000/callback'
         # :redirect_uri => 'http://remindr-me.herokuapp.com/callback'
       )
