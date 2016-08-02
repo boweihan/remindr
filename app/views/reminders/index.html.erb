@@ -4,9 +4,9 @@
   <h3 class="notification_type">Get Notifications by: </h3>
   <% @types.each do |type| %>
     <% if @type == type %>
-      <div class="selected_platform"><%= type%></div>
+      <div class="reminder_choices selected_platform" id=<%=type%> ><%= type%></div>
     <% else %>
-     <div><%= type%></div>
+     <div class="reminder_choices" id=<%=type%>><%= type%></div>
      <% end %>
   <% end %>
 </div>
@@ -24,3 +24,5 @@
   <% end %>
   </ul>
 </div>
+
+<!--  double ajax, borken terminal, slow loads-->

@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   patch '/contacts/:id/update_contact_patch' => 'contacts#update_contact_patch'
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
-  get '/reminders' => 'reminders#index'
   get '/analytics' => 'pages#analytics'
   get '/direct_messages' => 'messages#create_direct_message'
   get '/tweets' => 'messages#create_tweet'
+  get '/reminders' => 'reminders#index'
+  post '/reminders/change_type' => "reminders#change_type"
 
   resources :users, only: [:create, :new, :update]
 

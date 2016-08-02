@@ -39,6 +39,15 @@ class RemindersController < ApplicationController
     redirect_to newsfeed_path
   end
 
+  def change_type
+    if request.xhr?
+      @user = current_user
+      User.update(@user.id, reminder_platform: params[:type])
+      head(:ok)
+    else
+      head 404
+    end
+  end
   private
   def reminder_params
     params.require(:reminder).permit(:contact_id, :type, :message, :time_since_last_contact)
