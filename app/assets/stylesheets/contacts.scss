@@ -590,8 +590,12 @@ label.contact_add_info {
   width: 30px;
   margin-left: 30px;
   margin-top: 30px;
+  background-color: $allcontactscolor;
 }
 
+.add-icon-all-contacts-page {
+  background-color: $allcontactscolor;
+}
 .all-contacts-title {
   text-align: center;
   font-size: 32px;
