@@ -78,14 +78,14 @@ class Contact < ActiveRecord::Base
       Message.destroy_all(contact_id: id)
       i=0
       while i<=4 && i < sorted.length
-        Message.create(user_id: user.id, contact_id: id, time_stamp: sorted[i]['time_stamp'], body_plain_text: sorted[i]['text'], body_html: sorted[i]['html'])
+        Message.create(user_id: user.id, contact_id: id, time_stamp: sorted[i]['time_stamp'], body_plain_text: sorted[i]['text'], body_html: sorted[i]['html'], snippet: sorted[i]['snippet'])
         i+= 1
       end
 
     else
       if messages.all.length == 0
       # Create a message with no body to start countdown of 30 days if there is no email for contact
-      Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id, body_plain_text: "~")
+      Message.create(time_stamp:Time.now.to_i, contact_id: id, user_id: user.id, body_plain_text: "~", snippet: 'No available messages')
       end
     end
     #   #Create a message with no body to start countdown of 30 days if there is no email for contact
@@ -155,11 +155,12 @@ class Contact < ActiveRecord::Base
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i
     #parts[0] gives plaintext and parts[1] gives html
     #check if email body is string (could be image)
-
+    message['snippet'] = email['snippet']
     if email['payload']['body']['data'] != nil
       text = email['payload']['body']['data']
       message['text'] = Base64.decode64(text.gsub("-", '+').gsub("_","/")).force_encoding("utf-8").to_s
       return message
+      message['snippet'] = email['snippet']
     elsif email['payload']['parts'][0]['body']['data'].class == String
 
       plain = email['payload']['parts'][0]['body']['data']

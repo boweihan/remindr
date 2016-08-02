@@ -24,6 +24,6 @@ class MessagesController < ApplicationController
    end
 
    def tweet_params
-     params.require(:tweet).permit(:message)
+     params.require(:tweet).permit(:message, :snippet)
    end
 end
