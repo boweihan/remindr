@@ -1,0 +1,13 @@
+<h1> Load Google Contacts </h1>
+<h3> Please select all contacts you would like to keep in touch with </h3>
+<div class="potential-contacts-container">
+  <% @potential_contacts.each do |contact| %>
+    <div class="potential-contacts">
+      <div class="contact-image-div" %>
+        <%= image_tag(contact['pic'],{class:"contact-image"}) %>
+      </div>
+      <h2 class="potential-contact-name"><%= contact['name']%></h2>
+
+    </div>
+<% end %>
+</div>

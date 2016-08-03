@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20160802203007) do
     t.string   "phone"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "access_token"
     t.string   "refresh_token"
     t.string   "google_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20160802203007) do
     t.string   "provider"
     t.string   "token"
     t.string   "secret"
+    t.string   "reminder_platform"
   end
 
 end
