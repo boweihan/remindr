@@ -55,13 +55,19 @@ class PagesController < ApplicationController
       #save in db
       current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
       #find google email adress of account that was signed into google
-      current_user.get_email_address(current_user.access_token)
+      current_user.get_email_address
       #update feed in background
       # UserLoadFeedJob.perform_later(current_user)
     end
+
+    unless current_user.contacts.length > 0
+      redirect_to '/import_contacts'
+    end
     redirect_to '/login_page'
   end
-
+  def import
+    @potential_contacts = current_user.google_contacts
+  end
   #newsfeed
   def newsfeed
     #new contact the form for new contact

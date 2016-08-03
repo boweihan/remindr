@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
 
   #find the google-email adress on sign-in b/c user email !=  (always) their gmail
   #it is run everytime on login because the user could sign into different email accounts
-  def get_email_address(token)
+  def get_email_address
     #see if token has expired
     check_token
     #Get the email adress in json
-    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{token}"
+    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{access_token}"
     user_json = RestClient.get(url)
     email = JSON.parse(user_json)['email']
     #save record in db
@@ -26,7 +26,21 @@ class User < ActiveRecord::Base
     self.save
   end
 
-
+  def google_contacts
+    url = "https://www.google.com/m8/feeds/contacts/default/full?max-results=10000&access_token=#{access_token}&alt=json"
+    results = JSON.parse(RestClient.get(url))
+    contacts = []
+    token = access_token
+    results['feed']['entry'].each do |entry|
+      info = {}
+      info['name'] = entry['title']['$t']
+      info['email'] = entry['gd$email']
+      info['phone'] = entry['gd$phoneNumber']
+      info['pic'] = entry['link'][0]['href'] + "?access_token=#{token}"
+      contacts << info
+    end
+    contacts
+  end
 # added this part starts
   def twitter_client
     client = Twitter::REST::Client.new do |config|
