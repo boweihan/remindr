@@ -38,12 +38,25 @@
   </div>
 <% end %>
 
+<% if flash[:login_modal] %>
+  <script type='text/javascript'>
+    $(document).on('ready', function() {
+      $('.login-modal').css('display', 'block');
+      $('.login-heading-error').html('Username or password is invalid!');
+      setTimeout(function(){
+        $('.login-heading-error').html('');
+      }, 5000);
+    });
+  </script>
+<% end %>
+
   <div class="login-modal">
     <div class="login-form">
       <%= form_tag sessions_path do %>
       <button type="button" class="close">x</button>
       <div class="sign-up-user">
         <h3 class="sign-up-heading">LOG IN</h3>
+        <h4 class='login-heading-error'></h4>
       </div>
           <%= label_tag :email %>:
           <%= email_field_tag :email, params[:email], placeholder: "eg. johndoe@gmail.com", class: 'field'%>

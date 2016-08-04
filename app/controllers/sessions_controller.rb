@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to '/login_page'
     else
       @user = User.new
-      render "pages/landing"
+      redirect_to root_path, flash: {login_modal: true}
     end
   end
 
