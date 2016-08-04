@@ -50,6 +50,18 @@
   </script>
 <% end %>
 
+<% if flash[:login_modal_2] %>
+  <script type='text/javascript'>
+    $(document).on('ready', function() {
+      $('.login-modal').css('display', 'block');
+      $('.login-heading-error').html("you aren't logged in, please log in");
+      setTimeout(function(){
+        $('.login-heading-error').html('');
+      }, 5000);
+    });
+  </script>
+<% end %>
+
   <div class="login-modal">
     <div class="login-form">
       <%= form_tag sessions_path do %>

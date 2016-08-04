@@ -1,4 +1,5 @@
 class RemindersController < ApplicationController
+  before_action :ensure_logged_in
 
   #reminder crud actions
   def index

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :ensure_logged_in, except: [:landing]
   before_action :load_client, only: [:load_client, :googleauth, :callback]
 
   #twitter callback after verification
