@@ -13,7 +13,7 @@
 <ul>
   <% @reminders.each do |reminder| %>
     <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
-    <div class='reminderbox'>
+    <div class='reminderbox' data-identifier='contact_id-<%= reminder.contact_id %>'>
       <div id='<%= reminder.reminder_type %>'></div>
       <br>
       <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>

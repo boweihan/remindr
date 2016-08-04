@@ -124,6 +124,17 @@ class ContactsController < ApplicationController
     end
   end
 
+  #Family tab
+  def other
+    if request.xhr?
+      @contacts = Contact.all.where(user_id:current_user.id)
+      @other = @contacts.give_contacts_for('other')
+      render json: {objects: @other }
+    else
+      not_found
+    end
+  end
+
 
   private
   def contact_params

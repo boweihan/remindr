@@ -7,7 +7,7 @@ $(function() {
     }).done(function(response){
       all_contacts = response
       response.forEach(load_contacts);
-      $(".contact-message")[0].click()
+        $(".contact-message")[0].click();
 
     })
 
