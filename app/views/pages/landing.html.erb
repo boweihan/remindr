@@ -7,17 +7,6 @@
 <body>
 <% unless current_user %>
 
-<% if flash[:signup_modal] %>
-  <script type='text/javascript'>
-    $(document).on('ready', function() {
-      $('.sign-up-modal').css('display', 'block');
-      $('.sign-up-heading-error').html('there was a problem with your form!');
-      setTimeout(function(){
-        $('.sign-up-heading-error').html('');
-      }, 5000);
-    });
-  </script>
-<% end %>
 
   <div class="sign-up-modal">
     <div class="sign-up-form">

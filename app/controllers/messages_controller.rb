@@ -8,6 +8,12 @@ class MessagesController < ApplicationController
     # head :ok, content_type: "text/html"
   end
 
+  #same as the above method, but useable when you want to send automated messages
+  def create_direct_message_auto(user, text)
+    current_user.twitter_client.direct_message_create(user, text)
+    # head :ok, content_type: "text/html"
+  end
+
   def create_tweet
     current_user.twitter_client.update(tweet_params[:message])
     # head :ok, content_type: "text/html"

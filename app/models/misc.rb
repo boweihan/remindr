@@ -30,4 +30,8 @@ class Misc < ActiveRecord::Base
     collection.where(category: category)
   end
 
+  #method for sending twitter DMS when the 30 days are up
+  def self.send_twitter_dm(user, text)
+    Message.create_direct_message_auto(user, text)
+  end
 end

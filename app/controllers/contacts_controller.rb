@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
     if @contact.save
       redirect_to newsfeed_path
     else
-      render :new
+      redirect_to contacts_path, flash: {add_contact_modal: true}
     end
   end
 

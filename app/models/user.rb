@@ -99,7 +99,14 @@ class User < ActiveRecord::Base
         #send email
         subj = 'Sorry for not talking to you for so long'
         bod = 'ER MA GURD'
-        Misc.send_mail(self, contact.email, subj, bod)
+
+        if self.reminder_platform == 'Email'
+          Misc.send_mail(self, contact.email, subj, bod)
+        elsif self.reminder_platform == 'Twitter'
+          #tweet at them
+        else
+          #text them
+        end
       end
     end
   end

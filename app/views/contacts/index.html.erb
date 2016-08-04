@@ -1,9 +1,22 @@
+<% if flash[:add_contact_modal] %>
+  <script type='text/javascript'>
+    $(document).on('ready', function() {
+      $('.modal').css('display', 'block');
+      $('.add-new-contact-heading-error').html('Please fill in all fields');
+      setTimeout(function(){
+        $('.add-new-contact-heading-error').html('');
+      }, 5000);
+    });
+  </script>
+<% end %>
+
 <div class="modal">
   <div class="add-contact">
     <%= form_for @contact do |f| %>
       <button type="button" class="close">x</button>
       <div class="add-new-contact-div">
         <h3 class="add-new-contact-heading">Add a New Contact</h3>
+        <h4 class='add-new-contact-heading-error'></h4>
       </div>
       Name:  <%= f.text_field :name, class: 'field'%><br>
       Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'phoneField3' %><br>
