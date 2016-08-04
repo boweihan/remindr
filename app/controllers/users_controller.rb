@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to googleauth_path
     else
-      render :new
+      redirect_to root_path, flash: {signup_modal: true}
     end
   end
 

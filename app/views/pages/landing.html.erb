@@ -7,12 +7,25 @@
 <body>
 <% unless current_user %>
 
+<% if flash[:signup_modal] %>
+  <script type='text/javascript'>
+    $(document).on('ready', function() {
+      $('.sign-up-modal').css('display', 'block');
+      $('.sign-up-heading-error').html('there was a problem with your form!');
+      setTimeout(function(){
+        $('.sign-up-heading-error').html('');
+      }, 5000);
+    });
+  </script>
+<% end %>
+
   <div class="sign-up-modal">
     <div class="sign-up-form">
       <%= form_for @user do |f| %>
         <button type="button" class="close">x</button>
         <div class="sign-up-user">
           <h3 class="sign-up-heading">SIGN UP</h3>
+          <h4 class='sign-up-heading-error'></h4>
         </div>
         Name:  <%= f.text_field :name, class: 'field', placeholder: "eg. John Doe"%><br>
         Phone: <%= f.text_field :phone,  class: 'phoneField', placeholder: "416" %> - <%= f.text_field :phone,  class: 'phoneField2' , placeholder: "916"%> - <%= f.text_field :phone,  class: 'phoneField3', placeholder: "2399" %><br>
