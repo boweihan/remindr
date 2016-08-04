@@ -12,4 +12,7 @@ $( function() {
     $('.modal').css('display', 'none')
   });
 
+  $('.field, .phoneField, .phoneField2, .phoneField3, .eField, .catField, .twitField2, .add-contact').on('click', function(e) {
+    e.stopPropagation();
+  })
 })

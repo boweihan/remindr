@@ -10,4 +10,7 @@ $( function() {
     $('.modal2').css('display', 'none')
   });
 
+  $('.field, .phoneField, .phoneField2, .lastPhoneField, .efield, .twitterfield, .updateInfo').on('click', function(e) {
+    e.stopPropagation();
+  })
 })
