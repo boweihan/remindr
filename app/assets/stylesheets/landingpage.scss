@@ -204,14 +204,18 @@ a.getstarted {
   z-index: 2;
 }
 .photo-background-image {
-  height: 700px;
+  height: 800px;
+  padding-top: 100px;
+  top: 0px;
   width: 100%;
   // position: absolute;
   background-image: image-url('background-hero.svg');
-  background-attachment: fixed;
+  // background-attachment: fixed;
+  position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -100;
 }
 .welcome-text{
   margin-bottom: 2rem;
@@ -255,6 +259,7 @@ a.getstarted {
   background-color: white;
   text-align: center;
   padding: 50px 0;
+  margin-top: 700px;
 }
 
 .selling-points {
