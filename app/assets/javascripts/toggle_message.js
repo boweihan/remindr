@@ -25,4 +25,14 @@ $(document).on('ready', function() {
     $('.send-tweet').css('display','block');
     $('.send-email-div, .send-direct-message').css('display','none');
   });
+
+  $('#message-div-small').on('click', function() {
+    $('#toggle-message-div').fadeIn();
+  });
+
+  $('.close-message-pane').on('click', function() {
+    $('#toggle-message-div').fadeOut();
+    $('#message-div-small').css('display', 'block');
+  });
+
 });

@@ -344,8 +344,8 @@
 
 #message-content {
   width: 100%;
-  height: 70vh;
-  padding-bottom: 100px;
+  height: 100vh;
+  padding-bottom: 50vh;
   overflow-y: scroll;
   overflow-x: hidden;
   position: static;
@@ -415,8 +415,8 @@
   line-height: 30px;
   background-color: #33b4ff;
   color: white;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }
 
 .twitter-toggle {
@@ -430,8 +430,8 @@
   text-align: center;
   line-height: 30px;
   background-color: white;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }
 
 .text-toggle {
@@ -445,7 +445,7 @@
   text-align: center;
   line-height: 30px;
   background-color: white;
-  border-top: 1px solid black;
+  border-top: 1px solid lightgray;
 }
 
 .send-direct-message {
@@ -515,12 +515,11 @@ label {
 #subject_field {
   width: 100%;
   height: 24px;
-
 }
 
 #body_field {
   width: 100%;
-  height: 70px;
+  height: 24px;
 }
 
 input[type=submit] {

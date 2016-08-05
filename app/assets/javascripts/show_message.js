@@ -7,7 +7,7 @@ $(document).on('ready', function() {
     $('#' + data).stop().fadeIn(1000)
     $(document).on('click', '.individual_message_outer_div',  function() {
       $(this).css('display', 'none');
-      summary.stop().fadeIn(1000);
+      summary.css('display', 'block');
     });
 
   });
