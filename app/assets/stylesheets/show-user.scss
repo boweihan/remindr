@@ -107,7 +107,7 @@ textarea#autoreply_message {
 .add-contact-button {
   display: inline-block;
   margin: 16px 16px 0 36px;
-  padding: 0 16px;
+  padding: 8px 16px;
   float: right;
   border: 1px solid #2B92FF;
   border-radius: 2px;
@@ -172,4 +172,17 @@ textarea#autoreply_message {
 
 .all-contacts-scroll-div-edit {
   height: 90vh;
+}
+
+
+.user-information {
+  display: inline-block;
+  float: left;
+  width: 40%;
+}
+.all-contacts-div-user-page {
+  display: inline-block;
+  float: right;
+  width: 60%;
+  padding: 0 16px;
 }
