@@ -3,6 +3,72 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .message_date {
-  text-align: center;
+  text-align: right;
+  float: right;
   font-weight: 700;
+  opacity: 0.7;
+  padding-right: 10px;
+  width: 50%;
+}
+
+.message_expand {
+  text-align: right;
+  float: right;
+  font-weight: 700;
+  opacity: 0.7;
+  padding-right: 10px;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+.message_from_contact {
+  text-align: left;
+  float: left;
+  font-weight: 700;
+  opacity: 0.7;
+  padding-right: 10px;
+  width: 50%;
+}
+
+.individual_message {
+  padding-top:5px;
+  padding-bottom:20px;
+}
+
+#message-div-small {
+  position: fixed;
+  bottom: 0;
+  float: left;
+  display: inline-block;
+  width: 75%;
+  left: 25%;
+
+  height: 50px;
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  line-height: 50px;
+  background-color: #27C5EF;
+}
+
+#toggle-message-div {
+  display:none;
+}
+
+.close-message-pane {
+  display: block;
+  position: fixed;
+  bottom: 0px;
+  width: 75%;
+  left: 25%;
+  text-align: center;
+
+  height: 50px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  line-height: 50px;
+  background-color: #9BDBFF;
 }

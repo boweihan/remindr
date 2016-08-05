@@ -150,6 +150,7 @@ class Contact < ActiveRecord::Base
   def fetch_email(user_google_id, token, email_id)
     api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages/#{email_id}?access_token=#{token}"
     email = JSON.parse(RestClient.get(api_url))
+    puts email
     message = {}
     #Slice for unixtime in seconds because it is given in ms
     message['time_stamp'] = email['internalDate'].slice(0,10).to_i

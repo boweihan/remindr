@@ -1,7 +1,10 @@
   <% contact.messages.each do |m| %>
   <div class="individual-message-div">
-    <div class='message_date'><%= Date.strptime(m.time_stamp.to_s, '%s') %></div><br>
-    <div class='individual_message' data='<%=m.id%>'><%= m.snippet %></div>
+    <% date = Date.strptime(m.time_stamp.to_s, '%s') %>
+    <div class='message_from_contact'>From: <%= @contact.name %></div>
+    <div class='message_date'><%= "#{date.strftime("%h")} " + "#{date.day}" + ", #{date.year}" %></div><br>
+    <div class='individual_message' data='<%=m.id%>'><%= m.snippet %>
+        <div class='message_expand'><strong>expand message</strong> v</div><br></div>
 <!-- m.summary.gsub(/[^0-9a-zA-Z .]/, ' ') -->
     <% if m.body_html == nil %>
       <div class='individual_message_outer_div' id='<%=m.id%>' style='display:none'><div class='individual_message_div'><%= m.body_plain_text.to_s.html_safe%></div></div>
