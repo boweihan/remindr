@@ -21,7 +21,8 @@
 </div>
 
 <div class='container viewport'>
-    <div class="user-information">
+
+    <div class="col-sm-5 user-information">
       <h4 class="margin-24-heading sixteen-font account-heading">Account Information</h4>
       <%= link_to "(Edit)", edit_user_path(current_user), class:'sixteen-font edit-link edit-user' %>
       <div class="text-block">
@@ -56,7 +57,7 @@
         </div>
     </div>
 
-    <div class="all-contacts-div-user-page">
+    <div class="col-sm-7 all-contacts-div-user-page">
       <h4 class="text-center all-contacts-heading margin-24-heading">All Contacts</h4>
         <%= link_to root_path do%>
           <div class="add-contact-button">
