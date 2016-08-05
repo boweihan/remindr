@@ -2,17 +2,6 @@ class ContactsController < ApplicationController
 
   before_action :ensure_logged_in
 
-  def add_multiple
-    unless request.xhr?
-      not_found
-    end
-
-    @contacts = params[:contacts]
-    binding.pry
-    @contacts.each do |contact|
-
-    end
-  end
   #All contacts page
   def index
     #return json of all contacts if ajax
@@ -39,9 +28,17 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      redirect_to newsfeed_path
+      if request.xhr?
+        head(:ok)
+      else
+        redirect_to newsfeed_path
+      end
     else
-      redirect_to contacts_path, flash: {add_contact_modal: true}
+      if request.xhr?
+        head(:internal_server_errror)
+      else
+        redirect_to contacts_path, flash: {add_contact_modal: true}
+      end
     end
   end
 
