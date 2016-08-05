@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.new(user_params)
     @user.google_id = params[:email]

@@ -1,10 +1,9 @@
 <% if current_user %>
 <% @user = current_user %>
     <%= form_for @user do |f| %>
-      Name:  <%= f.text_field :name, class: 'field'%><br>
-      Phone: <%= f.text_field :phone %>
+      Name:  <%= f.text_field :name%><br>
+      Phone: <%= f.text_field :phone %><br>
       Email: <%= f.email_field :email%><br>
-      <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
       <%= f.submit "Update Account"%>
     <% end %>
 <% end %>

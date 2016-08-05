@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/reminders' => 'reminders#index'
   post '/reminders/change_type' => "reminders#change_type"
   get '/import_contacts' => "pages#import"
-  resources :users, only: [:create, :new, :update, :edit]
+  resources :users, only: [:create, :new, :update, :edit, :show]
 
   resources :contacts, only: [:show, :create, :destroy, :update, :index, :edit] do
     resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
