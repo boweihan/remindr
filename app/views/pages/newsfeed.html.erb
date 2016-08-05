@@ -27,21 +27,21 @@
 <!-- Section 3: List of All Contacts (left 25% of the page)  -->
   <div class="contacts-container">
     <div class="searchbar-with-icons-div">
-      <a href=#>
+      <!-- <a href=#>
       <div class="filter-icon">
         <%= image_tag "filter.png" %>
       </div>
-      </a>
+      </a> -->
       <div class="search-contacts-bar">
         <%= form_tag contacts_path,id:"search_contact" do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class: 'search-bar-field'%>
         <% end %>
       </div>
-      <a href=#>
+      <!-- <a href=#>
         <div class="add-icon">
         <%= image_tag "add-contact.png" %>
         </div>
-      </a>
+      </a> -->
     </div>
 <!-- 'List of Contacts/Messages' div -->
   <div id='load_contact_box'>
@@ -87,8 +87,8 @@
 
         <!-- send email  -->
         <div class='gmail-toggle'>Gmail</div>
-        <div class='twitter-toggle'>Twitter</div>
-        <div class='text-toggle'>Text</div>
+        <div class='twitter-toggle'>Twitter Direct Message</div>
+        <div class='text-toggle'>Tweet</div>
 
         <div class="send-email-div">
           <%= form_tag "/", id:"send_email" do %>
@@ -113,6 +113,16 @@
               <%= submit_tag "Send"%>
               </div>
             <% end %>
+        </div>
+
+        <div class="send-tweet">
+          <%= form_tag '/', id:'send-tweet' do %>
+          <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><br>
+          <%= text_area_tag "tweet_message", nil, class:"twitter_field",id: 'send-text-area' %>
+          <div class="send-tweet-submit">
+          <%= submit_tag "Send" %>
+          </div>
+          <% end %>
         </div>
       </div>
 
