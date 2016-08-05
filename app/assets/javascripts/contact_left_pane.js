@@ -57,7 +57,7 @@ function load_contacts(contact){
   var name = contact.name
   var path = base_path+id_num
   $(".contacts-messages").append("<a href="+path+" data-remote=true class=contact-name-link><div id="+html_id+">")
-  $("#"+html_id).html("<div class=contact-message><div class=contact-profile-image></div><div class=contact-last-message><p>"+name+"</p><p class=last-message-on>Last Message On</p></div></div>")
+  $("#"+html_id).html("<div class=contact-message><div class=contact-profile-image></div><div class=contact-last-message><p>"+name+"</p><p class=last-message-on>"+contact.category+"</p></div></div>")
 }
 
 function duplicated_elements(searchterm,contactsjson){
