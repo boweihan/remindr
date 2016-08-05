@@ -190,13 +190,13 @@
 
 .contacts-container {
   width: 25%;
-  height: 800px;
+  height: 100vh;
   float: left;
   position: relative;
 }
 
 .contacts-messages {
-  height: 800px;
+  height: 100vh;
   // margin-left: 20px;
   // margin-top: 15px;
   overflow: scroll;
@@ -227,15 +227,22 @@
   margin-left: 16px;
   margin-top: 10px;
 }
-.contact-profile-image {
-  border-radius: 100%;
-  background-repeat: none;
-  background-image: image-url('duck.svg');
-  width: 56px;
-  height: 56px;
-  float: left;
-}
 
+@media screen and (min-width: 800px) {
+  .contact-profile-image {
+    border-radius: 100%;
+    background-repeat: none;
+    background-image: image-url('duck.svg');
+    width: 56px;
+    height: 56px;
+    float: left;
+  }
+}
+@media screen and (max-width: 799px) {
+  .contact-profile-image {
+    display: none;
+  }
+}
 
 .last-message-on {
   margin: 0;
@@ -249,7 +256,7 @@
 
 .contact-info-updating-container {
   width: 75%;
-  height: 800px;
+  height: 100vh;
   float: left;
   overflow: hidden;
 }
@@ -306,7 +313,6 @@
   position: fixed;
   right: 25%;
   width: 50%;
-  height: 55vh;
   bottom: 0%;
   overflow: hidden;
   // overflow: scroll;
