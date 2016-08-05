@@ -37,8 +37,15 @@
 
     <div class="col-sm-7 all-contacts-div-user-page">
       <h4 class="text-center all-contacts-heading margin-24-heading">All Contacts</h4>
-      <%#= link_to (image_tag "ic_person_add_black_24dp_2x.png"), root_path, class: "nav-icon"%>
+        <%= link_to root_path do%>
+          <div class="add-contact-button">
+            <%= image_tag "ic_person_add_person_blue.svg", class: "add-contact-icon"  %>
+            <h4 class="fourteen-font add-contact-link edit-link">Add Contact</h4>
+          </div>
+      <% end %>
       <div class="divider-contacts"></div>
+
+
       <div class="filter-contacts-drop-down-div">
       <%= form_tag "/", id:"filter-contacts-form" do %>
       <select>

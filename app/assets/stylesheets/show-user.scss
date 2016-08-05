@@ -12,6 +12,7 @@ select {
   margin: 0 auto;
 }
 
+
 #ghost-update-button {
   border: 1px solid #2B92FF;
   border-radius: 2px;
@@ -23,6 +24,11 @@ select {
   margin-top: 8px;
 
 }
+
+#ghost-update-button:hover {
+  color: $newoffwhite;
+  background-color: #2B92FF;
+}
 .edit-link {
   color: #2B92FF;
 }
@@ -31,6 +37,10 @@ select {
 }
 .sixteen-font {
   font-size: 16px;
+}
+
+.fourteen-font {
+  font-size: 14px;
 }
 
 .twenty-font {
@@ -78,7 +88,7 @@ textarea#autoreply_message {
 }
 .filter-contacts-drop-down-div {
   display: inline-block;
-  margin: 16px 36px 16px 36px;
+  margin: 16px 36px 16px 16px;
 }
 .search-contacts-bar-div {
   display: inline-block;
@@ -90,8 +100,36 @@ textarea#autoreply_message {
   height: 72vh;
 }
 
+.all-contacts-heading {
+  display: inline-block;
+}
+
+.add-contact-button {
+  display: inline-block;
+  margin: 16px 16px 0 36px;
+  padding: 0 16px;
+  float: right;
+  border: 1px solid #2B92FF;
+  border-radius: 2px;
+}
+
+.add-contact-button:hover {
+  border: 2px solid #2B92FF;
+}
+
+
+.add-contact-icon {
+  margin-right: 16px;
+  height: auto;
+  display: inline-block;
+}
+
+.add-contact-link {
+  display: inline-block;
+}
+
 .search-contacts-user-page {
-  width: 320px;
+  width: 360px;
   border-radius: 2px;
   height: 36px;
   border: 1px solid rgba(0,0,0,0.2);
