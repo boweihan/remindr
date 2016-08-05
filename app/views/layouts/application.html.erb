@@ -8,7 +8,9 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet"> -->
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js' %>
   <%= csrf_meta_tags %>
+  <script src="https://use.fontawesome.com/a9709a8405.js"></script>
 </head>
+<body>
 
 <div class="nav-bar">
   <%= link_to "Remindr", root_path, class:"logo" %>
@@ -31,38 +33,20 @@
         <%= link_to (image_tag "ic_notifications_active_red_24px.svg"), reminders_path, class: "nav-icon"%>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <a href=#><%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon", id: 'settings-icon' %></a>
+        <%= link_to (image_tag "ic_settings_black_24px (1).svg"), user_path(current_user), class: "nav-icon"  %>
+
       <% else %>
       <!-- code for nav links -->
         <%= link_to (image_tag "ic_notifications_active_black_24px.svg"), reminders_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_contacts_black_24px (1).svg"), contacts_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_message_black_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <a href=#><%= image_tag "ic_settings_black_24px (1).svg", class: "nav-icon", id: 'settings-icon' %></a>
+        <%= link_to (image_tag "ic_settings_black_24px (1).svg"), user_path(current_user), class: "nav-icon" %>
       <% end %>
 
     <% end %>
 </div>
 
-<body>
-  <% if current_user %>
-  <% @user = current_user %>
-  <div class="modal2">
-    <div class="updateInfo">
-      <%= form_for @user, remote: true do |f| %>
-        <button type="button" class="close">x</button>
-        <div class="edit-user-div">
-          <h3 class="edit-user-heading">Edit Personal Information</h3>
-        </div>
-        Name:  <%= f.text_field :name, class: 'field'%><br>
-        Phone: <%= f.text_field :phone,  class: 'phoneField' %> - <%= f.text_field :phone,  class: 'phoneField2' %> - <%= f.text_field :phone,  class: 'lastPhoneField' %><br>
-        Email: <%= f.email_field :email, class: 'efield' %><br>
-        Twitter: <%= f.text_field :email, class: 'twitterfield' %><br>
-        <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
-        <%= f.submit "Update Account", class: 'modal-submit'%>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
+
 
 
   <!-- <% flash.each do |key, value | %>

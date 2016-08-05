@@ -22,25 +22,14 @@
 
 <div class='container viewport'>
 
-    <div class="user-information user-information-edit">
+    <div class="col-sm-5 user-information">
       <h4 class="margin-24-heading sixteen-font account-heading">Account Information</h4>
+      <%= link_to "(Edit)", edit_user_path(current_user), class:'sixteen-font edit-link edit-user' %>
       <div class="text-block">
-
-        <% if current_user %>
-        <% @user = current_user %>
-            <%= form_for @user do |f| %>
-              Name <br>
-              <%= f.text_field :name%><br>
-              Phone<br>
-              <%= f.text_field :phone %><br>
-              Email<br>
-               <%= f.email_field :email%><br>
-              Password<br>
-               <%= f.password_field :password %><br>
-              <%= f.submit "Update", id:'ghost-update-button'%>
-            <% end %>
-        <% end %>
-
+        <h4 class="sixteen-font"><%= @user.name %></h4>
+        <h4 class="sixteen-font"><%= @user.email %></h4>
+        <h4 class="sixteen-font"><%= @user.phone %></h4>
+        <%= link_to "Change Password", edit_user_path(current_user), class:'sixteen-font edit-link'  %>
       </div>
 
       <div class="divider-user-page"></div>
@@ -68,7 +57,7 @@
         </div>
     </div>
 
-    <div class="all-contacts-div-user-page all-contacts-div-user-page-edit ">
+    <div class="col-sm-7 all-contacts-div-user-page">
       <h4 class="text-center all-contacts-heading margin-24-heading">All Contacts</h4>
         <%= link_to root_path do%>
           <div class="add-contact-button">
@@ -96,7 +85,7 @@
         <% end %>
       </div>
 
-      <div class="all-contacts-scroll-div all-contacts-scroll-div-edit">
+      <div class="all-contacts-scroll-div">
         <% @contacts.each do |contact| %>
           <div class="contact-cards-user-page">
             <div class="contact-profile-picture"></div>

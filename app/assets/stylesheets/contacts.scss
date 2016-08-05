@@ -55,63 +55,9 @@
   margin-bottom: 10px;
   display: block;
   text-align: center;
+  font-size: 16px;
 }
 // add contact form fields
-.field {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 7px;
-    width: 81.7%;
-    color: #555 ;
-    font-size: 12px;
-    margin: 20px 0;
-    margin-left: 8px;
-}
-
-
-
-.phoneField {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 15%;
-    margin: 20px 3px;
-    margin-left: 5.5px;
-    color: #555 ;
-}
-
-.phoneField2 {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 15%;
-    margin: 20px 0;
-    color: #555 ;
-}
-
-.phoneField3 {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 44%;
-    margin: 20px 0;
-    color: #555 ;
-}
-
-.eField {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 81%;
-    margin: 20px 0;
-    margin-left: 12px;
-    color: #555 ;
-}
 
 #contact_category {
   display: inline-block;
@@ -120,31 +66,9 @@
   padding: 8px;
   width: 75%;
   margin: 20px 0;
-  margin-left: 12px;
   color: #555 ;
 }
 
-.twitField {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 8px;
-  width: 74%;
-  margin: 20px 0;
-  margin-left: 12px;
-  color: #555 ;
-}
-
-.twitField2 {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 8px;
-  width: 60%;
-  margin: 20px 0;
-  margin-left: 12px;
-  color: #555 ;
-}
 // close button of modal
 .close {
     background-color: #e8e8e8;
@@ -266,13 +190,13 @@
 
 .contacts-container {
   width: 25%;
-  height: 800px;
+  height: 100vh;
   float: left;
   position: relative;
 }
 
 .contacts-messages {
-  height: 800px;
+  height: 100vh;
   // margin-left: 20px;
   // margin-top: 15px;
   overflow: scroll;
@@ -303,15 +227,22 @@
   margin-left: 16px;
   margin-top: 10px;
 }
-.contact-profile-image {
-  border-radius: 100%;
-  background-repeat: none;
-  background-image: image-url('duck.svg');
-  width: 56px;
-  height: 56px;
-  float: left;
-}
 
+@media screen and (min-width: 800px) {
+  .contact-profile-image {
+    border-radius: 100%;
+    background-repeat: none;
+    background-image: image-url('duck.svg');
+    width: 56px;
+    height: 56px;
+    float: left;
+  }
+}
+@media screen and (max-width: 799px) {
+  .contact-profile-image {
+    display: none;
+  }
+}
 
 .last-message-on {
   margin: 0;
@@ -325,7 +256,7 @@
 
 .contact-info-updating-container {
   width: 75%;
-  height: 800px;
+  height: 100vh;
   float: left;
   overflow: hidden;
 }
@@ -344,8 +275,8 @@
 
 #message-content {
   width: 100%;
-  height: 70vh;
-  padding-bottom: 100px;
+  height: 100vh;
+  padding-bottom: 50vh;
   overflow-y: scroll;
   overflow-x: hidden;
   position: static;
@@ -382,7 +313,6 @@
   position: fixed;
   right: 25%;
   width: 50%;
-  height: 55vh;
   bottom: 0%;
   overflow: hidden;
   // overflow: scroll;
@@ -415,8 +345,8 @@
   line-height: 30px;
   background-color: #33b4ff;
   color: white;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }
 
 .twitter-toggle {
@@ -430,8 +360,8 @@
   text-align: center;
   line-height: 30px;
   background-color: white;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }
 
 .text-toggle {
@@ -445,7 +375,7 @@
   text-align: center;
   line-height: 30px;
   background-color: white;
-  border-top: 1px solid black;
+  border-top: 1px solid lightgray;
 }
 
 .send-direct-message {
@@ -515,12 +445,11 @@ label {
 #subject_field {
   width: 100%;
   height: 24px;
-
 }
 
 #body_field {
   width: 100%;
-  height: 70px;
+  height: 24px;
 }
 
 input[type=submit] {
@@ -822,7 +751,7 @@ input[type=submit].update-contact-submit{
   background-color: rgba(256,256,256, 0.8);
 }
 
-.field, #password, #signup-field{
+.field {
   display: inline-block;
   border: none;
   outline: none;
@@ -830,20 +759,7 @@ input[type=submit].update-contact-submit{
   width: 73%;
   color: #555 ;
   font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
-}
-
-.field, #signup-confirmation {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 7px;
-  width: 48%;
-  color: #555 ;
-  font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
+  margin: 8px 0;
 }
 
 .add-new-contact-heading-error {
