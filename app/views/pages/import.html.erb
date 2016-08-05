@@ -5,7 +5,7 @@
   <% @potential_contacts.each do |contact| %>
     <div class="potential-contacts">
       <div class="contact-image-div" %>
-        <%= image_tag(contact['pic'],{class:"contact-image", alt:"not found"}) %>
+        <%# image_tag(contact['pic'],{class:"contact-image", alt:"not found"}) %> -->
       </div>
       <h2 class="potential-contact-name"><%= contact['name']%></h2>
       <h4 class="potential-contact-email"><%= contact['email']%></h4>

@@ -2,6 +2,17 @@ class ContactsController < ApplicationController
 
   before_action :ensure_logged_in
 
+  def add_multiple
+    unless request.xhr?
+      not_found
+    end
+
+    @contacts = params[:contacts]
+    binding.pry
+    @contacts.each do |contact|
+
+    end
+  end
   #All contacts page
   def index
     #return json of all contacts if ajax

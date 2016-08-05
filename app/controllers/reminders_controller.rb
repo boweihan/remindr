@@ -46,7 +46,7 @@ class RemindersController < ApplicationController
       User.update(@user.id, reminder_platform: params[:type])
       head(:ok)
     else
-      head 404
+      not found
     end
   end
   private
