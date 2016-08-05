@@ -55,63 +55,9 @@
   margin-bottom: 10px;
   display: block;
   text-align: center;
+  font-size: 16px;
 }
 // add contact form fields
-.field {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 7px;
-    width: 81.7%;
-    color: #555 ;
-    font-size: 12px;
-    margin: 20px 0;
-    margin-left: 8px;
-}
-
-
-
-.phoneField {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 15%;
-    margin: 20px 3px;
-    margin-left: 5.5px;
-    color: #555 ;
-}
-
-.phoneField2 {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 15%;
-    margin: 20px 0;
-    color: #555 ;
-}
-
-.phoneField3 {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 44%;
-    margin: 20px 0;
-    color: #555 ;
-}
-
-.eField {
-    display: inline-block;
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 81%;
-    margin: 20px 0;
-    margin-left: 12px;
-    color: #555 ;
-}
 
 #contact_category {
   display: inline-block;
@@ -120,31 +66,9 @@
   padding: 8px;
   width: 75%;
   margin: 20px 0;
-  margin-left: 12px;
   color: #555 ;
 }
 
-.twitField {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 8px;
-  width: 74%;
-  margin: 20px 0;
-  margin-left: 12px;
-  color: #555 ;
-}
-
-.twitField2 {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 8px;
-  width: 60%;
-  margin: 20px 0;
-  margin-left: 12px;
-  color: #555 ;
-}
 // close button of modal
 .close {
     background-color: #e8e8e8;
@@ -821,7 +745,7 @@ input[type=submit].update-contact-submit{
   background-color: rgba(256,256,256, 0.8);
 }
 
-.field, #password, #signup-field{
+.field {
   display: inline-block;
   border: none;
   outline: none;
@@ -829,20 +753,7 @@ input[type=submit].update-contact-submit{
   width: 73%;
   color: #555 ;
   font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
-}
-
-.field, #signup-confirmation {
-  display: inline-block;
-  border: none;
-  outline: none;
-  padding: 7px;
-  width: 48%;
-  color: #555 ;
-  font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
+  margin: 8px 0;
 }
 
 .add-new-contact-heading-error {

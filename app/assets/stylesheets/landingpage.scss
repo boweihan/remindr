@@ -11,7 +11,7 @@ $color7: #4b69c8;
 $color2: #27c5ef;
 $color8: #00a4ff;
 $offwhite: #F2F6F7;
-$logocolor: #4b69c8;
+$logocolor: #F0F1F3;
 $brightblue: #00a4ff;
 $lightblue: #9bdbff;
 $mediumblue: #27c5ef;
@@ -37,9 +37,8 @@ $yellowbuttons:  hsl(48, 100%, 45%);
 .nav-bar {
   width: 100%;
   height: 50px;
-  background-color: #F2F6F7;
+  background-color: #2B92FF;
   height: 56px;
-  background-color: $offwhite;
   text-align: right;
 }
 
@@ -161,7 +160,7 @@ a.loginButton {
   background-color: $logocolor;
   display: inline-block;
   float: right;
-  color: $offwhite;
+  color: #2B92FF;
   font-size: 14px;
   text-align: center;
   width: 96px;
@@ -174,7 +173,7 @@ a.logoutButton {
   background-color: $logocolor;
   display: inline-block;
   float: right;
-  color: $offwhite;
+  color: #2B92FF;
   font-size: 14px;
   text-align: center;
   width: 96px;
