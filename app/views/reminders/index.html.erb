@@ -1,6 +1,6 @@
 <div class='reminder-background'></div>
 <div class='remindertitle'>
-  <h1> REMINDER INDEX PAGE </h1>
+  <h1 style='text-align:center'> All Reminders </h1>
   <h3 class="notification_type">Get Notifications by: </h3>
   <% @types.each do |type| %>
     <% if @type == type %>
@@ -15,10 +15,11 @@
     <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
     <div class='reminderbox' data-identifier='contact_id-<%= reminder.contact_id %>'>
       <div id='<%= reminder.reminder_type %>'></div>
-      <br>
-      <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
+      <li id='reminder-days'> <%= reminder.time_since_last_contact %> days </li>
+      <li id='reminder-text'> Since you last contacted <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %>
+      <!-- <li>Reminder From: <%= current_user.contacts.where(id:reminder.contact_id).first["name"] %></li>
       <li>It's been <%= reminder.time_since_last_contact %> since your last contact</li>
-      <li>Your reminder is <strong><%= reminder.reminder_type %></strong></li><br />
+      <li>Your reminder is <strong><%= reminder.reminder_type %></strong></li><br /> -->
     </div>
     <% end %>
   <% end %>
