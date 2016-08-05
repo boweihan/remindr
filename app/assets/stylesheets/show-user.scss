@@ -1,20 +1,101 @@
 // recently added aug 5
+
+* {
+  font-family: 'Avenir', sans-serif;
+}
 $newoffwhite: #F0F1F3;
 
-.user-information {
-  background-color: $newoffwhite;
+select {
+  width: 200px;
+  border: 1px solid rgba(0,0,0,0.1);
+  height: 36px;
+  margin: 0 auto;
 }
 
+#ghost-update-button {
+  border: 1px solid #2B92FF;
+  border-radius: 2px;
+  color: #2B92FF;
+  background-color: transparent;
+  font-weight: normal;
+  height: auto;
+  padding: 0 8px;
+  margin-top: 8px;
+
+}
+.edit-link {
+  color: #2B92FF;
+}
+.margin-24-heading  {
+  margin: 24px 36px;
+}
+.sixteen-font {
+  font-size: 16px;
+}
+
+.twenty-font {
+  font-size: 20px;
+}
+
+.text-block {
+  margin-left: 36px;
+}
+
+.divider-user-page {
+  height: 1px;
+  width: 90%;
+  margin: 36px auto;
+  background-color: rgba(0,0,0,0.05);
+}
+
+
+
+.user-information {
+  padding-top: 16px;
+  background-color: $newoffwhite;
+  height: 92vh;
+}
+
+.account-heading {
+  display: inline-block;
+}
+
+.edit-user {
+  display: inline-block;
+}
+
+textarea#autoreply_message {
+  width: 80%;
+  height: 100px;
+}
+
+// contacts
+.divider-contacts {
+  height: 1px;
+  width: 96%;
+  margin: 0 auto;
+  background-color: rgba(0,0,0,0.05);
+}
 .filter-contacts-drop-down-div {
   display: inline-block;
+  margin: 16px 36px 16px 36px;
 }
 .search-contacts-bar-div {
   display: inline-block;
+  margin: 16px 36px 16px 0px;
 }
 
 .all-contacts-scroll-div {
   overflow: scroll;
-  height: 80vh;
+  height: 72vh;
+}
+
+.search-contacts-user-page {
+  width: 320px;
+  border-radius: 2px;
+  height: 36px;
+  border: 1px solid rgba(0,0,0,0.2);
+  text-align: center;
 }
 
 // contact cards
@@ -23,4 +104,19 @@ $newoffwhite: #F0F1F3;
   padding: 16px;
   background-color: $newoffwhite;
   margin: 8px;
+  overflow: hidden;
+}
+.contact-card-information {
+  display: inline-block;
+  float: left;
+  margin: 8px 16px;
+}
+
+.contact-profile-picture {
+  width: 115px;
+  height: 104px;
+  background-color: orange;
+  display: inline-block;
+  float: left;
+  margin: 16px;
 }
