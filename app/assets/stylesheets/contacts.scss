@@ -331,9 +331,11 @@
 
 .messages {
   float: left;
-  width: 66.666%;
-  height: 800px;
+  width: 100%;
+  position: static;
+  bottom: 250px;
   overflow: hidden;
+
   // background-color: $color6;
   // overflow: scroll;
 }
@@ -341,9 +343,12 @@
 
 #message-content {
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   padding-bottom: 100px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: static;
+  bottom: 250px;
   // position: relative;
   // background-color: $color2;
   // border: 1px solid $color2;
@@ -356,14 +361,14 @@
 }
 
 .individual-message-div {
-  width: 95%;
+  width: 97%;
   height: auto;
+  margin: 1.5%;
   padding: 10px;
   word-wrap: break-word;
   background-color: $offwhite;
   color: rgba(0,0,0,0.87);
   border-radius: 6px;
-  margin: 16px;
 }
 
 .twitter-and-email-container {
@@ -390,15 +395,61 @@
   overflow: hidden;
 }
 
-.send-direct-message {
+.gmail-toggle {
+  position: absolute;
+  bottom: 250px;
   float: left;
   display: inline-block;
-  width: 47.5%;
-  margin-right: 5%;
+  width: 25%;
+  left: 25%;
+
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: lightgray;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.twitter-toggle {
+  position: absolute;
+  bottom: 250px;
+  float: left;
+  display: inline-block;
+  width: 25%;
+  left: 50%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
   background-color: white;
-  opacity: 0.7;
-  border-radius: 8px;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.text-toggle {
+  position: absolute;
+  bottom: 250px;
+  float: left;
+  display: inline-block;
+  width: 25%;
+  left: 75%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: white;
+  border-top: 1px solid black;
+}
+
+.send-direct-message {
+  float: left;
+  display: none;
+  width: 75%;
+  background-color: white;
+  opacity: 1;
   padding: 20px;
+  height: 250px;
+  position: absolute;
+  bottom: 0;
 }
 .send-tweet {
   float: left;
@@ -421,12 +472,16 @@
 }
 
 .send-email-div {
-  width: 93%;
-  height: 35vh;
-  padding-top: 30px;
+  width: 75%;
+  height: 250px;
+  overflow: hidden;
+  padding: 10px;
   // background-color: red;
   position: absolute;
+  z-index: 10;
   bottom: 0%;
+  background-color: white;
+  display:block;
   // overflow: scroll;
 
 }
@@ -456,7 +511,7 @@ label {
 
 #body_field {
   width: 100%;
-  height: 100px;
+  height: 70px;
 }
 
 input[type=submit] {

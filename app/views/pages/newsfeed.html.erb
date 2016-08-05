@@ -62,9 +62,8 @@
       <% #Messages of contact you click on %>
       </div>
         <!-- send direct message via twitter  -->
-      <div class="twitter-and-email-container">
-        <div class-"send-twitter-div">
-          <div class="send-direct-message">
+        <!-- <div class-"send-twitter-div"> -->
+          <!-- <div class="send-direct-message">
               <%= form_tag "/", id:"send-direct-message" do %>
                 <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
                 <%= label_tag "direct_message", "Twitter Direct Message: ", class:"message-label" %><br>
@@ -73,9 +72,9 @@
                 <%= submit_tag "Send"%>
                 </div>
               <% end %>
-          </div>
+          </div> -->
 
-          <div class="send-tweet">
+          <!-- <div class="send-tweet">
             <%= form_tag '/', id:'send-tweet' do %>
             <%= label_tag "tweet_message", "Tweet:", class:"message-label" %><br>
             <%= text_area_tag "tweet_message", nil, class:"twitter_field",id: 'send-text-area' %>
@@ -83,10 +82,14 @@
             <%= submit_tag "Send" %>
             </div>
             <% end %>
-          </div>
-          </div>
+          </div> -->
+        <!-- </div> -->
 
         <!-- send email  -->
+        <div class='gmail-toggle'>Gmail</div>
+        <div class='twitter-toggle'>Twitter</div>
+        <div class='text-toggle'>Text</div>
+
         <div class="send-email-div">
           <%= form_tag "/", id:"send_email" do %>
             <%= hidden_field_tag "receiver", nil, id:"email_field"%>
@@ -100,19 +103,29 @@
 
           <% end %>
         </div>
+
+        <div class="send-direct-message">
+            <%= form_tag "/", id:"send-direct-message" do %>
+              <%= hidden_field_tag "receiver-twitter-user", nil, id:"twitter-user-field"%>
+              <%= label_tag "direct_message", "Twitter Direct Message: ", class:"message-label" %><br>
+              <%= text_area_tag "direct_message", nil, class:"twitter_field", id: 'twitter-text-area'  %>
+              <div class="send-dm-submit">
+              <%= submit_tag "Send"%>
+              </div>
+            <% end %>
+        </div>
       </div>
-    </div>
 
 
 <!-- Section 5: All contact information for individual contact (right 25% of page) -->
 
-    <div class="profiles">
+    <!-- <div class="profiles">
       <div id="contact_details">
       </div>
 
       <div id='newsfeed_reminders'>
         <div class='profile-divider'></div><br>
-          <h2 class="reminders-heading">Reminders</h2>
+          <h2 class="reminders-heading">Reminders</h2> -->
 
         <!-- <% @reminders.each do |reminder| %>
           <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
@@ -122,7 +135,7 @@
           </div>
           <% end %>
         <% end %> -->
-        <% i=0 %>
+        <!-- <% i=0 %>
         <% 5.times do %>
           <% if current_user.contacts.where(id:@reminders[i]) != nil && @reminders[i] != nil%>
             <% if current_user.contacts.where(id:@reminders[i].contact_id).first != nil %>
@@ -133,7 +146,7 @@
             <% i += 1 %>
           <% end %>
         <% end %>
-      </div>
+      </div> -->
       <!-- Add attribute form that we are't using at the moment -->
       <!-- <div id="add_field_form">
         <%= form_tag "/", id:"update_contact" do %>
@@ -145,6 +158,6 @@
           <%= submit_tag "Update", id:"update_contact_button" %>
         <% end%>
       </div> -->
-    </div>
-  </div>
+    <!-- </div>
+  </div> -->
 </div>
