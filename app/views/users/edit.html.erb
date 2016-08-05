@@ -1,14 +1,10 @@
+<% if current_user %>
+<% @user = current_user %>
     <%= form_for @user do |f| %>
-      <button type="button" class="close">x</button>
-      <div class="edit-user-div">
-        <h3 class="edit-user-heading">Edit Personal Information</h3>
-      </div>
       Name:  <%= f.text_field :name, class: 'field'%><br>
-      Phone: <%= f.text_field :phone,  class: 'field' %><br>
-      Email: <%= f.email_field :email, class: 'field' %><br>
-      Twitter Id: <%= f.text_field :twitter, class: 'field' %><br>
-      Twitter Username: <%= f.text_field :twitter_username, class: 'field' %><br>
-      Category: <%= f.text_field :category, class: 'field' %>
+      Phone: <%= f.text_field :phone %>
+      Email: <%= f.email_field :email%><br>
       <!-- ***Need to update 'twitter' so it doesn't use the :email field*** -->
-      <%= f.submit "Update Account", class: 'submit'%>
+      <%= f.submit "Update Account"%>
     <% end %>
+<% end %>
