@@ -1,3 +1,63 @@
-<h4><%= @user.name %></h4>
-<h4><%= @user.email %></h4>
-<h4><%= @user.phone %></h4>
+<div class='container viewport'>
+  <div class="row">
+    <div class="col-sm-5 user-information">
+      <h4>Account Information</h4>
+      <%= link_to "(Edit)", edit_user_path(current_user) %>
+      <h4><%= @user.name %></h4>
+      <h4><%= @user.email %></h4>
+      <h4><%= @user.phone %></h4>
+      <%= link_to "Change Password", edit_user_path(current_user) %>
+
+
+      <h4>Get Reminders via:</h4>
+
+        <%= form_tag "/", id:"reminder_settings_form" do %>
+        <select>
+            <option value="email">Email</option>
+            <option value="twitter">Twitter</option>
+            <option value="text">Text</option>
+        </select><br>
+          <%= submit_tag "Update", id:"update_reminder_settings" %>
+        <% end%>
+
+        <h4>Autoreply Message</h4>
+        <%= form_tag "/", id:"autoreply_settings_form" do %>
+        <%= text_area_tag :autoreply_message %><br>
+          <%= submit_tag "Update", id:"update_reminder_settings" %>
+        <% end%>
+    </div>
+
+    <div class="col-sm-7 all-contacts-div-user-page">
+      <h4 class="text-center all-contacts-heading">All Contacts</h4>
+      <%#= link_to (image_tag "ic_person_add_black_24dp_2x.png"), root_path, class: "nav-icon"%>
+      <div class="filter-contacts-drop-down-div">
+      <%= form_tag "/", id:"filter_contacts_form" do %>
+      <select>
+          <option value="all">All Contacts</option>
+          <option value="friend">Friend</option>
+          <option value="business">Business</option>
+          <option value="family">Family</option>
+      </select><br>
+      <% end%>
+      </div>
+
+      <div class="search-contacts-bar-div">
+        <%= form_tag contacts_path,id:"search_contact" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search contacts"%>
+        <% end %>
+      </div>
+
+      <div class="all-contacts-scroll-div">
+        <% @contacts.each do |contact| %>
+          <div class="contact-cards-user-page">
+            <h5><%= contact.name %></h5>
+            <h6><%= contact.category %></h6>
+            <h6><%= contact.email %></h6>
+            <h6><%= contact.twitter_username %></h6>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

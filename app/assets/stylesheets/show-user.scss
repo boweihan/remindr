@@ -1,0 +1,26 @@
+// recently added aug 5
+$newoffwhite: #F0F1F3;
+
+.user-information {
+  background-color: $newoffwhite;
+}
+
+.filter-contacts-drop-down-div {
+  display: inline-block;
+}
+.search-contacts-bar-div {
+  display: inline-block;
+}
+
+.all-contacts-scroll-div {
+  overflow: scroll;
+  height: 80vh;
+}
+
+// contact cards
+
+.contact-cards-user-page {
+  padding: 16px;
+  background-color: $newoffwhite;
+  margin: 8px;
+}
