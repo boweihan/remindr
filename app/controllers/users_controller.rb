@@ -13,11 +13,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @contacts = @user.contacts
+    @contact = Contact.new
   end
 
   def show
     @user = User.find(params[:id])
     @contacts = @user.contacts
+    @contact = Contact.new
   end
 
   def create
@@ -34,13 +37,20 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.js {head(:ok)}
-      else
-        head(:internal_server_error)
-      end
-    end
+
+     if @user.update_attributes(user_params)
+       redirect_to user_path(current_user)
+     else
+       render :edit
+     end
+
+    # respond_to do |format|
+    #   if @user.update_attributes(user_params)
+    #     format.js {head(:ok)}
+    #   else
+    #     head(:internal_server_error)
+    #   end
+    #end
 
   end
 

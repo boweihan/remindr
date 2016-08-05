@@ -1,9 +1,115 @@
-<% if current_user %>
-<% @user = current_user %>
-    <%= form_for @user do |f| %>
-      Name:  <%= f.text_field :name%><br>
-      Phone: <%= f.text_field :phone %><br>
-      Email: <%= f.email_field :email%><br>
-      <%= f.submit "Update Account"%>
+<div class="modal">
+  <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+        <h3 class="add-new-contact-heading">Add a New Contact</h3>
+      </div>
+      Name<br>
+       <%= f.text_field :name, class: 'field'%><br>
+      Phone<br>
+      <%= f.text_field :phone,  class: 'field' %><br>
+      Email<br>
+       <%= f.email_field :email, class: 'field' %><br>
+      Category<br>
+       <%= f.select :category, ['friend', 'family', 'business', 'other'] %><br>
+      Twitter Username <br>
+       <%= f.text_field :twitter_username, class: 'field' %><br>
+      <%= f.submit "Add Contact", class: 'modal-submit'%>
     <% end %>
-<% end %>
+  </div>
+</div>
+
+<div class='container viewport'>
+  <div class="row">
+    <div class="col-sm-5 user-information user-information-edit">
+      <h4 class="margin-24-heading sixteen-font account-heading">Account Information</h4>
+      <div class="text-block">
+
+        <% if current_user %>
+        <% @user = current_user %>
+            <%= form_for @user do |f| %>
+              Name <br>
+              <%= f.text_field :name%><br>
+              Phone<br>
+              <%= f.text_field :phone %><br>
+              Email<br>
+               <%= f.email_field :email%><br>
+              Password<br>
+               <%= f.password_field :password %><br>
+              <%= f.submit "Update", id:'ghost-update-button'%>
+            <% end %>
+        <% end %>
+
+      </div>
+
+      <div class="divider-user-page"></div>
+
+      <h4 class="margin-24-heading  sixteen-font">Get Reminders via:</h4>
+        <div class="text-block">
+          <%= form_tag "/", id:"reminder_settings_form" do %>
+          <select>
+              <option value="email">Email</option>
+              <option value="twitter">Twitter</option>
+              <option value="text">Text</option>
+          </select><br>
+            <%= submit_tag "Update", id:"ghost-update-button" %>
+          <% end%>
+        </div>
+
+      <div class="divider-user-page"></div>
+
+        <h4 class="margin-24-heading sixteen-font">Autoreply Message</h4>
+        <div class="text-block">
+          <%= form_tag "/", id:"autoreply_settings_form" do %>
+          <%= text_area_tag :autoreply_message%><br>
+            <%= submit_tag "Update", id:"ghost-update-button" %>
+          <% end%>
+        </div>
+    </div>
+
+    <div class="col-sm-7 all-contacts-div-user-page all-contacts-div-user-page-edit ">
+      <h4 class="text-center all-contacts-heading margin-24-heading">All Contacts</h4>
+        <%= link_to root_path do%>
+          <div class="add-contact-button">
+            <%= image_tag "ic_person_add_person_blue.svg", class: "add-contact-icon"  %>
+            <h4 class="fourteen-font add-contact-link edit-link">Add Contact</h4>
+          </div>
+      <% end %>
+      <div class="divider-contacts"></div>
+
+
+      <div class="filter-contacts-drop-down-div">
+      <%= form_tag "/", id:"filter-contacts-form" do %>
+      <select>
+          <option value="all">All Contacts</option>
+          <option value="friend">Friend</option>
+          <option value="business">Business</option>
+          <option value="family">Family</option>
+      </select><br>
+      <% end%>
+      </div>
+
+      <div class="search-contacts-bar-div">
+        <%= form_tag contacts_path,id:"search_contact" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class:'search-contacts-user-page'%>
+        <% end %>
+      </div>
+
+      <div class="all-contacts-scroll-div all-contacts-scroll-div-edit">
+        <% @contacts.each do |contact| %>
+          <div class="contact-cards-user-page">
+            <div class="contact-profile-picture"></div>
+            <div class="contact-card-information">
+              <h4 class="twenty-font"><%= contact.name %></h4>
+              <h6 class="sixteen-font"><%= contact.category %></h6>
+              <h6 class="sixteen-font"><%= contact.email %></h6>
+              <h6 class="sixteen-font"><%= contact.twitter_username %></h6>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
