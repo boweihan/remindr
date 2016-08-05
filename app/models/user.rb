@@ -133,4 +133,5 @@ class User < ActiveRecord::Base
       refresh
     end
   end
+
 end
