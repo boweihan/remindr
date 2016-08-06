@@ -32,6 +32,10 @@ select {
 .edit-link {
   color: #2B92FF;
 }
+
+.edit-link:hover {
+  font-weight: bold;
+}
 .margin-24-heading  {
   margin: 24px 36px;
 }
@@ -140,9 +144,10 @@ textarea#autoreply_message {
 
 .contact-cards-user-page {
   padding: 16px;
-  background-color: $newoffwhite;
-  margin: 8px;
   overflow: hidden;
+  margin: 0 16px 0 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+
 }
 .contact-card-information {
   display: inline-block;

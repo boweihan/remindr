@@ -1,3 +1,15 @@
+<% if flash[:add_contact_modal] %>
+  <script type='text/javascript'>
+    $(document).on('ready', function() {
+      $('.modal').css('display', 'block');
+      $('.add-new-contact-heading-error').html('Please fill in all fields');
+      setTimeout(function(){
+        $('.add-new-contact-heading-error').html('');
+      }, 5000);
+    });
+  </script>
+<% end %>
+
 <div class="modal">
   <div class="add-contact">
     <%= form_for @contact do |f| %>
@@ -70,6 +82,7 @@
 
       <div class="filter-contacts-drop-down-div">
       <%= form_tag "/", id:"filter-contacts-form" do %>
+      Filter by:
       <select>
           <option value="all">All Contacts</option>
           <option value="friend">Friend</option>
@@ -94,6 +107,7 @@
               <h6 class="sixteen-font"><%= contact.category %></h6>
               <h6 class="sixteen-font"><%= contact.email %></h6>
               <h6 class="sixteen-font"><%= contact.twitter_username %></h6>
+              <%= link_to '(Delete Contact)', "/contacts/" + contact.id.to_s, method: :delete, data: {confirm: "Are you sure you want to delete " + contact.name}, class: 'edit-link'%>
             </div>
           </div>
         <% end %>
