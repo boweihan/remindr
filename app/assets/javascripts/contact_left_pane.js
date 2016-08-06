@@ -7,8 +7,11 @@ $(function() {
     }).done(function(response){
       all_contacts = response
       response.forEach(load_contacts);
-        $(".contact-message")[0].click();
+      if (window.location.href.split("/")[3] !== 'newsfeed') {
         $('#'+window.location.href.split("#")[1]).click();
+      } else {
+        $(".contact-message")[0].click();
+      }
 
     })
 
