@@ -1,5 +1,5 @@
 $(function() {
-  if (window.location.href.split("/")[3] === "newsfeed" ||window.location.href.split("/")[3] === "newsfeed#" ) {
+  if (window.location.href.split("/")[3].indexOf('newsfeed') > -1) {
     $.ajax({
       method: "GET",
       url: "/contacts.json",
@@ -8,6 +8,7 @@ $(function() {
       all_contacts = response
       response.forEach(load_contacts);
         $(".contact-message")[0].click();
+        $('#'+window.location.href.split("#")[1]).click();
 
     })
 

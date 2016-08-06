@@ -77,6 +77,14 @@ div.selected_platform {
   list-style: none;
   background-color: $offwhite;
 }
+.reminderbox:hover {
+  transition-duration: 0.5s;
+  transform: translate(-5px, -5px);
+  -webkit-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+  cursor: pointer;
+}
 
 @media screen and (min-width: 850px) {
   #reminder-days {
