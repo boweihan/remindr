@@ -14,6 +14,7 @@ $(function(){
       info.name = $(item).find(".potential-contact-name").text()
       info.phone = $(item).find(".potential-contact-phone-number").val()
       info.email= $(item).find(".potential-contact-email").text()
+      info.category = 'friend'
       $.ajax({
         url:"/contacts",
         method:"post",
