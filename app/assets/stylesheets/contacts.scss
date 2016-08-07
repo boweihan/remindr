@@ -16,6 +16,8 @@
   position: fixed;
   border-bottom: 2px solid rgba(0,0,0,0.2);
   background-image: image-url('background-light-medium-blue.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 //add contact modal
@@ -561,7 +563,7 @@ label.contact_add_info {
 
 .individual-contact-edit-area {
   width: 45%;
-  height: 750px;
+  height: 100vh;
   float: left;
   display: inline-block;
   background-image: image-url('background-hero.svg');
