@@ -3,6 +3,7 @@ $(function(){
   $(".potential-contacts").click(function(e){
     $(this).toggleClass("selected")
     console.log("been clicked")
+    $('.number_of_selected_contacts').text($(".selected").length)
   })
 
   $("#import_contact_button").click(function(e){
@@ -17,7 +18,9 @@ $(function(){
         url:"/contacts",
         method:"post",
         data: {contact: info}
-      })
-    })
+      });
+    });
+
+    window.location.replace("/newsfeed");
   })
 })

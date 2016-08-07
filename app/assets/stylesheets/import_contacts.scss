@@ -4,15 +4,21 @@
 }
 
 .potential-contacts-container {
-  float: right;
-  margin-right: 30%;
-  margin-top: 40px;
+  width: 50%;
+  display: block;
+  margin: auto;
+  height: 60vh;
+  overflow: scroll;
 }
 
 .potential-contacts {
-  background-color: lightgrey;
-  margin-bottom: 15px;
+  background-color: lightgray;
+  margin: 10px;
+  padding: 5px;
+  display: block;
 }
+
+
 
 .contact-image-div{
   width: 25%;
@@ -20,7 +26,36 @@
 }
 
 .potential-contact-name {
-  display: inline-block;
-  // float: right;
-  // margin-right: 30%;
+  text-align: center;
+}
+
+.potential-contact-email {
+  text-align: center;
+}
+
+#import_contact_button {
+  text-decoration: none;
+  background-color: $logocolor;
+  display: block;
+  color: #2B92FF;
+  font-size: 14px;
+  text-align: center;
+  width: 96px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 27px;
+  border: 1px solid #2B92FF;
+}
+#import_contact_button:hover {
+  font-weight: bold;
+  background-color: $mediumblue;
+}
+
+
+// toggle class selected
+
+.selected {
+  background-color: black;
+  color: white;
 }

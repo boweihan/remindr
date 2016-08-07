@@ -256,10 +256,12 @@ class Contact < ActiveRecord::Base
     #Status of interactions
     message_type = ( ((time_difference/86400) < 30) ? 'upcoming' : 'overdue')
     #Check if you should update an existing reminder or create a new one
-    if reminders == []
-      Reminder.create(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
-    else
-      reminders.first.update(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
+    if (time_difference/86400) > 4
+      if reminders == []
+        Reminder.create(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
+      else
+        reminders.first.update(contact_id:id, reminder_type:message_type, message:messages.first.body_plain_text, time_since_last_contact:(time_difference/86400), user_id:user_id)
+      end
     end
   end
 

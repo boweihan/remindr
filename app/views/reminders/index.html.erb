@@ -10,7 +10,7 @@
      <% end %>
   <% end %>
 </div>
-<ul>
+<ul id='reminder-margin'>
   <% @reminders.each do |reminder| %>
     <% if current_user.contacts.where(id:reminder.contact_id).first != nil %>
     <div class='reminderbox' data-identifier='contact_id-<%= reminder.contact_id %>'>
@@ -23,7 +23,6 @@
     </div>
     <% end %>
   <% end %>
-  </ul>
-</div>
+</ul>
 
 <!--  double ajax, borken terminal, slow loads-->

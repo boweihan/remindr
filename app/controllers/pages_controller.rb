@@ -60,11 +60,18 @@ class PagesController < ApplicationController
       #update feed in background
       # UserLoadFeedJob.perform_later(current_user)
     end
+    #
+    # unless current_user.contacts.length > 0
+    #   redirect_to '/import_contacts'
+    # end
+    # redirect_to '/login_page'
 
-    unless current_user.contacts.length > 0
+    if current_user.contacts.length > 0
+      redirect_to '/login_page'
+    else
       redirect_to '/import_contacts'
     end
-    redirect_to '/login_page'
+
   end
   def import
     @potential_contacts = current_user.google_contacts
