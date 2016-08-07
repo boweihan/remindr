@@ -50,8 +50,8 @@
 
         <h4 class="margin-24-heading sixteen-font">Autoreply Message</h4>
         <div class="text-block">
-          <%= form_tag "/", id:"autoreply_settings_form" do %>
-          <%= text_area_tag :autoreply_message%><br>
+          <%= form_tag "/update_message", id:"autoreply_settings_form" do %>
+          <%= text_area_tag :autoreply_message, nil, placeholder:current_user.automated_message, id:'automatic_message_text' %><br>
             <%= submit_tag "Update", id:"ghost-update-button" %>
           <% end%>
         </div>

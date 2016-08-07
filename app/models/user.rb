@@ -95,14 +95,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_automated_message(text)
+    self.update(automated_message:text)
+  end
+
   #email a user's contacts that have been neglected
   def email_my_contacts
     contacts.each do |contact|
       #check if you haven ttalke dto contact for 30 days
       if contact.neglected?
         #send email
-        subj = 'Sorry for not talking to you for so long'
-        bod = 'ER MA GURD'
+        subj = 'Hey!'
+        self.automated_message != nil ? bod = self.automated_message : bod = 'ER MA GURD'
 
         if self.reminder_platform == 'Email'
           Misc.send_mail(self, contact.email, subj, bod)
