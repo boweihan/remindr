@@ -1,3 +1,21 @@
+<div class="edit-modal">
+  <div class="add-contact">
+    <%= form_for @contact do |f| %>
+      <button type="button" class="close">x</button>
+      <div class="add-new-contact-div">
+        <h3 class="add-new-contact-heading">Edit Contact</h3>
+        <h4 class='add-new-contact-heading-error'></h4>
+      </div>
+      Name:  <br><%= f.text_field :name, class: 'field', id: 'contact-name'%><br>
+      Phone: <br><%= f.text_field :phone,  class: 'field', id: 'contact-phone' %><br>
+      Email: <br><%= f.email_field :email, class: 'field', id: 'contact-email' %><br>
+      Category: <br><%= f.select :category, ['friend', 'family', 'business', 'other'] , id: 'contact-category'%><br>
+      Twitter Username: <br><%= f.text_field :twitter_username, class: 'field' , id: 'contact-twitter'%><br>
+      <%= f.submit "Update Contact", class: 'modal-submit'%>
+    <% end %>
+  </div>
+</div>
+
 <% if flash[:add_contact_modal] %>
   <script type='text/javascript'>
     $(document).on('ready', function() {
@@ -94,17 +112,20 @@
 
       <div class="all-contacts-scroll-div">
         <% @contacts.each do |contact| %>
+
+          <%= link_to  "/contacts/" + contact.id.to_s + "/edit", class: 'edit-contact', remote:true do %>
           <div class="contact-cards-user-page">
             <div class="contact-profile-picture"></div>
             <div class="contact-card-information">
 
-              <h4 class="twenty-font"><%= contact.name %></h4>
-              <h6 class="sixteen-font"><%= contact.category %></h6>
-              <h6 class="sixteen-font"><%= contact.email %></h6>
-              <h6 class="sixteen-font"><%= contact.twitter_username %></h6>
+              <h4 class="twenty-font not-link"><%= contact.name %></h4>
+              <h6 class="sixteen-font not-link"><%= contact.category %></h6>
+              <h6 class="sixteen-font not-link"><%= contact.email %></h6>
+              <h6 class="sixteen-font not-link"><%= contact.twitter_username %></h6>
               <%= link_to '(Delete Contact)', "/contacts/" + contact.id.to_s, method: :delete, data: {confirm: "Are you sure you want to delete " + contact.name}, class: 'edit-link'%>
             </div>
           </div>
+          <% end %>
         <% end %>
       </div>
 

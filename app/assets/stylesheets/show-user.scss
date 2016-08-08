@@ -13,6 +13,10 @@ select {
   margin: 0 auto;
 }
 
+.not-link {
+  text-decoration: none;
+  color: gray;
+}
 #ghost-update-button {
   border: 1px solid #2B92FF;
   border-radius: 2px;

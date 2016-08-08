@@ -25,7 +25,13 @@ class UsersController < ApplicationController
       @contacts = @user.contacts
     end
     @contact = Contact.new
-
+    if request.xhr?
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      #responds to ajax request and executes script on click
+      format.js {}
+    end
+    end
   end
 
   def create
