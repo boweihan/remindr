@@ -105,12 +105,6 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   margin-top: 200px;
 }
 
-.login-field {
-  width: 100%;
-  padding: 7px;
-  margin: 20px, 0;
-
-}
 
 .sign-up-heading {
   text-align: center;
@@ -481,8 +475,6 @@ a.getstarted:hover {
 #password {
   display: inline-block;
   padding: 7px;
-  width: 72%;
+  width: 100%;
   font-size: 12px;
-  margin: 20px 0;
-  margin-left: 8px;
 }
