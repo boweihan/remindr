@@ -17,7 +17,7 @@ select {
 #ghost-update-button {
   border: 1px solid #2B92FF;
   border-radius: 2px;
-  color: $newoffwhite;
+  color: white;
   background-color: #2B92FF;
   font-weight: normal;
   height: auto;
@@ -27,7 +27,7 @@ select {
 
 #ghost-update-button:hover {
   color: #2B92FF;
-  background-color: $newoffwhite;
+  background-color: white;
 }
 
 #autoreply_settings_form > #ghost-update-button {
@@ -38,8 +38,8 @@ select {
   color: #2B92FF;
 }
 .margin-24-heading  {
-  margin: 20px 30px;
-  //changed from 24px to 20px & 36 to 30px
+  margin: 20px 20px;
+  //changed from 24px to 20px & 36 to 8px
 }
 
 select.select-settings {
@@ -139,13 +139,14 @@ textarea#autoreply_message {
 
 .all-contacts-scroll-div {
   overflow: scroll;
-  height: 72vh;
+  height: 90vh;
 }
 
 .all-contacts-heading {
   display: inline-block;
   color: $lightblue;
   font-size: 24px;
+  margin: 20px 8px;
 }
 
 .add-contact-button {
@@ -178,7 +179,7 @@ textarea#autoreply_message {
   margin: 0 8px;
   border-radius: 2px;
   height: 36px;
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.1);
   text-align: center;
   font-size: 12px;
 }
