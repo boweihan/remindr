@@ -21,16 +21,16 @@
 
 
 # #Jon's seeds
-# User.create(name: 'John Doe', phone: '6479990909', email: 'johndoe@gmail.com', password: 'test', password_confirmation: 'test', reminder_platform: "Email")
-#
-# Contact.create(name: 'Codecademy', phone: '9999999999', email: 'contact@codecademy.com', user_id:1, category: 'friend')
-# Contact.create(name: 'Google', phone: '9999999999', email: 'no-reply@accounts.google.com' ,user_id:1, category: 'business')
-# Contact.create(name: 'Random', phone: '9999999999', email: 'random@random.com',user_id:1, category: 'family')
-# Contact.create(name: 'Person With no Email', phone: '9999999999',user_id:1, category: 'friend')
-# Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'business')
-# Contact.create(name: 'Uber Eats', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'family')
-# Contact.create(name: 'Uber Dogs', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
-#
+User.create(name: 'John Doe', phone: '6479990909', email: 'johndoe@gmail.com', password: 'test', password_confirmation: 'test', reminder_platform: "Email")
+
+Contact.create(name: 'Codecademy', phone: '9999999999', email: 'contact@codecademy.com', user_id:1, category: 'friend')
+Contact.create(name: 'Google', phone: '9999999999', email: 'no-reply@accounts.google.com' ,user_id:1, category: 'business')
+Contact.create(name: 'Random', phone: '9999999999', email: 'random@random.com',user_id:1, category: 'family')
+Contact.create(name: 'Person With no Email', phone: '9999999999',user_id:1, category: 'friend')
+Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'business')
+Contact.create(name: 'Uber Eats', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'family')
+Contact.create(name: 'Uber Dogs', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
+
 # #Carol's seeds to seed
 #
 # Contact.create(name: 'Bowei', phone: '9999999999', email:"bowei.han100@gmail.com", user_id:1, category: 'friend',  twitter_username: 'BoweiHan')
