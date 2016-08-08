@@ -36,7 +36,7 @@ $(function() {
 
   })
 
-  $('.field, .phoneField, .phoneField2, .phoneField3, #password, #signup-confirmation, #signup-field, .sign-up-form').on('click', function(e) {
+  $('.field, .phoneField, .phoneField2, .phoneField3, #password, #signup-confirmation, #signup-field, .sign-up-form, .login-form, .login-field').on('click', function(e) {
     e.stopPropagation();
   })
 })

@@ -40,6 +40,8 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   background-color: #2B92FF;
   height: 56px;
   text-align: right;
+  position: relative;
+  z-index: 10;
 }
 
 .logo {
@@ -107,7 +109,7 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   width: 100%;
   padding: 7px;
   margin: 20px, 0;
-  
+
 }
 #email-signup {
   margin-left: 10px;
@@ -198,6 +200,8 @@ a.getstarted {
   width: 12rem;
   margin: auto;
   line-height: 36px;
+  position: static;
+  z-index: 10000;
 
 }
 
@@ -222,7 +226,7 @@ a.getstarted {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: -100;
+  // z-index: -100;
 }
 .welcome-text{
   margin-bottom: 2rem;
