@@ -59,7 +59,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     if @contact.destroy
-      redirect_to contacts_url
+      redirect_to user_path(current_user)
     else
       head :internal_server_errror
     end
@@ -82,6 +82,7 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.find(params[:id])
     respond_to do |format|
+      format.html {}
       format.js {}  # to show the contacts info in form on all contacts page
     end
   end

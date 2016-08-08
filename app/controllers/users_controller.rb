@@ -19,8 +19,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @contacts = @user.contacts
+    if params[:search]
+      @contacts = Contact.search(params[:search])
+    else
+      @contacts = @user.contacts
+    end
     @contact = Contact.new
+    if request.xhr?
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      #responds to ajax request and executes script on click
+      format.js {}
+    end
+    end
   end
 
   def create
@@ -56,6 +67,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation, :reminder_platform)
   end
 end
