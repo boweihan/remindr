@@ -27,11 +27,11 @@
           <h3 class="sign-up-heading">SIGN UP</h3>
           <h4 class='sign-up-heading-error'></h4>
         </div>
-        Name:  <%= f.text_field :name, class: 'field', placeholder: "eg. John Doe"%><br>
-        Phone: <%= f.text_field :phone,  class: 'phoneField', placeholder: "416" %> - <%= f.text_field :phone,  class: 'phoneField2' , placeholder: "916"%> - <%= f.text_field :phone,  class: 'phoneField3', placeholder: "2399" %><br>
-        Email: <%= f.email_field :email, class: 'field', id: 'email-signup', placeholder: "johndoe@gmail.com" %><br>
-        Password: <%= f.password_field :password, id: 'signup-field',placeholder: "**********" %><br>
-        Password Confirmation: <%= f.password_field :password_confirmation, id: 'signup-confirmation',placeholder: "**********"  %><br>
+        Name:  <br><%= f.text_field :name, class: 'field', placeholder: "eg. John Doe"%><br>
+        Phone: <br><%= f.text_field :phone,  class: 'field', placeholder: "416 676 9999" %><br>
+        Email: <br><%= f.email_field :email, class: 'field', id: 'email-signup', placeholder: "johndoe@gmail.com" %><br>
+        Password: <br><%= f.password_field :password, class: 'field', id: 'signup-field',placeholder: "**********" %><br>
+        Password Confirmation: <br><%= f.password_field :password_confirmation, class: 'field', id: 'signup-confirmation',placeholder: "**********"  %><br>
         <%= f.submit "Create Account", class: 'modal-submit', id: 'modal-submit-create'%>
       <% end %>
     </div>
@@ -93,7 +93,8 @@
       <p id="second-heading">Remindr makes it easy to keep in touch with friends, family and your networking connections.</p>
     </div>
 
-    <%= link_to "START CONNECTING", newsfeed_path, class:"getstarted" %>
+    <%#= link_to "START CONNECTING", newsfeed_path, class:"getstarted" %>
+      <%= link_to "START CONNECTING", new_user_path, class:"getstarted"%>
     </div>
 
   </div>
