@@ -1,5 +1,6 @@
 $(function() {
   if (window.location.href.split("/")[3].indexOf('import_contacts') > -1) {
+    importContactButton();
     $.ajax({
       method: "GET",
       url: "/import_contacts.json",
@@ -34,6 +35,9 @@ function clickable(){
     $(this).toggleClass("selected")
     $('.number_of_selected_contacts').text($(".selected").length)
   })
+}
+
+function importContactButton(){
 
   $("#import_contact_button").click(function(e){
     e.preventDefault()
@@ -44,6 +48,7 @@ function clickable(){
       info.phone = $(item).find(".potential-contact-phone-number").val()
       info.email= $(item).find(".potential-contact-email").text()
       info.category = 'friend'
+      console.log(info);
       $.ajax({
         url:"/contacts",
         method:"post",
