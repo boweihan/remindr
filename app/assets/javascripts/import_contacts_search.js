@@ -59,7 +59,7 @@ function importContactButton(){
         console.log("im done")
       });
     });
-    console.log("in between two ajax calls")
+
     $.ajax({
       url:"/pull_messages",
       method:"GET"

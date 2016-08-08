@@ -1,15 +1,19 @@
 $(document).ready(function() {
   $('#send-direct-message').submit(function(event) {
     event.preventDefault();
-    console.log($("#twitter-user-field").val());
-    $.ajax({
-      type: "get",
-      url: '/direct_messages',
-      data: {direct_message: {user: $("#twitter-user-field").val(), text: $("#twitter-text-area").val()}}
-    }).done(function(){
-      // $("#twitter_id_field").val("");
-      $("#twitter-text-area").val("");
-      $("#twitter-user-field").val("");
-    });
+    if ($("#twitter-user-field").val()) {
+      $.ajax({
+        type: "get",
+        url: '/direct_messages',
+        data: {direct_message: {user: $("#twitter-user-field").val(), text: $("#twitter-text-area").val()}}
+      }).done(function(){
+        // $("#twitter_id_field").val("");
+        $("#twitter-text-area").val("");
+        $("#twitter-user-field").val("");
+      });
+    }
+    else {
+      alert("The user does not have a twitter handle, please add a valid twitter handle for the contact")
+    }
   });
 });
