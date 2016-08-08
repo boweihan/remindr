@@ -55,7 +55,7 @@ function importContactButton(){
         data: {contact: info}
       });
     });
-
+    
     window.location.replace("/newsfeed");
   })
 }
