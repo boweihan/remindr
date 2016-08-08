@@ -2,7 +2,6 @@
 
 * {
   font-family: 'Avenir', sans-serif;
-  color: grey;
 }
 $newoffwhite: #F0F1F3;
 
@@ -36,6 +35,10 @@ select {
 
 .edit-link {
   color: #2B92FF;
+}
+
+.edit-link:hover {
+  font-weight: bold;
 }
 .margin-24-heading  {
   margin: 20px 20px;
@@ -187,9 +190,11 @@ textarea#autoreply_message {
 // contact cards
 
 .contact-cards-user-page {
-  background-color: $lightblue;
-  margin: 8px;
+  padding: 16px;
   overflow: hidden;
+  margin: 0 16px 0 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+
 }
 
 .contact-card-information {
