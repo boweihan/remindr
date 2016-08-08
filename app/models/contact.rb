@@ -35,7 +35,8 @@ class Contact < ActiveRecord::Base
 
   #Query for contacts that match the category
   def self.search(search)
-    where("name LIKE ? OR id LIKE?", "%#{search}%", "%#{search}%")
+    where("email ILIKE? OR name ILIKE?", "%#{search}%", "%#{search}%")
+
   end
 
   # gives contacts in that category
