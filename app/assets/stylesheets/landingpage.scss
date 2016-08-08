@@ -36,7 +36,7 @@ $yellowbuttons:  hsl(48, 100%, 45%);
 
 .nav-bar {
   width: 100%;
-  height: 50px;
+  height: 56px;
   background-color: #2B92FF;
   height: 56px;
   text-align: right;
@@ -102,9 +102,7 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   height: 300px;
   margin-top: 200px;
 }
-#email-signup {
-  margin-left: 10px;
-}
+
 #twitter-signup {
   width: 79%;
   margin-left: 0px;
@@ -140,11 +138,10 @@ a.logoutButton:hover,
 a.signup:hover
  {
   font-weight: bold;
-  background-color: $mediumblue;
 }
 a.signup {
   text-decoration: none;
-  background-color: $offwhite;
+  background-color: transparent;
   border:2px solid $logocolor;
   display:inline-block;
   font-size:14px;
@@ -191,6 +188,11 @@ a.getstarted {
   width: 12rem;
   margin: auto;
   line-height: 36px;
+
+}
+
+a.getstarted:hover {
+  font-weight: bold;
 
 }
 
