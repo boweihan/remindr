@@ -19,8 +19,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @contacts = @user.contacts
+    if params[:search]
+      @contacts = Contact.search(params[:search])
+    else
+      @contacts = @user.contacts
+    end
     @contact = Contact.new
+
   end
 
   def create

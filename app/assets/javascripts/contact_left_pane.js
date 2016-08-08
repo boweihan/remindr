@@ -40,7 +40,7 @@ $(function() {
 
 
     $("#search_contact").on("submit",function(event){
-      event.preventDefault()
+      event.preventDefault();
     })
 
     $(".search-bar-field").keyup(function(){

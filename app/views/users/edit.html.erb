@@ -91,7 +91,7 @@
       </div>
 
       <div class="search-contacts-bar-div">
-        <%= form_tag contacts_path,id:"search_contact" do %>
+        <%= form_tag(user_path(current_user), method: 'get', id:"search-for-contact") do%>
         <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class:'search-contacts-user-page'%>
         <% end %>
       </div>
