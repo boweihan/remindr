@@ -26,6 +26,8 @@ $(function() {
   })
 
   $('.getstarted').on('click', function(e) {
+    // alert("hi")
+    // $('.sign-up-modal').css('display', 'block');
 
     if ($('.sign-up-modal').length !== 0) {
       e.preventDefault();
