@@ -46,7 +46,7 @@ $(function() {
     $(".search-bar-field").keyup(function(){
       var query= $(".search-bar-field").val()
       var similar = duplicated_elements(query,all_contacts)
-      $(".potential-contacts-container").html("")
+      $(".contacts-messages").html("")
       similar.forEach(function(contact){
         load_contacts(contact)
       })

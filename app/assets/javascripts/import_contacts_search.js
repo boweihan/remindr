@@ -71,7 +71,6 @@ function load_imported_contacts(contact){
 function update_all_contacts(contact_email, contact_name) {
   window.all_contacts.forEach(function(contact){
     if (contact['email'] === contact_email) {
-      alert('her')
       contact['name'] = contact_name
     }
   })
