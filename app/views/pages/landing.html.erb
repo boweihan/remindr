@@ -71,9 +71,9 @@
         <h4 class='login-heading-error'></h4>
       </div>
           <%= label_tag :email %><br>
-          <%= email_field_tag :email, params[:email], placeholder: "eg. johndoe@gmail.com", class: 'field'%>
+          <%= email_field_tag :email, params[:email], placeholder: "eg. johndoe@gmail.com", class: 'login-field'%>
           <%= label_tag :password %><br>
-          <%= password_field_tag :password, nil, class:'field'%>
+          <%= password_field_tag :password, nil, class:'login-field'%>
         <%= submit_tag "Log In", class: 'modal-submit', id: 'modal-submit-login' %>
       <% end %>
     </div>

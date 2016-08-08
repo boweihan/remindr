@@ -4,7 +4,7 @@
     <div class='message_from_contact'>From: <%= @contact.name %></div>
     <div class='message_date'><%= "#{date.strftime("%h")} " + "#{date.day}" + ", #{date.year}" %></div><br>
     <div class='individual_message' data='<%=m.id%>'><%= m.snippet %>
-        <div class='message_expand'><strong>expand message</strong> v</div><br></div>
+        <div class='message_expand'><strong>expand message</strong><%= image_tag('expand-button.png', class:'expand-collapse-icon')%></div><br></div>
 <!-- m.summary.gsub(/[^0-9a-zA-Z .]/, ' ') -->
     <% if m.body_html == nil %>
       <div class='individual_message_outer_div' id='<%=m.id%>' style='display:none'><div class='individual_message_div'><%= m.body_plain_text.to_s.html_safe%></div>
@@ -13,7 +13,7 @@
     <% else %>
     <!-- <div class='individual_message' data='<%=m.id%>'><%= m.summary %></div> -->
       <div class='individual_message_outer_div' id='<%=m.id%>' style='display:none'><div class='individual_message_div'><%= Nokogiri::HTML(m.body_html).at('body').to_s.html_safe %></div>
-        <div class='message_expand'><strong>collapse message</strong> ^</div><br></div>
+        <div class='message_expand'><strong>collapse message</strong><%= image_tag('up-arrow.png', class:'expand-collapse-icon')%> </div><br></div>
       </div>
     <% end %>
   </div>
