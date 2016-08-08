@@ -2,7 +2,7 @@
 
 .edit-modal {
   display: none;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,4 +13,5 @@
 
 .add-contact {
   top: 36px;
+  position: relative;
 }
