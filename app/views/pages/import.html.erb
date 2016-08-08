@@ -10,20 +10,22 @@
 </div>
 
 <div class="potential-contacts-container">
-  <!-- <% @potential_contacts.each do |contact| %>
-    <div class="potential-contacts">
+
+  <%# @potential_contacts.each do |contact| %>
+    <!-- <div class="potential-contacts"> -->
 
 
-      <div class="contact-image-div" %>
+      <!-- <div class="contact-image-div" %> -->
         <%# image_tag(contact['pic'],{class:"contact-image", alt:"not found"}) %>
-      </div>
-      <% if contact['name'] != "" %>
-        <h2 class="potential-contact-name"><%= contact['name']%></h2>
-      <% else %>
-        <h2 class='potential-contact-name'><%= contact['email'].split('@')[0] %></h2>
-      <% end %>
-      <h4 class="potential-contact-email"><%= contact['email']%></h4>
-      <%= hidden_field_tag "phone_number", contact['phone'], {class:"potential-contact-phone-number"} %>
-    </div>
-<% end %> -->
+      <!-- </div> -->
+      <%# if contact['name'] != "" %>
+        <!-- <h2 class="potential-contact-name"><%#= contact['name']%></h2> -->
+      <%# else %>
+        <!-- <h2 class='potential-contact-name'><%#= contact['email'].split('@')[0] %></h2> -->
+      <%# end %>
+      <!-- <h4 class="potential-contact-email"><%#= contact['email']%></h4> -->
+      <%#= hidden_field_tag "phone_number", contact['phone'], {class:"potential-contact-phone-number"} %>
+    <!-- </div> -->
+<%# end %>
+
 </div>

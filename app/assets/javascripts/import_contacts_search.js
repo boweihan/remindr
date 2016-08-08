@@ -30,7 +30,6 @@ $(function() {
 });
 
 function clickable(){
-
   $(".potential-contacts").click(function(e){
     $(this).toggleClass("selected")
     $('.number_of_selected_contacts').text($(".selected").length)
@@ -59,8 +58,12 @@ function load_imported_contacts(contact){
   if (contact.name !== "") {
     $(".potential-contacts-container").append("<div class='potential-contacts'><h2 class='potential-contact-name'>"+contact.name+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
   }
-  else {
+  else if (contact.email) {
     $(".potential-contacts-container").append("<div class='potential-contacts'><h2 class='potential-contact-name'>"+contact.email.split("@")[0]+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+  }
+  else{
+    $(".potential-contacts-container").append("<div class='potential-contacts'><h2 class='potential-contact-name'>"+"No Name"+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+
   }
 }
 
