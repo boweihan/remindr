@@ -8,7 +8,9 @@ $(function() {
       all_contacts = response
       response.forEach(load_contacts);
       if (window.location.href.split("/")[3] !== 'newsfeed') {
-        $('#'+window.location.href.split("#")[1]).click();
+        var target_div_id = '#'+window.location.href.split("#")[1]
+        $(target_div_id).find(".contact-message").attr("id","contact_clicked")
+        $(target_div_id).click()
       } else {
         $(".contact-message")[0].click();
       }
