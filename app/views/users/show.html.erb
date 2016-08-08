@@ -23,21 +23,21 @@
 <div class='container viewport'>
 
     <div class="col-sm-5 user-information">
-      <h4 class="margin-24-heading sixteen-font account-heading">Account Information</h4>
+      <p class="margin-24-heading account-heading">My Account</p>
       <%= link_to "(Edit)", edit_user_path(current_user), class:'sixteen-font edit-link edit-user' %>
       <div class="text-block">
-        <h4 class="sixteen-font"><%= @user.name %></h4>
-        <h4 class="sixteen-font"><%= @user.email %></h4>
-        <h4 class="sixteen-font"><%= @user.phone %></h4>
+        <h4 class="seventeen-font"><%= @user.name %></h4>
+        <h4 class="seventeen-font"><%= @user.email %></h4>
+        <h4 class="seventeen-font"><%= @user.phone %></h4>
         <%= link_to "Change Password", edit_user_path(current_user), class:'sixteen-font edit-link'  %>
       </div>
 
       <div class="divider-user-page"></div>
 
-      <h4 class="margin-24-heading  sixteen-font">Get Reminders via:</h4>
+      <h4 class="margin-24-heading eighteen-font">Get Reminders via:</h4>
         <div class="text-block">
           <%= form_tag "/", id:"reminder_settings_form" do %>
-          <select>
+          <select class="select-settings">
               <option value="email">Email</option>
               <option value="twitter">Twitter</option>
               <option value="text">Text</option>
@@ -48,7 +48,7 @@
 
       <div class="divider-user-page"></div>
 
-        <h4 class="margin-24-heading sixteen-font">Autoreply Message</h4>
+        <h4 class="margin-24-heading eighteen-font">Autoreply Message</h4>
         <div class="text-block">
           <%= form_tag "/", id:"autoreply_settings_form" do %>
           <%= text_area_tag :autoreply_message%><br>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-sm-7 all-contacts-div-user-page">
-      <h4 class="text-center all-contacts-heading margin-24-heading">All Contacts</h4>
+      <p class="text-center all-contacts-heading margin-24-heading">All Contacts</p>
         <%= link_to root_path do%>
           <div class="add-contact-button">
             <%= image_tag "ic_person_add_person_blue.svg", class: "add-contact-icon"  %>
@@ -70,7 +70,7 @@
 
       <div class="filter-contacts-drop-down-div">
       <%= form_tag "/", id:"filter-contacts-form" do %>
-      <select>
+      <select class="fourteen-font">
           <option value="all">All Contacts</option>
           <option value="friend">Friend</option>
           <option value="business">Business</option>
@@ -90,10 +90,10 @@
           <div class="contact-cards-user-page">
             <div class="contact-profile-picture"></div>
             <div class="contact-card-information">
-              <h4 class="twenty-font"><%= contact.name %></h4>
-              <h6 class="sixteen-font"><%= contact.category %></h6>
-              <h6 class="sixteen-font"><%= contact.email %></h6>
-              <h6 class="sixteen-font"><%= contact.twitter_username %></h6>
+              <p class="twenty-font"><%= contact.name %></p>
+              <p class="fifteen-font"><%= contact.category %></p>
+              <p class="fifteen-font"><%= contact.email %></p>
+              <p class="fifteen-font"><%= contact.twitter_username %></p>
             </div>
           </div>
         <% end %>

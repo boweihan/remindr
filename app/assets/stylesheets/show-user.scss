@@ -2,43 +2,63 @@
 
 * {
   font-family: 'Avenir', sans-serif;
+  color: grey;
 }
 $newoffwhite: #F0F1F3;
 
 select {
   width: 200px;
   border: 1px solid rgba(0,0,0,0.1);
+  background-color: white;
   height: 36px;
   margin: 0 auto;
 }
 
-
 #ghost-update-button {
   border: 1px solid #2B92FF;
   border-radius: 2px;
-  color: #2B92FF;
-  background-color: transparent;
+  color: $newoffwhite;
+  background-color: #2B92FF;
   font-weight: normal;
   height: auto;
-  padding: 0 8px;
-  margin-top: 8px;
-
+  padding: 3px 8px;
+  margin-top: 15px;
 }
 
 #ghost-update-button:hover {
-  color: $newoffwhite;
-  background-color: #2B92FF;
+  color: #2B92FF;
+  background-color: $newoffwhite;
 }
+
+#autoreply_settings_form > #ghost-update-button {
+  margin-bottom: 30px;
+}
+
 .edit-link {
   color: #2B92FF;
 }
 .margin-24-heading  {
-  margin: 24px 36px;
+  margin: 20px 30px;
+  //changed from 24px to 20px & 36 to 30px
 }
+
+select.select-settings {
+  font-size: 16px;
+}
+.seventeen-font {
+  font-size: 17px;
+}
+
+.fifteen-font {
+  font-size: 15px;
+}
+
 .sixteen-font {
   font-size: 16px;
 }
-
+.eighteen-font {
+  font-size: 18px;
+}
 .fourteen-font {
   font-size: 14px;
 }
@@ -51,23 +71,39 @@ select {
   margin-left: 36px;
 }
 
+.text-block > h4.seventeen-font {
+  color: white;
+}
+
+.user-information > h4.eighteen-font {
+  color: white;
+}
+
 .divider-user-page {
   height: 1px;
   width: 90%;
-  margin: 36px auto;
-  background-color: rgba(0,0,0,0.05);
+  margin: 30px auto;
+  // background-color: rgba(0,0,0,0.05);
+  background-color: white;
 }
 
 
 
-.user-information {
-  padding-top: 16px;
-  background-color: $newoffwhite;
-  height: 92vh;
-}
+// .user-information {
+//   padding-top: 16px;
+//   padding-bottom: 16px;
+//   // background-color: $newoffwhite;
+//   background-color: $lightblue;
+//   // background-color: grey;
+//   // height: 92vh;
+//   height: 604px;
+// }
 
 .account-heading {
   display: inline-block;
+  color: white;
+  font-size: 24px;
+  margin-top: -3px;
 }
 
 .edit-user {
@@ -88,11 +124,17 @@ textarea#autoreply_message {
 }
 .filter-contacts-drop-down-div {
   display: inline-block;
-  margin: 16px 36px 16px 16px;
+  margin: 16px 0px 0px 8px;
+}
+
+.filter-contacts-drop-down-div > select {
+  width: 25%;
+  color: grey;
 }
 .search-contacts-bar-div {
   display: inline-block;
-  margin: 16px 36px 16px 0px;
+  margin: 0px 36px 16px 0px;
+
 }
 
 .all-contacts-scroll-div {
@@ -102,6 +144,8 @@ textarea#autoreply_message {
 
 .all-contacts-heading {
   display: inline-block;
+  color: $lightblue;
+  font-size: 24px;
 }
 
 .add-contact-button {
@@ -110,6 +154,7 @@ textarea#autoreply_message {
   padding: 8px 16px;
   float: right;
   border: 1px solid #2B92FF;
+
   border-radius: 2px;
 }
 
@@ -129,34 +174,43 @@ textarea#autoreply_message {
 }
 
 .search-contacts-user-page {
-  width: 360px;
+  width: 200%;
+  margin: 0 8px;
   border-radius: 2px;
   height: 36px;
   border: 1px solid rgba(0,0,0,0.2);
   text-align: center;
+  font-size: 12px;
 }
 
 // contact cards
 
 .contact-cards-user-page {
-  padding: 16px;
-  background-color: $newoffwhite;
+  background-color: $lightblue;
   margin: 8px;
   overflow: hidden;
 }
+
 .contact-card-information {
   display: inline-block;
   float: left;
-  margin: 8px 16px;
+  margin: 35px 18px;
 }
+
+.contact-card-information > p {
+  color: white;
+}
+
 
 .contact-profile-picture {
   width: 115px;
   height: 104px;
-  background-color: orange;
+  border-radius: 100%;
+  background-color: $offwhite;
   display: inline-block;
   float: left;
   margin: 16px;
+  margin-left: 25px;
 }
 
 
@@ -180,10 +234,14 @@ textarea#autoreply_message {
   float: left;
   width: 40%;
   padding: 24px 16px 0 16px;
+  background-color: $lightblue;
 }
+
 .all-contacts-div-user-page {
   display: inline-block;
   float: right;
   width: 60%;
+  height: 604px;
   padding: 0 16px;
+  background-color: white;
 }
