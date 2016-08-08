@@ -1,12 +1,17 @@
 $(document).ready(function() {
   $('#send-tweet').submit(function(event) {
     event.preventDefault();
-    $.ajax({
-      type: "get",
-      url: '/tweets',
-      data: {tweet: {message: $("#send-text-area").val()}}
-    }).done(function(){
-      $("#send-text-area").val("");
-    });
+    if ($("#twitter-user-field").val()) {
+      $.ajax({
+        type: "get",
+        url: '/tweets',
+        data: {tweet: {message: $("#send-text-area").val()}}
+      }).done(function(){
+        $("#send-text-area").val("");
+      });
+    }
+    else {
+      alert("The user does not have a twitter handle, please add a valid twitter handle for the contact")
+    }
   });
 });
