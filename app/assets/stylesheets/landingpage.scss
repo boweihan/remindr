@@ -107,15 +107,18 @@ $yellowbuttons:  hsl(48, 100%, 45%);
 
 .login-field {
   width: 100%;
-  height: 33.98px;  
+  height: 33.98px;
+  margin: 5px 0;
 }
 
+.signup-modal-field {
+  width: 100%;
+  height: 33.98px;
+  margin: 5px 0;
+}
 .sign-up-heading {
   text-align: center;
   color: gray;
-}
-
-.sign-up-user {
 }
 
 #modal-submit-create, #modal-submit-login {

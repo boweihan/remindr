@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'pages#landing'
+  get '/pull_messages' => 'pages#pull_messages'
   get '/update_message' => 'pages#update_message'
   get '/login_page' => 'pages#login_page'
   get '/tweet_info' => 'pages#tweet_info'

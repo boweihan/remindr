@@ -94,4 +94,15 @@ class PagesController < ApplicationController
   def update_message
     current_user.update_automated_message(params[:update])
   end
+
+
+  def pull_messages
+    current_user.contacts.each do |contact|
+      contact.get_most_recent_message
+      contact.update_reminder
+    end
+    head :ok
+  end
+
+
 end
