@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $('#send-direct-message').submit(function(event) {
     event.preventDefault();
+    console.log($("#twitter-user-field").val());
     $.ajax({
       type: "get",
       url: '/direct_messages',
