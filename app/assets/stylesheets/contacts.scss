@@ -429,6 +429,9 @@ box-shadow: inset 2px 2px 2px 0px #dddddd;
   // overflow: scroll;
 
 }
+textarea {
+  resize: none;
+}
 
 textarea {
   border: 1px solid lightgray;
