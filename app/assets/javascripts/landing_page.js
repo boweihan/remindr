@@ -31,7 +31,13 @@ $(function() {
 
     if ($('.sign-up-modal').length !== 0) {
       e.preventDefault();
+      $('.sign-up-modal').css('display', 'none');
+      $('.login-modal').css('display', 'none');
       $('.sign-up-modal').css('display', 'block');
+    }
+    else {
+      e.preventDefault();
+      window.location.replace("/newsfeed");
     }
 
   })

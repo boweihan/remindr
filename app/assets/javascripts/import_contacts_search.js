@@ -40,6 +40,7 @@ function clickable(){
 function importContactButton(){
 
   $("#import_contact_button").click(function(e){
+    $("#import_contact_button").attr('id',"");
     e.preventDefault()
 
     $(".selected").each(function(i,item){
@@ -52,11 +53,19 @@ function importContactButton(){
       $.ajax({
         url:"/contacts",
         method:"post",
-        data: {contact: info}
+        data: {contact: info},
+        async: false
+      }).done(function(response){
+        console.log("im done")
       });
     });
-
-    window.location.replace("/newsfeed");
+    console.log("in between two ajax calls")
+    $.ajax({
+      url:"/pull_messages",
+      method:"GET"
+    }).done(function(response){
+      window.location.replace("/newsfeed");
+    });
   })
 }
 function load_imported_contacts(contact){
