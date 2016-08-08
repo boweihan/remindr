@@ -59,7 +59,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     if @contact.destroy
-      redirect_to contacts_url
+      redirect_to user_path(current_user)
     else
       head :internal_server_errror
     end

@@ -46,16 +46,11 @@
 
       <div class="divider-user-page"></div>
 
+
       <h4 class="margin-24-heading eighteen-font">Get Reminders Via:</h4>
         <div class="text-block">
-          <%= form_tag "/", id:"reminder_settings_form" do %>
-          <select class="select-settings">
-              <option value="email">Email</option>
-              <option value="twitter">Twitter</option>
-              <option value="text">Text</option>
-          </select><br>
-            <%= submit_tag "Update", id:"ghost-update-button" %>
-          <% end%>
+          <%= @user.reminder_platform %><br>
+          <%= link_to "Change Reminder Settings", edit_user_path(current_user), class:'sixteen-font edit-link'  %>
         </div>
 
       <div class="divider-user-page"></div>
@@ -82,9 +77,6 @@
 
       <div class="filter-contacts-drop-down-div">
       <%= form_tag "/", id:"filter-contacts-form" do %>
-
-      <select class="fourteen-font">
-      Filter by:
       <select>
           <option value="all">All Contacts</option>
           <option value="friend">Friend</option>
