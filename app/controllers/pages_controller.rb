@@ -66,11 +66,12 @@ class PagesController < ApplicationController
     # end
     # redirect_to '/login_page'
 
-    if current_user.contacts.length > 0
+    # if current_user.contacts.length > 0
+    #   redirect_to '/login_page'
+    # else
+      # redirect_to '/import_contacts'
       redirect_to '/login_page'
-    else
-      redirect_to '/import_contacts'
-    end
+    # end
 
   end
   def import

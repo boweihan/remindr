@@ -1,11 +1,12 @@
 .social-link-page {
   width: 100%;
   height: 92vh;
-  background-image: image-url('background-light-medium-blue.svg');
-  padding-top: 18%;
+  // background-image: image-url('background-light-medium-blue.svg');
+  padding-top: 20vh;
 }
 .sign-in-link {
   margin: 0 auto;
+  margin-top: 10vh;
   height: 50%;
   width: 40%;
 }
@@ -29,7 +30,8 @@
 .twitter-login {
   height: 64px;
   width: 100%;
-  background-color: #2096E1;
+  // background-color: #2096E1;
+  background-color: hsl(48,100%,50%);
   text-align: center;
 }
 
@@ -39,4 +41,12 @@
   height: 64px;
   display: inline-block;
 
+}
+
+.skip_twitter_auth {
+  color: #2B92FF;
+  text-align: center;
+  display: block;
+  font-size: 1em;
+  margin-top: 4.67px;
 }
