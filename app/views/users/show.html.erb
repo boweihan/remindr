@@ -1,6 +1,7 @@
 <div class="edit-modal">
   <div class="add-contact">
-    <%= form_for @contact do |f| %>
+
+    <%= form_for @contact, remote: true do |f| %>
       <button type="button" class="close">x</button>
       <div class="add-new-contact-div">
         <h3 class="add-new-contact-heading">Edit Contact</h3>
