@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
     response = RestClient.post 'https://accounts.google.com/o/oauth2/token', :grant_type => 'refresh_token', :refresh_token => refresh_token, :client_id => ENV['CLIENT'], :client_secret => ENV['CLIENT_SECRET']
     refresh = JSON.parse(response.body)
     #store token
-    access_token = refresh['access_token']
+    self.update(access_token:refresh['access_token'])
   end
 
   # check if the token is expired

@@ -64,7 +64,7 @@
 
       <div class="divider-user-page"></div>
 
-      <h4 class="margin-24-heading  sixteen-font">Get Reminders via:</h4>
+      <h4 class="margin-24-heading white sixteen-font">Get Reminders via:</h4>
         <div class="text-block">
           <% if current_user %>
           <% @user = current_user %>
@@ -77,9 +77,9 @@
 
       <div class="divider-user-page"></div>
 
-        <h4 class="margin-24-heading sixteen-font">Autoreply Message</h4>
+        <h4 class="margin-24-heading white sixteen-font">Autoreply Message</h4>
         <div class="text-block">
-          <%= form_tag "/", id:"autoreply_settings_form" do %>
+          <%= form_tag "/", id:"autoreply_message" do %>
           <%= text_area_tag :autoreply_message%><br>
             <%= submit_tag "Update", id:"ghost-update-button" %>
           <% end%>

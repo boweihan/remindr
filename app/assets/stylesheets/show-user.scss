@@ -80,6 +80,9 @@ select.select-settings {
   color: white;
 }
 
+.white {
+  color: white;
+}
 .text-block > h4.seventeen-font {
   color: white;
 }
@@ -120,6 +123,16 @@ select.select-settings {
 }
 
 textarea#automatic_message_text {
+  width: 87%;
+  height: 150px;
+  margin-top: 20px;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  border: 1px solid #ccc;
+}
+
+textarea#autoreply_message {
   width: 87%;
   height: 150px;
   margin-top: 20px;
@@ -238,6 +251,7 @@ textarea#automatic_message_text {
 .user-information-edit {
   height: auto;
   padding-bottom: 36px;
+  height: 105vh;
 }
 
 .all-contacts-div-user-page-edit {

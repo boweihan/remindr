@@ -15,6 +15,10 @@ $(function() {
       } else {
         $(".contact-message")[0].click();
       }
+      // $('.contact-profile-image').on('click', function() {
+      //   var decision = prompt("enter an image url");
+      //   $('.contact-profile-image').css('background-image', 'url('+decision+')')
+      // });
 
     })
 
@@ -63,8 +67,9 @@ function load_contacts(contact){
   var html_id = "contact_id-"+id_num
   var name = contact.name
   var path = base_path+id_num
+  var randnum = Math.floor(Math.random()*4)
   $(".contacts-messages").append("<a href="+path+" data-remote=true class=contact-name-link><div id="+html_id+">")
-  $("#"+html_id).html("<div class=contact-message><div class=contact-profile-image></div><div class=contact-last-message><p>"+name+"</p><p class=last-message-on>"+contact.category+"</p></div></div>")
+  $("#"+html_id).html("<div class=contact-message><div class=contact-profile-image"+randnum+"></div><div class=contact-last-message><p>"+name+"</p><p class=last-message-on>"+contact.category+"</p></div></div>")
 }
 
 function duplicated_elements(searchterm,contactsjson){
