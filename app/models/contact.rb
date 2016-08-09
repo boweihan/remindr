@@ -35,7 +35,8 @@ class Contact < ActiveRecord::Base
 
   #Query for contacts that match the category
   def self.search(search)
-    where("name LIKE ? OR id LIKE?", "%#{search}%", "%#{search}%")
+    where("email ILIKE? OR name ILIKE?", "%#{search}%", "%#{search}%")
+
   end
 
   # gives contacts in that category
@@ -132,7 +133,7 @@ class Contact < ActiveRecord::Base
   #Finds email id of most recent outbound email from user to contact
   def search_email(user_google_id, token)
     #search string
-    query= "from:#{email}"
+    query= "from:#{email} OR to:#{email}"
     query_email_api_url = "https://www.googleapis.com/gmail/v1/users/#{user_google_id}/messages?maxResults=5&q=#{query}&access_token=#{token}"
     #True if there are past interactions on email
     if JSON.parse(RestClient.get(query_email_api_url))['messages']

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       # redirect_to '/googleauth', notice: "Thanks for logging in!"
-      redirect_to '/login_page'
+      redirect_to '/newsfeed'
     else
       @user = User.new
       redirect_to root_path, flash: {login_modal: true}

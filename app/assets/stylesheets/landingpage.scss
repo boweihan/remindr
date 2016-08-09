@@ -13,7 +13,8 @@ $color8: #00a4ff;
 $offwhite: #F2F6F7;
 $logocolor: #F0F1F3;
 $brightblue: #00a4ff;
-$lightblue: #9bdbff;
+// $lightblue: #9bdbff;
+$lightblue: #80d0ff;
 $mediumblue: #27c5ef;
 $purple: #775aa7;
 $offblack: #323232;
@@ -100,6 +101,10 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   border-radius: 1%;
 }
 
+input.field {
+  width: 100%;
+}
+
 .login-form {
   height: 300px;
   margin-top: 200px;
@@ -126,14 +131,14 @@ $yellowbuttons:  hsl(48, 100%, 45%);
   font-weight: lighter;
   background-color: $yellowbuttons;
 }
-#nav-icon img{
+.nav-icon > img{
   height: 25px;
-  width: 23px;
-  line-height: 56px;
+  width: 25px;
+  line-height: 64px;
   display: inline-block;
   margin-right: 1rem;
   margin-left: 1rem;
-  padding-bottom: .4rem;
+    // padding-bottom: .4rem;
 }
 
 a.logo:hover {
@@ -216,7 +221,7 @@ a.getstarted:hover {
   z-index: 2;
 }
 .photo-background-image {
-  height: 800px;
+  height: 100vh;
   padding-top: 100px;
   top: 0px;
   width: 100%;
@@ -271,7 +276,7 @@ a.getstarted:hover {
   background-color: white;
   text-align: center;
   padding: 50px 0;
-  margin-top: 700px;
+  margin-top: 100vh;
 }
 
 .selling-points {
@@ -302,6 +307,8 @@ a.getstarted:hover {
   width: 100%;
   padding-bottom: 3rem;
   background-color: hsl(240, 20%, 93%);
+  position: relative;
+  z-index: 10;
 }
 
 #step-contents-div {
@@ -312,7 +319,7 @@ a.getstarted:hover {
 #stepbystepHeading {
   width: 100%;
   text-align: center;
-  color: $logocolor;
+  color: white;
   font-size: 1.5rem;
   padding: 3rem 0;
 }
@@ -374,16 +381,16 @@ a.getstarted:hover {
 }
 
 #first-number {
-  background-color: $purple;
+  background-color: $mediumblue;
 }
 #second-number {
-  background-color: $logocolor;
+  background-color: $mediumblue;
 }
 #third-number {
   background-color: $mediumblue;
 }
 #fourth-number {
-  background-color: $lightblue;
+  background-color: $mediumblue;
 }
 
 #add-user-icon {

@@ -19,13 +19,25 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @contacts = @user.contacts
+    if params[:search]
+      @contacts = Contact.search(params[:search])
+    else
+      @contacts = @user.contacts
+    end
     @contact = Contact.new
+    if request.xhr?
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      #responds to ajax request and executes script on click
+      format.js {}
+    end
+    end
   end
 
   def create
     @user = User.new(user_params)
     @user.google_id = params[:email]
+    @user.automated_message = "Hi! It's been a while since we've talked and I miss you dearly. I've been thinking about you recently and want to take our relationship to the next level."
     if @user.save
       #log the user in
       session[:user_id] = @user.id
@@ -56,6 +68,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation, :reminder_platform)
   end
 end

@@ -28,17 +28,19 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      if request.xhr?
-        head(:ok)
-      else
+        @contact.get_most_recent_message
+        @contact.update_reminder
         redirect_to newsfeed_path
-      end
+      # else
+      #   redirect_to newsfeed_path
+      # end
     else
-      if request.xhr?
-        head(:internal_server_errror)
-      else
-        redirect_to contacts_path, flash: {add_contact_modal: true}
-      end
+      # if request.xhr?
+      #   head(:internal_server_error)
+      # else
+      #   redirect_to contacts_path, flash: {add_contact_modal: true}
+      # end
+      redirect_to user_path(current_user)
     end
   end
 
@@ -59,7 +61,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     if @contact.destroy
-      redirect_to contacts_url
+      redirect_to user_path(current_user)
     else
       head :internal_server_errror
     end
@@ -82,6 +84,7 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.find(params[:id])
     respond_to do |format|
+      format.html {}
       format.js {}  # to show the contacts info in form on all contacts page
     end
   end

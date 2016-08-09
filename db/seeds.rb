@@ -30,7 +30,7 @@
 # Contact.create(name: 'Uber', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'business')
 # Contact.create(name: 'Uber Eats', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'family')
 # Contact.create(name: 'Uber Dogs', phone: '9999999999', email:"receipts@uber.com", user_id:1, category: 'friend')
-#
+
 # #Carol's seeds to seed
 #
 # Contact.create(name: 'Bowei', phone: '9999999999', email:"bowei.han100@gmail.com", user_id:1, category: 'friend',  twitter_username: 'BoweiHan')
