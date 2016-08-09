@@ -8,7 +8,7 @@
 
 
 # Bowei's seeds
-
+  
 
 # Contact.create(name: 'Ella', phone: '9999999999', email: 'ella@bitmaker.co', user_id:1, category: 'business')
 # Contact.create(name: 'Erik', phone: '9999999999', email: 'erik@bitmakerlabs.com' ,user_id:1, category: 'business')
