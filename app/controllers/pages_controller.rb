@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def tweet_info
     @user = User.from_omniauth(request.env['omniauth.auth'], current_user)
     TwitterLoadFeedJob.perform_later(current_user)
-    redirect_to login_page_path
+    redirect_to import_contacts_path
   end
 
   #create a new client for authentication
@@ -65,9 +65,8 @@ class PagesController < ApplicationController
     #   redirect_to '/import_contacts'
     # end
     # redirect_to '/login_page'
-
-    # if current_user.contacts.length > 0
-    #   redirect_to '/login_page'
+    # if current_user.contacts
+    #   redirect_to '/newsfeed'
     # else
       # redirect_to '/import_contacts'
       redirect_to '/login_page'

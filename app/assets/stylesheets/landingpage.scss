@@ -307,6 +307,8 @@ a.getstarted:hover {
   width: 100%;
   padding-bottom: 3rem;
   background-color: hsl(240, 20%, 93%);
+  position: relative;
+  z-index: 10;
 }
 
 #step-contents-div {
