@@ -116,8 +116,9 @@
 
       <div class="all-contacts-scroll-div all-contacts-scroll-div-edit">
         <% @contacts.each do |contact| %>
+        <% randnum = rand(4) %>
           <div class="contact-cards-user-page">
-            <div class="contact-profile-picture"></div>
+            <div class="contact-profile-picture<%= randnum %>"></div>
             <div class="contact-card-information">
               <h4 class="twenty-font not-link"><%= contact.name %></h4>
               <h6 class="sixteen-font not-link"><%= contact.category %></h6>
