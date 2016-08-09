@@ -221,7 +221,7 @@ a.getstarted:hover {
   z-index: 2;
 }
 .photo-background-image {
-  height: 800px;
+  height: 100vh;
   padding-top: 100px;
   top: 0px;
   width: 100%;
@@ -276,7 +276,7 @@ a.getstarted:hover {
   background-color: white;
   text-align: center;
   padding: 50px 0;
-  margin-top: 700px;
+  margin-top: 100vh;
 }
 
 .selling-points {
@@ -319,7 +319,7 @@ a.getstarted:hover {
 #stepbystepHeading {
   width: 100%;
   text-align: center;
-  color: $logocolor;
+  color: white;
   font-size: 1.5rem;
   padding: 3rem 0;
 }
@@ -381,16 +381,16 @@ a.getstarted:hover {
 }
 
 #first-number {
-  background-color: $purple;
+  background-color: $mediumblue;
 }
 #second-number {
-  background-color: $logocolor;
+  background-color: $mediumblue;
 }
 #third-number {
   background-color: $mediumblue;
 }
 #fourth-number {
-  background-color: $lightblue;
+  background-color: $mediumblue;
 }
 
 #add-user-icon {

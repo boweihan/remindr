@@ -29,14 +29,12 @@
         <% end %>
       <% end %>
       <% if counter > 0 %>
-      <%= link_to (image_tag "duck-2.svg"), pull_messages_path, class: "nav-icon", id: "reload-messages"%>
         <%= link_to (image_tag "red_notification.svg"), reminders_path, class: "nav-icon"%>
         <%= link_to (image_tag "ic_message_white_24px.svg"), newsfeed_path, class: "nav-icon" %>
         <%= link_to (image_tag "profile.svg"), user_path(current_user), class: "nav-icon"  %>
 
       <% else %>
       <!-- code for nav links -->
-      <%= link_to (image_tag "duck-2.svg"), pull_messages_path, class: "nav-icon", id: "reload-messages"%>
         <%= link_to (image_tag "notification.svg"), reminders_path, class: "nav-icon" %>
         <%= link_to (image_tag "ic_message_white_24px.svg"), newsfeed_path, class: "nav-icon" %>
         <%= link_to (image_tag "profile.svg"), user_path(current_user), class: "nav-icon" %>

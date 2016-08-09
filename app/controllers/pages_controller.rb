@@ -54,7 +54,11 @@ class PagesController < ApplicationController
       #exchange auth for token
       @auth_client.fetch_access_token!
       #save in db
-      current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
+      if @auth_client.refresh_token != nil
+        current_user.update({access_token: @auth_client.access_token, refresh_token: @auth_client.refresh_token, issued_at: @auth_client.issued_at})
+      else
+        current_user.update({access_token: @auth_client.access_token, issued_at: @auth_client.issued_at})
+      end
       #find google email adress of account that was signed into google
       current_user.get_email_address
       #update feed in background
