@@ -123,6 +123,10 @@ textarea#automatic_message_text {
   width: 87%;
   height: 150px;
   margin-top: 20px;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  border: 1px solid #ccc;
 }
 
 // contacts
@@ -141,10 +145,10 @@ textarea#automatic_message_text {
   width: 25%;
   color: grey;
 }
+
 .search-contacts-bar-div {
   display: inline-block;
   margin: 0px 36px 16px 0px;
-
 }
 
 .all-contacts-scroll-div {
@@ -200,7 +204,9 @@ textarea#automatic_message_text {
   padding: 16px;
   overflow: hidden;
   margin: 0 16px 0 8px;
-  border-bottom: 4px solid rgba(0,0,0,0.07);
+  background-color: $offwhite;
+  border-bottom: 6px solid white;
+  // border-bottom: 4px solid rgba(0,0,0,0.07);
 
 }
 
@@ -219,7 +225,8 @@ textarea#automatic_message_text {
   width: 115px;
   height: 104px;
   border-radius: 100%;
-  background-color: $offwhite;
+  // background-color: $offwhite;
+  background-color: #e6e6e6;
   display: inline-block;
   float: left;
   margin: 16px;

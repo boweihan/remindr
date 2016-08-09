@@ -6,11 +6,11 @@
         <h3 class="add-new-contact-heading">Edit Contact</h3>
         <h4 class='add-new-contact-heading-error'></h4>
       </div>
-      Name:  <br><%= f.text_field :name, class: 'field'%><br>
-      Phone: <br><%= f.text_field :phone,  class: 'field' %><br>
-      Email: <br><%= f.email_field :email, class: 'field' %><br>
-      Category: <br><%= f.select :category, ['friend', 'family', 'business', 'other'] %><br>
-      Twitter Username: <br><%= f.text_field :twitter_username, class: 'field' %><br>
+      Name  <br><%= f.text_field :name, class: 'field'%><br>
+      Phone <br><%= f.text_field :phone,  class: 'field' %><br>
+      Email <br><%= f.email_field :email, class: 'field' %><br>
+      Category <br><%= f.select :category, ['friend', 'family', 'business', 'other'] %><br>
+      Twitter Username <br><%= f.text_field :twitter_username, class: 'field' %><br>
       <%= f.submit "Update Contact", class: 'modal-submit'%>
     <% end %>
   </div>
