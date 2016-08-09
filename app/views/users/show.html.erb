@@ -113,10 +113,11 @@
 
       <div class="all-contacts-scroll-div">
         <% @contacts.each do |contact| %>
+          <% randnum = rand(4) %>
 
           <%= link_to  "/contacts/" + contact.id.to_s + "/edit", class: 'edit-contact', remote:true do %>
           <div class="contact-cards-user-page">
-            <div class="contact-profile-picture"></div>
+            <div class="contact-profile-picture<%= randnum %>""></div>
             <div class="contact-card-information">
 
               <h4 class="twenty-font not-link"><%= contact.name %></h4>

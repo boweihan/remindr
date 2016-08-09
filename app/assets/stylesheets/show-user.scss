@@ -234,17 +234,55 @@ textarea#autoreply_message {
 }
 
 
-.contact-profile-picture {
+.contact-profile-picture0 {
   width: 115px;
   height: 104px;
-  border-radius: 100%;
   // background-color: $offwhite;
-  background-color: #e6e6e6;
+  background-image: image-url('lion.png');
+  background-size: cover;
+  background-repeat: no-repeat;
   display: inline-block;
   float: left;
   margin: 16px;
   margin-left: 25px;
 }
+.contact-profile-picture1 {
+  width: 115px;
+  height: 104px;
+  // background-color: $offwhite;
+  background-image: image-url('giraffe.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  float: left;
+  margin: 16px;
+  margin-left: 25px;
+}
+.contact-profile-picture2 {
+  width: 115px;
+  height: 104px;
+  // background-color: $offwhite;
+  background-image: image-url('penguin.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  float: left;
+  margin: 16px;
+  margin-left: 25px;
+}
+.contact-profile-picture3 {
+  width: 115px;
+  height: 104px;
+  // background-color: $offwhite;
+  background-image: image-url('tiger.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+  float: left;
+  margin: 16px;
+  margin-left: 25px;
+}
+
 
 
 //edit page
