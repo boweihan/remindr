@@ -277,17 +277,54 @@ box-shadow: inset 2px 2px 2px 0px #dddddd;
 }
 
 @media screen and (min-width: 800px) {
-  .contact-profile-image {
+  .contact-profile-image0 {
     border-radius: 100%;
     background-repeat: none;
     background-image: image-url('duck.svg');
+    background-size: cover;
+    width: 56px;
+    height: 56px;
+    float: left;
+  }
+  .contact-profile-image1 {
+    border-radius: 100%;
+    background-repeat: none;
+    background-image: image-url('alarm-clock.png');
+    background-size: cover;
+    width: 56px;
+    height: 56px;
+    float: left;
+  }
+  .contact-profile-image2 {
+    border-radius: 100%;
+    background-repeat: none;
+    background-image: image-url('gmail-logo.svg');
+    background-size: cover;
+    width: 56px;
+    height: 56px;
+    float: left;
+  }
+  .contact-profile-image3 {
+    border-radius: 100%;
+    background-repeat: none;
+    background-image: image-url('gmail-logo.svg');
+    background-size: cover;
     width: 56px;
     height: 56px;
     float: left;
   }
 }
 @media screen and (max-width: 799px) {
-  .contact-profile-image {
+  .contact-profile-image0 {
+    display: none;
+  }
+  .contact-profile-image1 {
+    display: none;
+  }
+  .contact-profile-image2 {
+    display: none;
+  }
+  .contact-profile-image3 {
     display: none;
   }
 }
