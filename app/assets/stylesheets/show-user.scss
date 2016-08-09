@@ -112,6 +112,7 @@ select.select-settings {
   color: white;
   font-size: 24px;
   margin-top: -3px;
+  margin-left: 30%;
 }
 
 .edit-user {
@@ -121,11 +122,12 @@ select.select-settings {
 textarea#automatic_message_text {
   width: 87%;
   height: 150px;
+  margin-top: 20px;
 }
 
 // contacts
 .divider-contacts {
-  height: 1px;
+  height: 2px;
   width: 96%;
   margin: 0 auto;
   background-color: rgba(0,0,0,0.05);
@@ -244,7 +246,7 @@ textarea#automatic_message_text {
   display: inline-block;
   float: left;
   width: 40%;
-  height: 105vh;
+  height: 115vh;
   padding: 24px 16px 0 16px;
   background-color: $lightblue;
 }
