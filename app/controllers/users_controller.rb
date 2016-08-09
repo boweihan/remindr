@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.google_id = params[:email]
+    @user.automated_message = "Hi! It's been a while since we've talked and I miss you dearly. I've been thinking about you recently and want to take our relationship to the next level."
     if @user.save
       #log the user in
       session[:user_id] = @user.id
