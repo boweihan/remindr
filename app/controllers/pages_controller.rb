@@ -78,8 +78,10 @@ class PagesController < ApplicationController
 
   end
   def import
-    @potential_contacts = current_user.google_contacts
-    render json: @potential_contacts if request.xhr?
+    if request.xhr?
+      @potential_contacts = current_user.google_contacts
+      render json: @potential_contacts
+    end
   end
   #newsfeed
   def newsfeed

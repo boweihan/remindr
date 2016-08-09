@@ -1,4 +1,5 @@
 $(function() {
+
   if (window.location.href.split("/")[3].indexOf('newsfeed') > -1) {
     $.ajax({
       method: "GET",
