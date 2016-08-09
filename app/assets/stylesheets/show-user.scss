@@ -76,6 +76,8 @@ select.select-settings {
 
 .text-block {
   margin-left: 36px;
+  margin-top: -10px;
+  color: white;
 }
 
 .text-block > h4.seventeen-font {
@@ -116,9 +118,9 @@ select.select-settings {
   display: inline-block;
 }
 
-textarea#autoreply_message {
-  width: 80%;
-  height: 100px;
+textarea#automatic_message_text {
+  width: 87%;
+  height: 150px;
 }
 
 // contacts
@@ -185,7 +187,7 @@ textarea#autoreply_message {
   margin: 0 8px;
   border-radius: 2px;
   height: 36px;
-  border: 1px solid rgba(0,0,0,0.1);
+  border:1px solid rgba(0,0,0,0.1);
   text-align: center;
   font-size: 12px;
 }
@@ -196,14 +198,14 @@ textarea#autoreply_message {
   padding: 16px;
   overflow: hidden;
   margin: 0 16px 0 8px;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
+  border-bottom: 4px solid rgba(0,0,0,0.07);
 
 }
 
 .contact-card-information {
   display: inline-block;
   float: left;
-  margin: 35px 18px;
+  margin: 30px 18px;
 }
 
 .contact-card-information > p {
@@ -242,6 +244,7 @@ textarea#autoreply_message {
   display: inline-block;
   float: left;
   width: 40%;
+  height: 105vh;
   padding: 24px 16px 0 16px;
   background-color: $lightblue;
 }
