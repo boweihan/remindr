@@ -18,19 +18,23 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    if params[:search]
-      @contacts = Contact.search(params[:search])
+    if current_user.id.to_s != params[:id]
+      head(:forbidden)
     else
-      @contacts = @user.contacts
-    end
-    @contact = Contact.new
-    if request.xhr?
-    @contact = Contact.find(params[:id])
-    respond_to do |format|
-      #responds to ajax request and executes script on click
-      format.js {}
-    end
+      @user = User.find(params[:id])
+      if params[:search]
+        @contacts = Contact.search(params[:search])
+      else
+        @contacts = @user.contacts
+      end
+      @contact = Contact.new
+      if request.xhr?
+      @contact = Contact.find(params[:id])
+      respond_to do |format|
+        #responds to ajax request and executes script on click
+        format.js {}
+      end
+      end
     end
   end
 
