@@ -1,9 +1,0 @@
-#!/bin/bash
-while true; do
-       spd-say -r 20 -p -90 "WORK TIME"
-       sleep 25m
-       spd-say -t female2 -r -40 -p 100 "BEEP BEEP"
-       sleep 1
-       spd-say -p -50 "BREAK TIME"
-       sleep 5m
-done

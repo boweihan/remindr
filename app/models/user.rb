@@ -36,9 +36,11 @@ class User < ActiveRecord::Base
       if entry['gd$email']
         info['email'] = entry['gd$email'][0]['address']
       end
-      if entry['gd$phoneNumber']
-        info['phone'] = entry['gd$phoneNumber'][0]["$t"].gsub(/[^\d]/,"")
-      end
+      # if entry['gd$phoneNumber']
+      #   info['phone'] = entry['gd$phoneNumber'][0]["$t"].gsub(/[^\d]/,"")
+      # end
+      info['selected'] = false
+      info['show'] = true
       info['pic'] = entry['link'][0]['href'] + "?access_token=#{token}"
       contacts << info
     end

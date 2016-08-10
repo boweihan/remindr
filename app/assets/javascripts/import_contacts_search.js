@@ -6,6 +6,7 @@ $(function() {
       url: "/import_contacts.json",
       datatype: "json"
     }).done(function(response){
+      console.log(response)
       window.all_contacts = response
       response.forEach(load_imported_contacts);
       clickable();
@@ -17,23 +18,30 @@ $(function() {
 
     $(".import-search-bar").keyup(function(){
       var query= $(".import-search-bar").val()
-      var similar = duplicated_elements(query,window.all_contacts)
+      duplicated_elements(query)
       $(".potential-contacts-container").html("")
-      similar.forEach(load_imported_contacts);
+      window.all_contacts.forEach(load_imported_contacts);
       clickable();
-      //the code below is busted, @jon let me know if you need it
-      // similar.forEach(function(contact){
-      //   load_imported_contacts(contact)
-      //   clickable();
-      // });
+
     });
   }
 });
 
 function clickable(){
   $(".potential-contacts").click(function(e){
+    index = $(this).attr("id")
     $(this).toggleClass("selected")
-    $('.number_of_selected_contacts').text($(".selected").length)
+    var state = window.all_contacts[index].selected
+    if (state === true){
+      window.all_contacts[index].selected = false
+      $('.number_of_selected_contacts').text(parseInt($('.number_of_selected_contacts').text())-1)
+    }
+    else {
+      window.all_contacts[index].selected = true
+      $('.number_of_selected_contacts').text(parseInt($('.number_of_selected_contacts').text())+1)
+
+    }
+
   })
 }
 
@@ -43,22 +51,32 @@ function importContactButton(){
     $("#import_contact_button").attr('id',"");
     e.preventDefault()
 
-    $(".selected").each(function(i,item){
-      var info = {}
-      info.name = $(item).find(".potential-contact-name").text()
-      info.phone = $(item).find(".potential-contact-phone-number").val()
-      info.email= $(item).find(".potential-contact-email").text()
-      info.category = 'friend'
-      console.log(info);
-      $.ajax({
-        url:"/contacts",
-        method:"post",
-        data: {contact: info},
-        async: false
-      }).done(function(response){
-        console.log("im done")
-      });
-    });
+    window.all_contacts.forEach(function(contact){
+      if (contact.selected === true){
+        contact.category = 'friend'
+        $.ajax({
+            url:"/contacts",
+            method:"post",
+            data: {contact: contact},
+            async: false
+          })
+      }
+    })
+    // $(".selected").each(function(i,item){
+    //   var info = {}
+    //   info.name = $(item).find(".potential-contact-name").text()
+    //   // info.phone = $(item).find(".potential-contact-phone-number").val()
+    //   info.email= $(item).find(".potential-contact-email").text()
+    //   info.category = 'friend'
+    //   $.ajax({
+    //     url:"/contacts",
+    //     method:"post",
+    //     data: {contact: info},
+    //     async: false
+    //   }).done(function(response){
+    //     console.log("i'm done")
+    //   });
+    // });
 
     $.ajax({
       url:"/pull_messages",
@@ -68,17 +86,19 @@ function importContactButton(){
     });
   })
 }
-function load_imported_contacts(contact){
-  if (contact.name !== "") {
-    $(".potential-contacts-container").append("<div class='potential-contacts'><h2 class='potential-contact-name'>"+contact.name+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
-  }
-  else if (contact.email) {
-    $(".potential-contacts-container").append("<div class='potential-contacts'><h2 class='potential-contact-name'>"+contact.email.split("@")[0]+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
-    var contact_name = contact.email.split("@")[0]
-    update_all_contacts(contact.email, contact_name)
-  }
-  else{
-    $(".potential-contacts-container").append("<div class='potential-contacts'><h2 class='potential-contact-name'>"+"No Name"+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+function load_imported_contacts(contact, index){
+  if (contact.show === true){
+    if (contact.name !== "") {
+      $(".potential-contacts-container").append("<div id="+ index+ " class='potential-contacts'><h2 class='potential-contact-name'>"+contact.name+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+    }
+    else if (contact.email) {
+      $(".potential-contacts-container").append("<div id="+ index + " class='potential-contacts'><h2 class='potential-contact-name'>"+contact.email.split("@")[0]+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+      var contact_name = contact.email.split("@")[0]
+      update_all_contacts(contact.email, contact_name)
+    }
+    else{
+      $(".potential-contacts-container").append("<div id="+ index+ " class='potential-contacts'><h2 class='potential-contact-name'>"+"No Name"+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+    }
   }
 }
 
@@ -92,14 +112,16 @@ function update_all_contacts(contact_email, contact_name) {
 
 //<input type='hidden' class='potential-contact-phone-number' name='phone_number'>"+contact.phone+"</input>
 
-function duplicated_elements(searchterm,contactsjson){
-    var names = []
-    contactsjson.forEach(function(contact){
+function duplicated_elements(searchterm){
+
+    window.all_contacts.forEach(function(contact){
       if (isSubstring(searchterm, contact)){
-        names.push(contact)
+        contact.show = true
+      }
+      else {
+        contact.show = false
       }
     })
-  return names
 }
 
 function isSubstring(searchterm,contact){
