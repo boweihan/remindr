@@ -5,7 +5,6 @@ $(document).on('ready', function() {
       type: 'GET',
       url: '/update_message?update='+$('textarea').val(),
       data: {}
-    }).done(function(response){
-    });
+    })
   });
 });

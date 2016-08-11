@@ -1,3 +1,4 @@
+//not needed
 $(function() {
   //hack
  if (window.location.href.split("/")[3] === "contacts" ||  window.location.href.split("/")[3] === "contacts#"){

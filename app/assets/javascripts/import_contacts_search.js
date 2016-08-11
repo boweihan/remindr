@@ -87,7 +87,7 @@ function importContactButton(){
   })
 }
 function load_imported_contacts(contact, index){
-  if (contact.show === true){
+  if ( (contact.show === true) && (contact.selected === false) ){
     if (contact.name !== "") {
       $(".potential-contacts-container").append("<div id="+ index+ " class='potential-contacts'><h2 class='potential-contact-name'>"+contact.name+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
     }
@@ -98,6 +98,19 @@ function load_imported_contacts(contact, index){
     }
     else{
       $(".potential-contacts-container").append("<div id="+ index+ " class='potential-contacts'><h2 class='potential-contact-name'>"+"No Name"+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+    }
+  }
+  else if (contact.show === true) {
+    if (contact.name !== "") {
+      $(".potential-contacts-container").append("<div id="+ index+ " class='potential-contacts selected'><h2 class='potential-contact-name'>"+contact.name+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+    }
+    else if (contact.email) {
+      $(".potential-contacts-container").append("<div id="+ index + " class='potential-contacts selected'><h2 class='potential-contact-name'>"+contact.email.split("@")[0]+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
+      var contact_name = contact.email.split("@")[0]
+      update_all_contacts(contact.email, contact_name)
+    }
+    else{
+      $(".potential-contacts-container").append("<div id="+ index+ " class='potential-contacts selected'><h2 class='potential-contact-name'>"+"No Name"+"</h2><h4 class='potential-contact-email'>"+contact.email+"</h4></div>")
     }
   }
 }
