@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if current_user.id.to_s != params[:id]
       head(:forbidden)
     else
-      @user = User.find(params[:id])
+      @user = current_user
       if params[:search]
         @contacts = Contact.search(params[:search])
       else
@@ -35,6 +35,14 @@ class UsersController < ApplicationController
         format.js {}
       end
       end
+    end
+  end
+
+  def change_notif_type
+    @type = params[:user][:reminder_platform]
+    current_user.update(reminder_platform: @type)
+    respond_to do |format|
+      format.js {}
     end
   end
 
@@ -52,24 +60,26 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    @user = User.find(params[:id])
-
-     if @user.update_attributes(user_params)
-       redirect_to user_path(current_user)
-     else
-       render :edit
-     end
-
-    # respond_to do |format|
-    #   if @user.update_attributes(user_params)
-    #     format.js {head(:ok)}
-    #   else
-    #     head(:internal_server_error)
-    #   end
-    #end
-
+  def change_autoreply
+    @message = params[:autoreply_message]
+    current_user.update(automated_message: @message)
+    respond_to do |format|
+      format.js {}
+    end
   end
+
+  def update
+    if params[:id] != current_user.id.to_s
+      head(:forbidden)
+    else
+      @user = current_user
+      @information = user_params
+       unless @user.update_attributes(@information)
+         head(:internal_server_error)
+       end
+    end
+  end
+
 
   private
   def user_params

@@ -1,0 +1,15 @@
+$(function(){
+  $("#user_name").attr("placeholder","<%=j(@information[:name])%>")
+  $("#user_name").val("")
+
+  $("#user_phone").attr("placeholder","<%=j(@information[:phone])%>")
+  $("#user_phone").val("")
+
+  $("#user_email").attr("placeholder","<%=j(@information[:email])%>")
+  $("#user_email").val("")
+
+  $("#user_password").attr("placeholder")
+  $("#user_password").val("")
+
+  alert("Contact info updated")
+})

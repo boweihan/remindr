@@ -1,7 +1,7 @@
 <div class="edit-modal">
   <div class="add-contact">
 
-    <%= form_for @contact, remote: true do |f| %>
+    <%= form_for @contact, remote: true  do |f| %>
       <button type="button" class="close">x</button>
       <div class="add-new-contact-div">
         <h3 class="add-new-contact-heading">Edit Contact</h3>
@@ -17,21 +17,10 @@
   </div>
 </div>
 
-<% if flash[:add_contact_modal] %>
-  <script type='text/javascript'>
-    $(document).on('ready', function() {
-      $('.modal').css('display', 'block');
-      $('.add-new-contact-heading-error').html('Please fill in all fields');
-      setTimeout(function(){
-        $('.add-new-contact-heading-error').html('');
-      }, 5000);
-    });
-  </script>
-<% end %>
 
 <div class="modal">
   <div class="add-contact">
-    <%= form_for @contact do |f| %>
+    <%= form_for @contact, remote:true do |f| %>
       <button type="button" class="close">x</button>
       <div class="add-new-contact-div">
         <h3 class="add-new-contact-heading">Add a New Contact</h3>
@@ -53,44 +42,56 @@
 
 <div class='container viewport'>
 
-    <div class="col-sm-5 user-information">
-      <p class="margin-24-heading account-heading">My Account</p>
-      <%= link_to "(Edit)", edit_user_path(current_user), class:'sixteen-font edit-link edit-user' %>
+    <div class="user-information user-information-edit">
+      <h4 class="margin-24-heading sixteen-font account-heading">Account Information</h4>
       <div class="text-block">
-        <h4 class="seventeen-font"><%= @user.name %></h4>
-        <h4 class="seventeen-font"><%= @user.email %></h4>
-        <h4 class="seventeen-font"><%= @user.phone %></h4>
-        <%= link_to "Change Password", edit_user_path(current_user), class:'sixteen-font edit-link'  %>
+
+
+            <%= form_for @user, remote: true do |f| %>
+              Name <br>
+              <%= f.text_field :name%><br>
+              Phone<br>
+              <%= f.text_field :phone%><br>
+              Email<br>
+               <%= f.email_field :email%><br>
+              Password<br>
+               <%= f.password_field :password %><br>
+               <!-- Pssword Confirmation <br>
+               <%#= f.password_field :password_confirmation %><br> -->
+
+              <%= f.submit "Update", id:'ghost-update-button'%>
+            <% end %>
+
       </div>
 
       <div class="divider-user-page"></div>
 
-
-      <h4 class="margin-24-heading eighteen-font">Get Reminders Via:</h4>
+      <h4 class="margin-24-heading white sixteen-font">Get Reminders via:</h4>
         <div class="text-block">
-          <%= @user.reminder_platform %><br>
-          <%= link_to "Change Reminder Settings", edit_user_path(current_user), class:'sixteen-font edit-link'  %>
+
+              <%= form_for @user, remote: true, url: users_notifications_path, method: "put" do |f| %>
+              <%= f.select :reminder_platform, ['Twitter','Text','Email'], :selected => @user.reminder_platform %>
+                <%= f.submit "Update", id:'ghost-update-button'%>
+              <% end %>
         </div>
 
       <div class="divider-user-page"></div>
 
-        <h4 class="margin-24-heading eighteen-font">Autoreply Message</h4>
+        <h4 class="margin-24-heading white sixteen-font">Autoreply Message</h4>
         <div class="text-block">
-          <%= form_tag "/update_message", id:"autoreply_settings_form" do %>
-          <%= text_area_tag :autoreply_message, nil, placeholder:current_user.automated_message, id:'automatic_message_text' %><br>
+          <%= form_tag "/users/autoreply", id:"autoreply_message", method:"put", remote: true do %>
+          <%= text_area_tag :autoreply_message, nil, placeholder:@user.automated_message, id: "autoreply_message_textarea"%><br>
             <%= submit_tag "Update", id:"ghost-update-button" %>
           <% end%>
         </div>
     </div>
 
-    <div class="col-sm-7 all-contacts-div-user-page">
-      <p class="text-center all-contacts-heading">All Contacts</p>
-        <%= link_to root_path do%>
-          <div class="add-contact-button">
-            <%= image_tag "ic_person_add_person_blue.svg", class: "add-contact-icon"  %>
-            <h4 class="fourteen-font add-contact-link edit-link">Add Contact</h4>
-          </div>
-      <% end %>
+    <div class="all-contacts-div-user-page all-contacts-div-user-page-edit ">
+      <h4 class="text-center all-contacts-heading margin-24-heading">All Contacts</h4>
+      <div class="add-contact-button">
+        <%= image_tag "ic_person_add_person_blue.svg", class: "add-contact-icon"  %>
+        <h4 class="fourteen-font add-contact-link edit-link">Add Contact</h4>
+      </div>
       <div class="divider-contacts"></div>
 
 
@@ -106,7 +107,7 @@
       </div>
 
       <div class="search-contacts-bar-div">
-        <%= form_tag(user_path(current_user), method: 'get', id:"search-for-contact") do %>
+        <%= form_tag(user_path(current_user), method: 'get', id:"search-for-contact") do%>
         <%= text_field_tag :search, params[:search], placeholder: "Search contacts", class:'search-contacts-user-page'%>
         <% end %>
       </div>
@@ -114,23 +115,21 @@
       <div class="all-contacts-scroll-div">
         <% @contacts.each do |contact| %>
           <% randnum = rand(4) %>
-
-          <%= link_to  "/contacts/" + contact.id.to_s + "/edit", class: 'edit-contact', remote:true do %>
-          <div class="contact-cards-user-page">
-            <div class="contact-profile-picture<%= randnum %>""></div>
-            <div class="contact-card-information">
-
-              <h4 class="twenty-font not-link"><%= contact.name %></h4>
-              <h6 class="sixteen-font not-link"><%= contact.category %></h6>
-              <h6 class="sixteen-font not-link"><%= contact.email %></h6>
-              <h6 class="sixteen-font not-link"><%= contact.twitter_username %></h6>
-              <%= link_to '(Delete Contact)', "/contacts/" + contact.id.to_s, method: :delete, data: {confirm: "Are you sure you want to delete " + contact.name}, class: 'edit-link'%>
+          <div class ="wrapper">
+          <%= link_to  edit_contact_path(contact), class: 'edit-contact', remote:true do %>
+            <div class="contact-cards-user-page">
+              <div class="contact-profile-picture<%= randnum %>"></div>
+              <div class="contact-card-information">
+                <h4 class="twenty-font not-link"><%= contact.name %></h4>
+                <h6 class="sixteen-font not-link"><%= contact.category %></h6>
+                <h6 class="sixteen-font not-link"><%= contact.email %></h6>
+                <h6 class="sixteen-font not-link"><%= contact.twitter_username %></h6>
+              </div>
             </div>
-          </div>
           <% end %>
+          <%= link_to '(Delete Contact)', contact_path(contact), method: :delete, data: {confirm: "Are you sure you want to delete " + contact.name}, class: 'edit-link'%>
+        </div>
         <% end %>
       </div>
-
     </div>
-
 </div>

@@ -96,9 +96,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def update_automated_message(text)
-    self.update(automated_message:text)
-  end
+
 
   #email a user's contacts that have been neglected
   def email_my_contacts

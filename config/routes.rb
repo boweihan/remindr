@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root 'pages#landing'
   get '/pull_messages' => 'pages#pull_messages'
-  get '/update_message' => 'pages#update_message'
   get '/login_page' => 'pages#login_page'
+  put '/users/autoreply' => "users#change_autoreply"
   get '/tweet_info' => 'pages#tweet_info'
   get '/auth/twitter/callback', to: 'pages#tweet_info'
   get '/googleauth' => 'pages#googleauth'
+  put '/users/notifications' => "users#change_notif_type"
   get '/callback'=> 'pages#callback'
   get '/send' => 'messages#send_mail'
   get 'newsfeed' => 'pages#newsfeed'

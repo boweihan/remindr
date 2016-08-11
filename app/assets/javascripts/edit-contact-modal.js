@@ -16,5 +16,10 @@ $(function() {
       e.stopPropagation();
     });
 
+    $(".login-form").on('click',function(e){
+      e.stopPropagation();
+
+    })
+
 
 })

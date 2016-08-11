@@ -99,10 +99,7 @@ class PagesController < ApplicationController
     @user = User.new
   end
 
-  #update user message
-  def update_message
-    current_user.update_automated_message(params[:update])
-  end
+
 
 
   def pull_messages
