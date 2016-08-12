@@ -42,6 +42,7 @@ $(function() {
 
   })
 
+
   $('.field, #password, #signup-confirmation, #signup-field, .sign-up-form').on('click', function(e) {
 
     e.stopPropagation();

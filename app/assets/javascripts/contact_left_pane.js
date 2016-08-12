@@ -15,30 +15,8 @@ $(function() {
       } else {
         $(".contact-message")[0].click();
       }
-      // $('.contact-profile-image').on('click', function() {
-      //   var decision = prompt("enter an image url");
-      //   $('.contact-profile-image').css('background-image', 'url('+decision+')')
-      // });
 
     })
-    //
-    // $('.close').on('click', function() {
-    //   $('.modal').css('display', 'none')
-    //   })
-    //
-    // $('.add-icon').on('click', function() {
-    //   $('.modal').css('display', 'block')
-    // })
-    //
-    // $('.modal').on('click', function() {
-    //   $('.modal').css('display', 'none')
-    // });
-
-    $('.phoneField, .phoneField2, .phoneField3, #contact_email, .field, .eField, .catField, .twitField, .twitField2').on('click', function(e) {
-      e.stopPropagation();
-      $(this).css('border', '1px solid green')
-    });
-
 
     $("#search_contact").on("submit",function(event){
       event.preventDefault();
@@ -46,7 +24,9 @@ $(function() {
 
     $(".search-bar-field").keyup(function(){
       var query= $(".search-bar-field").val()
-      var similar = duplicated_elements(query,all_contacts)
+      console.log(query)
+      console.log(all_contacts)
+      var similar = similar_elements(query,all_contacts)
       $(".contacts-messages").html("")
       similar.forEach(function(contact){
         load_contacts(contact)
@@ -66,7 +46,8 @@ function load_contacts(contact){
   $("#"+html_id).html("<div class=contact-message><div class=contact-profile-image"+randnum+"></div><div class=contact-last-message><p>"+name+"</p><p class=last-message-on>"+contact.category+"</p></div></div>")
 }
 
-function duplicated_elements(searchterm,contactsjson){
+function similar_elements(searchterm,contactsjson){
+  console.log('here')
     var names = []
     contactsjson.forEach(function(contact){
       if (isSubstring(searchterm, contact)){
