@@ -22,18 +22,14 @@ class UsersController < ApplicationController
       head(:forbidden)
     else
       @user = current_user
-      if params[:search]
-        @contacts = Contact.search(params[:search])
-      else
-        @contacts = @user.contacts
-      end
+      @contacts = @user.contacts
       @contact = Contact.new
       if request.xhr?
-      @contact = Contact.find(params[:id])
-      respond_to do |format|
-        #responds to ajax request and executes script on click
-        format.js {}
-      end
+        @contact = Contact.find(params[:id])
+        respond_to do |format|
+          #responds to ajax request and executes script on click
+          format.js {}
+        end
       end
     end
   end

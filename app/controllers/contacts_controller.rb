@@ -7,7 +7,13 @@ class ContactsController < ApplicationController
     #return json of all contacts if ajax
     if request.xhr?
         @contacts = Contact.all.where(user_id:current_user.id)
-        render json: @contacts
+        @contacts_render = []
+        @contacts.each do |contact|
+          person = contact.as_json
+          person['show'] = true
+          @contacts_render << person
+        end
+        render json: @contacts_render
     else
       # create a new contact to render form
       @contact = Contact.new
@@ -27,21 +33,15 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
+
     if @contact.save
-        @contact.get_most_recent_message
-        @contact.update_reminder
-        redirect_to newsfeed_path
-      # else
-      #   redirect_to newsfeed_path
-      # end
+      respond_to do |format|
+        format.js{}
+      end
     else
-      # if request.xhr?
-      #   head(:internal_server_error)
-      # else
-      #   redirect_to contacts_path, flash: {add_contact_modal: true}
-      # end
-      redirect_to user_path(current_user)
+      head :internal_server_errror
     end
+
   end
 
   # path to update one attribute
@@ -50,7 +50,7 @@ class ContactsController < ApplicationController
       @contact = Contact.find(params[:id])
       @attribute = params[:attribute]
       if @contact.update(@attribute.to_sym =>params[:new])
-        head :ok, content_type: "text/html"
+        head :ok
       else
         head :internal_server_errror
       end
@@ -71,12 +71,12 @@ class ContactsController < ApplicationController
   #update all attributes
   def update_contact_patch
     @contact = Contact.find(params[:id])
-    respond_to do |format|
-      if @contact.update_attributes(contact_params)
-        format.js {}
-      else
-        head :internal_server_errror
+    if @contact.update_attributes(contact_params)
+      respond_to do |format|
+        format.js{}
       end
+    else
+      head :internal_server_errror
     end
   end
 

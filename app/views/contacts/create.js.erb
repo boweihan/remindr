@@ -1,0 +1,5 @@
+var contact = <%= raw @contact.to_json %>
+contact.show = true
+window.all_contacts.push(contact)
+fill_with_contacts(contact)
+$(".modal").click()

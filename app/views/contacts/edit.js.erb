@@ -1,25 +1,18 @@
-$(function() {
-  var name = "<%= j(@contact.name)%>"
-  var phone = "<%= j(@contact.phone)%>"
-  var email = "<%= j(@contact.email)%>"
-  var id = <%= @contact.id%>
-  var category = "<%= j(@contact.category)%>"
-  var twitterUsername = "<%= j(@contact.twitter_username)%>"
-  // need to do with twitter
+$('.edit-modal').css('display', 'block');
+var name = "<%= j(@contact.name)%>"
+var phone = "<%= j(@contact.phone)%>"
+var email = "<%= j(@contact.email)%>"
+var id = <%= @contact.id%>
+var category = "<%= j(@contact.category)%>"
+var twitterUsername = "<%= j(@contact.twitter_username)%>"
 
-  // ask jon what the @contact thing is doing...why can i just get ID like that?
-  console.log(id)
-  // do var twitter after
-  $("input[name='contact[name]']").val(name);
-  $("input[name='contact[phone]']").val(phone);
-  $("input[name='contact[email]']").val(email);
-  $("input[name='contact[twitter_username]']").val(twitterUsername);
-  $("input[name='contact[category]']").val(category);
+$("input[name='contact[name]']").val(name);
+$("input[name='contact[phone]']").val(phone);
+$("input[name='contact[email]']").val(email);
+$("input[name='contact[twitter_username]']").val(twitterUsername);
+$("input[name='contact[category]']").val(category);
 
+$("input[type='hidden']").attr('name', '_method');
+$("input[type='hidden']").attr('value', 'patch');
 
-    $("input[type='hidden']").attr('name', '_method');
-    $("input[type='hidden']").attr('value', 'patch');
-
-  $("form").attr("action","/contacts/" + id + "/update_contact_patch");
-
-})
+$("form").attr("action","/contacts/" + id + "/update_contact_patch");

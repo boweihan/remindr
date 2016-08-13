@@ -1,8 +1,4 @@
 $(function() {
-  $('.edit-contact').on('click', function(e) {
-    e.preventDefault();
-    $('.edit-modal').css('display', 'block');
-  });
 
     $('.edit-modal').on('click', function() {
       $('.edit-modal').css('display', 'none')
@@ -12,6 +8,9 @@ $(function() {
       $('.edit-modal').css('display', 'none')
     });
 
+    $(".add-contact").click(function(e){
+      e.stopPropagation();
+    })
     $('.field').on('click', function(e) {
       e.stopPropagation();
     });
@@ -20,6 +19,4 @@ $(function() {
       e.stopPropagation();
 
     })
-
-
 })

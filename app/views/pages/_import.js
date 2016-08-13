@@ -1,5 +1,4 @@
 $(function() {
-  if (window.location.href.split("/")[3].indexOf('import_contacts') > -1) {
     importContactButton();
     $.ajax({
       method: "GET",
@@ -24,7 +23,7 @@ $(function() {
       clickable();
 
     });
-  }
+
 });
 
 function clickable(){
@@ -62,21 +61,6 @@ function importContactButton(){
           })
       }
     })
-    // $(".selected").each(function(i,item){
-    //   var info = {}
-    //   info.name = $(item).find(".potential-contact-name").text()
-    //   // info.phone = $(item).find(".potential-contact-phone-number").val()
-    //   info.email= $(item).find(".potential-contact-email").text()
-    //   info.category = 'friend'
-    //   $.ajax({
-    //     url:"/contacts",
-    //     method:"post",
-    //     data: {contact: info},
-    //     async: false
-    //   }).done(function(response){
-    //     console.log("i'm done")
-    //   });
-    // });
 
     $.ajax({
       url:"/pull_messages",

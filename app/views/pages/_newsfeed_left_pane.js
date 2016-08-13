@@ -1,6 +1,6 @@
 $(function() {
 
-  if (window.location.href.split("/")[3].indexOf('newsfeed') > -1) {
+
     $.ajax({
       method: "GET",
       url: "/contacts.json",
@@ -8,13 +8,15 @@ $(function() {
     }).done(function(response){
       all_contacts = response
       response.forEach(load_contacts);
-      if (window.location.href.split("/")[3] !== 'newsfeed') {
-        var target_div_id = '#'+window.location.href.split("#")[1]
-        $(target_div_id).find(".contact-message").attr("id","contact_clicked")
-        $(target_div_id).click()
-      } else {
+      // if (window.location.href.split("/")[3] !== 'newsfeed') {
+      //   var target_div_id = '#'+window.location.href.split("#")[1]
+      //   $(target_div_id).find(".contact-message").attr("id","contact_clicked")
+      //   $(target_div_id).click()
+      // } else {
+      if ($(".contact-message")[0]){
         $(".contact-message")[0].click();
       }
+      // }
 
     })
 
@@ -24,15 +26,19 @@ $(function() {
 
     $(".search-bar-field").keyup(function(){
       var query= $(".search-bar-field").val()
-      console.log(query)
-      console.log(all_contacts)
+      $("#message-content").html("")
       var similar = similar_elements(query,all_contacts)
       $(".contacts-messages").html("")
       similar.forEach(function(contact){
         load_contacts(contact)
       })
+      if ($(".contact-message")[0]){
+        $(".contact-message")[0].click();
+      }
+
     })
-  }
+
+
 })
 
 function load_contacts(contact){

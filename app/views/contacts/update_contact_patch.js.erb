@@ -1,5 +1,14 @@
-$(function() {
-location.reload();
-// refreshing page to show change
-
-});
+window.all_contacts.forEach(function(contact){
+  var updated_contact = <%= raw @contact.to_json %>
+  if (contact.id === updated_contact.id){
+    contact.name = updated_contact.name
+    contact.phone = updated_contact.phone
+    contact.email = updated_contact.email
+    contact.category = updated_contact.category
+    contact.twitter_username = updated_contact.twitter_username
+    return contact
+  }
+})
+$(".all-contacts-scroll-div").html("")
+$(".edit-modal").click()
+window.all_contacts.forEach(fill_with_contacts);

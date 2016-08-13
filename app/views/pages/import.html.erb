@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    <%= render :partial => "import.js" %>
+  </script>
+<% end %>
+
 <h1 class='remindertitle'> Import Contacts </h1><br>
 <!-- <h3 style="text-align:center;margin-top:10px;"> Please select all contacts you would like to keep in touch with </h3><br> -->
 <p style="text-align: center;">Number of contacts chosen: <span class='number_of_selected_contacts'>0</span><p>
