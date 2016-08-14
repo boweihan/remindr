@@ -107,7 +107,9 @@ class PagesController < ApplicationController
       contact.get_most_recent_message
       contact.update_reminder
     end
-    head :ok
+    respond_to do |format|
+      format.js{}
+    end
   end
 
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/googleauth' => 'pages#googleauth'
   put '/users/notifications' => "users#change_notif_type"
   get '/callback'=> 'pages#callback'
-  get '/send' => 'messages#send_mail'
+  post '/send' => 'messages#send_mail'
   get 'newsfeed' => 'pages#newsfeed'
   get '/dashboard' => 'pages#dashboard'
   get '/contacts/family' => 'contacts#family'
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get '/contacts/business' => 'contacts#business'
   get '/contacts/other' => 'contacts#other'
   get '/analytics' => 'pages#analytics'
-  get '/direct_messages' => 'messages#create_direct_message'
-  get '/tweets' => 'messages#create_tweet'
+  post '/direct_messages' => 'messages#create_direct_message'
+  post '/tweets' => 'messages#create_tweet'
   get '/reminders' => 'reminders#index'
   post '/reminders/change_type' => "reminders#change_type"
   get '/import_contacts' => "pages#import"

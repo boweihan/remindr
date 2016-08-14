@@ -3,7 +3,7 @@ $(document).ready(function() {
     event.preventDefault();
     if ($("#twitter-user-field").val()) {
       $.ajax({
-        type: "get",
+        type: "post",
         url: '/direct_messages',
         data: {direct_message: {user: $("#twitter-user-field").val(), text: $("#twitter-text-area").val()}}
       }).done(function(){
