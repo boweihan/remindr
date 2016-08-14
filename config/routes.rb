@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/login_page' => 'pages#login_page'
   put '/users/autoreply' => "users#change_autoreply"
   get '/tweet_info' => 'pages#tweet_info'
-  get '/auth/twitter/callback', to: 'pages#tweet_info'
+  get '/auth/twitter/callback' => 'pages#tweet_info'
   get '/googleauth' => 'pages#googleauth'
   put '/users/notifications' => "users#change_notif_type"
   get '/callback'=> 'pages#callback'
@@ -16,24 +16,24 @@ Rails.application.routes.draw do
   get '/dashboard' => 'pages#dashboard'
   get '/contacts/family' => 'contacts#family'
   get '/contacts/all' => 'contacts#all'
-  patch '/contacts/:id/update_contact_patch' => 'contacts#update_contact_patch'
   get '/contacts/friends' => 'contacts#friends'
   get '/contacts/business' => 'contacts#business'
   get '/contacts/other' => 'contacts#other'
-  get '/analytics' => 'pages#analytics'
+  # get '/analytics' => 'pages#analytics'
   post '/direct_messages' => 'messages#create_direct_message'
   post '/tweets' => 'messages#create_tweet'
   get '/reminders' => 'reminders#index'
   post '/reminders/change_type' => "reminders#change_type"
   get '/import_contacts' => "pages#import"
   get '/permission' => "pages#permission"
-  resources :users, only: [:create, :new, :update, :edit, :show]
+  resources :users, only: [:create, :update, :edit, :show]
 
-  resources :contacts, only: [:show, :create, :destroy, :update, :index, :edit] do
-    resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
-  end
+  resources :contacts, only: [:show, :create, :destroy, :update, :index, :edit]
+  # do
+  #   resources :reminders, only: [:index, :show, :create, :new, :update, :destroy]
+  # end
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:create, :destroy]
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

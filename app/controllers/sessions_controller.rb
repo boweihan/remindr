@@ -1,9 +1,5 @@
 class SessionsController < ApplicationController
 
-  #signin form
-  def new
-    # render :layout => false
-  end
 
   #on login
   def create

@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
 
-  before_action :ensure_logged_in, except: [:new, :create]
+  before_action :ensure_logged_in, except: [:create]
 
 
   def index
     @users = User.all
   end
 
-  def new
-    @user = User.new
-  end
+
 
   def edit
     @user = User.find(params[:id])
@@ -34,13 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_notif_type
-    @type = params[:user][:reminder_platform]
-    current_user.update(reminder_platform: @type)
-    respond_to do |format|
-      format.js {}
-    end
-  end
 
   def create
     @user = User.new(user_params)
@@ -56,13 +47,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_autoreply
-    @message = params[:autoreply_message]
-    current_user.update(automated_message: @message)
-    respond_to do |format|
-      format.js {}
-    end
-  end
 
   def update
     if params[:id] != current_user.id.to_s
@@ -70,15 +54,16 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @information = user_params
-       unless @user.update_attributes(@information)
-         head(:internal_server_error)
-       end
+
+      unless @user.update_attributes(@information)
+        head(:internal_server_error)
+      end
     end
   end
 
 
   private
   def user_params
-    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation, :reminder_platform)
+    params.require(:user).permit(:name, :phone, :email, :password, :password_confirmation, :reminder_platform, :automated_message)
   end
 end

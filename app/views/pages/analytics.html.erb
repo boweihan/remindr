@@ -1,11 +1,11 @@
-<h1>Message Analytics</h1>
+<!-- <h1>Message Analytics</h1>
 
 <ul>
-  <% @messages.each do |message| %>
-    <li>Message From: <%= current_user.contacts.where(id:message.contact_id).first["name"] %></li>
-    <li>Message Sent At: <%= DateTime.strptime(message.time_stamp.to_s, '%s') %></li>
-    <li>Message Snippet: <%= message.summary %></li>
-    <li>Your message breakdown is <%= message.easytoner %></li>
-    <li>Your message has the following Sentiment: <strong><%= message.check_sentiment%></strong><br /><br />
-  <% end %>
-</ul>
+  <%# @messages.each do |message| %>
+    <li>Message From: <%#= current_user.contacts.where(id:message.contact_id).first["name"] %></li>
+    <li>Message Sent At: <%#= DateTime.strptime(message.time_stamp.to_s, '%s') %></li>
+    <li>Message Snippet: <%#= message.summary %></li>
+    <li>Your message breakdown is <%#= message.easytoner %></li>
+    <li>Your message has the following Sentiment: <strong><%#= message.check_sentiment%></strong><br /><br />
+  <%# end %>
+</ul> -->

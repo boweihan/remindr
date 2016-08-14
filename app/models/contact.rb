@@ -1,12 +1,10 @@
 class Contact < ActiveRecord::Base
-  #Contact must have name
+
   validates :name, presence: true
 
-  #Activerecord associations
   has_many :messages
   has_many :reminders
   belongs_to :user
-
 
   #Load a contact's direct messages from twitter
   def get_dms(user_client, current_user)

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :messages, through: :contacts
   has_many :reminders, through: :contacts
 
+
   #find the google-email adress on sign-in b/c user email !=  (always) their gmail
   #it is run everytime on login because the user could sign into different email accounts
   def get_email_address

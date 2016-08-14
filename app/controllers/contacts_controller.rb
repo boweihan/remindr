@@ -15,8 +15,7 @@ class ContactsController < ApplicationController
         end
         render json: @contacts_render
     else
-      # create a new contact to render form
-      @contact = Contact.new
+      not_found
     end
   end
 
@@ -44,39 +43,24 @@ class ContactsController < ApplicationController
 
   end
 
-  # path to update one attribute
-  def update
-    if request.xhr?
-      @contact = Contact.find(params[:id])
-      @attribute = params[:attribute]
-      if @contact.update(@attribute.to_sym =>params[:new])
-        head :ok
-      else
-        head :internal_server_errror
-      end
-    end
-  end
-
   #Delete a contact
   def destroy
     @contact = Contact.find(params[:id])
-    if @contact.destroy
+    if @contact.user_id == current_user.id && @contact.destroy
       redirect_to user_path(current_user)
     else
-      head :internal_server_errror
+      head :unauthorized
     end
-
   end
 
-  #update all attributes
-  def update_contact_patch
+  def update
     @contact = Contact.find(params[:id])
-    if @contact.update_attributes(contact_params)
+    if @contact.user_id == current_user.id && @contact.update_attributes(contact_params)
       respond_to do |format|
         format.js{}
       end
     else
-      head :internal_server_errror
+      head :unauthorized
     end
   end
 
@@ -84,65 +68,7 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.find(params[:id])
     respond_to do |format|
-      format.html {}
       format.js {}  # to show the contacts info in form on all contacts page
-    end
-  end
-
-
-  #All, Friends, Business, Family paths will throw 404 if not accesed by ajax. Called by contact index page
-  def all
-    #only allow access if the route is called by ajax
-    if request.xhr?
-      @all = Contact.all.where(user_id:current_user.id)
-        #handlebars iterates through all values in the objects key for templating
-        render json: {objects: @all }
-    else
-      not_found
-    end
-  end
-
-  #Friends tab
-  def friends
-    if request.xhr?
-      @contacts = Contact.all.where(user_id:current_user.id)
-      @friends = Misc.give_contacts_for(@contacts, 'friend')
-        render json: {objects: @friends }
-    else
-      not_found
-    end
-  end
-
-  #Business tab
-  def business
-    if request.xhr?
-      @contacts = Contact.all.where(user_id:current_user.id)
-      @business = Misc.give_contacts_for(@contacts, 'business')
-      render json: {objects: @business }
-    else
-      not_found
-    end
-  end
-
-  #Family tab
-  def family
-    if request.xhr?
-      @contacts = Contact.all.where(user_id:current_user.id)
-      @family = @contacts.give_contacts_for('family')
-      render json: {objects: @family }
-    else
-      not_found
-    end
-  end
-
-  #Family tab
-  def other
-    if request.xhr?
-      @contacts = Contact.all.where(user_id:current_user.id)
-      @other = @contacts.give_contacts_for('other')
-      render json: {objects: @other }
-    else
-      not_found
     end
   end
 

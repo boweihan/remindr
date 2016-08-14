@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   before_action :ensure_logged_in, except: [:landing]
-  before_action :load_client, only: [:load_client, :googleauth, :callback]
 
   #twitter callback after verification
   def tweet_info
@@ -9,40 +8,22 @@ class PagesController < ApplicationController
     redirect_to permission_path
   end
 
+  #ask user if we can load google contacts
   def permission
   end
 
-  #create a new client for authentication
-  def load_client
-    client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_CLIENT_SECRETS']))
-    @auth_client = client_secrets.to_authorization
-    @auth_client.update!(
-      :scope => 'https://www.googleapis.com/auth/userinfo.email ' +
-      'https://www.googleapis.com/auth/userinfo.profile '+
-      'https://www.googleapis.com/auth/gmail.readonly '+
-      'https://www.googleapis.com/auth/gmail.send '+
-      'https://www.googleapis.com/auth/contacts.readonly',
-      :redirect_uri => 'http://localhost:3000/callback'
-        # :redirect_uri => 'http://remindr-me.herokuapp.com/callback'
-      )
-  end
+  # def analytics
+  #   @messages = Message.all
+  # end
 
-  def analytics
-    @messages = Message.all
-  end
-
-  #click to import from social media
+  #click to import from twitter
   def login_page
   end
 
-  #dashboard with calender and reminders
-  def dashboard
-  end
-
-  #action hands user over to google
+  #oauth with google
   def googleauth
-      auth_uri = @auth_client.authorization_uri.to_s
-      redirect_to auth_uri
+    auth_uri = Misc.load_google_client.authorization_uri.to_s
+    redirect_to auth_uri
   end
 
   #After they are authenitcated with google
@@ -53,6 +34,7 @@ class PagesController < ApplicationController
 
     #authcode in qs if user clicks allow access
     elsif params[:code]
+      @auth_client = Misc.load_google_client
       @auth_client.code = params[:code]
       #exchange auth for token
       @auth_client.fetch_access_token!
@@ -62,34 +44,30 @@ class PagesController < ApplicationController
       else
         current_user.update({access_token: @auth_client.access_token, issued_at: @auth_client.issued_at})
       end
-      #find google email adress of account that was signed into google
       current_user.get_email_address
-      #update feed in background
-      # UserLoadFeedJob.perform_later(current_user)
+
     end
-    #
-    # unless current_user.contacts.length > 0
-    #   redirect_to '/import_contacts'
-    # end
-    # redirect_to '/login_page'
-    # if current_user.contacts
-    #   redirect_to '/newsfeed'
-    # else
-      # redirect_to '/import_contacts'
-      redirect_to '/login_page'
-    # end
+
+    if current_user.contacts.length > 0
+      redirect_to newsfeed_path
+    else
+      redirect_to permission_path
+    end
 
   end
+
   def import
     if request.xhr?
       @potential_contacts = current_user.google_contacts
       render json: @potential_contacts
+    else
+      not_found
     end
   end
+
   #newsfeed
   def newsfeed
     #new contact the form for new contact
-    @contact = Contact.new
     @contacts = current_user.contacts
     @reminders = Reminder.where(user_id:current_user.id).order(time_since_last_contact: :desc)
   end
@@ -98,8 +76,6 @@ class PagesController < ApplicationController
   def landing
     @user = User.new
   end
-
-
 
 
   def pull_messages
@@ -111,6 +87,5 @@ class PagesController < ApplicationController
       format.js{}
     end
   end
-
 
 end
