@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   post '/reminders/change_type' => "reminders#change_type"
   get '/import_contacts' => "pages#import"
   get '/permission' => "pages#permission"
-  resources :users, only: [:create, :update, :edit, :show]
+  resources :users, only: [:create, :update,:show]
 
   resources :contacts, only: [:show, :create, :destroy, :update, :index, :edit]
   # do

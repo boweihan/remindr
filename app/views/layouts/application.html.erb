@@ -17,7 +17,7 @@
     <% if current_user %>
       <%= link_to "LOG OUT", session_path("this session"), class:"logoutButton", :method => :delete %>
     <% else %>
-      <%= link_to "LOG IN", new_session_path, class:"loginButton" %>
+      <%= link_to "LOG IN", "/", class:"loginButton" %>
     <%= link_to "SIGN UP", "/", class:"signup" %>
     <% end %>
 
@@ -27,19 +27,19 @@
       <% current_user.reminders.each do |reminder| %>
         <% if reminder.reminder_type == 'overdue' %>
           <% counter += 1 %>
+          <% break %>
         <% end %>
       <% end %>
       <% if counter > 0 %>
         <%= link_to (image_tag "red_notification.svg"), reminders_path, class: "nav-icon"%>
-        <%= link_to (image_tag "ic_message_white_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <%= link_to (image_tag "profile.svg"), user_path(current_user), class: "nav-icon"  %>
+
 
       <% else %>
       <!-- code for nav links -->
         <%= link_to (image_tag "notification.svg"), reminders_path, class: "nav-icon" %>
-        <%= link_to (image_tag "ic_message_white_24px.svg"), newsfeed_path, class: "nav-icon" %>
-        <%= link_to (image_tag "profile.svg"), user_path(current_user), class: "nav-icon" %>
       <% end %>
+      <%= link_to (image_tag "ic_message_white_24px.svg"), newsfeed_path, class: "nav-icon" %>
+      <%= link_to (image_tag "profile.svg"), user_path(current_user), class: "nav-icon"  %>
 
     <% end %>
 </div>

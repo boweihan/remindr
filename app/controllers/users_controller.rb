@@ -8,13 +8,6 @@ class UsersController < ApplicationController
   end
 
 
-
-  def edit
-    @user = User.find(params[:id])
-    @contacts = @user.contacts
-    @contact = Contact.new
-  end
-
   def show
     if current_user.id.to_s != params[:id]
       head(:forbidden)

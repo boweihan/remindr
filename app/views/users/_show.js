@@ -11,23 +11,7 @@ $(function(){
       var target_div = $(".all-contacts-scroll-div")
     })
 
-    // $("#edit_contact_form").submit(function(e){
-    //   alert('hi')
-    //   var form = $(this).serialize()
-    //   e.preventDefault();
-    //   console.log(form)
-    //   alert('pause')
-    //   $.ajax({
-    //     method: "POST",
-    //     url: "/contacts",
-    //     data: form,
-    //     datatype: "json"
-    //   }).done(function(response){
-    //     window.all_contacts.push(response)
-    //
-    //     window.all_contacts.forEach(fill_with_contacts);
-    //   })
-    // })
+
     $(".search-contacts-user-page").keyup(function(){
       var query = $(".search-contacts-user-page").val()
       duplicated_elements(query)
@@ -87,19 +71,4 @@ function duplicated_elements(searchterm){
         contact.show = false
       }
     })
-}
-
-function isSubstring(searchterm,contact){
-  var searchterm = searchterm.toLowerCase()
-
-  var iterations= contact.name.length-searchterm.length+1
-  if (iterations<0) {
-    iterations = 0
-  }
-  for (i=0;i<=iterations;i++){
-    var end_index = searchterm.length+i
-    if (searchterm === contact.name.toLowerCase().slice(i,end_index)){
-      return true
-    }
-  }
 }
