@@ -49,13 +49,8 @@ class UsersController < ApplicationController
       @user = current_user
       @information = user_params
 
-      @information.each do |attribute,value|
-        if value == "" && attribute != "password" && attribute != "password_confirmation"
-          @information[attribute] = nil
-        end
-      end
 
-      if (@information[:reminder_platform] == "Text" && !@user.phone) || (@information[:reminder_platform] == "Twitter" && !@user.token)
+      if (@information[:reminder_platform] == "Text" && (!@user.phone || @user.phone == "")) || (@information[:reminder_platform] == "Twitter" && !@user.token)
         render :failure
         return
       end

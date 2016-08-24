@@ -8,11 +8,10 @@ class Misc < ActiveRecord::Base
         return false
       end
     end
-    if letters.length == 0
-      return false
-    end
+
     true
   end
+  
   def self.send_tweet(user, message)
     user.twitter_client.update(message)
   end
