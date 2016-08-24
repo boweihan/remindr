@@ -21,8 +21,8 @@
           <h4 class='sign-up-heading-error'></h4>
         </div>
         Name  <br><%= f.text_field :name, class: 'signup-modal-field', placeholder: "eg. John Doe"%><br>
-        Phone <br><%= f.text_field :phone,  class: 'signup-modal-field', placeholder: "416 676 9999" %><br>
-        Email <br><%= f.email_field :email, class: 'signup-modal-field', id: 'email-signup', placeholder: "johndoe@gmail.com" %><br>
+        Phone (optional) <br><%= f.text_field :phone,  class: 'signup-modal-field', placeholder: "416 676 9999" %><br>
+        Email  <br><%= f.email_field :email, class: 'signup-modal-field', id: 'email-signup', placeholder: "johndoe@gmail.com" %><br>
         Password <br><%= f.password_field :password, class: 'signup-modal-field', id: 'signup-field',placeholder: "**********" %><br>
         Password Confirmation <br><%= f.password_field :password_confirmation, class: 'signup-modal-field', id: 'signup-confirmation',placeholder: "**********"  %><br>
         <%= f.submit "Create Account", class: 'modal-submit', id: 'modal-submit-create'%>

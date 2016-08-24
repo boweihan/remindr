@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   #validations
-  validates :name, :email, :phone, presence: true
+  validates :name, :email, presence: true
   validates :email, uniqueness: true
 
   #ActiveRecord associations

@@ -48,8 +48,24 @@ class UsersController < ApplicationController
       @user = current_user
       @information = user_params
 
+      @information.each do |attribute,value|
+        if value == "" && attribute != "password" && attribute != "password_confirmation"
+          @information[attribute] = nil
+        end
+      end
+
+      if (@information[:reminder_platform] == "Text" && !@user.phone) || (@information[:reminder_platform] == "Twitter" && !@user.token)
+        render :failure
+        return
+      end
+
+      if @information[:phone] == "" && @user.reminder_platform == "Text"
+        @user.update(reminder_platform: "Email")
+      end
+
       unless @user.update_attributes(@information)
-        head(:internal_server_error)
+        render :failure
+        return
       end
     end
   end

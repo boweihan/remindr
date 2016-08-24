@@ -1,14 +1,25 @@
 $(document).ready(function() {
   $('#send_email').submit(function(event) {
     event.preventDefault();
-    $.ajax({
-      type: "post",
-      url: '/send',
-      data: {receiver: $("#email_field").val(), subj: $("#subject_field").val(), bod: $("#body_field").val()}
-    }).done(function(){
-      $("#email_field").val("")
-      $("#subject_field").val("")
-      $("#body_field").val("")
-    });
+    var receiver = $("#email_field").val()
+    var subject = $("#subject_field").val()
+    var body = $("#body_field").val()
+
+    if (receiver == ""){
+      alert("Contact has no email")
+    }
+    else{
+      $.ajax({
+        type: "post",
+        url: '/send',
+        data: {receiver: receiver, subj: subject, bod: body}
+      }).done(function(){
+        $("#email_field").val("")
+        $("#subject_field").val("")
+        $("#body_field").val("")
+      });
+    }
+
+
   });
 });

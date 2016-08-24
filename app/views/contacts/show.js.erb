@@ -12,8 +12,6 @@ $(function(){
 
   $("#contact_id").val(id)
   $("#contact_id").html(id)
-  var new_selector_html = "<%= j(select_tag "field", options_for_select(@contact.generate_selectors))%>"
-  $("#contact_field").html(new_selector_html)
   $("#contact_new_info").val("")
   $("#subject_field").val("")
   $("#body_field").val("")
