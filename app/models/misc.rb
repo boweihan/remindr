@@ -1,6 +1,11 @@
 #Class for misc. functions
 class Misc < ActiveRecord::Base
 
+  def self.automated_email(user, contact)
+    subject = "You've been a pretty bad friend..."
+    body = "Hey #{user.name},\n Looks like you haven't talked to #{contact.name} for almost a month. You should contact them soon or we'll be reaching out for you! \n \nThe Remind Team"
+    send_mail(company_user, user.email, subject, body)
+  end
   #create a new client for authentication
   def self.load_google_client
     client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['GOOGLE_CLIENT_SECRETS']))
@@ -16,9 +21,10 @@ class Misc < ActiveRecord::Base
       )
       @auth_client
   end
+
   #Send email to a given email
   def self.send_mail(user, to_email, subj, bod)
-    user_input = Mail.new do
+    email = Mail.new do
       from user.google_id
       to to_email
       subject subj
@@ -28,7 +34,7 @@ class Misc < ActiveRecord::Base
 
     # create gmail message object and pass in raw body as string
     message = Google::Apis::GmailV1::Message.new
-    message.raw = user_input.to_s
+    message.raw = email.to_s
 
     # start an instance of gmailservice
     service = Google::Apis::GmailV1::GmailService.new
@@ -40,13 +46,23 @@ class Misc < ActiveRecord::Base
     service.send_user_message(user.google_id, message_object = message)
   end
 
-  #Query for contacts that match the category
-  def self.give_contacts_for(collection, category)
-    collection.where(category: category)
+  def self.send_automated_dm(user, contact)
+    subject = "You've been a pretty bad friend..."
+    body = "Hey #{user.name}, \nLooks like you haven't talked to #{contact.name} for almost a month. You should contact them soon or we'll be reaching out for you! \n \nThe Remindr Team"
+    send_dm(master_account, user.twitter_username,subject, body)
   end
 
-  #method for sending twitter DMS when the 30 days are up
-  def self.send_twitter_dm(user, text)
-    Message.create_direct_message_auto(user, text)
+  def self.send_dm(user, recipient, message)
+    user.twitter_client.create_direct_message(recipient, message)
+  end
+
+  def self.automated_text(user,contact)
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    number = user.phone[0] == 1 ? "+#{user.phone}" : "+1#{user.phone}"
+    @client.account.messages.create({
+      :from => '+16474928309',
+      :to => phone,
+      :body => "Hey #{user.name}, \nLooks like you haven't talked to #{contact.name} for almost a month. You should contact them soon or we'll be reaching out for you! \n \nThe Remindr Team"
+    })
   end
 end

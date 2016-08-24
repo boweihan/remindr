@@ -39,6 +39,7 @@ gem 'delayed_job_active_record'
 
 gem 'omniauth-twitter'
 gem 'twitter'
+gem 'twilio-ruby'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

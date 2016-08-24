@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   #twitter callback after verification
   def tweet_info
-    @user = User.from_omniauth(request.env['omniauth.auth'], current_user)
+    @user = current_user.save_callback_info_twitter(request.env['omniauth.auth'])
     TwitterLoadFeedJob.perform_later(current_user)
     redirect_to permission_path
   end

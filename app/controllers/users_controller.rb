@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.google_id = params[:email]
     @user.reminder_platform = "Email"
-    @user.automated_message = "Hi! It's been a while since we've talked and I miss you dearly. I've been thinking about you recently and want to take our relationship to the next level."
+    @user.automated_message = "Hey! We haven't talked for a while, and I miss you dearly. I've been thinking about you recently. How are things going?"
     if @user.save
       #log the user in
       session[:user_id] = @user.id

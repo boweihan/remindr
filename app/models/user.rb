@@ -11,43 +11,7 @@ class User < ActiveRecord::Base
   has_many :messages, through: :contacts
   has_many :reminders, through: :contacts
 
-
-  #find the google-email adress on sign-in b/c user email !=  (always) their gmail
-  #it is run everytime on login because the user could sign into different email accounts
-  def get_email_address
-    #see if token has expired
-    check_token
-    #Get the email adress in json
-    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{access_token}"
-    user_json = RestClient.get(url)
-    email = JSON.parse(user_json)['email']
-    #save record in db
-    self.google_id = email
-    self.save
-  end
-
-  def google_contacts
-    url = "https://www.google.com/m8/feeds/contacts/default/full?max-results=10000&access_token=#{access_token}&alt=json"
-    results = JSON.parse(RestClient.get(url))
-    contacts = []
-    token = access_token
-    results['feed']['entry'].each do |entry|
-      info = {}
-      info['name'] = entry['title']['$t']
-      if entry['gd$email']
-        info['email'] = entry['gd$email'][0]['address']
-      end
-      # if entry['gd$phoneNumber']
-      #   info['phone'] = entry['gd$phoneNumber'][0]["$t"].gsub(/[^\d]/,"")
-      # end
-      info['selected'] = false
-      info['show'] = true
-      info['pic'] = entry['link'][0]['href'] + "?access_token=#{token}"
-      contacts << info
-    end
-    contacts
-  end
-# added this part starts
+# create twitter client to authenticate
   def twitter_client
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV["twitter_consumer_key"]
@@ -58,65 +22,37 @@ class User < ActiveRecord::Base
     return client
   end
 
-
-  def self.from_omniauth(auth_hash, current_user)
-    current_user.provider = auth_hash['provider']
-    current_user.token = auth_hash['credentials']['token']
-    current_user.secret = auth_hash['credentials']['secret']
-    current_user.save!
-    current_user
-  end
-
-
-  def self.get_direct_messages
-    all.each do |user|
-      twitter_client = user.twitter_client
-      user.contacts.each do |contact|
-        contact.get_dms(twitter_client, user)
-      end
-    end
-  end
-
-  def get_email(token)
-    self.check_token
-    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{token}"
-    user_json = RestClient.get(url)
-    email = JSON.parse(user_json)['email']
+  #find the google-email adress on sign-in b/c user email !=  (always) their gmail
+  def get_email_address
+    #see if token has expired
+    check_token
+    #Get the email adress in json
+    url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=#{access_token}"
+    user_info_json = RestClient.get(url)
+    email = JSON.parse(user_info_json)['email']
+    #save record in db
     self.google_id = email
     self.save
   end
 
-  #class method that calls eamil_my_contacts on every contact
-  def self.check
-    all_users = User.all
-    all_users.each do |user|
-      #see if token is still valid
-      user.check_token
-      user.email_my_contacts
-      puts "in user check loop"
-    end
-  end
-
-
-
-  #email a user's contacts that have been neglected
-  def email_my_contacts
-    contacts.each do |contact|
-      #check if you haven ttalke dto contact for 30 days
-      if contact.neglected?
-        #send email
-        subj = 'Hey!'
-        self.automated_message != nil ? bod = self.automated_message : bod = 'ER MA GURD'
-
-        if self.reminder_platform == 'Email'
-          Misc.send_mail(self, contact.email, subj, bod)
-        elsif self.reminder_platform == 'Twitter'
-          #tweet at them
-        else
-          #text them
-        end
+  #get list of a user's google contacts
+  def google_contacts
+    check_token
+    url = "https://www.google.com/m8/feeds/contacts/default/full?max-results=10000&access_token=#{access_token}&alt=json"
+    results = JSON.parse(RestClient.get(url))
+    contacts = []
+    token = access_token
+    results['feed']['entry'].each do |entry|
+      info = {}
+      info['name'] = entry['title']['$t']
+      if entry['gd$email']
+        info['email'] = entry['gd$email'][0]['address']
       end
+      info['selected'] = false
+      info['show'] = true
+      contacts << info
     end
+    contacts
   end
 
   #use refresh token to get new access token
@@ -126,6 +62,14 @@ class User < ActiveRecord::Base
     refresh = JSON.parse(response.body)
     #store token
     self.update(access_token:refresh['access_token'])
+  end
+
+  #save twitter callback token
+  def save_callback_info_twitter(auth_hash)
+    self.provider = auth_hash['provider']
+    self.token = auth_hash['credentials']['token']
+    self.secret = auth_hash['credentials']['secret']
+    self.save
   end
 
   # check if the token is expired
@@ -142,4 +86,75 @@ class User < ActiveRecord::Base
     end
   end
 
+  #get direct message of all users with all contacts
+  def self.get_direct_messages_all_users
+    all.each do |user|
+      user.check_token
+      user.get_direct_messages
+    end
+  end
+
+  #get direct message of a user with all their contacts
+  def get_direct_messages
+    twitter_client = twitter_client
+    contacts.each do |contact|
+      contact.get_dms(twitter_client)
+    end
+  end
+
+  #call check_overdue on all users
+  def self.check_overdue_all_users
+    all_users = User.all
+    all_users.each do |user|
+      user.check_token
+      user.check_overdue
+    end
+  end
+
+  #call method to reach out to contact if you haven't talked to them in 30 days or remind user if its 29
+  def check_overdue
+    contacts.each do |contact|
+      if contact.thirty_days?
+        contact.reach_out
+      elsif contact.twenty_nine_days?
+        self.remind(contact)
+      end
+    end
+  end
+
+  #notify user that they have neglected the contact and in one day we will reach out
+  def remind(contact)
+    case reminder_platform
+      when "Email"
+        Misc.automated_email(self, contact)
+      when "Twitter"
+        Misc.send_automated_dm(self, contact)
+      when "Text"
+        Misc.automated_text(self, contact)
+    end
+  end
+
+  def self.update_newsfeed_all_users
+    all.each do |user|
+      user.update_newsfeed
+    end
+  end
+
+  def update_newsfeed
+    contacts.each do |contact|
+      contact.get_most_recent_messages
+    end
+  end
+
+  def self.update_reminders_all_contacts
+    all.each do |user|
+      user.update_reminders
+    end
+  end
+
+  def update_reminders
+    contacts.each do |contact|
+      contact.update_reminder
+    end
+  end
 end

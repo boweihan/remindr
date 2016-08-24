@@ -5,25 +5,16 @@ Rails.application.routes.draw do
   root 'pages#landing'
   get '/pull_messages' => 'pages#pull_messages'
   get '/login_page' => 'pages#login_page'
-  put '/users/autoreply' => "users#change_autoreply"
   get '/tweet_info' => 'pages#tweet_info'
   get '/auth/twitter/callback' => 'pages#tweet_info'
   get '/googleauth' => 'pages#googleauth'
-  put '/users/notifications' => "users#change_notif_type"
   get '/callback'=> 'pages#callback'
   post '/send' => 'messages#send_mail'
   get 'newsfeed' => 'pages#newsfeed'
-  get '/dashboard' => 'pages#dashboard'
-  get '/contacts/family' => 'contacts#family'
-  get '/contacts/all' => 'contacts#all'
-  get '/contacts/friends' => 'contacts#friends'
-  get '/contacts/business' => 'contacts#business'
-  get '/contacts/other' => 'contacts#other'
   # get '/analytics' => 'pages#analytics'
   post '/direct_messages' => 'messages#create_direct_message'
   post '/tweets' => 'messages#create_tweet'
   get '/reminders' => 'reminders#index'
-  post '/reminders/change_type' => "reminders#change_type"
   get '/import_contacts' => "pages#import"
   get '/permission' => "pages#permission"
   resources :users, only: [:create, :update,:show]

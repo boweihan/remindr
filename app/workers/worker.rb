@@ -5,12 +5,10 @@ class Worker
   end
 
   def overdue
-    User.check
+    User.check_overdue_all_users
   end
 
   def dms
-    User.get_direct_messages
+    User.get_direct_messages_all_users
   end
 end
-
-#query after:2004/04/16 day-1 for email
