@@ -1,4 +1,4 @@
 desc "Refresh the newsfeed"
-task :find_overdue => [:environment, :refresh] do
-  Worker.new.overdue
+task :friendship_maker => [:environment, :refresh] do
+  User.check_overdue_all_users
 end

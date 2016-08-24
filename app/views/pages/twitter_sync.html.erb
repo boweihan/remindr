@@ -2,8 +2,7 @@
   <div class='reminder-background'></div>
   <div style='text-align: center; font-size: 3em; color:white'>Hold on tight, you're almost there. Last step: Link your Twitter account!</div>
   <div class="sign-in-link">
-    <!-- <div class="google-login"><div class="logo-image"><%= image_tag "gmail-logo.svg", class:"gmail-logo" %></div><%= link_to 'Import messages from Gmail', '/googleauth', class: 'sm-link'%></div> -->
     <div class="twitter-login"><div class="logo-image"><%= image_tag "twitter-logo.svg", class:"twitter-logo" %></div><%= link_to 'Import messages from Twitter', '/auth/twitter', class: 'sm-link' %></div>
-      <%= link_to '(skip this step)', "/permission", class:'skip_twitter_auth' %>
+      <%= link_to '(skip this step)', "/newsfeed_path", class:'skip_twitter_auth' %>
   </div>
 </div>

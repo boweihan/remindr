@@ -86,21 +86,21 @@ class User < ActiveRecord::Base
     end
   end
 
-  #get direct message of all users with all contacts
-  def self.get_direct_messages_all_users
-    all.each do |user|
-      user.check_token
-      user.get_direct_messages
-    end
-  end
-
-  #get direct message of a user with all their contacts
-  def get_direct_messages
-    twitter_client = twitter_client
-    contacts.each do |contact|
-      contact.get_dms(twitter_client)
-    end
-  end
+  # #get direct message of all users with all contacts
+  # def self.get_direct_messages_all_users
+  #   all.each do |user|
+  #     user.check_token
+  #     user.get_direct_messages
+  #   end
+  # end
+  #
+  # #get direct message of a user with all their contacts
+  # def get_direct_messages
+  #   twitter_client = twitter_client
+  #   contacts.each do |contact|
+  #     contact.get_dms(twitter_client)
+  #   end
+  # end
 
   #call check_overdue on all users
   def self.check_overdue_all_users

@@ -65,9 +65,8 @@ function importContactButton(){
     $.ajax({
       url:"/pull_messages",
       method:"GET"
-    }).done(function(response){
-      window.location.replace("/newsfeed");
-    });
+    })
+    window.location.replace("/link_to_twitter");
   })
 }
 function load_imported_contacts(contact, index){

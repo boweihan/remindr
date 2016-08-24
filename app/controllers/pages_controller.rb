@@ -2,10 +2,9 @@ class PagesController < ApplicationController
   before_action :ensure_logged_in, except: [:landing]
 
   #twitter callback after verification
-  def tweet_info
+  def twitter_callback
     @user = current_user.save_callback_info_twitter(request.env['omniauth.auth'])
-    TwitterLoadFeedJob.perform_later(current_user)
-    redirect_to permission_path
+    redirect_to newsfeed_path
   end
 
   #ask user if we can load google contacts
@@ -17,7 +16,7 @@ class PagesController < ApplicationController
   # end
 
   #click to import from twitter
-  def login_page
+  def twitter_sync
   end
 
   #oauth with google
@@ -45,7 +44,6 @@ class PagesController < ApplicationController
         current_user.update({access_token: @auth_client.access_token, issued_at: @auth_client.issued_at})
       end
       current_user.get_email_address
-
     end
 
     if current_user.contacts.length > 0
@@ -53,15 +51,12 @@ class PagesController < ApplicationController
     else
       redirect_to permission_path
     end
-
   end
 
   def import
     if request.xhr?
       @potential_contacts = current_user.google_contacts
       render json: @potential_contacts
-    else
-      not_found
     end
   end
 
@@ -69,7 +64,6 @@ class PagesController < ApplicationController
   def newsfeed
     #new contact the form for new contact
     @contacts = current_user.contacts
-    @reminders = Reminder.where(user_id:current_user.id).order(time_since_last_contact: :desc)
   end
 
   #landing page
@@ -77,15 +71,11 @@ class PagesController < ApplicationController
     @user = User.new
   end
 
-
   def pull_messages
-    current_user.contacts.each do |contact|
-      contact.get_most_recent_message
-      contact.update_reminder
-    end
+    current_user.update_newsfeed
+    current_user.update_reminders
     respond_to do |format|
       format.js{}
     end
   end
-
 end
