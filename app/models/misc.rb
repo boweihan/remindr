@@ -13,6 +13,9 @@ class Misc < ActiveRecord::Base
     end
     true
   end
+  def self.send_tweet(user, message)
+    user.twitter_client.update(message)
+  end
 
   def self.automated_email(user, contact)
     subject = "You've been a pretty bad friend..."

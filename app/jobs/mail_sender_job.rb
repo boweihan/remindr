@@ -3,6 +3,5 @@ class MailSenderJob < ActiveJob::Base
 
   def perform(user, receiver, subject, body)
     Misc.send_mail(user, receiver, subject, body)
-    puts "SENT MAIL"
   end
 end

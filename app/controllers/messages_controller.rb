@@ -2,18 +2,22 @@ class MessagesController < ApplicationController
   before_action :ensure_logged_in
 
   def create_direct_message
-    if current_user.token
+    if !current_user.token
       head :bad_request
     else
-      Misc.send_dm(current_user, direct_message_params[:user], direct_message_params[:text])
+      DmSenderJob.perform_later(current_user, direct_message_params[:user], direct_message_params[:text])
       head :ok
     end
 
   end
 
   def create_tweet
-    current_user.twitter_client.update(tweet_params[:message])
-    head :ok
+    if !current_user.token
+      head :bad_request
+    else
+      TweetSenderJob.perform_later(current_user, params[:message])
+      head :ok
+    end
   end
 
   def send_mail
