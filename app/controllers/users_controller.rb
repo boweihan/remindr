@@ -15,13 +15,14 @@ class UsersController < ApplicationController
       @user = current_user
       @contacts = @user.contacts
       @contact = Contact.new
-      if request.xhr?
-        @contact = Contact.find(params[:id])
-        respond_to do |format|
-          #responds to ajax request and executes script on click
-          format.js {}
-        end
-      end
+      # if request.xhr?
+      #   @contact = Contact.find(params[:id])
+      #   respond_to do |format|
+      #     binding.pry
+      #     #responds to ajax request and executes script on click
+      #     format.js {}
+      #   end
+      # end
     end
   end
 

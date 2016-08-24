@@ -9,10 +9,12 @@ $(document).ready(function() {
       }).done(function(){
         $("#twitter-text-area").val("");
         $("#twitter-user-field").val("");
-      });
+      }).fail(function(){
+        alert("You are not connected with Twitter.")
+      })
     }
     else {
-      alert("The user does not have a twitter handle, please add a valid twitter handle for the contact")
+      alert("The contact does not have a twitter handle, please add a valid twitter handle for the contact")
     }
   });
 });

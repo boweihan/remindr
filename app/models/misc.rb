@@ -1,6 +1,19 @@
 #Class for misc. functions
 class Misc < ActiveRecord::Base
 
+  def self.valid_handle(twitter_handle)
+    letters = twitter_handle.split("")
+    letters.each do |letter|
+      if letter == "@"
+        return false
+      end
+    end
+    if letters.length == 0
+      return false
+    end
+    true
+  end
+
   def self.automated_email(user, contact)
     subject = "You've been a pretty bad friend..."
     body = "Hey #{user.name},\n Looks like you haven't talked to #{contact.name} for almost a month. You should contact them soon or we'll be reaching out for you! \n \nThe Remind Team"

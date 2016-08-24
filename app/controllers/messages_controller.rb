@@ -2,8 +2,13 @@ class MessagesController < ApplicationController
   before_action :ensure_logged_in
 
   def create_direct_message
-    Misc.send_dm(current_user, direct_message_params[:user], direct_message_params[:text])
-    head :ok
+    if current_user.token
+      head :bad_request
+    else
+      Misc.send_dm(current_user, direct_message_params[:user], direct_message_params[:text])
+      head :ok
+    end
+
   end
 
   def create_tweet
