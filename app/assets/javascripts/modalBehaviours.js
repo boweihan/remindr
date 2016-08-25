@@ -13,7 +13,6 @@ $(function() {
     $('.sign-up-modal').css('display', 'block');
   });
 
-
   $('.sign-up-modal').on('click', function() {
     $('.sign-up-modal').css('display', 'none');
   });
@@ -28,7 +27,6 @@ $(function() {
   $('.login-modal').on('click', function() {
     $('.login-modal').css('display', 'none');
   })
-
 
   $('.edit-modal').on('click', function() {
     $('.edit-modal').css('display', 'none')
@@ -45,18 +43,16 @@ $(function() {
     e.stopPropagation();
   })
 
-    $('.getstarted').on('click', function(e) {
-
-      if ($('.sign-up-modal').length !== 0) {
-        e.preventDefault();
-        $("html, body").animate({ scrollTop: 0 }, "medium");
-        $('.login-modal').css('display', 'none');
-        $('.sign-up-modal').css('display', 'block');
-      }
-      else {
-        e.preventDefault();
-        window.location.replace("/newsfeed");
-      }
-    })
-
+  $('.getstarted').on('click', function(e) {
+    if ($('.sign-up-modal').length !== 0) {
+      e.preventDefault();
+      $("html, body").animate({ scrollTop: 0 }, "medium");
+      $('.login-modal').css('display', 'none');
+      $('.sign-up-modal').css('display', 'block');
+    }
+    else {
+      e.preventDefault();
+      window.location.replace("/newsfeed");
+    }
+  })
 })

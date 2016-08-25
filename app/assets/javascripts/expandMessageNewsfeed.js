@@ -6,7 +6,6 @@ $(function(){
       $(".message_clicked").css("display","block")
       $(".message_clicked").parent().find(".individual_message_outer_div").css("display","none")
       $(".message_clicked").toggleClass("message_clicked")
-
       clicked.toggleClass("message_clicked")
       clicked.css("display","none")
       clicked.parent().find(".individual_message_outer_div").css("display","block")
@@ -21,8 +20,6 @@ $(function(){
   $(document).on("click", ".individual_message_outer_div .message_expand",function(){
     $(this).parent().css("display","none")
     $(this).parent().parent().find(".individual_message").css("display","block")
-    $(this).parent().parent().find(".individual_message").toggleClass("message_clicked")
-
+    $(this).parent().parent().find(".individual_message").toggleClass("message_clicked")  
   })
-
 });
